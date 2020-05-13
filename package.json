@@ -2,7 +2,7 @@
   "name": "snyk-delta",
   "description": "Prevent feature for CLI tests",
   "main": "dist/index.js",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "bin": {
     "snykprevent": "dist/index.js"
   },
