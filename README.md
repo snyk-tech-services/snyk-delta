@@ -19,7 +19,11 @@ Compares snapshots to give details about:
     - Flag path(s) carrying new vulnerabilities
 
 ## Installation
-Grab a binary of your choice from [the release page](https://github.com/snyk-tech-services/snyk-delta/releases)
+`npm i -g snyk-delta`\
+
+or\
+
+ Grab a binary of your choice from [the release page](https://github.com/snyk-tech-services/snyk-delta/releases)
 
 ## Usage
 ### 2 mode of operations
@@ -36,3 +40,5 @@ Grab a binary of your choice from [the release page](https://github.com/snyk-tec
 > BaselineProject value is expected to be a UUID, not simply a name\
 > Check your Snyk Web UI or API to retrieve those UUIDs.
 
+## Usage as module
+Docs to be updated soon
