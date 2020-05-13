@@ -1,6 +1,6 @@
 import * as debugModule from 'debug'
 const yargs = require('yargs');
-const pkgJSON = require(require('app-root-path').resolve('package.json'))
+import * as pkgJSON from '../../../package.json'
 import * as chalk from 'chalk';
 import { BadInputError } from '../customErrors/inputError';
 
