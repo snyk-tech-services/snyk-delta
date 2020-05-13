@@ -14,7 +14,7 @@
     {
       "//": "shasum all binaries",
       "path": "@semantic-release/exec",
-      "cmd": "sha256sum snyk-linux > snyk-linux.sha256 && sha256sum snyk-macos > snyk-macos.sha256 && sha256sum snyk-win.exe > snyk-win.exe.sha256"
+      "cmd": "shasum -a 256 snyk-linux > snyk-linux.sha256 && shasum -a 256 snyk-macos > snyk-macos.sha256 && shasum -a 256 snyk-win.exe > snyk-win.exe.sha256"
     },
     {
       "//": "removes the file we use to identify a build as a standalone binary",
