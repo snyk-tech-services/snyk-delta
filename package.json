@@ -1,10 +1,10 @@
 {
   "name": "snyk-delta",
   "description": "Prevent feature for CLI tests",
-  "main": "dist/index.js",
+  "main": "dist/src/lib/index.js",
   "version": "1.0.0",
   "bin": {
-    "snyk-delta": "dist/index.js"
+    "snyk-delta": "dist/src/lib/index.js"
   },
   "scripts": {
     "format:check": "prettier --check '{''{lib,test}/!(fixtures)/**/*,*}.{js,ts,json,yml}'",
