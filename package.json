@@ -4,7 +4,7 @@
   "main": "dist/index.js",
   "version": "1.0.0",
   "bin": {
-    "snykprevent": "dist/index.js"
+    "snyk-delta": "dist/index.js"
   },
   "scripts": {
     "format:check": "prettier --check '{''{lib,test}/!(fixtures)/**/*,*}.{js,ts,json,yml}'",
@@ -27,7 +27,7 @@
     "type": "git",
     "url": "https://github.com/snyk-tech-services/snyk-delta.git"
   },
-  "author": "snyk.io",
+  "author": "Snyk Tech Services",
   "license": "Apache-2.0",
   "engines": {
     "node": "12.x"
