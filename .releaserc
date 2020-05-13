@@ -9,7 +9,7 @@
     {
       "//": "build the alpine, macos, linux and windows binaries",
       "path": "@semantic-release/exec",
-      "cmd": "run pkg . -t node12-linux-x64,node12-macos-x64,node12-win-x64"
+      "cmd": "npx pkg . -t node12-linux-x64,node12-macos-x64,node12-win-x64"
     },
     {
       "//": "shasum all binaries",
