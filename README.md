@@ -3,7 +3,7 @@
 ***
 
 <!-- [![Known Vulnerabilities](https://snyk.io/test/github/snyk/snyk-delta/badge.svg)](https://snyk.io/test/github/snyk/snyk-delta) -->
-[![CircleCI](https://circleci.com/gh/snyk-tech-services/snyk-delta.svg?style=svg&circle-token=dacfea87c8041e922f2bb391362b3bdb0fd57006)](https://circleci.com/gh/snyk-tech-services/snyk-delta)
+[![CircleCI](https://circleci.com/gh/snyk-tech-services/snyk-delta.svg?style=svg&circle-token=bfb34e49aa301cfa4ef4272541360a475ff95ad4)](https://circleci.com/gh/snyk-tech-services/snyk-delta)
 
 # Snyk snyk-delta
 Prevent feature for CLI tests
