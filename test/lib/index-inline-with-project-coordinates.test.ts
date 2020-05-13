@@ -9,7 +9,7 @@ process.argv.push('--baselineProject=c51c80c2-66a1-442a-91e2-4f55b4256a72');
 
 const stdinMock: MockSTDIN = stdin();
 const mockExit = mockProcessExit();
-import { run } from '../../src/lib/index';
+import { getDelta } from '../../src/lib/index';
 
 const fixturesFolderPath = path.resolve(__dirname, '..') + '/fixtures/';
 
@@ -79,7 +79,7 @@ describe('Test End 2 End - Inline mode with project coordinates', () => {
       stdinMock.send(null);
     }, 100);
 
-    await run();
+    await getDelta();
     expect(consoleOutput).toContain('No new issues found !');
     expect(mockExit).toHaveBeenCalledWith(0);
   });
@@ -97,7 +97,7 @@ describe('Test End 2 End - Inline mode with project coordinates', () => {
       stdinMock.send(null);
     }, 100);
 
-    await run();
+    await getDelta();
 
     const expectedOutput = [
       'New issue introduced !',
