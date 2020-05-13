@@ -9,12 +9,12 @@
     {
       "//": "build the alpine, macos, linux and windows binaries",
       "path": "@semantic-release/exec",
-      "cmd": "run pkg . -t node12-linux-x64,node12-macos-x64,node12-win-x64"
+      "cmd": "npx pkg . -t node12-linux-x64,node12-macos-x64,node12-win-x64"
     },
     {
       "//": "shasum all binaries",
       "path": "@semantic-release/exec",
-      "cmd": "sha256sum snyk-delta-linux > snyk-delta-linux.sha256 && sha256sum snyk-delta-macos > snyk-delta-macos.sha256 && sha256sum snyk-delta-win.exe > snyk-delta-win.exe.sha256"
+      "cmd": "shasum -a 256 snyk-delta-linux > snyk-delta-linux.sha256 && shasum -a 256 snyk-delta-macos > snyk-delta-macos.sha256 && shasum -a 256 snyk-delta-win.exe > snyk-delta-win.exe.sha256"
     },
     {
       "//": "removes the file we use to identify a build as a standalone binary",
@@ -28,34 +28,34 @@
       "path": "@semantic-release/github",
       "assets": [
         {
-          "path": "./snyk-linux",
-          "name": "snyk-linux",
-          "label": "snyk-linux"
+          "path": "./snyk-delta-linux",
+          "name": "snyk-delta-linux",
+          "label": "snyk-delta-linux"
         },
         {
-          "path": "./snyk-linux.sha256",
-          "name": "snyk-linux.sha256",
-          "label": "snyk-linux.sha256"
+          "path": "./snyk-delta-linux.sha256",
+          "name": "snyk-delta-linux.sha256",
+          "label": "snyk-delta-linux.sha256"
         },
         {
-          "path": "./snyk-macos",
-          "name": "snyk-macos",
-          "label": "snyk-macos"
+          "path": "./snyk-delta-macos",
+          "name": "snyk-delta-macos",
+          "label": "snyk-delta-macos"
         },
         {
-          "path": "./snyk-macos.sha256",
-          "name": "snyk-macos.sha256",
-          "label": "snyk-macos.sha256"
+          "path": "./snyk-delta-macos.sha256",
+          "name": "snyk-delta-macos.sha256",
+          "label": "snyk-delta-macos.sha256"
         },
         {
-          "path": "./snyk-win.exe",
-          "name": "snyk-win.exe",
-          "label": "snyk-win.exe"
+          "path": "./snyk-delta-win.exe",
+          "name": "snyk-delta-win.exe",
+          "label": "snyk-delta-win.exe"
         },
         {
-          "path": "./snyk-win.exe.sha256",
-          "name": "snyk-win.exe.sha256",
-          "label": "snyk-win.exe.sha256"
+          "path": "./snyk-delta-win.exe.sha256",
+          "name": "snyk-delta-win.exe.sha256",
+          "label": "snyk-delta-win.exe.sha256"
         }
       ]
     }
