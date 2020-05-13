@@ -1,0 +1,5 @@
+{
+    "what orgs can the current token access?": "https://snyk.io/api/v1/orgs",
+    "what projects are owned by this org?": "https://snyk.io/api/v1/org/:id/projects",
+    "test a package for issues": "https://snyk.io/api/v1/test/:packageManager/:packageName/:packageVersion"
+}

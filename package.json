@@ -1,0 +1,86 @@
+{
+  "name": "snyk-delta",
+  "description": "Prevent feature for CLI tests",
+  "main": "dist/index.js",
+  "version": "0.1.1",
+  "bin": {
+    "snykprevent": "dist/index.js"
+  },
+  "scripts": {
+    "format:check": "prettier --check '{''{lib,test}/!(fixtures)/**/*,*}.{js,ts,json,yml}'",
+    "format": "prettier --write '{''{lib,test}/!(fixtures)/**/*,*}.{js,ts,json,yml}'",
+    "lint": "npm run format:check && npm run lint:eslint",
+    "lint:eslint": "eslint --cache '{lib,test}/**/*.ts'",
+    "test": "npm run lint && npm run test:unit",
+    "test:unit": "jest",
+    "test:coverage": "npm run test:unit -- --coverage",
+    "test:watch": "tsc-watch --onSuccess 'npm run test:unit'",
+    "build": "tsc",
+    "build-watch": "tsc -w",
+    "prepare": "npm run snyk-protect && npm run build",
+    "snyk-protect": "snyk protect",
+    "snyk-test": "snyk test",
+    "pkg-binaries": "npx pkg . -t node12-linux-x64,node12-macos-x64,node12-win-x64 --out-path ./dist/binaries"
+  },
+  "types": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/snyk-tech-services/snyk-delta.git"
+  },
+  "author": "snyk.io",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": "12.x"
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "homepage": "https://github.com/snyk-tech-services/snyk-delta",
+  "dependencies": {
+    "@snyk/configstore": "^3.2.0-rc1",
+    "@snyk/dep-graph": "^1.18.1",
+    "@types/debug": "^4.1.5",
+    "@types/is-uuid": "^1.0.0",
+    "app-root-path": "^3.0.0",
+    "axios": "^0.19.2",
+    "chalk": "^4.0.0",
+    "debug": "^4.1.1",
+    "is-uuid": "^1.0.2",
+    "lodash": "^4.17.15",
+    "snyk": "^1.316.1",
+    "source-map-support": "^0.5.16",
+    "terminal-link": "^2.1.1",
+    "tslib": "^1.10.0",
+    "yargs": "^15.3.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.1.1",
+    "@types/lodash": "^4.14.149",
+    "@types/node": "^12.12.31",
+    "@typescript-eslint/eslint-plugin": "^2.18.0",
+    "@typescript-eslint/parser": "^2.18.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "jest": "^25.1.0",
+    "jest-mock-process": "^1.4.0",
+    "mock-argv": "^1.1.6",
+    "mock-stdin": "^1.0.0",
+    "nock": "^12.0.3",
+    "prettier": "^1.19.1",
+    "semantic-release": "^17.0.7",
+    "ts-jest": "^25.1.0",
+    "ts-node": "8.6.2",
+    "tsc-watch": "^4.1.0",
+    "typescript": "^3.7.5"
+  },
+  "pkg": {
+    "scripts": [
+      "dist/**/*.js"
+    ]
+  },
+  "release": {
+    "branches": ["master"]
+  },
+  "snyk": true
+}

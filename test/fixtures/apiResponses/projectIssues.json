@@ -1,0 +1,310 @@
+{
+    "ok": false,
+    "issues": {
+      "vulnerabilities": [
+        {
+          "id": "npm:ms:20170412",
+          "url": "https://snyk.io/vuln/npm:ms:20170412",
+          "title": "Regular Expression Denial of Service (ReDoS)",
+          "type": "vuln",
+          "description": "## Overview\n[`ms`](https://www.npmjs.com/package/ms) is a tiny millisecond conversion utility.\n\nAffected versions of this package are vulnerable to Regular Expression Denial of Service (ReDoS) due to an incomplete fix for previously reported vulnerability [npm:ms:20151024](https://snyk.io/vuln/npm:ms:20151024). The fix limited the length of accepted input string to 10,000 characters, and turned to be insufficient making it possible to block the event loop for 0.3 seconds (on a typical laptop) with a specially crafted string passed to `ms()` function.\n\n*Proof of concept*\n```js\nms = require('ms');\nms('1'.repeat(9998) + 'Q') // Takes about ~0.3s\n```\n\n**Note:** Snyk's patch for this vulnerability limits input length to 100 characters. This new limit was deemed to be a breaking change by the author.\nBased on user feedback, we believe the risk of breakage is _very_ low, while the value to your security is much greater, and therefore opted to still capture this change in a patch for earlier versions as well.  Whenever patching security issues, we always suggest to run tests on your code to validate that nothing has been broken.\n\nFor more information on `Regular Expression Denial of Service (ReDoS)` attacks, go to our [blog](https://snyk.io/blog/redos-and-catastrophic-backtracking/).\n\n## Disclosure Timeline\n- Feb 9th, 2017 - Reported the issue to package owner.\n- Feb 11th, 2017 - Issue acknowledged by package owner.\n- April 12th, 2017 - Fix PR opened by Snyk Security Team.\n- May 15th, 2017 - Vulnerability published.\n- May 16th, 2017 - Issue fixed and version `2.0.0` released.\n- May 21th, 2017 - Patches released for versions `>=0.7.1, <=1.0.0`.\n\n## Remediation\nUpgrade `ms` to version 2.0.0 or higher.\n\n## References\n- [GitHub PR](https://github.com/zeit/ms/pull/89)\n- [GitHub Commit](https://github.com/zeit/ms/pull/89/commits/305f2ddcd4eff7cc7c518aca6bb2b2d2daad8fef)\n",
+          "from": [
+            "mongoose@4.2.4",
+            "mquery@1.6.3",
+            "debug@2.2.0",
+            "ms@0.7.1"
+          ],
+          "package": "ms",
+          "version": "0.7.1",
+          "severity": "low",
+          "exploitMaturity": "no-known-exploit",
+          "language": "js",
+          "packageManager": "npm",
+          "semver": {
+            "unaffected": ">=2.0.0",
+            "vulnerable": "<2.0.0"
+          },
+          "publicationTime": "2017-05-15T06:02:45.497Z",
+          "disclosureTime": "2017-04-11T21:00:00.000Z",
+          "isUpgradable": true,
+          "isPinnable": false,
+          "isPatchable": true,
+          "identifiers": {
+            "CVE": [],
+            "CWE": [
+              "CWE-400"
+            ],
+            "ALTERNATIVE": [
+              "SNYK-JS-MS-10509"
+            ]
+          },
+          "credit": [
+            "Snyk Security Research Team"
+          ],
+          "CVSSv3": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L",
+          "cvssScore": 3.7,
+          "patches": [
+            {
+              "id": "patch:npm:ms:20170412:0",
+              "urls": [
+                "https://snyk-patches.s3.amazonaws.com/npm/ms/20170412/ms_100.patch"
+              ],
+              "version": "=1.0.0",
+              "comments": [],
+              "modificationTime": "2017-05-16T10:12:18.990Z"
+            },
+            {
+              "id": "patch:npm:ms:20170412:1",
+              "urls": [
+                "https://snyk-patches.s3.amazonaws.com/npm/ms/20170412/ms_072-073.patch"
+              ],
+              "version": "=0.7.2 || =0.7.3",
+              "comments": [],
+              "modificationTime": "2017-05-16T10:12:18.990Z"
+            },
+            {
+              "id": "patch:npm:ms:20170412:2",
+              "urls": [
+                "https://snyk-patches.s3.amazonaws.com/npm/ms/20170412/ms_071.patch"
+              ],
+              "version": "=0.7.1",
+              "comments": [],
+              "modificationTime": "2017-05-16T10:12:18.990Z"
+            }
+          ],
+          "isIgnored": true,
+          "isPatched": false,
+          "upgradePath": [
+            "mongoose@4.10.2",
+            "mquery@2.3.1",
+            "debug@2.6.8",
+            "ms@2.0.0"
+          ]
+        },
+        {
+          "id": "npm:qs:20170213",
+          "url": "https://snyk.io/vuln/npm:qs:20170213",
+          "title": "Prototype Override Protection Bypass",
+          "type": "vuln",
+          "description": "## Overview\n[`qs`](https://www.npmjs.com/package/qs) is a querystring parser that supports nesting and arrays, with a depth limit.\n\nBy default `qs` protects against attacks that attempt to overwrite an object's existing prototype properties, such as `toString()`, `hasOwnProperty()`,etc.\n\nFrom [`qs` documentation](https://github.com/ljharb/qs):\n> By default parameters that would overwrite properties on the object prototype are ignored, if you wish to keep the data from those fields either use plainObjects as mentioned above, or set allowPrototypes to true which will allow user input to overwrite those properties. WARNING It is generally a bad idea to enable this option as it can cause problems when attempting to use the properties that have been overwritten. Always be careful with this option.\n\nOverwriting these properties can impact application logic, potentially allowing attackers to work around security controls, modify data, make the application unstable and more.\n\nIn versions of the package affected by this vulnerability, it is possible to circumvent this protection and overwrite prototype properties and functions by prefixing the name of the parameter with `[` or `]`. e.g. `qs.parse(\"]=toString\")` will return `{toString = true}`, as a result, calling `toString()` on the object will throw an exception.\n\n**Example:**\n```js\nqs.parse('toString=foo', { allowPrototypes: false })\n// {}\n\nqs.parse(\"]=toString\", { allowPrototypes: false })\n// {toString = true} <== prototype overwritten\n```\n\nFor more information, you can check out our [blog](https://snyk.io/blog/high-severity-vulnerability-qs/).\n\n## Disclosure Timeline\n- February 13th, 2017 - Reported the issue to package owner.\n- February 13th, 2017 - Issue acknowledged by package owner.\n- February 16th, 2017 - Partial fix released in versions `6.0.3`, `6.1.1`, `6.2.2`, `6.3.1`.\n- March 6th, 2017     - Final fix released in versions `6.4.0`,`6.3.2`, `6.2.3`, `6.1.2` and `6.0.4`\n\n## Remediation\nUpgrade `qs` to version `6.4.0` or higher.\n**Note:** The fix was backported to the following versions `6.3.2`, `6.2.3`, `6.1.2`, `6.0.4`.\n\n## References\n- [GitHub Commit](https://github.com/ljharb/qs/commit/beade029171b8cef9cee0d03ebe577e2dd84976d)\n- [Report of an insufficient fix](https://github.com/ljharb/qs/issues/200)\n",
+          "from": [
+            "qs@0.0.6"
+          ],
+          "package": "qs",
+          "version": "0.0.6",
+          "severity": "high",
+          "exploitMaturity": "mature",
+          "language": "js",
+          "packageManager": "npm",
+          "semver": {
+            "unaffected": ">=6.4.0 || ~6.3.2 || ~6.2.3 || ~6.1.2 || ~6.0.4",
+            "vulnerable": "<6.3.2 >=6.3.0 || <6.2.3 >=6.2.0 || <6.1.2 >=6.1.0 || <6.0.4"
+          },
+          "publicationTime": "2017-03-01T10:00:54.163Z",
+          "disclosureTime": "2017-02-13T00:00:00.000Z",
+          "isUpgradable": true,
+          "isPinnable": false,
+          "isPatchable": false,
+          "identifiers": {
+            "CVE": [],
+            "CWE": [
+              "CWE-20"
+            ],
+            "ALTERNATIVE": [
+              "SNYK-JS-QS-10407"
+            ]
+          },
+          "credit": [
+            "Snyk Security Research Team"
+          ],
+          "CVSSv3": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+          "cvssScore": 7.4,
+          "patches": [
+            {
+              "id": "patch:npm:qs:20170213:0",
+              "urls": [
+                "https://snyk-patches.s3.amazonaws.com/npm/qs/20170213/630_632.patch"
+              ],
+              "version": "=6.3.0",
+              "comments": [],
+              "modificationTime": "2017-03-09T00:00:00.000Z"
+            },
+            {
+              "id": "patch:npm:qs:20170213:1",
+              "urls": [
+                "https://snyk-patches.s3.amazonaws.com/npm/qs/20170213/631_632.patch"
+              ],
+              "version": "=6.3.1",
+              "comments": [],
+              "modificationTime": "2017-03-09T00:00:00.000Z"
+            },
+            {
+              "id": "patch:npm:qs:20170213:2",
+              "urls": [
+                "https://snyk-patches.s3.amazonaws.com/npm/qs/20170213/621_623.patch"
+              ],
+              "version": "=6.2.1",
+              "comments": [],
+              "modificationTime": "2017-03-09T00:00:00.000Z"
+            },
+            {
+              "id": "patch:npm:qs:20170213:3",
+              "urls": [
+                "https://snyk-patches.s3.amazonaws.com/npm/qs/20170213/622_623.patch"
+              ],
+              "version": "=6.2.2",
+              "comments": [],
+              "modificationTime": "2017-03-09T00:00:00.000Z"
+            },
+            {
+              "id": "patch:npm:qs:20170213:4",
+              "urls": [
+                "https://snyk-patches.s3.amazonaws.com/npm/qs/20170213/610_612.patch"
+              ],
+              "version": "=6.1.0",
+              "comments": [],
+              "modificationTime": "2017-03-09T00:00:00.000Z"
+            },
+            {
+              "id": "patch:npm:qs:20170213:5",
+              "urls": [
+                "https://snyk-patches.s3.amazonaws.com/npm/qs/20170213/611_612.patch"
+              ],
+              "version": "=6.1.1",
+              "comments": [],
+              "modificationTime": "2017-03-09T00:00:00.000Z"
+            },
+            {
+              "id": "patch:npm:qs:20170213:6",
+              "urls": [
+                "https://snyk-patches.s3.amazonaws.com/npm/qs/20170213/602_604.patch"
+              ],
+              "version": "=6.0.2",
+              "comments": [],
+              "modificationTime": "2017-03-09T00:00:00.000Z"
+            },
+            {
+              "id": "patch:npm:qs:20170213:7",
+              "urls": [
+                "https://snyk-patches.s3.amazonaws.com/npm/qs/20170213/603_604.patch"
+              ],
+              "version": "=6.0.3",
+              "comments": [],
+              "modificationTime": "2017-03-09T00:00:00.000Z"
+            }
+          ],
+          "isIgnored": true,
+          "isPatched": false,
+          "upgradePath": [
+            "qs@6.0.4"
+          ],
+          "ignored": [
+            {
+              "reason": "Test reason",
+              "expires": "2100-01-01T00:00:00.000Z",
+              "source": "cli"
+            }
+          ]
+        },
+        {
+          "id": "npm:mongoose:20160116",
+          "url": "https://snyk.io/vuln/npm:mongoose:20160116",
+          "title": "Remote Memory Exposure",
+          "type": "vuln",
+          "description": "## Overview\nA potential memory disclosure vulnerability exists in mongoose.\nA `Buffer` field in a MongoDB document can be used to expose sensitive\ninformation such as code, runtime memory and user data into MongoDB.\n\n### Details\nInitializing a `Buffer` field in a document with integer `N` creates a `Buffer`\nof length `N` with non zero-ed out memory.\n**Example:**\n```\nvar x = new Buffer(100); // uninitialized Buffer of length 100\n// vs\nvar x = new Buffer('100'); // initialized Buffer with value of '100'\n```\nInitializing a MongoDB document field in such manner will dump uninitialized\nmemory into MongoDB.\nThe patch wraps `Buffer` field initialization in mongoose by converting a\n`number` value `N` to array `[N]`, initializing the `Buffer` with `N` in its\nbinary form.\n\n#### Proof of concept\n```javascript\nvar mongoose = require('mongoose');\nmongoose.connect('mongodb://localhost/bufftest');\n\n// data: Buffer is not uncommon, taken straight from the docs: http://mongoosejs.com/docs/schematypes.html\nmongoose.model('Item', new mongoose.Schema({id: String, data: Buffer}));\n\nvar Item = mongoose.model('Item');\n\nvar sample = new Item();\nsample.id = 'item1';\n\n// This will create an uninitialized buffer of size 100\nsample.data = 100;\nsample.save(function () {\n    Item.findOne(function (err, result) {\n        // Print out the data (exposed memory)\n        console.log(result.data.toString('ascii'))\n        mongoose.connection.db.dropDatabase(); // Clean up everything\n        process.exit();\n    });\n});\n```\n\n## Remediation\nUpgrade `mongoose` to version >= 3.8.39 or >= 4.3.6.\n\nIf a direct dependency update is not possible, use [`snyk wizard`](https://snyk.io/docs/using-snyk#wizard) to patch this vulnerability.\n\n## References\n- [GitHub Issue](https://github.com/Automattic/mongoose/issues/3764)\n- [Blog: Node Buffer API fix](https://github.com/ChALkeR/notes/blob/master/Lets-fix-Buffer-API.md#previous-materials)\n- [Blog: Information about Buffer](https://github.com/ChALkeR/notes/blob/master/Buffer-knows-everything.md)\n",
+          "from": [
+            "mongoose@4.2.4"
+          ],
+          "package": "mongoose",
+          "version": "4.2.4",
+          "severity": "medium",
+          "exploitMaturity": "proof-of-concept",
+          "language": "js",
+          "packageManager": "npm",
+          "semver": {
+            "unaffected": "<3.5.5 || >=4.3.6",
+            "vulnerable": "<3.8.39 >=3.5.5 || <4.3.6 >=4.0.0"
+          },
+          "publicationTime": "2016-01-23T12:00:05.158Z",
+          "disclosureTime": "2016-01-23T12:00:05.158Z",
+          "isUpgradable": true,
+          "isPinnable": false,
+          "isPatchable": true,
+          "identifiers": {
+            "CVE": [],
+            "CWE": [
+              "CWE-201"
+            ],
+            "ALTERNATIVE": [
+              "SNYK-JS-MONGOOSE-10081"
+            ]
+          },
+          "credit": [
+            "ChALkeR"
+          ],
+          "CVSSv3": "CVSS:3.0/AV:L/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "cvssScore": 5.1,
+          "patches": [
+            {
+              "id": "patch:npm:mongoose:20160116:0",
+              "urls": [
+                "https://snyk-patches.s3.amazonaws.com/npm/mongoose/20160116/20160116_0_0_mongoose_8066b145c07984c8b7e56dbb51721c0a3d48e18a.patch"
+              ],
+              "version": "<4.3.6 >=4.1.2",
+              "comments": [],
+              "modificationTime": "2016-01-23T12:00:05.158Z"
+            },
+            {
+              "id": "patch:npm:mongoose:20160116:1",
+              "urls": [
+                "https://snyk-patches.s3.amazonaws.com/npm/mongoose/20160116/20160116_0_1_mongoose_8066b145c07984c8b7e56dbb51721c0a3d48e18a.patch"
+              ],
+              "version": "<4.1.2 >=4.0.0",
+              "comments": [],
+              "modificationTime": "2016-01-23T12:00:05.158Z"
+            },
+            {
+              "id": "patch:npm:mongoose:20160116:2",
+              "urls": [
+                "https://snyk-patches.s3.amazonaws.com/npm/mongoose/20160116/20160116_0_3_mongoose_2ff7d36c5e52270211b17f3a84c8a47c6f4d8c1f.patch"
+              ],
+              "version": "<3.8.39 >=3.6.11",
+              "comments": [],
+              "modificationTime": "2016-01-23T12:00:05.158Z"
+            },
+            {
+              "id": "patch:npm:mongoose:20160116:3",
+              "urls": [
+                "https://snyk-patches.s3.amazonaws.com/npm/mongoose/20160116/20160116_0_5_mongoose_2ff7d36c5e52270211b17f3a84c8a47c6f4d8c1f.patch"
+              ],
+              "version": "=3.6.11",
+              "comments": [],
+              "modificationTime": "2016-01-23T12:00:05.158Z"
+            },
+            {
+              "id": "patch:npm:mongoose:20160116:4",
+              "urls": [
+                "https://snyk-patches.s3.amazonaws.com/npm/mongoose/20160116/20160116_0_4_mongoose_2ff7d36c5e52270211b17f3a84c8a47c6f4d8c1f.patch"
+              ],
+              "version": "<3.6.10 >=3.5.5",
+              "comments": [],
+              "modificationTime": "2016-01-23T12:00:05.158Z"
+            }
+          ],
+          "isIgnored": false,
+          "isPatched": true,
+          "upgradePath": [
+            "mongoose@4.3.6"
+          ],
+          "patched": [
+            {
+              "patched": "2016-10-24T10:50:51.980Z"
+            }
+          ]
+        }
+      ],
+      "licenses": []
+    },
+    "dependencyCount": 250,
+    "packageManager": "npm"
+  }
