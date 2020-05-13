@@ -17,7 +17,7 @@
     "test:watch": "tsc-watch --onSuccess 'npm run test:unit'",
     "build": "tsc",
     "build-watch": "tsc -w",
-    "prepare": "npm run snyk-protect && npm run build && cp package.json dist/",
+    "prepare": "npm run snyk-protect && npm run build",
     "snyk-protect": "snyk protect",
     "snyk-test": "snyk test",
     "pkg-binaries": "npx pkg . -t node12-linux-x64,node12-macos-x64,node12-win-x64 --out-path ./dist/binaries"
@@ -42,7 +42,6 @@
     "@snyk/dep-graph": "^1.18.1",
     "@types/debug": "^4.1.5",
     "@types/is-uuid": "^1.0.0",
-    "app-root-path": "^3.0.0",
     "axios": "^0.19.2",
     "chalk": "^4.0.0",
     "debug": "^4.1.1",
