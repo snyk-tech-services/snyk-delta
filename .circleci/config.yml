@@ -14,7 +14,6 @@ jobs:
                 fail-on-issues: true
                 monitor-on-build: true
                 token-variable: SNYK_TOKEN
-            - run: npm run build
             - run: npx semantic-release
             # - run: npm run pkg-binaries && cp package.json dist/
             # - persist_to_workspace:
