@@ -19,9 +19,9 @@ Compares snapshots to give details about:
     - Flag path(s) carrying new vulnerabilities
 
 ## Installation
-`npm i -g snyk-delta`\
+`npm i -g snyk-delta`
 
-or\
+or
 
  Grab a binary of your choice from [the release page](https://github.com/snyk-tech-services/snyk-delta/releases)
 
@@ -34,11 +34,13 @@ or\
     `snyk test --json --print-deps | snyk-delta --baselineOrg xxx --baselineProject xxx`
 
 - Standalone
-    - `snyk-delta --baselineOrg xxx --baselineProject xxx --currentOrg xxx --currentProject xxx\
+    - `snyk-delta --baselineOrg xxx --baselineProject xxx --currentOrg xxx --currentProject xxx
 
 > Note:\
 > BaselineProject value is expected to be a UUID, not simply a name\
 > Check your Snyk Web UI or API to retrieve those UUIDs.
 
 ## Usage as module
-Docs to be updated soon
+More details soon but starts with
+
+`import { getDelta } from 'snyk-delta'`
