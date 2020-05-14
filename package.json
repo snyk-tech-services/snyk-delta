@@ -2,7 +2,7 @@
   "name": "snyk-delta",
   "description": "Prevent feature for CLI tests",
   "main": "dist/src/lib/index.js",
-  "version": "1.0.0",
+  "version": "1.0.9",
   "bin": {
     "snyk-delta": "dist/src/lib/index.js"
   },
@@ -20,7 +20,6 @@
     "prepare": "npm run snyk-protect && npm run build",
     "snyk-protect": "snyk protect",
     "snyk-test": "snyk test"
-    
   },
   "types": "./dist/src/lib/index.d.ts",
   "repository": {
