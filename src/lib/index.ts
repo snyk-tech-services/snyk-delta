@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import 'source-map-support/register';
 import * as snyk from './snyk/snyk';
 import handleError from './error';
