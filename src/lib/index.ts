@@ -114,7 +114,7 @@ const getDelta = async(snykTestOutput: string = '') => {
 
 }
 
-if(process.env.NODE_ENV != 'test'){
+if(!module.parent){
   getDelta()
 }
 
