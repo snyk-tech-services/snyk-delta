@@ -1,6 +1,8 @@
 import * as debugModule from 'debug'
 const yargs = require('yargs');
-const pkgJSON = require(require('app-root-path').resolve('package.json'))
+import * as fs from 'fs'
+import * as path from 'path'
+//const pkgJSON = require(require('app-root-path').resolve('package.json'))
 import * as chalk from 'chalk';
 import { BadInputError } from '../customErrors/inputError';
 
@@ -15,6 +17,10 @@ const getDebugModule = () => {
 }
 
 const init = () => {
+  
+    const pkgJSONPath = fs.existsSync(__dirname+'/../../../package.json')? __dirname+'/../../../package.json' : path.dirname(path.dirname(__dirname))+'/package.json'
+    const pkgJSON = JSON.parse(fs.readFileSync(pkgJSONPath).toString())
+
     const argv = yargs
     .usage('============================')
     .usage('2 modes of operations - Inline or Standalone')
