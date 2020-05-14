@@ -24,9 +24,7 @@
   ],
   "publish": [
     "@semantic-release/npm",
-    { 
-      "pkgRoot": "dist",
-      "tarballDir": "dist",
+    {       
       "path": "@semantic-release/github",
       "assets": [
         {
