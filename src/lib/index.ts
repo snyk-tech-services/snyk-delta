@@ -17,7 +17,7 @@ Snyk Tech Prevent Tool
 `
 
 
-const getDelta = async(snykTestOutput: string = '') => {
+const getDelta = async(snykTestOutput: string = '', breakBuild: boolean = true) => {
    const argv = utils.init()
    const debug = utils.getDebugModule()
    const mode = argv.currentProject || argv.currentOrg ? "standalone" : "inline"
@@ -109,6 +109,9 @@ const getDelta = async(snykTestOutput: string = '') => {
     handleError(err)
     process.exitCode = 2
   } finally {
+    if(!breakBuild) {
+      process.exitCode = 0
+    }
     process.exit(process.exitCode)
   }
 
