@@ -41,6 +41,22 @@ or
 > Check your Snyk Web UI or API to retrieve those UUIDs.
 
 ## Usage as module
-More details soon but starts with
 
-`import { getDelta } from 'snyk-delta'`
+```
+import { getDelta } from 'snyk-delta'
+
+const jsonResultsFromSnykTest = Read from file or pipe snyk test command
+
+const result = await getDelta();
+```
+Result is a number:
+- 0 for no new issue
+- 1 for new issue(s)
+- 2 for errors like invalid auth or not found monitored project to compare against
+
+Actual issue(s) details will be listed on stdout.\
+JSON output will be added soon.
+
+### Caution
+Usage as a module requires list of issues coming from Snyk CLI.
+Currently not compatible with data coming straight from Snyk APIs.
