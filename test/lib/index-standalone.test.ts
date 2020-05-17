@@ -69,7 +69,7 @@ describe('Test End 2 End - Standalone mode', () => {
         }
       });
 
-    await getDelta();
+    const result = await getDelta();
 
     const expectedOutput = [
       '_____________________________',
@@ -91,7 +91,9 @@ describe('Test End 2 End - Standalone mode', () => {
     expectedOutput.forEach((line: string) => {
       expect(consoleOutput.join()).toContain(line);
     });
-    expect(mockExit).toHaveBeenCalledWith(0);
+    // => When testing, loaded as module therefore returning code === process.exitCode
+    //expect(mockExit).toHaveBeenCalledWith(0);
+    expect(result).toEqual(0);
   });
 
   it('Test standalone mode - 1 new issue', async () => {
@@ -129,7 +131,7 @@ describe('Test End 2 End - Standalone mode', () => {
         }
       });
 
-    await getDelta();
+    const result = await getDelta();
 
     const expectedOutput = [
       '_____________________________',
@@ -156,7 +158,9 @@ describe('Test End 2 End - Standalone mode', () => {
     expectedOutput.forEach((line: string) => {
       expect(consoleOutput.join()).toContain(line);
     });
-    expect(mockExit).toHaveBeenCalledWith(1);
+    // => When testing, loaded as module therefore returning code === process.exitCode
+    //expect(mockExit).toHaveBeenCalledWith(1);
+    expect(result).toEqual(1);
   });
 
   it('Test standalone mode - 1 new issue 1 new direct dep', async () => {
@@ -195,7 +199,7 @@ describe('Test End 2 End - Standalone mode', () => {
         }
       });
 
-    await getDelta();
+    const result = await getDelta();
     const expectedOutput = [
       '_____________________________',
       'Direct deps:',
@@ -221,7 +225,9 @@ describe('Test End 2 End - Standalone mode', () => {
     expectedOutput.forEach((line: string) => {
       expect(consoleOutput.join()).toContain(line);
     });
-    expect(mockExit).toHaveBeenCalledWith(1);
+    // => When testing, loaded as module therefore returning code === process.exitCode
+    //expect(mockExit).toHaveBeenCalledWith(1);
+    expect(result).toEqual(1);
   });
 
   it('Test standalone mode - 1 new issue 1 new direct and 1 new indirect dep', async () => {
@@ -260,7 +266,7 @@ describe('Test End 2 End - Standalone mode', () => {
         }
       });
 
-    await getDelta();
+    const result = await getDelta();
     const expectedOutput = [
       '_____________________________',
       'Direct deps:',
@@ -287,6 +293,8 @@ describe('Test End 2 End - Standalone mode', () => {
     expectedOutput.forEach((line: string) => {
       expect(consoleOutput.join()).toContain(line);
     });
-    expect(mockExit).toHaveBeenCalledWith(1);
+    // => When testing, loaded as module therefore returning code === process.exitCode
+    // expect(mockExit).toHaveBeenCalledWith(1);
+    expect(result).toEqual(1);
   });
 });
