@@ -72,7 +72,8 @@ workflows:
                   only:
                     - master
         jobs:
-            - build-test-monitor
+            - build-test-monitor:
+                context: SNYK
 
     build-test-monitor:
         jobs:
