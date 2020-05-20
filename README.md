@@ -47,7 +47,7 @@ import { getDelta } from 'snyk-delta'
 
 const jsonResultsFromSnykTest = Read from file or pipe snyk test command
 
-const result = await getDelta();
+const result = await getDelta(jsonResultsFromSnykTest);
 ```
 Result is a number:
 - 0 for no new issue
