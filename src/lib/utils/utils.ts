@@ -16,7 +16,11 @@ const getDebugModule = () => {
     return debug   
 }
 
-const init = () => {
+export interface ModuleOptions {
+  debug: boolean
+}
+
+const init = (debugMode = false) => {
   
     const pkgJSONPath = fs.existsSync(__dirname+'/../../../package.json')? __dirname+'/../../../package.json' : path.dirname(path.dirname(__dirname))+'/package.json'
     const pkgJSON = JSON.parse(fs.readFileSync(pkgJSONPath).toString())
@@ -46,7 +50,7 @@ const init = () => {
     .version(pkgJSON.version)
     .argv;
 
-    if (argv.debug || argv.d) {
+    if (argv.debug || argv.d || debugMode) {
       let enable = DEBUG_DEFAULT_NAMESPACES.join(',');
       if (process.env.DEBUG) {
         enable += ',' + process.env.DEBUG;
