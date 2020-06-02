@@ -17,8 +17,8 @@ Snyk Tech Prevent Tool
 `
 
 
-const getDelta = async(snykTestOutput: string = '') => {
-   const argv = utils.init()
+const getDelta = async(snykTestOutput: string = '', debugMode = false) => {
+   const argv = utils.init(debugMode)
    const debug = utils.getDebugModule()
    const mode = argv.currentProject || argv.currentOrg ? "standalone" : "inline"
 
