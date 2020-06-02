@@ -2,9 +2,10 @@ import * as nock from 'nock';
 import * as path from 'path';
 import * as fs from 'fs';
 //process.argv.push('-d');
+import * as debug from 'debug';
 
 import { getDelta } from '../../src/lib/index';
-
+import { ModuleOptions } from '../../src/lib/utils/utils';
 const fixturesFolderPath = path.resolve(__dirname, '..') + '/fixtures/';
 
 const originalLog = console.log;
@@ -66,6 +67,18 @@ describe('Test End 2 End - Module', () => {
         .readFileSync(fixturesFolderPath + 'snykTestsOutputs/test-goof.json')
         .toString(),
     );
+    expect(consoleOutput).toContain('No new issues found !');
+    expect(result).toEqual(0);
+  });
+
+  it('Test module debug mode - no new issue', async () => {
+    const result = await getDelta(
+      fs
+        .readFileSync(fixturesFolderPath + 'snykTestsOutputs/test-goof.json')
+        .toString(),
+      true,
+    );
+    expect(debug('snyk')).toBeTruthy();
     expect(consoleOutput).toContain('No new issues found !');
     expect(result).toEqual(0);
   });
