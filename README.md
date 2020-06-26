@@ -18,6 +18,10 @@ Compares snapshots to give details about:
     - Indirect Dependencies added and removed
     - Flag path(s) carrying new vulnerabilities
 
+## Prerequisites
+- Snyk Paid Account - Since it requires API usage, it therefore requires a paid account.
+- Your project to be monitored
+
 ## Installation
 `npm i -g snyk-delta`
 
