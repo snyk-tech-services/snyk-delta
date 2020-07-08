@@ -49,9 +49,12 @@ const getDelta = async(snykTestOutput: string = '', debugMode = false) => {
       
       snykTestJsonDependencies = inputData.length > 1 ? inputData[0] : null
       snykTestJsonResults = inputData.length > 1 ? inputData[1]: inputData[0]
+      const projectNameFromJson = snykTestJsonResults.targetFile? 
+                                  `${snykTestJsonResults.projectName}:${snykTestJsonResults.targetFile}` :
+                                  `${snykTestJsonResults.projectName}`
 
       baselineOrg = baselineOrg? baselineOrg : snykTestJsonResults.org
-      baselineProject = baselineProject? baselineProject : snykTestJsonResults.projectName
+      baselineProject = baselineProject? baselineProject : projectNameFromJson
 
       if(argv.baselineProject && !isUUID.anyNonNil(baselineProject)){
         throw new BadInputError("Project ID must be valid UUID")
