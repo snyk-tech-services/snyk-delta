@@ -46,6 +46,10 @@ beforeEach(() => {
           return fs.readFileSync(
             fixturesFolderPath + 'apiResponses/test-goof.json',
           );
+        case '/api/v1/org/playground/project/09235fa4-c241-42c6-8c63-c053bd272786/issues':
+          return fs.readFileSync(
+            fixturesFolderPath + 'apiResponses/test-gomod.json',
+          );
         case '/api/v1/org/playground/projects':
           return fs.readFileSync(
             fixturesFolderPath +
@@ -114,5 +118,23 @@ describe('Test End 2 End - Inline mode', () => {
     //expect(mockExit).toHaveBeenCalledWith(1);
     // => When testing, loaded as module therefore returning code === process.exitCode
     expect(result).toEqual(1);
+  });
+
+  it('Test Inline mode - no new issue go modules project', async () => {
+    setTimeout(() => {
+      stdinMock.send(
+        fs
+          .readFileSync(fixturesFolderPath + 'snykTestsOutputs/test-gomod.json')
+          .toString(),
+      );
+      stdinMock.send(null);
+    }, 100);
+
+    const result = await getDelta();
+    expect(consoleOutput).toContain('No new issues found !');
+
+    //expect(mockExit).toHaveBeenCalledWith(0);
+    // => When testing, loaded as module therefore returning code === process.exitCode
+    expect(result).toEqual(0);
   });
 });

@@ -1,0 +1,10 @@
+{
+    "ok": true,
+    "deprecated": "This endpoint is deprecated, please use list-all-aggregated-issues endpoint instead.\nhttps://snyk.docs.apiary.io/#reference/projects/aggregated-project-issues/list-all-aggregated-issues",
+    "issues": {
+      "vulnerabilities": [],
+      "licenses": []
+    },
+    "dependencyCount": 8,
+    "packageManager": "gomodules"
+  }

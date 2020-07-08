@@ -724,6 +724,34 @@
           "email": "aarlaud@hotmail.com"
         },
         "branch": null
+      },
+      {
+        "name": "github.com/snyk-tech-services/ira-tickets-for-new-vulns:go.mod",
+        "id": "09235fa4-c241-42c6-8c63-c053bd272786",
+        "created": "2020-03-20T15:26:50.830Z",
+        "origin": "cli",
+        "type": "gomodules",
+        "readOnly": false,
+        "testFrequency": "daily",
+        "totalDependencies": 8,
+        "issueCountsBySeverity": {
+          "low": 0,
+          "high": 0,
+          "medium": 0
+        },
+        "remoteRepoUrl": "http://github.com/snyk-tech-services/jira-tickets-for-new-vulns.git",
+        "imageTag": "0.0.0",
+        "lastTestedDate": "2020-07-08T00:11:24.801Z",
+        "browseUrl": "https://app.snyk.io/org/customer-facing-tools/project/09235fa4-c241-42c6-8c63-c053bd272786",
+        "owner": null,
+        "importingUser": {
+          "id": "9dd0a178-16a0-4376-a13d-fef51515d0e9",
+          "name": "CircleCI pipelines",
+          "username": "CircleCI pipelines",
+          "email": null
+        },
+        "tags": [],
+        "branch": null
       }
     ]
   }
