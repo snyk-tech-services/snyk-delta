@@ -52,7 +52,7 @@
     "source-map-support": "^0.5.16",
     "terminal-link": "^2.1.1",
     "tslib": "^1.10.0",
-    "yargs": "^15.3.1"
+    "yargs": "^16.0.0"
   },
   "devDependencies": {
     "@types/jest": "^25.1.1",
