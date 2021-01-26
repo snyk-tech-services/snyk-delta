@@ -50,6 +50,10 @@ beforeEach(() => {
           return fs.readFileSync(
             fixturesFolderPath + 'apiResponses/test-gomod.json',
           );
+        case '/api/v1/org/playground/project/37a29fe9-c342-4d70-8efc-df96a8d730b3/issues':
+          return fs.readFileSync(
+            fixturesFolderPath + 'apiResponses/java-goof.json',
+          );
         case '/api/v1/org/playground/projects':
           return fs.readFileSync(
             fixturesFolderPath +
@@ -125,6 +129,48 @@ describe('Test End 2 End - Inline mode', () => {
       stdinMock.send(
         fs
           .readFileSync(fixturesFolderPath + 'snykTestsOutputs/test-gomod.json')
+          .toString(),
+      );
+      stdinMock.send(null);
+    }, 100);
+
+    const result = await getDelta();
+    expect(consoleOutput).toContain('No new issues found !');
+
+    //expect(mockExit).toHaveBeenCalledWith(0);
+    // => When testing, loaded as module therefore returning code === process.exitCode
+    expect(result).toEqual(0);
+  });
+
+  it('Test Inline mode - no new issue following version upgrade without vuln fix - npm', async () => {
+    setTimeout(() => {
+      stdinMock.send(
+        fs
+          .readFileSync(
+            fixturesFolderPath +
+              'snykTestsOutputs/test-goof-without-more-vuln-following-upgrade.json',
+          )
+          .toString(),
+      );
+      stdinMock.send(null);
+    }, 100);
+
+    const result = await getDelta();
+    expect(consoleOutput).toContain('No new issues found !');
+
+    //expect(mockExit).toHaveBeenCalledWith(0);
+    // => When testing, loaded as module therefore returning code === process.exitCode
+    expect(result).toEqual(0);
+  });
+
+  it('Test Inline mode - no new issue following version upgrade without vuln fix - java', async () => {
+    setTimeout(() => {
+      stdinMock.send(
+        fs
+          .readFileSync(
+            fixturesFolderPath +
+              'snykTestsOutputs/test-java-goof-without-more-vuln-following-upgrade.json',
+          )
           .toString(),
       );
       stdinMock.send(null);

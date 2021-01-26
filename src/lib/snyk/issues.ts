@@ -3,7 +3,7 @@ import * as _ from 'lodash'
 import * as chalk from 'chalk'
 import * as terminalLink from 'terminal-link'
 import * as snykTypes from './types'
-
+import { isVulnerablePathNew } from '../utils/issuesUtils'
 enum severityThresholds {
   "low" = 1,
   "medium" = 2,
@@ -30,7 +30,8 @@ const getNewVulns = (snykProject: any, snykTestJsonResults: any, mode: string): 
         if(mode == 'inline') {
           vulnFromArray = vulnFromArray.slice(1,vulnFromArray.length)
         }
-        return (monitoredVuln.id == vuln.id) && _.isEqual(monitoredVuln.from, vulnFromArray)
+
+        return (monitoredVuln.id == vuln.id) && !isVulnerablePathNew(monitoredVuln.from, vulnFromArray)
 
       })
     })
