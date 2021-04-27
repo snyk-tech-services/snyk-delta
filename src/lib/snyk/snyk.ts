@@ -22,10 +22,7 @@ const getProjectUUID = async (
       project.name == nonUUIDProjectID && project.origin == projectType,
   );
   if (selectedProjectArray.length == 0) {
-    throw new Error.NotFoundError(
-      'Snyk API - Could not find a monitored project matching. \
-                                        Make sure to specify the right org when snyk test using --org',
-    );
+    return ''
   } else if (selectedProjectArray.length > 1) {
     throw new Error.NotFoundError(
       'Snyk API - Could not find a monitored project matching accurately. \

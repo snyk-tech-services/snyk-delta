@@ -55,11 +55,20 @@ const result = await getDelta(jsonResultsFromSnykTest);
 ```
 Result is a number:
 - 0 for no new issue
-- 1 for new issue(s)
-- 2 for errors like invalid auth or not found monitored project to compare against
+- 1 for new issue(s) or when using strictMode and the unmonitored project has issues (see more details below in StrictMode)
+- 2 for errors like invalid auth
 
 Actual issue(s) details will be listed on stdout.\
 JSON output will be added soon.
+
+## Help
+-h to list help
+
+### StrictMode
+When snyk-delta compares test results, it tries to find the same project, monitored on the Snyk platform.
+If no monitored project is found, is will return all the issues found by the CLI scan, essentially acting as pass through.
+
+The return code will be 0 if no issue, 1 if issues.
 
 ### Caution
 Usage as a module requires list of issues coming from Snyk CLI.
