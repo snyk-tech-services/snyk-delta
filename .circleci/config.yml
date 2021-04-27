@@ -7,7 +7,7 @@ jobs:
             - image: circleci/node:latest
         steps:
             - checkout
-            - run: npm install semantic-release @semantic-release/exec pkg --save-dev
+            - run: npm install semantic-release @semantic-release/exec pkg --save-dev --legacy-peer-deps
             - run: npm install
             - run: npm test
             - snyk/scan:
