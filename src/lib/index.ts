@@ -61,15 +61,19 @@ const getDelta = async(snykTestOutput: string = '', debugMode = false) => {
       }
       if(!isUUID.anyNonNil(baselineProject)){
         baselineProject = await snyk.getProjectUUID(baselineOrg,baselineProject)
+        if(baselineProject == ''){
+          console.warn(
+            'Snyk API - Could not find a monitored project matching. \
+                                              Make sure to specify the right org when snyk test using --org',
+          );
+          console.warn('snyk-delta will return exit code 1 if any vulns are found in the current project')
+        }
       }
     } else {
       // Pull data from currentOrg/currentProject for issues and dep graph and drop it into input data.
       if(!argv.currentProject || !argv.currentOrg || !argv.baselineOrg || !argv.baselineProject){
         throw new BadInputError("You must provide org AND project IDs for baseline project and current project")
       }
-      // if(!isUUID.anyNonNil(baselineProject) || (currentProject && !isUUID.anyNonNil(currentProject))){
-      //   throw new BadInputError("Project IDs must be UUID")
-      // }
 
       debug(`Retrieve Snyk Project to compare %s in org %s`, currentOrg, currentProject)
       snykTestJsonDependencies = await snyk.getProjectDepGraph(currentOrg,currentProject)
@@ -78,34 +82,64 @@ const getDelta = async(snykTestOutput: string = '', debugMode = false) => {
       
     }
     
+    //TODO: If baseline project is '' and strictMode is false, display current vulns
     debug(`Retrieve Snyk Project %s in org %s`, baselineProject, baselineOrg)
     const issueTypeFilter: string = argv.type? argv.type : "all"
-    const snykProject = await snyk.getProjectIssues(baselineOrg,baselineProject)
-    const newVulns: Array<any> = issues.getNewVulns(snykProject,snykTestJsonResults, mode)
-    const newLicenseIssues: Array<any> = issues.getNewLicenseIssues(snykProject,snykTestJsonResults, mode)
-    
-    debug(`New Vulns count =%d`,newVulns.length)
-    debug(`New Licenses Issues count =%d`,newLicenseIssues.length)
- 
-    if(snykTestJsonDependencies){
-      const monitoredProjectDepGraph = await snyk.getProjectDepGraph(baselineOrg,baselineProject)
-      await dependencies.displayDependenciesChangeDetails(snykTestJsonDependencies, monitoredProjectDepGraph, snykTestJsonResults.packageManager, newVulns, newLicenseIssues)
-    }
-    
+    let snykProject
+    if(baselineProject == ''){
+      snykProject = snykTestJsonResults
+      // @ts-ignore
+      const newVulns: Array<any> = snykTestJsonResults.vulnerabilities.filter(x => x.type != "license")
+      // @ts-ignore
+      const newLicenseIssues: Array<any> = snykTestJsonResults.vulnerabilities.filter(x => x.type == "license")
 
-    if((newVulns.length > 0 && issueTypeFilter != "license") || (newLicenseIssues.length > 0 && issueTypeFilter != "vuln")) {
-      utils.displaySplash()
-      if(newVulns.length > 0 && issueTypeFilter != "license"){
-        issues.displayNewVulns(newVulns, mode)
+      if((newVulns.length > 0 && issueTypeFilter != "license") || (newLicenseIssues.length > 0 && issueTypeFilter != "vuln")) {
+        utils.displaySplash()
+        if(newVulns.length > 0 && issueTypeFilter != "license"){
+          issues.displayNewVulns(newVulns, mode)
+        }
+        if(newLicenseIssues.length > 0 && issueTypeFilter != "vuln"){
+          issues.displayNewLicenseIssues(newLicenseIssues, mode)
+        }
+        
+        process.exitCode = 1
+        
+      } else {
+        console.log("No new issues found !")
+        process.exitCode = 0
       }
-      if(newLicenseIssues.length > 0 && issueTypeFilter != "vuln"){
-        issues.displayNewLicenseIssues(newLicenseIssues, mode)
-      }
-      process.exitCode = 1
+
+      
     } else {
-      console.log("No new issues found !")
-      process.exitCode = 0
+      snykProject = await snyk.getProjectIssues(baselineOrg,baselineProject)
+      const newVulns: Array<any> = issues.getNewVulns(snykProject,snykTestJsonResults, mode)
+      const newLicenseIssues: Array<any> = issues.getNewLicenseIssues(snykProject,snykTestJsonResults, mode)
+      
+      debug(`New Vulns count =%d`,newVulns.length)
+      debug(`New Licenses Issues count =%d`,newLicenseIssues.length)
+  
+      if(snykTestJsonDependencies){
+        const monitoredProjectDepGraph = await snyk.getProjectDepGraph(baselineOrg,baselineProject)
+        await dependencies.displayDependenciesChangeDetails(snykTestJsonDependencies, monitoredProjectDepGraph, snykTestJsonResults.packageManager, newVulns, newLicenseIssues)
+      }
+      
+
+      if((newVulns.length > 0 && issueTypeFilter != "license") || (newLicenseIssues.length > 0 && issueTypeFilter != "vuln")) {
+        utils.displaySplash()
+        if(newVulns.length > 0 && issueTypeFilter != "license"){
+          issues.displayNewVulns(newVulns, mode)
+        }
+        if(newLicenseIssues.length > 0 && issueTypeFilter != "vuln"){
+          issues.displayNewLicenseIssues(newLicenseIssues, mode)
+        }
+        process.exitCode = 1
+      } else {
+        console.log("No new issues found !")
+        process.exitCode = 0
+      }
     }
+    
+    
     
   } catch (err){
     
