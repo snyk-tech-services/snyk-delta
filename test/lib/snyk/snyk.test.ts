@@ -61,19 +61,12 @@ describe('Test endpoint functions', () => {
   });
 
   it('Test GetProjectUUID not found', async () => {
-    try {
-      const project = await getProjectUUID(
-        '689ce7f9-7943-4a71-b704-2ba575f01089',
-        'whatever',
-        'cli',
-      );
-      expect(project).toThrow();
-    } catch (err) {
-      expect(err).toBeInstanceOf(Error.NotFoundError);
-      expect(err.message).toContain(
-        'Snyk API - Could not find a monitored project matching.',
-      );
-    }
+    const project = await getProjectUUID(
+      '689ce7f9-7943-4a71-b704-2ba575f01089',
+      'whatever',
+      'cli',
+    );
+    expect(project).toEqual('');
   });
 
   it('Test GetProjectUUID not unique found', async () => {
