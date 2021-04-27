@@ -152,6 +152,7 @@ const displayNewLicenseIssues = (newLicenseIssues: Array<any>, mode: string): vo
       })
 }
 
+
 const getIssuesDetailsPerPackage = (issuesArray: Array<any>, packageName: string, packageVersion?: string): Array<any> => {
   if(!packageVersion){
     return []
