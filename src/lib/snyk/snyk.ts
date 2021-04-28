@@ -35,7 +35,7 @@ const getProjectIssues = async (orgID: string, projectID: string) => {
   // No filter on patched or non patch issue, getting both
   const filters: snykClient.OrgTypes.Project.IssuesPostBodyType = {
     filters: {
-      severities: ['high', 'medium', 'low'],
+      severities: ['high', 'medium', 'low', 'critical'],
       exploitMaturity: [
         'mature',
         'proof-of-concept',

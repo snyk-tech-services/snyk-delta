@@ -7,7 +7,8 @@ import { isVulnerablePathNew } from '../utils/issuesUtils'
 enum severityThresholds {
   "low" = 1,
   "medium" = 2,
-  "high" = 3
+  "high" = 3,
+  "critical" = 4
 }
 const getNewVulns = (snykProject: any, snykTestJsonResults: any, mode: string): Array<any> => {
     
