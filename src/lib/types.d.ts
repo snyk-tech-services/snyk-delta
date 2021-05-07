@@ -81,3 +81,10 @@ export type IssueWithPaths = {
   isPatchable?: boolean;
   upgradePath?: Array<string>;
 };
+
+export interface SnykDeltaOutput {
+    result: number | undefined,
+    newVulns: IssueWithPaths[] | undefined,
+    newLicenseIssues: IssueWithPaths[] | undefined
+
+}

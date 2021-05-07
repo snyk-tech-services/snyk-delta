@@ -91,9 +91,8 @@ describe('Test End 2 End - Standalone mode', () => {
     expectedOutput.forEach((line: string) => {
       expect(consoleOutput.join()).toContain(line);
     });
-    // => When testing, loaded as module therefore returning code === process.exitCode
-    //expect(mockExit).toHaveBeenCalledWith(0);
-    expect(result).toEqual(0);
+
+    expect(mockExit).toHaveBeenCalledWith(0);
   });
 
   it('Test standalone mode - 1 new issue', async () => {
@@ -158,9 +157,8 @@ describe('Test End 2 End - Standalone mode', () => {
     expectedOutput.forEach((line: string) => {
       expect(consoleOutput.join()).toContain(line);
     });
-    // => When testing, loaded as module therefore returning code === process.exitCode
-    //expect(mockExit).toHaveBeenCalledWith(1);
-    expect(result).toEqual(1);
+
+    expect(mockExit).toHaveBeenCalledWith(1);
   });
 
   it('Test standalone mode - 1 new issue 1 new direct dep', async () => {
@@ -225,9 +223,8 @@ describe('Test End 2 End - Standalone mode', () => {
     expectedOutput.forEach((line: string) => {
       expect(consoleOutput.join()).toContain(line);
     });
-    // => When testing, loaded as module therefore returning code === process.exitCode
-    //expect(mockExit).toHaveBeenCalledWith(1);
-    expect(result).toEqual(1);
+
+    expect(mockExit).toHaveBeenCalledWith(1);
   });
 
   it('Test standalone mode - 1 new issue 1 new direct and 1 new indirect dep', async () => {
@@ -293,8 +290,7 @@ describe('Test End 2 End - Standalone mode', () => {
     expectedOutput.forEach((line: string) => {
       expect(consoleOutput.join()).toContain(line);
     });
-    // => When testing, loaded as module therefore returning code === process.exitCode
-    // expect(mockExit).toHaveBeenCalledWith(1);
-    expect(result).toEqual(1);
+
+    expect(mockExit).toHaveBeenCalledWith(1);
   });
 });

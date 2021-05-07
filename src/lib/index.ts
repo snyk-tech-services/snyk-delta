@@ -8,7 +8,9 @@ import * as dependencies from './snyk/dependencies'
 import * as isUUID from 'is-uuid'
 import { BadInputError } from './customErrors/inputError'
 import { Project } from 'snyk-api-ts-client/dist/client/generated/org';
-import { SnykCliTestOutput } from './types'
+import { SnykCliTestOutput, SnykDeltaOutput } from './types'
+import { displayNewVulns, displayOutput } from './snyk/displayOutput';
+export { SnykDeltaOutput } from './types'
 
 const banner =  `
 ================================================                           
@@ -19,10 +21,11 @@ Snyk Tech Prevent Tool
 `
 
 
-const getDelta = async(snykTestOutput: string = '', debugMode = false) => {
+const getDelta = async(snykTestOutput: string = '', debugMode = false):Promise<SnykDeltaOutput|number> => {
    const argv = utils.init(debugMode)
    const debug = utils.getDebugModule()
    const mode = argv.currentProject || argv.currentOrg ? "standalone" : "inline"
+   let newVulns, newLicenseIssues
 
   try {
     if(process.env.NODE_ENV == 'prod'){
@@ -90,40 +93,25 @@ const getDelta = async(snykTestOutput: string = '', debugMode = false) => {
     let snykProject: Project.IssuesPostResponseType
     const typedSnykTestJsonResults = snykTestJsonResults as SnykCliTestOutput
 
+    
+
     // if no baseline, return returned results straight from CLI
     if(baselineProject == ''){
       snykProject = snykTestJsonResults
       
-      const newVulns = typedSnykTestJsonResults.vulnerabilities.filter(x => x.type != "license")
-      const newLicenseIssues = typedSnykTestJsonResults.vulnerabilities.filter(x => x.type == "license")
-
-      if((newVulns.length > 0 && issueTypeFilter != "license") || (newLicenseIssues.length > 0 && issueTypeFilter != "vuln")) {
-        utils.displaySplash()
-        if(newVulns.length > 0 && issueTypeFilter != "license"){
-          issues.displayNewVulns(newVulns, mode)
-        }
-        if(newLicenseIssues.length > 0 && issueTypeFilter != "vuln"){
-          issues.displayNewLicenseIssues(newLicenseIssues, mode)
-        }
-        
-        process.exitCode = 1
-        
-      } else {
-        console.log("No new issues found !")
-        process.exitCode = 0
-      }
-
+      newVulns = typedSnykTestJsonResults.vulnerabilities.filter(x => x.type != "license")
+      newLicenseIssues = typedSnykTestJsonResults.vulnerabilities.filter(x => x.type == "license")
       
     } else {
       snykProject = await snyk.getProjectIssues(baselineOrg,baselineProject)
       const baselineVulnerabilitiesIssues = snykProject.issues.vulnerabilities
 
       const currentVulnerabilitiesIssues = typedSnykTestJsonResults.vulnerabilities.filter(x => x.type != 'license')
-      const newVulns = issues.getNewIssues(baselineVulnerabilitiesIssues,currentVulnerabilitiesIssues,snykTestJsonResults.severityThreshold, mode)
+      newVulns = issues.getNewIssues(baselineVulnerabilitiesIssues,currentVulnerabilitiesIssues,snykTestJsonResults.severityThreshold, mode)
       
       const baselineLicenseIssues = snykProject.issues.licenses
       const currentLicensesIssues = typedSnykTestJsonResults.vulnerabilities.filter(x => x.type == 'license')
-      const newLicenseIssues = issues.getNewIssues(baselineLicenseIssues,currentLicensesIssues,snykTestJsonResults.severityThreshold, mode)
+      newLicenseIssues = issues.getNewIssues(baselineLicenseIssues,currentLicensesIssues,snykTestJsonResults.severityThreshold, mode)
       
       debug(`New Vulns count =%d`,newVulns.length)
       debug(`New Licenses Issues count =%d`,newLicenseIssues.length)
@@ -133,22 +121,14 @@ const getDelta = async(snykTestOutput: string = '', debugMode = false) => {
         // TODO: Refactor function below
         await dependencies.displayDependenciesChangeDetails(snykTestJsonDependencies, monitoredProjectDepGraph, snykTestJsonResults.packageManager, newVulns, newLicenseIssues)
       }
-      
-
-      if((newVulns.length > 0 && issueTypeFilter != "license") || (newLicenseIssues.length > 0 && issueTypeFilter != "vuln")) {
-        utils.displaySplash()
-        if(newVulns.length > 0 && issueTypeFilter != "license"){
-          issues.displayNewVulns(newVulns, mode)
-        }
-        if(newLicenseIssues.length > 0 && issueTypeFilter != "vuln"){
-          issues.displayNewLicenseIssues(newLicenseIssues, mode)
-        }
-        process.exitCode = 1
-      } else {
-        console.log("No new issues found !")
-        process.exitCode = 0
-      }
     }
+
+    
+    if(module.parent){
+      displayOutput(newVulns,newLicenseIssues,issueTypeFilter,mode)
+    }
+    
+    
     
     
     
@@ -158,11 +138,10 @@ const getDelta = async(snykTestOutput: string = '', debugMode = false) => {
     process.exitCode = 2
   
   } finally {
-  
-    if(!module.parent){
+    if(!module.parent || (isJestTesting() && !expect.getState().currentTestName.includes('module'))){
       process.exit(process.exitCode)
     } else {
-      return process.exitCode
+      return {result: process.exitCode, newVulns: newVulns,newLicenseIssues: newLicenseIssues}
     }
   
   }
@@ -176,4 +155,14 @@ if(!module.parent){
 
 export {
   getDelta
+}
+
+
+
+
+
+
+
+const isJestTesting = () => {
+  return process.env.JEST_WORKER_ID !== undefined;
 }
