@@ -2,8 +2,9 @@ import * as depgraph from '@snyk/dep-graph'
 import * as _ from 'lodash'
 import * as chalk from 'chalk'
 import {getIssuesDetailsPerPackage} from '../snyk/issues'
+import { IssueWithPaths } from '../types'
 
-const displayDependenciesChangeDetails = async (snykDepsJsonResults: any, monitoredProjectDepGraph: any, packageManager: string, newVulns: any, newLicenseIssues: any) => {
+const displayDependenciesChangeDetails = async (snykDepsJsonResults: any, monitoredProjectDepGraph: any, packageManager: string, newVulns: IssueWithPaths[], newLicenseIssues: IssueWithPaths[]) => {
     let snykTestGraph: depgraph.DepGraph
     if(snykDepsJsonResults && snykDepsJsonResults.depGraph){ // Getting graph
         snykTestGraph = depgraph.createFromJSON(snykDepsJsonResults.depGraph)
