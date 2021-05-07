@@ -1,9 +1,11 @@
 import {
   getNewIssues,
-  displayNewVulns,
-  displayNewLicenseIssues,
   getIssuesDetailsPerPackage,
 } from '../../../src/lib/snyk/issues';
+import {
+  displayNewVulns,
+  displayNewLicenseIssues,
+} from '../../../src/lib/snyk/displayOutput';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as utils from '../../../src/lib/utils/utils';

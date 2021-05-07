@@ -88,9 +88,7 @@ describe('Test End 2 End - Inline mode', () => {
     const result = await getDelta();
     expect(consoleOutput).toContain('No new issues found !');
 
-    //expect(mockExit).toHaveBeenCalledWith(0);
-    // => When testing, loaded as module therefore returning code === process.exitCode
-    expect(result).toEqual(0);
+    expect(mockExit).toHaveBeenCalledWith(0);
   });
 
   it('Test Inline mode - 1 new issue', async () => {
@@ -119,9 +117,7 @@ describe('Test End 2 End - Inline mode', () => {
     expectedOutput.forEach((line: string) => {
       expect(consoleOutput.join()).toContain(line);
     });
-    //expect(mockExit).toHaveBeenCalledWith(1);
-    // => When testing, loaded as module therefore returning code === process.exitCode
-    expect(result).toEqual(1);
+    expect(mockExit).toHaveBeenCalledWith(1);
   });
 
   it('Test Inline mode - no new issue go modules project', async () => {
@@ -137,9 +133,7 @@ describe('Test End 2 End - Inline mode', () => {
     const result = await getDelta();
     expect(consoleOutput).toContain('No new issues found !');
 
-    //expect(mockExit).toHaveBeenCalledWith(0);
-    // => When testing, loaded as module therefore returning code === process.exitCode
-    expect(result).toEqual(0);
+    expect(mockExit).toHaveBeenCalledWith(0);
   });
 
   it('Test Inline mode - no new issue following version upgrade without vuln fix - npm', async () => {
@@ -158,9 +152,7 @@ describe('Test End 2 End - Inline mode', () => {
     const result = await getDelta();
     expect(consoleOutput).toContain('No new issues found !');
 
-    //expect(mockExit).toHaveBeenCalledWith(0);
-    // => When testing, loaded as module therefore returning code === process.exitCode
-    expect(result).toEqual(0);
+    expect(mockExit).toHaveBeenCalledWith(0);
   });
 
   it('Test Inline mode - no new issue following version upgrade without vuln fix - java', async () => {
@@ -179,9 +171,7 @@ describe('Test End 2 End - Inline mode', () => {
     const result = await getDelta();
     expect(consoleOutput).toContain('No new issues found !');
 
-    //expect(mockExit).toHaveBeenCalledWith(0);
-    // => When testing, loaded as module therefore returning code === process.exitCode
-    expect(result).toEqual(0);
+    expect(mockExit).toHaveBeenCalledWith(0);
   });
 
   it('Test Inline mode strict mode - no monitored project found - return vulns and 1 exit code', async () => {
@@ -213,8 +203,6 @@ describe('Test End 2 End - Inline mode', () => {
     expectedOutput.forEach((line: string) => {
       expect(consoleOutput.join()).toContain(line);
     });
-    //expect(mockExit).toHaveBeenCalledWith(0);
-    // => When testing, loaded as module therefore returning code === process.exitCode
-    expect(result).toEqual(1);
+    expect(mockExit).toHaveBeenCalledWith(0);
   });
 });

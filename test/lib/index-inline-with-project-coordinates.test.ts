@@ -82,8 +82,8 @@ describe('Test End 2 End - Inline mode with project coordinates', () => {
     const result = await getDelta();
     expect(consoleOutput).toContain('No new issues found !');
     // => When testing, loaded as module therefore returning code === process.exitCode
-    // expect(mockExit).toHaveBeenCalledWith(0);
-    expect(result).toEqual(0);
+    expect(mockExit).toHaveBeenCalledWith(0);
+    //expect(result).toEqual(0);
   });
 
   it('Test Inline mode with specified project coordinates - 1 new issue', async () => {
@@ -114,7 +114,7 @@ describe('Test End 2 End - Inline mode with project coordinates', () => {
       expect(consoleOutput.join()).toContain(line);
     });
     // => When testing, loaded as module therefore returning code === process.exitCode
-    // expect(mockExit).toHaveBeenCalledWith(1);
-    expect(result).toEqual(1);
+    expect(mockExit).toHaveBeenCalledWith(1);
+    //expect(result).toEqual(1);
   });
 });
