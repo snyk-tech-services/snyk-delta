@@ -1,13 +1,16 @@
 import {
-  getNewVulns,
-  getNewLicenseIssues,
-  displayNewVulns,
-  displayNewLicenseIssues,
+  getNewIssues,
   getIssuesDetailsPerPackage,
 } from '../../../src/lib/snyk/issues';
+import {
+  displayNewVulns,
+  displayNewLicenseIssues,
+} from '../../../src/lib/snyk/displayOutput';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as utils from '../../../src/lib/utils/utils';
+import { Project } from 'snyk-api-ts-client/dist/client/generated/org';
+import { SnykCliTestOutput } from '../../../src/lib/types';
 
 const fixturesFolderPath = path.resolve(__dirname, '../..') + '/fixtures/';
 
@@ -20,15 +23,16 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykTestJsonResults = JSON.parse(
+      const snykTestJsonResults: SnykCliTestOutput = JSON.parse(
         fs
           .readFileSync(fixturesFolderPath + 'snykTestsOutputs/test-goof.json')
           .toString(),
       );
-      // eslint-disable-next-line
-      const newVulns: Array<any> = getNewVulns(
-        snykProject,
-        snykTestJsonResults,
+
+      const newVulns = getNewIssues(
+        snykProject.issues.vulnerabilities,
+        snykTestJsonResults.vulnerabilities.filter((x) => x.type != 'license'),
+        'low',
         'inline',
       );
       expect(newVulns.length).toEqual(0);
@@ -41,7 +45,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykTestJsonResults = JSON.parse(
+      const snykTestJsonResults: SnykCliTestOutput = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +
@@ -49,10 +53,10 @@ describe('Test issues functions', () => {
           )
           .toString(),
       );
-      // eslint-disable-next-line
-      const newVulns: Array<any> = getNewVulns(
-        snykProject,
-        snykTestJsonResults,
+      const newVulns = getNewIssues(
+        snykProject.issues.vulnerabilities,
+        snykTestJsonResults.vulnerabilities.filter((x) => x.type != 'license'),
+        'low',
         'inline',
       );
       expect(newVulns.length).toEqual(1);
@@ -64,7 +68,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykTestJsonResults = JSON.parse(
+      const snykTestJsonResults: SnykCliTestOutput = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +
@@ -72,10 +76,10 @@ describe('Test issues functions', () => {
           )
           .toString(),
       );
-      // eslint-disable-next-line
-      const newVulns: Array<any> = getNewVulns(
-        snykProject,
-        snykTestJsonResults,
+      const newVulns: Array<any> = getNewIssues(
+        snykProject.issues.vulnerabilities,
+        snykTestJsonResults.vulnerabilities.filter((x) => x.type != 'license'),
+        'low',
         'inline',
       );
       expect(newVulns.length).toEqual(10);
@@ -88,15 +92,15 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykCurrentProject = JSON.parse(
+      const snykCurrentProject: Project.IssuesPostResponseType = JSON.parse(
         fs
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      // eslint-disable-next-line
-      const newVulns: Array<any> = getNewVulns(
-        snykBaselineProject,
-        snykCurrentProject.issues,
+      const newVulns: Array<any> = getNewIssues(
+        snykBaselineProject.issues.vulnerabilities,
+        snykCurrentProject.issues.vulnerabilities,
+        'low',
         'standalone',
       );
       expect(newVulns.length).toEqual(0);
@@ -109,7 +113,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykCurrentProject = JSON.parse(
+      const snykCurrentProject: Project.IssuesPostResponseType = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +
@@ -117,10 +121,10 @@ describe('Test issues functions', () => {
           )
           .toString(),
       );
-      // eslint-disable-next-line
-      const newVulns: Array<any> = getNewVulns(
-        snykBaselineProject,
-        snykCurrentProject.issues,
+      const newVulns: Array<any> = getNewIssues(
+        snykBaselineProject.issues.vulnerabilities,
+        snykCurrentProject.issues.vulnerabilities,
+        'low',
         'standalone',
       );
       expect(newVulns.length).toEqual(1);
@@ -133,7 +137,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykCurrentProject = JSON.parse(
+      const snykCurrentProject: Project.IssuesPostResponseType = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +
@@ -141,10 +145,10 @@ describe('Test issues functions', () => {
           )
           .toString(),
       );
-      // eslint-disable-next-line
-      const newVulns: Array<any> = getNewVulns(
-        snykBaselineProject,
-        snykCurrentProject.issues,
+      const newVulns: Array<any> = getNewIssues(
+        snykBaselineProject.issues.vulnerabilities,
+        snykCurrentProject.issues.vulnerabilities,
+        'low',
         'standalone',
       );
       expect(newVulns.length).toEqual(10);
@@ -159,15 +163,15 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykTestJsonResults = JSON.parse(
+      const snykTestJsonResults: SnykCliTestOutput = JSON.parse(
         fs
           .readFileSync(fixturesFolderPath + 'snykTestsOutputs/test-goof.json')
           .toString(),
       );
-      // eslint-disable-next-line
-      const newLicenseIssues: Array<any> = getNewLicenseIssues(
-        snykProject,
-        snykTestJsonResults,
+      const newLicenseIssues: Array<any> = getNewIssues(
+        snykProject.issues.licenses,
+        snykTestJsonResults.vulnerabilities.filter((x) => x.type == 'license'),
+        'low',
         'inline',
       );
       expect(newLicenseIssues.length).toEqual(0);
@@ -180,7 +184,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykTestJsonResults = JSON.parse(
+      const snykTestJsonResults: SnykCliTestOutput = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +
@@ -188,10 +192,10 @@ describe('Test issues functions', () => {
           )
           .toString(),
       );
-      // eslint-disable-next-line
-      const newLicenseIssues: Array<any> = getNewLicenseIssues(
-        snykProject,
-        snykTestJsonResults,
+      const newLicenseIssues = getNewIssues(
+        snykProject.issues.licenses,
+        snykTestJsonResults.vulnerabilities.filter((x) => x.type == 'license'),
+        'low',
         'inline',
       );
       expect(newLicenseIssues.length).toEqual(1);
@@ -204,7 +208,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykTestJsonResults = JSON.parse(
+      const snykTestJsonResults: SnykCliTestOutput = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +
@@ -212,10 +216,10 @@ describe('Test issues functions', () => {
           )
           .toString(),
       );
-      // eslint-disable-next-line
-      const newLicenseIssues: Array<any> = getNewLicenseIssues(
-        snykProject,
-        snykTestJsonResults,
+      const newLicenseIssues: Array<any> = getNewIssues(
+        snykProject.issues.licenses,
+        snykTestJsonResults.vulnerabilities.filter((x) => x.type == 'license'),
+        'low',
         'inline',
       );
       expect(newLicenseIssues.length).toEqual(2);
@@ -228,15 +232,15 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykCurrentProject = JSON.parse(
+      const snykCurrentProject: Project.IssuesPostResponseType = JSON.parse(
         fs
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      // eslint-disable-next-line
-      const newLicenseIssues: Array<any> = getNewLicenseIssues(
-        snykBaselineProject,
-        snykCurrentProject.issues,
+      const newLicenseIssues: Array<any> = getNewIssues(
+        snykBaselineProject.issues.licenses,
+        snykCurrentProject.issues.licenses,
+        'low',
         'standalone',
       );
       expect(newLicenseIssues.length).toEqual(0);
@@ -249,7 +253,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykCurrentProject = JSON.parse(
+      const snykCurrentProject: Project.IssuesPostResponseType = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +
@@ -257,10 +261,11 @@ describe('Test issues functions', () => {
           )
           .toString(),
       );
-      // eslint-disable-next-line
-      const newLicenseIssues: Array<any> = getNewLicenseIssues(
-        snykBaselineProject,
-        snykCurrentProject.issues,
+
+      const newLicenseIssues: Array<any> = getNewIssues(
+        snykBaselineProject.issues.licenses,
+        snykCurrentProject.issues.licenses,
+        'low',
         'standalone',
       );
       expect(newLicenseIssues.length).toEqual(1);
@@ -273,7 +278,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykCurrentProject = JSON.parse(
+      const snykCurrentProject: Project.IssuesPostResponseType = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +
@@ -281,10 +286,10 @@ describe('Test issues functions', () => {
           )
           .toString(),
       );
-      // eslint-disable-next-line
-      const newLicenseIssues: Array<any> = getNewLicenseIssues(
-        snykBaselineProject,
-        snykCurrentProject.issues,
+      const newLicenseIssues: Array<any> = getNewIssues(
+        snykBaselineProject.issues.licenses,
+        snykCurrentProject.issues.licenses,
+        'low',
         'standalone',
       );
       expect(newLicenseIssues.length).toEqual(2);
@@ -304,7 +309,6 @@ describe('Test issues functions', () => {
     });
 
     it('Test displayNewVulns - inline mode - no new vuln', async () => {
-      // eslint-disable-next-line
       const newVulns: Array<any> = [];
       displayNewVulns(newVulns, 'inline');
       expect(consoleOutput).toEqual([]);
@@ -317,7 +321,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykTestJsonResults = JSON.parse(
+      const snykTestJsonResults: SnykCliTestOutput = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +
@@ -325,10 +329,10 @@ describe('Test issues functions', () => {
           )
           .toString(),
       );
-      // eslint-disable-next-line
-      const newVulns: Array<any> = getNewVulns(
-        snykProject,
-        snykTestJsonResults,
+      const newVulns = getNewIssues(
+        snykProject.issues.vulnerabilities,
+        snykTestJsonResults.vulnerabilities.filter((x) => x.type != 'license'),
+        'low',
         'inline',
       );
       displayNewVulns(newVulns, 'inline');
@@ -354,7 +358,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykTestJsonResults = JSON.parse(
+      const snykTestJsonResults: SnykCliTestOutput = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +
@@ -362,10 +366,10 @@ describe('Test issues functions', () => {
           )
           .toString(),
       );
-      // eslint-disable-next-line
-      const newVulns: Array<any> = getNewVulns(
-        snykProject,
-        snykTestJsonResults,
+      const newVulns = getNewIssues(
+        snykProject.issues.vulnerabilities,
+        snykTestJsonResults.vulnerabilities.filter((x) => x.type != 'license'),
+        'low',
         'inline',
       );
       displayNewVulns(newVulns, 'inline');
@@ -434,7 +438,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykCurrentProject = JSON.parse(
+      const snykCurrentProject: Project.IssuesPostResponseType = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +
@@ -442,10 +446,11 @@ describe('Test issues functions', () => {
           )
           .toString(),
       );
-      // eslint-disable-next-line
-      const newVulns: Array<any> = getNewVulns(
-        snykBaselineProject,
-        snykCurrentProject.issues,
+
+      const newVulns = getNewIssues(
+        snykBaselineProject.issues.vulnerabilities,
+        snykCurrentProject.issues.vulnerabilities,
+        'low',
         'standalone',
       );
       displayNewVulns(newVulns, 'standalone');
@@ -469,7 +474,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykCurrentProject = JSON.parse(
+      const snykCurrentProject: Project.IssuesPostResponseType = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +
@@ -477,10 +482,10 @@ describe('Test issues functions', () => {
           )
           .toString(),
       );
-      // eslint-disable-next-line
-      const newVulns: Array<any> = getNewVulns(
-        snykBaselineProject,
-        snykCurrentProject.issues,
+      const newVulns = getNewIssues(
+        snykBaselineProject.issues.vulnerabilities,
+        snykCurrentProject.issues.vulnerabilities,
+        'low',
         'standalone',
       );
       displayNewVulns(newVulns, 'standalone');
@@ -541,7 +546,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykTestJsonResults = JSON.parse(
+      const snykTestJsonResults: SnykCliTestOutput = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +
@@ -549,10 +554,11 @@ describe('Test issues functions', () => {
           )
           .toString(),
       );
-      // eslint-disable-next-line
-      const newLicenseIssues: Array<any> = getNewLicenseIssues(
-        snykProject,
-        snykTestJsonResults,
+
+      const newLicenseIssues: Array<any> = getNewIssues(
+        snykProject.issues.licenses,
+        snykTestJsonResults.vulnerabilities.filter((x) => x.type == 'license'),
+        'low',
         'inline',
       );
       displayNewLicenseIssues(newLicenseIssues, 'inline');
@@ -569,7 +575,6 @@ describe('Test issues functions', () => {
     });
 
     it('Test displayNewLicenseIssues - standalone mode - no new issue', async () => {
-      // eslint-disable-next-line
       const newLicenseIssues: Array<any> = [];
       displayNewLicenseIssues(newLicenseIssues, 'standalone');
       expect(consoleOutput).toEqual([]);
@@ -582,7 +587,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykCurrentProject = JSON.parse(
+      const snykCurrentProject: Project.IssuesPostResponseType = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +
@@ -590,10 +595,11 @@ describe('Test issues functions', () => {
           )
           .toString(),
       );
-      // eslint-disable-next-line
-      const newLicenseIssues: Array<any> = getNewLicenseIssues(
-        snykBaselineProject,
-        snykCurrentProject.issues,
+
+      const newLicenseIssues = getNewIssues(
+        snykBaselineProject.issues.licenses,
+        snykCurrentProject.issues.licenses,
+        'low',
         'standalone',
       );
 
@@ -618,7 +624,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykTestJsonResults = JSON.parse(
+      const snykTestJsonResults: SnykCliTestOutput = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +
@@ -626,10 +632,10 @@ describe('Test issues functions', () => {
           )
           .toString(),
       );
-      // eslint-disable-next-line
-      const newVulns: Array<any> = getNewVulns(
-        snykProject,
-        snykTestJsonResults,
+      const newVulns = getNewIssues(
+        snykProject.issues.vulnerabilities,
+        snykTestJsonResults.vulnerabilities.filter((x) => x.type != 'license'),
+        'low',
         'inline',
       );
       const output = getIssuesDetailsPerPackage(newVulns, 'package');
@@ -642,7 +648,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykTestJsonResults = JSON.parse(
+      const snykTestJsonResults: SnykCliTestOutput = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +
@@ -650,10 +656,10 @@ describe('Test issues functions', () => {
           )
           .toString(),
       );
-      // eslint-disable-next-line
-      const newVulns: Array<any> = getNewVulns(
-        snykProject,
-        snykTestJsonResults,
+      const newVulns = getNewIssues(
+        snykProject.issues.vulnerabilities,
+        snykTestJsonResults.vulnerabilities.filter((x) => x.type != 'license'),
+        'low',
         'inline',
       );
       const output = getIssuesDetailsPerPackage(newVulns, 'package', '1.0.0');
@@ -666,7 +672,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykTestJsonResults = JSON.parse(
+      const snykTestJsonResults: SnykCliTestOutput = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +
@@ -674,10 +680,10 @@ describe('Test issues functions', () => {
           )
           .toString(),
       );
-      // eslint-disable-next-line
-      const newVulns: Array<any> = getNewVulns(
-        snykProject,
-        snykTestJsonResults,
+      const newVulns: Array<any> = getNewIssues(
+        snykProject.issues.vulnerabilities,
+        snykTestJsonResults.vulnerabilities.filter((x) => x.type != 'license'),
+        'low',
         'inline',
       );
       const output = getIssuesDetailsPerPackage(newVulns, 'acorn', '5.7.3');
