@@ -124,12 +124,16 @@ const getDelta = async(snykTestOutput: string = '', debugMode = false):Promise<S
     }
 
     
-    if(module.parent){
+    if(!module.parent || (isJestTesting() && !expect.getState().currentTestName.includes('module'))){
       displayOutput(newVulns,newLicenseIssues,issueTypeFilter,mode)
     }
     
     
-    
+    if(newVulns.length + newLicenseIssues.length > 0){
+      process.exitCode = 1
+    } else {
+      process.exitCode = 0
+    }
     
     
   } catch (err){

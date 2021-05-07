@@ -66,7 +66,6 @@ describe('Test End 2 End - Module', () => {
         .readFileSync(fixturesFolderPath + 'snykTestsOutputs/test-goof.json')
         .toString(),
     );
-    expect(consoleOutput).toContain('No new issues found !');
     const expectedResult = { result: 0, newVulns: [], newLicenseIssues: [] };
     expect(result).toEqual(expectedResult);
   });
@@ -79,7 +78,6 @@ describe('Test End 2 End - Module', () => {
       true,
     );
     expect(debug('snyk')).toBeTruthy();
-    expect(consoleOutput).toContain('No new issues found !');
     const expectedResult = { result: 0, newVulns: [], newLicenseIssues: [] };
     expect(result).toEqual(expectedResult);
   });
@@ -94,18 +92,6 @@ describe('Test End 2 End - Module', () => {
         .toString(),
     );
 
-    const expectedOutput = [
-      'New issue introduced !',
-      'Security Vulnerability:',
-      '  1/1: Regular Expression Denial of Service (ReDoS) [High Severity]',
-      '    Via: express-fileupload@0.0.5 => @snyk/nodejs-runtime-agent@1.14.0 => acorn@5.7.3',
-      '    Fixed in: acorn 5.7.4, 6.4.1, 7.1.1',
-      '    Fixable by upgrade:  @snyk/nodejs-runtime-agent@1.14.0=>acorn@5.7.4',
-    ];
-
-    expectedOutput.forEach((line: string) => {
-      expect(consoleOutput.join()).toContain(line);
-    });
     const expectedResult = {
       result: 1,
       newVulns: [
@@ -159,6 +145,7 @@ describe('Test End 2 End - Module', () => {
           severity: 'high',
           title: 'Regular Expression Denial of Service (ReDoS)',
           from: [
+            'goof@0.0.3',
             'express-fileupload@0.0.5',
             '@snyk/nodejs-runtime-agent@1.14.0',
             'acorn@5.7.3',
