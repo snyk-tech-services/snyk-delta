@@ -59,6 +59,8 @@ const init = (debugMode = false) => {
       // module imported by plugins, libraries etc.
       process.env.DEBUG = enable;
       debugModule.enable(enable);
+    } else {
+      debugModule.disable()
     }
     debug = debugModule('snyk')
     return argv; //debugModule('snyk');
