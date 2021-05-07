@@ -32,8 +32,10 @@ const getNewIssues = (
   MonitoredIssues.forEach((monitoredIssue) => {
     newIssues = _.reject(newIssues, (issue) => {
       let issueFromArray = issue.from;
+      let upgradePathArray = issue.upgradePath
       if (mode == 'inline') {
         issueFromArray = issueFromArray.slice(1, issueFromArray.length);
+        upgradePathArray = upgradePathArray? upgradePathArray.slice(1, issueFromArray.length):undefined;
       }
 
       return (
