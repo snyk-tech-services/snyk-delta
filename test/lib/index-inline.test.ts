@@ -120,7 +120,7 @@ describe('Test End 2 End - Inline mode', () => {
     expect(mockExit).toHaveBeenCalledWith(1);
   });
 
-  it('Test Inline mode - no new issue go modules project', async () => {
+  it('Test Inline mode - no new issue gomod project', async () => {
     setTimeout(() => {
       stdinMock.send(
         fs
