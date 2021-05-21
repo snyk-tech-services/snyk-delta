@@ -7,6 +7,7 @@ import { IssueWithPaths } from '../types'
 const displayDependenciesChangeDetails = async (snykDepsJsonResults: any, monitoredProjectDepGraph: any, packageManager: string, newVulns: IssueWithPaths[], newLicenseIssues: IssueWithPaths[]) => {
     let snykTestGraph: depgraph.DepGraph
     if(snykDepsJsonResults && snykDepsJsonResults.depGraph){ // Getting graph
+        
         snykTestGraph = depgraph.createFromJSON(snykDepsJsonResults.depGraph)
     } else { // Getting legacy dep tree
         snykTestGraph = await depgraph.legacy.depTreeToGraph(snykDepsJsonResults as depgraph.legacy.DepTree, packageManager)
@@ -14,23 +15,47 @@ const displayDependenciesChangeDetails = async (snykDepsJsonResults: any, monito
     
     //const snykTestDeps = snykTestGraph.getPkgs()
     const snykTestDirectDepsNodeIDs = snykTestGraph.toJSON().graph.nodes[0].deps.map(dep => dep.nodeId)
-    const snykTestDirectDeps = snykTestGraph.toJSON().pkgs.filter(pkg => snykTestDirectDepsNodeIDs.indexOf(pkg.id) > 0)
-    const snykTestIndirectDeps = snykTestGraph.toJSON().pkgs.filter(pkg => snykTestDirectDepsNodeIDs.indexOf(pkg.id) <= 0)
+    const snykTestDirectDepsPkgIDs: Array<string> = []
     
+        snykTestDirectDepsNodeIDs.forEach(nodeId => {
+            const node = snykTestGraph.toJSON().graph.nodes.find(node => node.nodeId == nodeId)
+            if(!node){
+                throw new Error(`Could not find node in graph ${nodeId}`)
+            } else {
+                snykTestDirectDepsPkgIDs.push(node.pkgId)
+            }
+            
+        })
+    
+    
+
+    const snykTestDirectDeps = snykTestGraph.toJSON().pkgs.filter(pkg => snykTestDirectDepsPkgIDs.indexOf(pkg.id) > 0)
+    const snykTestIndirectDeps = snykTestGraph.toJSON().pkgs.filter(pkg => snykTestDirectDepsPkgIDs.indexOf(pkg.id) <= 0)
     
     const snykProjectGraph = depgraph.createFromJSON(monitoredProjectDepGraph.depGraph as depgraph.DepGraphData)
-    //const snykProjectDeps = snykTestGraph.getPkgs()
+
     const snykProjectDirectDepsNodeIDs = snykProjectGraph.toJSON().graph.nodes[0].deps.map(dep => dep.nodeId)
-    const snykProjectDirectDeps = snykProjectGraph.toJSON().pkgs.filter(pkg => snykProjectDirectDepsNodeIDs.indexOf(pkg.id) > 0)
-    const snykProjectIndirectDeps =snykProjectGraph.toJSON().pkgs.filter(pkg => snykProjectDirectDepsNodeIDs.indexOf(pkg.id) <= 0)
+
+    const snykProjectDirectDepsPkgIDs: Array<string> = []
+    
+    snykProjectDirectDepsNodeIDs.forEach(nodeId => {
+        const node = snykProjectGraph.toJSON().graph.nodes.find(node => node.nodeId == nodeId)
+        if(!node){
+            throw new Error(`Could not find node in graph ${nodeId}`)
+        } else {
+            snykProjectDirectDepsPkgIDs.push(node.pkgId)
+        }
+        
+    })
+
+    const snykProjectDirectDeps = snykProjectGraph.toJSON().pkgs.filter(pkg => snykProjectDirectDepsPkgIDs.indexOf(pkg.id) > 0)
+    const snykProjectIndirectDeps =snykProjectGraph.toJSON().pkgs.filter(pkg => snykProjectDirectDepsPkgIDs.indexOf(pkg.id) <= 0)
 
     const addedDirectDeps = _.differenceWith(snykTestDirectDeps, snykProjectDirectDeps,_.isEqual)
     const removedDirectDeps = _.differenceWith(snykProjectDirectDeps, snykTestDirectDeps,_.isEqual)
 
     const addedIndirectDeps = _.differenceWith(snykTestIndirectDeps, snykProjectIndirectDeps,_.isEqual)
     const removedIndirectDeps = _.differenceWith(snykProjectIndirectDeps, snykTestIndirectDeps,_.isEqual)
-
-    
 
 
     console.log("_____________________________")
