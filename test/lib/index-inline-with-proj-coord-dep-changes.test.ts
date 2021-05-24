@@ -98,12 +98,10 @@ describe('Test End 2 End - Inline mode with project coordinates', () => {
       'No new issues found !',
     ];
 
-    //expect(consoleOutput).toContain('No new iss4ues found !');
     expectedOutput.forEach((line: string) => {
       expect(consoleOutput.join()).toContain(line);
     });
     // => When testing, loaded as module therefore returning code === process.exitCode
     expect(mockExit).toHaveBeenCalledWith(0);
-    //expect(result).toEqual(0);
   });
 });
