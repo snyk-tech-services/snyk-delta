@@ -1,0 +1,11 @@
+{
+    "ok": false,
+    "issues": {
+      "vulnerabilities": [
+      ],
+      "licenses": [
+      ]
+    },
+    "dependencyCount": 57,
+    "packageManager": "poetry"
+  }
