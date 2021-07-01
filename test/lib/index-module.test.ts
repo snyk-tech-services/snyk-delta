@@ -66,7 +66,12 @@ describe('Test End 2 End - Module', () => {
         .readFileSync(fixturesFolderPath + 'snykTestsOutputs/test-goof.json')
         .toString(),
     );
-    const expectedResult = { result: 0, newVulns: [], newLicenseIssues: [] };
+    const expectedResult = {
+      result: 0,
+      newVulns: [],
+      newLicenseIssues: [],
+      passIfNoBaseline: false,
+    };
     expect(result).toEqual(expectedResult);
   });
 
@@ -78,7 +83,12 @@ describe('Test End 2 End - Module', () => {
       true,
     );
     expect(debug('snyk')).toBeTruthy();
-    const expectedResult = { result: 0, newVulns: [], newLicenseIssues: [] };
+    const expectedResult = {
+      result: 0,
+      newVulns: [],
+      newLicenseIssues: [],
+      passIfNoBaseline: false,
+    };
     expect(result).toEqual(expectedResult);
   });
 
@@ -162,6 +172,7 @@ describe('Test End 2 End - Module', () => {
         },
       ],
       newLicenseIssues: [],
+      passIfNoBaseline: false,
     };
 
     expect(result).toEqual(expectedResult);
