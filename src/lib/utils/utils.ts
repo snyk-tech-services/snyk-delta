@@ -44,11 +44,14 @@ const init = (debugMode = false) => {
       baselineProject: { type: 'string', describe: 'Snyk baseline project ID/name', demandOption: false },
       currentOrg: { type: 'string', describe: 'Snyk organization ID/name to compare against', demandOption: false },
       currentProject: { type: 'string', describe: 'Snyk project ID/name to compare against', demandOption: false },
-      type: { describe: "Specify issue type - default all", choices: ["vuln","license","all"], demandOption: false }
+      type: { describe: "Specify issue type - default all", choices: ["vuln","license","all"], demandOption: false },
+      setPassIfNoBaseline: { type: 'boolean', describe: "prevent snyk-prevent-commit-status to fail is the project is not monitored", choices: ["true","false"], demandOption: false}
     })
     .describe('d', 'Show debug logs')
     .version(pkgJSON.version)
     .argv;
+
+    console.log(argv)
 
     if (argv.debug || argv.d || debugMode) {
       let enable = DEBUG_DEFAULT_NAMESPACES.join(',');
@@ -116,6 +119,8 @@ const displaySplash = () => {
       if(process.stdin.isTTY) {
           throw new BadInputError('No input data detected. Check out the --help option')
       }
+
+      console.log('data : ' + data)
       
     } catch (err) {
       reject(err)
