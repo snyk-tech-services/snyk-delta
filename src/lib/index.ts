@@ -21,11 +21,12 @@ Snyk Tech Prevent Tool
 `
 
 
-const getDelta = async(snykTestOutput: string = '', debugMode = false):Promise<SnykDeltaOutput|number> => {
+const getDelta = async(snykTestOutput = '', debugMode = false):Promise<SnykDeltaOutput|number> => {
    const argv = utils.init(debugMode)
    const debug = utils.getDebugModule()
    const mode = argv.currentProject || argv.currentOrg ? "standalone" : "inline"
    let newVulns, newLicenseIssues
+   const setPassIfNoBaseline = argv.setPassIfNoBaseline || false
    let passIfNoBaseline = false
 
   try {
@@ -40,6 +41,9 @@ const getDelta = async(snykTestOutput: string = '', debugMode = false):Promise<S
     let baselineProject: string = argv.baselineProject ? argv.baselineProject : ""
     const currentOrg: string = argv.currentOrg ? argv.currentOrg: ""
     const currentProject: string = argv.currentProject ? argv.currentProject: ""
+
+    debug('argv = '+ argv)
+    debug(`argv.currentOrg ${argv.currentOrg} argv.currentProject ${argv.currentProject} argv.setPassIfNoBaseline ${argv.setPassIfNoBaseline}`)
     if(mode == "inline"){
 
       const pipedData: string = snykTestOutput == '' ? await utils.getPipedDataIn() : ""+snykTestOutput
@@ -103,7 +107,9 @@ const getDelta = async(snykTestOutput: string = '', debugMode = false):Promise<S
       newVulns = typedSnykTestJsonResults.vulnerabilities.filter(x => x.type != "license")
       newLicenseIssues = typedSnykTestJsonResults.vulnerabilities.filter(x => x.type == "license")
 
-      passIfNoBaseline = true
+      if (setPassIfNoBaseline) {
+        passIfNoBaseline = true
+      }
       
     } else {
       snykProject = await snyk.getProjectIssues(baselineOrg,baselineProject)

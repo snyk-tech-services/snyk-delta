@@ -21,7 +21,7 @@ const getNewIssues = (
   const debug = getDebugModule();
 
   const MonitoredIssues = snykProject;
-  debug(`Monitored snapshot had %d issues`, MonitoredIssues.length);
+  //(`Monitored snapshot had %d issues`, MonitoredIssues.length);
   const severityThreshold = Object.keys(severityThresholds).indexOf(
     inboundSeverityThreshold,
   );
