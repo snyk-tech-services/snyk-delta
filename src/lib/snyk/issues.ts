@@ -31,13 +31,16 @@ const getNewIssues = (
   let newIssues = snykTestJsonIssuesResults;
   MonitoredIssues.forEach((monitoredIssue) => {
     newIssues = _.reject(newIssues, (issue) => {
+      if(!issue.from || !monitoredIssue.from) {
+        debug(`Error: Issue ${issue.id} does not have a vuln path in one of the snapshots`)
+      }
       let issueFromArray = issue.from;
       let upgradePathArray = issue.upgradePath
       if (mode == 'inline') {
         issueFromArray = issueFromArray.slice(1, issueFromArray.length);
         upgradePathArray = upgradePathArray? upgradePathArray.slice(1, issueFromArray.length):undefined;
       }
-
+      
       return (
         monitoredIssue.id == issue.id &&
         !isVulnerablePathNew(monitoredIssue.from, issueFromArray)
