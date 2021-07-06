@@ -41,6 +41,7 @@ const init = (debugMode = false) => {
     .alias('d','debug')
     .options({
       baselineOrg: { type: 'string', describe: 'Snyk baseline organization ID/name', demandOption: false },
+      setPassIfNoBaseline: { type: 'string', describe: "prevent snyk-prevent-commit-status to fail is the project is not monitored", choices: ['true','false'], demandOption: false},
       baselineProject: { type: 'string', describe: 'Snyk baseline project ID/name', demandOption: false },
       currentOrg: { type: 'string', describe: 'Snyk organization ID/name to compare against', demandOption: false },
       currentProject: { type: 'string', describe: 'Snyk project ID/name to compare against', demandOption: false },
