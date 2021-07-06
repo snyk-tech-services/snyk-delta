@@ -38,6 +38,28 @@ describe('Test issues functions', () => {
       expect(newVulns.length).toEqual(0);
     });
 
+    it('Test getNewVulns - inline mode - no new vuln - test arguments', async () => {
+      const output = utils.init();
+      const snykProject = JSON.parse(
+        fs
+          .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
+          .toString(),
+      );
+      const snykTestJsonResults: SnykCliTestOutput = JSON.parse(
+        fs
+          .readFileSync(fixturesFolderPath + 'snykTestsOutputs/test-goof.json')
+          .toString(),
+      );
+
+      const newVulns = getNewIssues(
+        snykProject.issues.vulnerabilities,
+        snykTestJsonResults.vulnerabilities.filter((x) => x.type != 'license'),
+        'low',
+        'inline',
+      );
+      expect(newVulns.length).toEqual(0);
+    });
+
     it('Test getNewVulns - inline mode - 1 new vuln', async () => {
       utils.init();
       const snykProject = JSON.parse(
