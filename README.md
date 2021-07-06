@@ -36,9 +36,12 @@ or
 
     - Possibly point to a specific snapshot by specifying org+project coordinates\
     `snyk test --json --print-deps | snyk-delta --baselineOrg xxx --baselineProject xxx`
+    - Use the --setPassIfNoBaseline if used with snyk prevent commit status and the project is not monitored. This will prevent snyk-prevent_commit_status to fail.
+    setPassIfNoBaseline default to false.\
+     `snyk test --json --print-deps | snyk-delta --baselineOrg xxx --baselineProject xxx --setPassIfNoBaseline true`
 
 - Standalone
-    - `snyk-delta --baselineOrg xxx --baselineProject xxx --currentOrg xxx --currentProject xxx
+    - `snyk-delta --baselineOrg xxx --baselineProject xxx --currentOrg xxx --currentProject xxx --setPassIfNoBaseline false
 
 > Note:\
 > BaselineProject value is expected to be a UUID, not simply a name\
