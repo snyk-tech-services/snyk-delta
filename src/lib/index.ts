@@ -42,8 +42,6 @@ const getDelta = async(snykTestOutput = '', debugMode = false):Promise<SnykDelta
     const currentOrg: string = argv.currentOrg ? argv.currentOrg: ""
     const currentProject: string = argv.currentProject ? argv.currentProject: ""
 
-    debug('argv = '+ argv)
-    debug(`argv.currentOrg ${argv.currentOrg} argv.currentProject ${argv.currentProject} argv.setPassIfNoBaseline ${argv.setPassIfNoBaseline}`)
     if(mode == "inline"){
 
       const pipedData: string = snykTestOutput == '' ? await utils.getPipedDataIn() : ""+snykTestOutput
@@ -132,7 +130,6 @@ const getDelta = async(snykTestOutput = '', debugMode = false):Promise<SnykDelta
       }
     }
 
-    
     if(!module.parent || (isJestTesting() && !expect.getState().currentTestName.includes('module'))){
       displayOutput(newVulns,newLicenseIssues,issueTypeFilter,mode)
     }
@@ -149,6 +146,7 @@ const getDelta = async(snykTestOutput = '', debugMode = false):Promise<SnykDelta
     
     handleError(err)
     process.exitCode = 2
+
   
   } finally {
     if(!module.parent || (isJestTesting() && !expect.getState().currentTestName.includes('module'))){
@@ -158,6 +156,7 @@ const getDelta = async(snykTestOutput = '', debugMode = false):Promise<SnykDelta
     }
   
   }
+
 }
 
 if(!module.parent){
