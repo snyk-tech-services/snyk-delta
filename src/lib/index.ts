@@ -21,11 +21,13 @@ Snyk Tech Prevent Tool
 `
 
 
-const getDelta = async(snykTestOutput: string = '', debugMode = false):Promise<SnykDeltaOutput|number> => {
+const getDelta = async(snykTestOutput = '', debugMode = false):Promise<SnykDeltaOutput|number> => {
    const argv = utils.init(debugMode)
    const debug = utils.getDebugModule()
    const mode = argv.currentProject || argv.currentOrg ? "standalone" : "inline"
    let newVulns, newLicenseIssues
+   const setPassIfNoBaseline = argv.setPassIfNoBaseline || false
+   let passIfNoBaseline = false
 
   try {
     if(process.env.NODE_ENV == 'prod'){
@@ -39,6 +41,7 @@ const getDelta = async(snykTestOutput: string = '', debugMode = false):Promise<S
     let baselineProject: string = argv.baselineProject ? argv.baselineProject : ""
     const currentOrg: string = argv.currentOrg ? argv.currentOrg: ""
     const currentProject: string = argv.currentProject ? argv.currentProject: ""
+
     if(mode == "inline"){
 
       const pipedData: string = snykTestOutput == '' ? await utils.getPipedDataIn() : ""+snykTestOutput
@@ -101,6 +104,10 @@ const getDelta = async(snykTestOutput: string = '', debugMode = false):Promise<S
       
       newVulns = typedSnykTestJsonResults.vulnerabilities.filter(x => x.type != "license")
       newLicenseIssues = typedSnykTestJsonResults.vulnerabilities.filter(x => x.type == "license")
+
+      if (setPassIfNoBaseline) {
+        passIfNoBaseline = true
+      }
       
     } else {
       snykProject = await snyk.getProjectIssues(baselineOrg,baselineProject)
@@ -123,7 +130,6 @@ const getDelta = async(snykTestOutput: string = '', debugMode = false):Promise<S
       }
     }
 
-    
     if(!module.parent || (isJestTesting() && !expect.getState().currentTestName.includes('module'))){
       displayOutput(newVulns,newLicenseIssues,issueTypeFilter,mode)
     }
@@ -140,15 +146,17 @@ const getDelta = async(snykTestOutput: string = '', debugMode = false):Promise<S
     
     handleError(err)
     process.exitCode = 2
+
   
   } finally {
     if(!module.parent || (isJestTesting() && !expect.getState().currentTestName.includes('module'))){
       process.exit(process.exitCode)
     } else {
-      return {result: process.exitCode, newVulns: newVulns,newLicenseIssues: newLicenseIssues}
+      return {result: process.exitCode, newVulns: newVulns,newLicenseIssues: newLicenseIssues, passIfNoBaseline: passIfNoBaseline}
     }
   
   }
+
 }
 
 if(!module.parent){

@@ -2,11 +2,13 @@ import { mockProcessExit } from 'jest-mock-process';
 import * as nock from 'nock';
 import * as path from 'path';
 import * as fs from 'fs';
-// process.argv.push('-d');
+process.argv.push('-d');
 process.argv.push('--baselineOrg=playground');
 process.argv.push('--baselineProject=c51c80c2-66a1-442a-91e2-4f55b4256a72');
 process.argv.push('--currentOrg=playground');
 process.argv.push('--currentProject=c51c80c2-66a1-442a-91e2-4f55b4256a73');
+process.argv.push('--setPassIfNoBaseline');
+process.argv.push('true');
 const mockExit = mockProcessExit();
 import { getDelta } from '../../src/lib/index';
 
