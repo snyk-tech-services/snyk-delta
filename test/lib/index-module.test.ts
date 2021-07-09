@@ -1,7 +1,6 @@
 import * as nock from 'nock';
 import * as path from 'path';
 import * as fs from 'fs';
-//process.argv.push('-d');
 import * as debug from 'debug';
 
 import { getDelta } from '../../src/lib/index';
