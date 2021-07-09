@@ -3,9 +3,6 @@ import { stdin, MockSTDIN } from 'mock-stdin';
 import * as nock from 'nock';
 import * as path from 'path';
 import * as fs from 'fs';
-process.argv.push('--setPassIfNoBaseline');
-process.argv.push('true');
-process.argv.push('--d');
 
 const stdinMock: MockSTDIN = stdin();
 
@@ -84,6 +81,8 @@ describe('Test End 2 End - Inline mode', () => {
           fixturesFolderPath + 'snykTestsOutputs/test-unmonitored-goof.json',
         )
         .toString(),
+      false,
+      true,
     );
 
     const expectedResult = {

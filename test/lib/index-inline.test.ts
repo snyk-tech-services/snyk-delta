@@ -3,7 +3,6 @@ import { mockProcessExit } from 'jest-mock-process';
 import * as nock from 'nock';
 import * as path from 'path';
 import * as fs from 'fs';
-process.argv.push('--setPassIfNoBaseline false');
 
 const stdinMock: MockSTDIN = stdin();
 const mockExit = mockProcessExit();
