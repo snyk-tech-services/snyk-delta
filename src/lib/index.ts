@@ -21,13 +21,12 @@ Snyk Tech Prevent Tool
 `
 
 
-const getDelta = async(snykTestOutput = '', debugMode = false):Promise<SnykDeltaOutput|number> => {
+const getDelta = async(snykTestOutput = '', debugMode = false, setPassIfNoBaselineFlag = false):Promise<SnykDeltaOutput|number> => {
    const argv = utils.init(debugMode)
    const debug = utils.getDebugModule()
    const mode = argv.currentProject || argv.currentOrg ? "standalone" : "inline"
    let newVulns, newLicenseIssues
-   const setPassIfNoBaseline = argv.setPassIfNoBaseline || false
-   let passIfNoBaseline = false
+   const passIfNoBaseline = argv.setPassIfNoBaseline || setPassIfNoBaselineFlag
 
   try {
     if(process.env.NODE_ENV == 'prod'){
@@ -105,9 +104,6 @@ const getDelta = async(snykTestOutput = '', debugMode = false):Promise<SnykDelta
       newVulns = typedSnykTestJsonResults.vulnerabilities.filter(x => x.type != "license")
       newLicenseIssues = typedSnykTestJsonResults.vulnerabilities.filter(x => x.type == "license")
 
-      if (setPassIfNoBaseline) {
-        passIfNoBaseline = true
-      }
       
     } else {
       snykProject = await snyk.getProjectIssues(baselineOrg,baselineProject)
