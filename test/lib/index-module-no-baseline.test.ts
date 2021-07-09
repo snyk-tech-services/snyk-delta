@@ -74,7 +74,7 @@ beforeEach(() => {
 });
 
 describe('Test End 2 End - Inline mode', () => {
-  it('Test module - no monitored project found - return vulns and 1 exit code', async () => {
+  it('Test module - no monitored project found - return vulns and 0 exit code', async () => {
     const result = await getDelta(
       fs
         .readFileSync(
@@ -86,7 +86,7 @@ describe('Test End 2 End - Inline mode', () => {
     );
 
     const expectedResult = {
-      result: 1,
+      result: 0,
       newVulns: [
         {
           CVSSv3: 'CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H',
