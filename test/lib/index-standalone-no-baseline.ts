@@ -7,6 +7,7 @@ process.argv.push('--baselineOrg=playground');
 process.argv.push('--baselineProject=c51c80c2-66a1-442a-91e2-4f55b4256a72');
 process.argv.push('--currentOrg=playground');
 process.argv.push('--currentProject=c51c80c2-66a1-442a-91e2-4f55b4256a73');
+
 const mockExit = mockProcessExit();
 import { getDelta } from '../../src/lib/index';
 
@@ -34,7 +35,7 @@ afterEach(() => {
   nock.cleanAll();
 });
 
-describe('Test End 2 End - Standalone mode', () => {
+describe('Test End 2 End - Standalone mode without baseline', () => {
   it('Test standalone mode - no new issue', async () => {
     nock('https://snyk.io')
       .persist()
