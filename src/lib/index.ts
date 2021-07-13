@@ -131,9 +131,17 @@ const getDelta = async(snykTestOutput = '', debugMode = false, setPassIfNoBaseli
       displayOutput(newVulns,newLicenseIssues,issueTypeFilter,mode)
     }
     
-    
-    if((newVulns.length + newLicenseIssues.length > 0) && !passIfNoBaseline) {
-      process.exitCode = 1
+
+    if(newVulns.length + newLicenseIssues.length > 0) {
+      if(!noBaseline){
+        process.exitCode = 1
+      } else {
+        if(passIfNoBaseline){
+          process.exitCode = 0
+        } else {
+          process.exitCode = 1
+        }
+      }
     } else {
       process.exitCode = 0
     }
