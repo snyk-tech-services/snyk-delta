@@ -252,6 +252,7 @@ describe('Test End 2 End - Inline mode', () => {
         },
       ],
       passIfNoBaseline: true,
+      noBaseline: true,
     };
 
     expect(result).toEqual(expectedResult);
