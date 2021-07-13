@@ -26,7 +26,7 @@ const getDelta = async(snykTestOutput = '', debugMode = false, setPassIfNoBaseli
    const debug = utils.getDebugModule()
    const mode = argv.currentProject || argv.currentOrg ? "standalone" : "inline"
    let newVulns, newLicenseIssues
-   const passIfNoBaseline = argv.setPassIfNoBaseline || setPassIfNoBaselineFlag
+   let passIfNoBaseline = argv.setPassIfNoBaseline || setPassIfNoBaselineFlag
 
   try {
     if(process.env.NODE_ENV == 'prod'){
@@ -106,6 +106,7 @@ const getDelta = async(snykTestOutput = '', debugMode = false, setPassIfNoBaseli
 
       
     } else {
+      passIfNoBaseline = false // the project is monitored so this should not be set to true.
       snykProject = await snyk.getProjectIssues(baselineOrg,baselineProject)
       const baselineVulnerabilitiesIssues = snykProject.issues.vulnerabilities
 
