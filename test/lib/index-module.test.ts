@@ -70,6 +70,7 @@ describe('Test End 2 End - Module', () => {
       newVulns: [],
       newLicenseIssues: [],
       passIfNoBaseline: false,
+      noBaseline: false,
     };
     expect(result).toEqual(expectedResult);
   });
@@ -87,6 +88,7 @@ describe('Test End 2 End - Module', () => {
       newVulns: [],
       newLicenseIssues: [],
       passIfNoBaseline: false,
+      noBaseline: false,
     };
     expect(result).toEqual(expectedResult);
   });
@@ -172,6 +174,7 @@ describe('Test End 2 End - Module', () => {
       ],
       newLicenseIssues: [],
       passIfNoBaseline: false,
+      noBaseline: false,
     };
 
     expect(result).toEqual(expectedResult);
