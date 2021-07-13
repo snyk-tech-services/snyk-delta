@@ -86,5 +86,6 @@ export interface SnykDeltaOutput {
     result: number | undefined,
     newVulns: IssueWithPaths[] | undefined,
     newLicenseIssues: IssueWithPaths[] | undefined
-    passIfNoBaseline: boolean
+    passIfNoBaseline: boolean,
+    noBaseline: boolean
 }
