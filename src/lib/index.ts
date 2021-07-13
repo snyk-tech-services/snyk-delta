@@ -27,6 +27,7 @@ const getDelta = async(snykTestOutput = '', debugMode = false, setPassIfNoBaseli
    const mode = argv.currentProject || argv.currentOrg ? "standalone" : "inline"
    let newVulns, newLicenseIssues
    const passIfNoBaseline = argv.setPassIfNoBaseline || setPassIfNoBaselineFlag
+   let noBaseline = false
 
   try {
     if(process.env.NODE_ENV == 'prod'){
@@ -104,7 +105,7 @@ const getDelta = async(snykTestOutput = '', debugMode = false, setPassIfNoBaseli
       newVulns = typedSnykTestJsonResults.vulnerabilities.filter(x => x.type != "license")
       newLicenseIssues = typedSnykTestJsonResults.vulnerabilities.filter(x => x.type == "license")
 
-      
+      noBaseline = true      
     } else {
       snykProject = await snyk.getProjectIssues(baselineOrg,baselineProject)
       const baselineVulnerabilitiesIssues = snykProject.issues.vulnerabilities
@@ -148,7 +149,7 @@ const getDelta = async(snykTestOutput = '', debugMode = false, setPassIfNoBaseli
     if(!module.parent || (isJestTesting() && !expect.getState().currentTestName.includes('module'))){
       process.exit(process.exitCode)
     } else {
-      return {result: process.exitCode, newVulns: newVulns,newLicenseIssues: newLicenseIssues, passIfNoBaseline: passIfNoBaseline}
+      return {result: process.exitCode, newVulns: newVulns,newLicenseIssues: newLicenseIssues, passIfNoBaseline: passIfNoBaseline, noBaseline: noBaseline}
     }
   
   }
