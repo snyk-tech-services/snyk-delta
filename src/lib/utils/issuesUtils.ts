@@ -7,12 +7,12 @@ const isVulnerablePathNew = (monitoredSnapshotPathArray: Array<string>, currentS
     const debug = getDebugModule();
     const versionPatternRegex = /@[a-zA-Z0-9-_\.]+$/
     if(monitoredSnapshotPathArray.length != currentSnapshotPathArray.length){
-        debug('###')
-        debug('Existing path')
-        debug(monitoredSnapshotPathArray)
-        debug('Current path')
-        debug(currentSnapshotPathArray)
-        debug('###')
+        // debug('###')
+        // debug('Existing path')
+        // debug(monitoredSnapshotPathArray)
+        // debug('Current path')
+        // debug(currentSnapshotPathArray)
+        // debug('###')
         return true
     }
     return !(_.isEqual(monitoredSnapshotPathArray, currentSnapshotPathArray) || currentSnapshotPathArray.every((path, index) => {
