@@ -76,3 +76,7 @@ The return code will be 0 if no issue, 1 if issues.
 ### Caution
 Usage as a module requires list of issues coming from Snyk CLI.
 Currently not compatible with data coming straight from Snyk APIs.
+
+### all-projects
+Snyk-delta doesn't currently support the --all-projects option, but you can try to use snyk_delta_all_projects.sh as a workaround until it does.
+
