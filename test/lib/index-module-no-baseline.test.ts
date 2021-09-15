@@ -255,6 +255,8 @@ describe('Test End 2 End - Inline mode', () => {
       noBaseline: true,
     };
 
+    console.log('test1');
+
     expect(result).toEqual(expectedResult);
   });
   it('Test module - no monitored project found - return vulns and 1 exit code', async () => {
