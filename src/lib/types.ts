@@ -89,3 +89,14 @@ export interface SnykDeltaOutput {
     passIfNoBaseline: boolean,
     noBaseline: boolean
 }
+
+export interface SnykDeltaInput {
+  mode: string | '',
+  passIfNoBaseline: boolean | false,
+  baselineOrg: string | '',
+  baselineProject: string | '',
+  currentOrg: string | '',
+  currentProject: string | '',
+  snykTestOutput: string | '',
+  type: string | ''
+}
