@@ -10,7 +10,10 @@ import * as path from 'path';
 import * as fs from 'fs';
 import * as utils from '../../../src/lib/utils/utils';
 import { Project } from 'snyk-api-ts-client/dist/client/generated/org';
-import { SnykCliTestOutput } from '../../../src/lib/types';
+import {
+  SnykCliTestOutput,
+  IssuesPostResponseType,
+} from '../../../src/lib/types';
 
 const fixturesFolderPath = path.resolve(__dirname, '../..') + '/fixtures/';
 
@@ -114,7 +117,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykCurrentProject: Project.IssuesPostResponseType = JSON.parse(
+      const snykCurrentProject: IssuesPostResponseType = JSON.parse(
         fs
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
@@ -135,7 +138,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykCurrentProject: Project.IssuesPostResponseType = JSON.parse(
+      const snykCurrentProject: IssuesPostResponseType = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +
@@ -159,7 +162,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykCurrentProject: Project.IssuesPostResponseType = JSON.parse(
+      const snykCurrentProject: IssuesPostResponseType = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +
@@ -254,7 +257,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykCurrentProject: Project.IssuesPostResponseType = JSON.parse(
+      const snykCurrentProject: IssuesPostResponseType = JSON.parse(
         fs
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
@@ -275,7 +278,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykCurrentProject: Project.IssuesPostResponseType = JSON.parse(
+      const snykCurrentProject: IssuesPostResponseType = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +
@@ -300,7 +303,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykCurrentProject: Project.IssuesPostResponseType = JSON.parse(
+      const snykCurrentProject: IssuesPostResponseType = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +
@@ -460,7 +463,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykCurrentProject: Project.IssuesPostResponseType = JSON.parse(
+      const snykCurrentProject: IssuesPostResponseType = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +
@@ -496,7 +499,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykCurrentProject: Project.IssuesPostResponseType = JSON.parse(
+      const snykCurrentProject: IssuesPostResponseType = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +
@@ -609,7 +612,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykCurrentProject: Project.IssuesPostResponseType = JSON.parse(
+      const snykCurrentProject: IssuesPostResponseType = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +

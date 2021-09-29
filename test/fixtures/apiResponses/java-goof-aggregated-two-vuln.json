@@ -1,0 +1,94 @@
+{
+  "issues": [    
+    {
+    "id": "SNYK-JAVA-C3P0-461017",
+    "issueType": "vuln",
+    "pkgName": "c3p0:c3p0",
+    "pkgVersions": ["0.9.1.2"],
+    "priorityScore": 490,
+    "priority": {
+      "score": 490,
+      "factors": [{ "name": "cvssScore", "description": "CVSS 9.8" }]
+    },
+    "issueData": {
+      "id": "SNYK-JAVA-C3P0-461017",
+      "title": "XML External Entity (XXE) Injection",
+      "severity": "critical",
+      "url": "https://snyk.io/vuln/SNYK-JAVA-C3P0-461017",
+      "identifiers": { "CVE": ["CVE-2018-20433"], "CWE": ["CWE-611"] },
+      "credit": ["Unknown"],
+      "exploitMaturity": "no-known-exploit",
+      "semver": { "vulnerable": ["[0,]"] },
+      "publicationTime": "2019-07-21T14:22:18Z",
+      "disclosureTime": "2018-12-24T13:29:00Z",
+      "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "cvssScore": 9.8,
+      "language": "java",
+      "patches": [],
+      "nearestFixedInVersion": ""
+    },
+    "isPatched": false,
+    "isIgnored": false,
+    "fixInfo": {
+      "isUpgradable": false,
+      "isPinnable": false,
+      "isPatchable": false,
+      "isPartiallyFixable": false,
+      "nearestFixedInVersion": "",
+      "fixedIn": []
+    },
+    "links": {
+      "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/6f3d4acc-1fc1-4f79-ae8b-19a06ee1536c/history/825cdbfc-f708-4a46-b419-c58303f69724/issue/SNYK-JAVA-C3P0-461017/paths"
+    }
+  },
+  {
+    "id": "SNYK-JAVA-ORGSPRINGFRAMEWORK-31325",
+    "issueType": "vuln",
+    "pkgName": "org.springframework:spring-core",
+    "pkgVersions": ["3.2.6.RELEASE"],
+    "priorityScore": 479,
+    "priority": {
+      "score": 479,
+      "factors": [
+        { "name": "isFixable", "description": "Has a fix available" },
+        { "name": "cvssScore", "description": "CVSS 5.3" }
+      ]
+    },
+    "issueData": {
+      "id": "SNYK-JAVA-ORGSPRINGFRAMEWORK-31325",
+      "title": "Directory Traversal",
+      "severity": "medium",
+      "url": "https://snyk.io/vuln/SNYK-JAVA-ORGSPRINGFRAMEWORK-31325",
+      "identifiers": { "CVE": ["CVE-2014-3578"], "CWE": ["CWE-22"] },
+      "credit": ["Takeshi Terada"],
+      "exploitMaturity": "no-known-exploit",
+      "semver": {
+        "vulnerable": [
+          "[3.0.0.RELEASE, 3.2.9.RELEASE)",
+          "[4.0.0.RELEASE, 4.0.5.RELEASE)"
+        ]
+      },
+      "publicationTime": "2014-09-05T17:16:58Z",
+      "disclosureTime": "2014-09-05T17:16:58Z",
+      "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "cvssScore": 5.3,
+      "language": "java",
+      "patches": [],
+      "nearestFixedInVersion": ""
+    },
+    "isPatched": false,
+    "isIgnored": false,
+    "fixInfo": {
+      "isUpgradable": true,
+      "isPinnable": false,
+      "isPatchable": false,
+      "isPartiallyFixable": true,
+      "nearestFixedInVersion": "",
+      "fixedIn": ["3.2.9.RELEASE", "4.0.5.RELEASE"]
+    },
+    "links": {
+      "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/6f3d4acc-1fc1-4f79-ae8b-19a06ee1536c/history/825cdbfc-f708-4a46-b419-c58303f69724/issue/SNYK-JAVA-ORGSPRINGFRAMEWORK-31325/paths"
+    }
+  }
+]
+}

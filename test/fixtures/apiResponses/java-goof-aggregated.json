@@ -1,0 +1,599 @@
+{
+  "issues": [
+    {
+      "id": "SNYK-JAVA-COMMONSCOLLECTIONS-30078",
+      "issueType": "vuln",
+      "pkgName": "commons-collections:commons-collections",
+      "pkgVersions": ["3.2.1"],
+      "priorityScore": 876,
+      "priority": {
+        "score": 876,
+        "factors": [
+          { "name": "exploitMaturity", "description": "Mature exploit" },
+          { "name": "isFixable", "description": "Has a fix available" },
+          { "name": "cvssScore", "description": "CVSS 9.8" }
+        ]
+      },
+      "issueData": {
+        "id": "SNYK-JAVA-COMMONSCOLLECTIONS-30078",
+        "title": "Deserialization of Untrusted Data",
+        "severity": "critical",
+        "url": "https://snyk.io/vuln/SNYK-JAVA-COMMONSCOLLECTIONS-30078",
+        "identifiers": {
+          "CVE": ["CVE-2015-4852", "CVE-2015-7501"],
+          "CWE": ["CWE-502"]
+        },
+        "credit": ["Unknown"],
+        "exploitMaturity": "mature",
+        "semver": { "vulnerable": ["[3.0,3.2.2)"] },
+        "publicationTime": "2015-11-06T16:51:56Z",
+        "disclosureTime": "2015-11-06T16:51:56Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H/E:F/RL:O",
+        "cvssScore": 9.8,
+        "language": "java",
+        "patches": [],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": true,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": true,
+        "nearestFixedInVersion": "",
+        "fixedIn": ["3.2.2"]
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/6f3d4acc-1fc1-4f79-ae8b-19a06ee1536c/history/825cdbfc-f708-4a46-b419-c58303f69724/issue/SNYK-JAVA-COMMONSCOLLECTIONS-30078/paths"
+      }
+    },
+    {
+      "id": "snyk:lic:maven:org.hibernate:hibernate-entitymanager:LGPL-2.0",
+      "issueType": "license",
+      "pkgName": "org.hibernate:hibernate-entitymanager",
+      "pkgVersions": ["4.3.7.Final"],
+      "priorityScore": 800,
+      "priority": {
+        "score": 800,
+        "factors": [
+          { "name": "isFresh", "description": "Recently disclosed" },
+          { "name": "isFixable", "description": "Has a fix available" },
+          { "name": "severity", "description": "Medium severity" }
+        ]
+      },
+      "issueData": {
+        "id": "snyk:lic:maven:org.hibernate:hibernate-entitymanager:LGPL-2.0",
+        "title": "LGPL-2.0 license",
+        "severity": "medium",
+        "url": "https://snyk.io/vuln/snyk:lic:maven:org.hibernate:hibernate-entitymanager:LGPL-2.0",
+        "exploitMaturity": "no-data",
+        "semver": { "vulnerable": ["[3.5.0.Beta-1, 5.3.1.Final)"] },
+        "publicationTime": "2021-06-30T12:37:18.453Z",
+        "language": "java",
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": true,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": true,
+        "nearestFixedInVersion": ""
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/6f3d4acc-1fc1-4f79-ae8b-19a06ee1536c/history/825cdbfc-f708-4a46-b419-c58303f69724/issue/snyk:lic:maven:org.hibernate:hibernate-entitymanager:LGPL-2.0/paths"
+      }
+    },
+    {
+      "id": "snyk:lic:maven:org.hibernate:hibernate-core:LGPL-2.0",
+      "issueType": "license",
+      "pkgName": "org.hibernate:hibernate-core",
+      "pkgVersions": ["4.3.7.Final"],
+      "priorityScore": 800,
+      "priority": {
+        "score": 800,
+        "factors": [
+          { "name": "isFresh", "description": "Recently disclosed" },
+          { "name": "isFixable", "description": "Has a fix available" },
+          { "name": "severity", "description": "Medium severity" }
+        ]
+      },
+      "issueData": {
+        "id": "snyk:lic:maven:org.hibernate:hibernate-core:LGPL-2.0",
+        "title": "LGPL-2.0 license",
+        "severity": "medium",
+        "url": "https://snyk.io/vuln/snyk:lic:maven:org.hibernate:hibernate-core:LGPL-2.0",
+        "exploitMaturity": "no-data",
+        "semver": { "vulnerable": ["[3.3.0.CR1, 5.3.1.Final)"] },
+        "publicationTime": "2021-06-30T20:48:33.730Z",
+        "language": "java",
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": true,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": true,
+        "nearestFixedInVersion": ""
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/6f3d4acc-1fc1-4f79-ae8b-19a06ee1536c/history/825cdbfc-f708-4a46-b419-c58303f69724/issue/snyk:lic:maven:org.hibernate:hibernate-core:LGPL-2.0/paths"
+      }
+    },
+    {
+      "id": "SNYK-JAVA-ORGHIBERNATE-1041788",
+      "issueType": "vuln",
+      "pkgName": "org.hibernate:hibernate-core",
+      "pkgVersions": ["4.3.7.Final"],
+      "priorityScore": 635,
+      "priority": {
+        "score": 635,
+        "factors": [
+          { "name": "exploitMaturity", "description": "" },
+          { "name": "isFixable", "description": "Has a fix available" },
+          { "name": "cvssScore", "description": "CVSS 8.2" }
+        ]
+      },
+      "issueData": {
+        "id": "SNYK-JAVA-ORGHIBERNATE-1041788",
+        "title": "SQL Injection",
+        "severity": "high",
+        "url": "https://snyk.io/vuln/SNYK-JAVA-ORGHIBERNATE-1041788",
+        "identifiers": { "CVE": ["CVE-2020-25638"], "CWE": ["CWE-89"] },
+        "credit": ["Unknown"],
+        "exploitMaturity": "no-known-exploit",
+        "semver": { "vulnerable": ["[,5.4.24.Final)"] },
+        "publicationTime": "2020-11-19T16:57:14.572204Z",
+        "disclosureTime": "2020-11-19T16:51:45Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N/E:U/RL:O/RC:U",
+        "cvssScore": 8.2,
+        "language": "java",
+        "patches": [],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": true,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": true,
+        "nearestFixedInVersion": "",
+        "fixedIn": ["5.4.24.Final"]
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/6f3d4acc-1fc1-4f79-ae8b-19a06ee1536c/history/825cdbfc-f708-4a46-b419-c58303f69724/issue/SNYK-JAVA-ORGHIBERNATE-1041788/paths"
+      }
+    },
+    {
+      "id": "SNYK-JAVA-ORGHIBERNATE-584563",
+      "issueType": "vuln",
+      "pkgName": "org.hibernate:hibernate-core",
+      "pkgVersions": ["4.3.7.Final"],
+      "priorityScore": 619,
+      "priority": {
+        "score": 619,
+        "factors": [
+          { "name": "isFixable", "description": "Has a fix available" },
+          { "name": "cvssScore", "description": "CVSS 8.1" }
+        ]
+      },
+      "issueData": {
+        "id": "SNYK-JAVA-ORGHIBERNATE-584563",
+        "title": "SQL Injection",
+        "severity": "high",
+        "url": "https://snyk.io/vuln/SNYK-JAVA-ORGHIBERNATE-584563",
+        "identifiers": { "CVE": ["CVE-2019-14900"], "CWE": ["CWE-89"] },
+        "credit": ["Gail Badner"],
+        "exploitMaturity": "no-known-exploit",
+        "semver": {
+          "vulnerable": ["[,5.3.18.Final)", "[5.4.0.Final, 5.4.18.Final)"]
+        },
+        "publicationTime": "2020-07-15T16:40:12Z",
+        "disclosureTime": "2020-06-18T13:46:30Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "cvssScore": 8.1,
+        "language": "java",
+        "patches": [],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": true,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": true,
+        "nearestFixedInVersion": "",
+        "fixedIn": ["5.3.18.Final", "5.4.18.Final"]
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/6f3d4acc-1fc1-4f79-ae8b-19a06ee1536c/history/825cdbfc-f708-4a46-b419-c58303f69724/issue/SNYK-JAVA-ORGHIBERNATE-584563/paths"
+      }
+    },
+    {
+      "id": "SNYK-JAVA-COMMONSCOLLECTIONS-472711",
+      "issueType": "vuln",
+      "pkgName": "commons-collections:commons-collections",
+      "pkgVersions": ["3.2.1"],
+      "priorityScore": 601,
+      "priority": {
+        "score": 601,
+        "factors": [
+          {
+            "name": "exploitMaturity",
+            "description": "Proof of Concept exploit"
+          },
+          { "name": "isFixable", "description": "Has a fix available" },
+          { "name": "cvssScore", "description": "CVSS 5.6" }
+        ]
+      },
+      "issueData": {
+        "id": "SNYK-JAVA-COMMONSCOLLECTIONS-472711",
+        "title": "Deserialization of Untrusted Data",
+        "severity": "medium",
+        "url": "https://snyk.io/vuln/SNYK-JAVA-COMMONSCOLLECTIONS-472711",
+        "identifiers": {
+          "CVE": ["CVE-2015-6420"],
+          "CWE": ["CWE-502"],
+          "GHSA": ["GHSA-6hgm-866r-3cjv"]
+        },
+        "credit": ["Unknown"],
+        "exploitMaturity": "proof-of-concept",
+        "semver": { "vulnerable": ["[,3.2.2)"] },
+        "publicationTime": "2020-02-24T00:00:00Z",
+        "disclosureTime": "2019-10-10T00:00:00Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:R",
+        "cvssScore": 5.6,
+        "language": "java",
+        "patches": [],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": true,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": true,
+        "nearestFixedInVersion": "",
+        "fixedIn": ["3.2.2"]
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/6f3d4acc-1fc1-4f79-ae8b-19a06ee1536c/history/825cdbfc-f708-4a46-b419-c58303f69724/issue/SNYK-JAVA-COMMONSCOLLECTIONS-472711/paths"
+      }
+    },
+    {
+      "id": "SNYK-JAVA-C3P0-461017",
+      "issueType": "vuln",
+      "pkgName": "c3p0:c3p0",
+      "pkgVersions": ["0.9.1.2"],
+      "priorityScore": 490,
+      "priority": {
+        "score": 490,
+        "factors": [{ "name": "cvssScore", "description": "CVSS 9.8" }]
+      },
+      "issueData": {
+        "id": "SNYK-JAVA-C3P0-461017",
+        "title": "XML External Entity (XXE) Injection",
+        "severity": "critical",
+        "url": "https://snyk.io/vuln/SNYK-JAVA-C3P0-461017",
+        "identifiers": { "CVE": ["CVE-2018-20433"], "CWE": ["CWE-611"] },
+        "credit": ["Unknown"],
+        "exploitMaturity": "no-known-exploit",
+        "semver": { "vulnerable": ["[0,]"] },
+        "publicationTime": "2019-07-21T14:22:18Z",
+        "disclosureTime": "2018-12-24T13:29:00Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "cvssScore": 9.8,
+        "language": "java",
+        "patches": [],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": false,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": false,
+        "nearestFixedInVersion": "",
+        "fixedIn": []
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/6f3d4acc-1fc1-4f79-ae8b-19a06ee1536c/history/825cdbfc-f708-4a46-b419-c58303f69724/issue/SNYK-JAVA-C3P0-461017/paths"
+      }
+    },
+    {
+      "id": "SNYK-JAVA-ORGSPRINGFRAMEWORK-31325",
+      "issueType": "vuln",
+      "pkgName": "org.springframework:spring-core",
+      "pkgVersions": ["3.2.6.RELEASE"],
+      "priorityScore": 479,
+      "priority": {
+        "score": 479,
+        "factors": [
+          { "name": "isFixable", "description": "Has a fix available" },
+          { "name": "cvssScore", "description": "CVSS 5.3" }
+        ]
+      },
+      "issueData": {
+        "id": "SNYK-JAVA-ORGSPRINGFRAMEWORK-31325",
+        "title": "Directory Traversal",
+        "severity": "medium",
+        "url": "https://snyk.io/vuln/SNYK-JAVA-ORGSPRINGFRAMEWORK-31325",
+        "identifiers": { "CVE": ["CVE-2014-3578"], "CWE": ["CWE-22"] },
+        "credit": ["Takeshi Terada"],
+        "exploitMaturity": "no-known-exploit",
+        "semver": {
+          "vulnerable": [
+            "[3.0.0.RELEASE, 3.2.9.RELEASE)",
+            "[4.0.0.RELEASE, 4.0.5.RELEASE)"
+          ]
+        },
+        "publicationTime": "2014-09-05T17:16:58Z",
+        "disclosureTime": "2014-09-05T17:16:58Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+        "cvssScore": 5.3,
+        "language": "java",
+        "patches": [],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": true,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": true,
+        "nearestFixedInVersion": "",
+        "fixedIn": ["3.2.9.RELEASE", "4.0.5.RELEASE"]
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/6f3d4acc-1fc1-4f79-ae8b-19a06ee1536c/history/825cdbfc-f708-4a46-b419-c58303f69724/issue/SNYK-JAVA-ORGSPRINGFRAMEWORK-31325/paths"
+      }
+    },
+    {
+      "id": "snyk:lic:maven:org.hibernate.javax.persistence:hibernate-jpa-2.1-api:EPL-1.0",
+      "issueType": "license",
+      "pkgName": "org.hibernate.javax.persistence:hibernate-jpa-2.1-api",
+      "pkgVersions": ["1.0.0.Final"],
+      "priorityScore": 425,
+      "priority": {
+        "score": 425,
+        "factors": [
+          { "name": "isFresh", "description": "Recently disclosed" },
+          { "name": "severity", "description": "Medium severity" }
+        ]
+      },
+      "issueData": {
+        "id": "snyk:lic:maven:org.hibernate.javax.persistence:hibernate-jpa-2.1-api:EPL-1.0",
+        "title": "EPL-1.0 license",
+        "severity": "medium",
+        "url": "https://snyk.io/vuln/snyk:lic:maven:org.hibernate.javax.persistence:hibernate-jpa-2.1-api:EPL-1.0",
+        "exploitMaturity": "no-data",
+        "semver": { "vulnerable": ["[0,)"] },
+        "publicationTime": "2021-06-30T12:52:28.937Z",
+        "language": "java",
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": false,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": false,
+        "nearestFixedInVersion": ""
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/6f3d4acc-1fc1-4f79-ae8b-19a06ee1536c/history/825cdbfc-f708-4a46-b419-c58303f69724/issue/snyk:lic:maven:org.hibernate.javax.persistence:hibernate-jpa-2.1-api:EPL-1.0/paths"
+      }
+    },
+    {
+      "id": "snyk:lic:maven:org.hibernate.common:hibernate-commons-annotations:LGPL-2.1",
+      "issueType": "license",
+      "pkgName": "org.hibernate.common:hibernate-commons-annotations",
+      "pkgVersions": ["4.0.5.Final"],
+      "priorityScore": 425,
+      "priority": {
+        "score": 425,
+        "factors": [
+          { "name": "isFresh", "description": "Recently disclosed" },
+          { "name": "severity", "description": "Medium severity" }
+        ]
+      },
+      "issueData": {
+        "id": "snyk:lic:maven:org.hibernate.common:hibernate-commons-annotations:LGPL-2.1",
+        "title": "LGPL-2.1 license",
+        "severity": "medium",
+        "url": "https://snyk.io/vuln/snyk:lic:maven:org.hibernate.common:hibernate-commons-annotations:LGPL-2.1",
+        "exploitMaturity": "no-data",
+        "semver": { "vulnerable": ["[0,)"] },
+        "publicationTime": "2021-06-30T11:44:13.676Z",
+        "language": "java",
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": false,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": false,
+        "nearestFixedInVersion": ""
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/6f3d4acc-1fc1-4f79-ae8b-19a06ee1536c/history/825cdbfc-f708-4a46-b419-c58303f69724/issue/snyk:lic:maven:org.hibernate.common:hibernate-commons-annotations:LGPL-2.1/paths"
+      }
+    },
+    {
+      "id": "snyk:lic:maven:org.aspectj:aspectjweaver:EPL-1.0",
+      "issueType": "license",
+      "pkgName": "org.aspectj:aspectjweaver",
+      "pkgVersions": ["1.8.2"],
+      "priorityScore": 425,
+      "priority": {
+        "score": 425,
+        "factors": [
+          { "name": "isFresh", "description": "Recently disclosed" },
+          { "name": "severity", "description": "Medium severity" }
+        ]
+      },
+      "issueData": {
+        "id": "snyk:lic:maven:org.aspectj:aspectjweaver:EPL-1.0",
+        "title": "EPL-1.0 license",
+        "severity": "medium",
+        "url": "https://snyk.io/vuln/snyk:lic:maven:org.aspectj:aspectjweaver:EPL-1.0",
+        "exploitMaturity": "no-data",
+        "semver": { "vulnerable": ["[0,)"] },
+        "publicationTime": "2021-06-30T23:22:49.482Z",
+        "language": "java",
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": false,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": false,
+        "nearestFixedInVersion": ""
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/6f3d4acc-1fc1-4f79-ae8b-19a06ee1536c/history/825cdbfc-f708-4a46-b419-c58303f69724/issue/snyk:lic:maven:org.aspectj:aspectjweaver:EPL-1.0/paths"
+      }
+    },
+    {
+      "id": "snyk:lic:maven:c3p0:c3p0:LGPL-3.0",
+      "issueType": "license",
+      "pkgName": "c3p0:c3p0",
+      "pkgVersions": ["0.9.1.2"],
+      "priorityScore": 425,
+      "priority": {
+        "score": 425,
+        "factors": [
+          { "name": "isFresh", "description": "Recently disclosed" },
+          { "name": "severity", "description": "Medium severity" }
+        ]
+      },
+      "issueData": {
+        "id": "snyk:lic:maven:c3p0:c3p0:LGPL-3.0",
+        "title": "LGPL-3.0 license",
+        "severity": "medium",
+        "url": "https://snyk.io/vuln/snyk:lic:maven:c3p0:c3p0:LGPL-3.0",
+        "exploitMaturity": "no-data",
+        "semver": { "vulnerable": ["[0,)"] },
+        "publicationTime": "2021-06-30T03:00:03.475Z",
+        "language": "java",
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": false,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": false,
+        "nearestFixedInVersion": ""
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/6f3d4acc-1fc1-4f79-ae8b-19a06ee1536c/history/825cdbfc-f708-4a46-b419-c58303f69724/issue/snyk:lic:maven:c3p0:c3p0:LGPL-3.0/paths"
+      }
+    },
+    {
+      "id": "SNYK-JAVA-DOM4J-174153",
+      "issueType": "vuln",
+      "pkgName": "dom4j:dom4j",
+      "pkgVersions": ["1.6.1"],
+      "priorityScore": 375,
+      "priority": {
+        "score": 375,
+        "factors": [{ "name": "cvssScore", "description": "CVSS 7.5" }]
+      },
+      "issueData": {
+        "id": "SNYK-JAVA-DOM4J-174153",
+        "title": "XML External Entity (XXE) Injection",
+        "severity": "high",
+        "url": "https://snyk.io/vuln/SNYK-JAVA-DOM4J-174153",
+        "identifiers": {
+          "CVE": ["CVE-2018-1000632"],
+          "CWE": ["CWE-611"],
+          "GHSA": ["GHSA-6pcc-3rfx-4gpm"]
+        },
+        "credit": ["Mario Areias"],
+        "exploitMaturity": "no-known-exploit",
+        "semver": { "vulnerable": ["[0,]"] },
+        "publicationTime": "2018-08-21T14:16:13Z",
+        "disclosureTime": "2018-07-01T19:12:29Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+        "cvssScore": 7.5,
+        "language": "java",
+        "patches": [],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": false,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": false,
+        "nearestFixedInVersion": "",
+        "fixedIn": []
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/6f3d4acc-1fc1-4f79-ae8b-19a06ee1536c/history/825cdbfc-f708-4a46-b419-c58303f69724/issue/SNYK-JAVA-DOM4J-174153/paths"
+      }
+    },
+    {
+      "id": "SNYK-JAVA-C3P0-461018",
+      "issueType": "vuln",
+      "pkgName": "c3p0:c3p0",
+      "pkgVersions": ["0.9.1.2"],
+      "priorityScore": 295,
+      "priority": {
+        "score": 295,
+        "factors": [{ "name": "cvssScore", "description": "CVSS 5.9" }]
+      },
+      "issueData": {
+        "id": "SNYK-JAVA-C3P0-461018",
+        "title": "Denial of Service (DoS)",
+        "severity": "medium",
+        "url": "https://snyk.io/vuln/SNYK-JAVA-C3P0-461018",
+        "identifiers": {
+          "CVE": ["CVE-2019-5427"],
+          "CWE": ["CWE-776"],
+          "GHSA": ["GHSA-84p2-vf58-xhxv"]
+        },
+        "credit": ["Unknown"],
+        "exploitMaturity": "no-known-exploit",
+        "semver": { "vulnerable": ["[0,]"] },
+        "publicationTime": "2019-04-22T22:18:26Z",
+        "disclosureTime": "2019-04-22T22:18:26Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H/RL:O",
+        "cvssScore": 5.9,
+        "language": "java",
+        "patches": [],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": false,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": false,
+        "nearestFixedInVersion": "",
+        "fixedIn": []
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/6f3d4acc-1fc1-4f79-ae8b-19a06ee1536c/history/825cdbfc-f708-4a46-b419-c58303f69724/issue/SNYK-JAVA-C3P0-461018/paths"
+      }
+    }
+  ]
+}

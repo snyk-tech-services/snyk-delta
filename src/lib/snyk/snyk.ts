@@ -1,5 +1,6 @@
 import * as Error from '../customErrors/apiError';
 import * as snykClient from 'snyk-api-ts-client';
+import {convertIntoIssueWithPath} from '../utils/issuesUtils'
 
 const getProject = async (orgID: string, projectID: string) => {
   const project = await new snykClient.Org({ orgId: orgID })
@@ -33,7 +34,9 @@ const getProjectUUID = async (
 };
 const getProjectIssues = async (orgID: string, projectID: string) => {
   // No filter on patched or non patch issue, getting both
-  const filters: snykClient.OrgTypes.Project.IssuesPostBodyType = {
+  const filters: snykClient.OrgTypes.Project.AggregatedissuesPostBodyType = {
+    includeDescription: false,
+    includeIntroducedThrough: false,
     filters: {
       severities: ['high', 'medium', 'low', 'critical'],
       exploitMaturity: [
@@ -44,12 +47,20 @@ const getProjectIssues = async (orgID: string, projectID: string) => {
       ],
       types: ['vuln', 'license'],
       ignored: false,
-    },
+      patched: false,
+      priority: {
+        score: {
+          min: undefined,
+          max: undefined,
+        },
+      }
+    }
   };
-  const projectIssues = await new snykClient.Org({ orgId: orgID })
+  const projectAggregatedIssues = await new snykClient.Org({ orgId: orgID })
     .project({ projectId: projectID })
-    .issues.post(filters);
-  return projectIssues;
+    .aggregatedissues.getAggregatedIssuesWithVulnPaths(filters);
+
+  return await convertIntoIssueWithPath(projectAggregatedIssues, orgID, projectID); 
 };
 
 const getProjectDepGraph = async (orgID: string, projectID: string) => {
@@ -59,4 +70,71 @@ const getProjectDepGraph = async (orgID: string, projectID: string) => {
   return projectDepGraph;
 };
 
-export { getProject, getProjectIssues, getProjectDepGraph, getProjectUUID };
+interface ProjectIssuePathsLegacy {
+  UpgradePathLegacy: string[][];
+  IssueFromLegacy: string[][];
+}
+
+const getUpgradePath = async (orgID: string, projectID: string, issueId: string) => {
+  
+  let projectIssuePaths = await new snykClient.Org({ orgId: orgID })
+    .project({ projectId: projectID }).issue({issueId: issueId})
+    .paths.get(undefined, 100, 1);
+
+  const projectIssuePathsArray = []
+
+  projectIssuePathsArray.push(projectIssuePaths)
+
+  if (projectIssuePaths.links && projectIssuePaths.links['next'])
+  {
+    let nextPageExist = true
+    let nextPage = 2
+    while (nextPageExist)
+    {
+        projectIssuePaths = await new snykClient.Org({ orgId: orgID })
+      .project({ projectId: projectID }).issue({issueId: issueId})
+      .paths.get(undefined, 100, nextPage);
+      nextPage ++
+      projectIssuePathsArray.push(projectIssuePaths)
+      if (projectIssuePaths.links && !projectIssuePaths.links['next']){
+        nextPageExist = false
+      }
+    }
+  }
+
+  const projectIssuePathsLegacy: ProjectIssuePathsLegacy = {
+    UpgradePathLegacy: [],
+    IssueFromLegacy: []
+  }
+  let depPathIndex = 0
+  let libNameArray: string[] = []
+  let fixVersionArray: string[] = []
+
+  projectIssuePathsArray.forEach(projectIssuePaths => {
+    if (projectIssuePaths.paths) {
+      projectIssuePaths.paths.map(depPath => {
+        depPath.map(lib => {
+          const libName = lib.name + "@" + lib.version      
+          libNameArray.push(libName)
+          const fixVersionName = lib.name + "@" + lib.fixVersion
+          if (lib.fixVersion)
+          {
+            fixVersionArray.push(fixVersionName)
+          }  
+        })
+        projectIssuePathsLegacy.IssueFromLegacy[depPathIndex] = libNameArray
+        if (fixVersionArray.length > 0) {
+          projectIssuePathsLegacy.UpgradePathLegacy[depPathIndex] = (fixVersionArray)
+        }
+        depPathIndex += 1
+        libNameArray = []
+        fixVersionArray = []
+      })
+    }
+  })
+
+  return projectIssuePathsLegacy;
+}
+
+
+export { getProject, getProjectIssues, getProjectDepGraph, getProjectUUID, getUpgradePath };
