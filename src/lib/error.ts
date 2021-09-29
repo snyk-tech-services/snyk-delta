@@ -26,7 +26,7 @@ const handleError = (error: Error) => {
             debug(error)
             break;
         default:
-            //console.log("Unknown error")
+            console.log("Unknown error")
             debug(error)
     }
 }

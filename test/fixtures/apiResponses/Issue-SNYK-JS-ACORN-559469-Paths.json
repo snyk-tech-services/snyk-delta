@@ -1,0 +1,14 @@
+{
+    "snapshotId": "9c01f28c-a918-4428-ad73-d274f63c1ee7",
+    "paths": [
+      [
+        { "name": "goof", "version": "0.0.3" },
+        { "name": "@snyk/nodejs-runtime-agent", "version": "1.14.0", "fixVersion":"1.14.0" },
+        { "name": "acorn", "version": "5.7.3", "fixVersion":"5.7.4" }
+      ]
+    ],
+    "total": 1,
+    "links": {
+      "last": "https://app.snyk.io/api/v1/org/f20676f4-3066-40aa-bdf6-ac28ba609ab6/project/e4ccfabd-f57e-4df2-a6c6-5b515b93d44c/issue/SNYK-ALPINE37-LIBPNG-453128/paths?page=1&snapshotId=9c01f28c-a918-4428-ad73-d274f63c1ee7"
+    }
+  }
