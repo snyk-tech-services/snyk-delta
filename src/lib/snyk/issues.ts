@@ -10,14 +10,13 @@ enum severityThresholds {
   'critical' = 4,
 }
 
-
-
 const getNewIssues = (
   snykProject: IssueWithPaths[],
   snykTestJsonIssuesResults: IssueWithPaths[],
   inboundSeverityThreshold = 'low',
   mode: string,
 ): IssueWithPaths[] => {
+
   const debug = getDebugModule();
 
   const MonitoredIssues = snykProject;
@@ -31,7 +30,7 @@ const getNewIssues = (
   let newIssues = snykTestJsonIssuesResults;
   MonitoredIssues.forEach((monitoredIssue) => {
     newIssues = _.reject(newIssues, (issue) => {
-      if(!issue.from || !monitoredIssue.from) {
+      if(!issue.from || !monitoredIssue.from) {                      
         debug(`Error: Issue ${issue.id} does not have a vuln path in one of the snapshots`)
       }
       let issueFromArray = issue.from;
@@ -70,6 +69,7 @@ const getIssuesDetailsPerPackage = (
       issues.version == packageVersion,
   );
 };
+
 
 export {
   getNewIssues,

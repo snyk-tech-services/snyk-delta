@@ -4,9 +4,9 @@ import * as path from 'path';
 import * as fs from 'fs';
 process.argv.push('-d');
 process.argv.push('--baselineOrg=playground');
-process.argv.push('--baselineProject=c51c80c2-66a1-442a-91e2-4f55b4256a72');
+process.argv.push('--baselineProject=c51c80c2-66a1-442a-91e2-4f55b4256a73');
 process.argv.push('--currentOrg=playground');
-process.argv.push('--currentProject=c51c80c2-66a1-442a-91e2-4f55b4256a73');
+process.argv.push('--currentProject=c51c80c2-66a1-442a-91e2-4f55b4256a72');
 const mockExit = mockProcessExit();
 import { getDelta } from '../../src/lib/index';
 
@@ -41,13 +41,15 @@ describe('Test End 2 End - Standalone mode', () => {
       .post(/.*/)
       .reply(200, (uri) => {
         switch (uri) {
-          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issues':
+          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/aggregated-issues':
             return fs.readFileSync(
-              fixturesFolderPath + 'apiResponses/test-goof.json',
+              fixturesFolderPath +
+                'apiResponses/test-goof-aggregated-one-vuln.json',
             );
-          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issues':
+          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/aggregated-issues':
             return fs.readFileSync(
-              fixturesFolderPath + 'apiResponses/test-goof.json',
+              fixturesFolderPath +
+                'apiResponses/test-goof-aggregated-one-vuln.json',
             );
           // case '/api/v1/org/playground/projects':
           //   return fs.readFileSync(fixturesFolderPath+'apiResponsesForProjects/list-all-projects-org-playground.json')
@@ -64,6 +66,16 @@ describe('Test End 2 End - Standalone mode', () => {
           case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/dep-graph':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/goof-depgraph-from-api.json',
+            );
+          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/SNYK-JS-ACORN-559469-issue-paths.json',
+            );
+          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/SNYK-JS-ACORN-559469-issue-paths.json',
             );
           default:
         }
@@ -101,14 +113,15 @@ describe('Test End 2 End - Standalone mode', () => {
       .post(/.*/)
       .reply(200, (uri) => {
         switch (uri) {
-          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issues':
-            return fs.readFileSync(
-              fixturesFolderPath + 'apiResponses/test-goof.json',
-            );
-          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issues':
+          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/aggregated-issues':
             return fs.readFileSync(
               fixturesFolderPath +
-                'apiResponses/test-goof-with-one-more-vuln.json',
+                'apiResponses/test-goof-aggregated-two-vuln-no-license.json',
+            );
+          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/aggregated-issues':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/test-goof-aggregated-one-vuln.json',
             );
           // case '/api/v1/org/playground/projects':
           //   return fs.readFileSync(fixturesFolderPath+'apiResponsesForProjects/list-all-projects-org-playground.json')
@@ -125,6 +138,33 @@ describe('Test End 2 End - Standalone mode', () => {
           case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/dep-graph':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/goof-depgraph-from-api.json',
+            );
+          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/SNYK-JS-ACORN-559469-issue-paths.json',
+            );
+          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/SNYK-JS-ACORN-559469-issue-paths.json',
+            );
+          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
+            console.log('uri good');
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page1.json',
+            );
+          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
+            console.log('uri good');
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page2.json',
+            );
+          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=2':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page1.json',
             );
           default:
         }
@@ -147,10 +187,13 @@ describe('Test End 2 End - Standalone mode', () => {
       'Removed 0\n',
       '_____________________________',
       //'\n                                uuuuuuuuuuuuuuuuuuuu\n                              u" uuuuuuuuuuuuuuuuuu "u\n                            u" u$$$$$$$$$$$$$$$$$$$$u "u\n                          u" u$$$$$$$$$$$$$$$$$$$$$$$$u "u\n                        u" u$$$$$$$$$$$$$$$$$$$$$$$$$$$$u "u\n                      u" u$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$u "u\n                    u" u$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$u "u\n                    $ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ $\n                    $ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ $\n                    $ $$$" ... "$...  ...$" ... "$$$  ... "$$$ $\n                    $ $$$u `"$$$$$$$  $$$  $$$$$  $$  $$$  $$$ $\n                    $ $$$$$$uu "$$$$  $$$  $$$$$  $$  """ u$$$ $\n                    $ $$$""$$$  $$$$  $$$u "$$$" u$$  $$$$$$$$ $\n                    $ $$$$....,$$$$$..$$$$$....,$$$$..$$$$$$$$ $\n                    $ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ $\n                    "u "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" u"\n                      "u "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" u"\n                        "u "$$$$$$$$$$$$$$$$$$$$$$$$$$$$" u"\n                          "u "$$$$$$$$$$$$$$$$$$$$$$$$" u"\n                            "u "$$$$$$$$$$$$$$$$$$$$" u"\n                              "u """""""""""""""""" u"\n                                """"""""""""""""""""\n                    ',
-      'New issue introduced !',
-      'Security Vulnerability:\n',
-      '1/1: Denial of Service (DoS) [Medium Severity]',
-      '    Via: ms@1.0.0 => ejs-locals@1.0.2 => ejs@0.8.8',
+      'New issues introduced !',
+      'Security Vulnerabilities:',
+      '1/2: Prototype Pollution [Medium Severity]',
+      '    Via: snyk@1.228.3 => configstore@3.1.2 => dot-prop@4.2.0',
+      '\n',
+      '2/2: Prototype Pollution [Medium Severity]',
+      '    Via: snyk@1.228.3 => update-notifier@2.5.0 => configstore@3.1.2 => dot-prop@4.2.0',
       '\n',
     ];
 
@@ -167,14 +210,15 @@ describe('Test End 2 End - Standalone mode', () => {
       .post(/.*/)
       .reply(200, (uri) => {
         switch (uri) {
-          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issues':
-            return fs.readFileSync(
-              fixturesFolderPath + 'apiResponses/test-goof.json',
-            );
-          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issues':
+          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/aggregated-issues':
             return fs.readFileSync(
               fixturesFolderPath +
-                'apiResponses/test-goof-with-one-more-vuln.json',
+                'apiResponses/test-goof-aggregated-two-vuln-no-license.json',
+            );
+          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/aggregated-issues':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/test-goof-aggregated-one-vuln.json',
             );
           // case '/api/v1/org/playground/projects':
           //   return fs.readFileSync(fixturesFolderPath+'apiResponsesForProjects/list-all-projects-org-playground.json')
@@ -184,14 +228,39 @@ describe('Test End 2 End - Standalone mode', () => {
       .get(/.*/)
       .reply(200, (uri) => {
         switch (uri) {
-          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/dep-graph':
+          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/dep-graph':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/goof-depgraph-from-api-with-one-more-direct-dep.json',
             );
-          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/dep-graph':
+          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/SNYK-JS-ACORN-559469-issue-paths.json',
+            );
+          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/SNYK-JS-ACORN-559469-issue-paths.json',
+            );
+          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/dep-graph':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/goof-depgraph-from-api.json',
+            );
+          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page1.json',
+            );
+          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page1.json',
+            );
+          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=2':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page2.json',
             );
           default:
         }
@@ -213,10 +282,13 @@ describe('Test End 2 End - Standalone mode', () => {
       'Removed 0\n',
       '_____________________________',
       //'\n                                uuuuuuuuuuuuuuuuuuuu\n                              u" uuuuuuuuuuuuuuuuuu "u\n                            u" u$$$$$$$$$$$$$$$$$$$$u "u\n                          u" u$$$$$$$$$$$$$$$$$$$$$$$$u "u\n                        u" u$$$$$$$$$$$$$$$$$$$$$$$$$$$$u "u\n                      u" u$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$u "u\n                    u" u$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$u "u\n                    $ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ $\n                    $ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ $\n                    $ $$$" ... "$...  ...$" ... "$$$  ... "$$$ $\n                    $ $$$u `"$$$$$$$  $$$  $$$$$  $$  $$$  $$$ $\n                    $ $$$$$$uu "$$$$  $$$  $$$$$  $$  """ u$$$ $\n                    $ $$$""$$$  $$$$  $$$u "$$$" u$$  $$$$$$$$ $\n                    $ $$$$....,$$$$$..$$$$$....,$$$$..$$$$$$$$ $\n                    $ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ $\n                    "u "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" u"\n                      "u "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" u"\n                        "u "$$$$$$$$$$$$$$$$$$$$$$$$$$$$" u"\n                          "u "$$$$$$$$$$$$$$$$$$$$$$$$" u"\n                            "u "$$$$$$$$$$$$$$$$$$$$" u"\n                              "u """""""""""""""""" u"\n                                """"""""""""""""""""\n                    ',
-      'New issue introduced !',
-      'Security Vulnerability:\n',
-      '1/1: Denial of Service (DoS) [Medium Severity]',
-      '    Via: ms@1.0.0 => ejs-locals@1.0.2 => ejs@0.8.8',
+      'New issues introduced !',
+      'Security Vulnerabilities:',
+      '1/2: Prototype Pollution [Medium Severity]',
+      '    Via: snyk@1.228.3 => configstore@3.1.2 => dot-prop@4.2.0',
+      '\n',
+      '2/2: Prototype Pollution [Medium Severity]',
+      '    Via: snyk@1.228.3 => update-notifier@2.5.0 => configstore@3.1.2 => dot-prop@4.2.0',
       '\n',
     ];
 
@@ -233,14 +305,15 @@ describe('Test End 2 End - Standalone mode', () => {
       .post(/.*/)
       .reply(200, (uri) => {
         switch (uri) {
-          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issues':
-            return fs.readFileSync(
-              fixturesFolderPath + 'apiResponses/test-goof.json',
-            );
-          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issues':
+          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/aggregated-issues':
             return fs.readFileSync(
               fixturesFolderPath +
-                'apiResponses/test-goof-with-one-more-vuln.json',
+                'apiResponses/test-goof-aggregated-two-vuln-no-license.json',
+            );
+          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/aggregated-issues':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/test-goof-aggregated-one-vuln.json',
             );
           // case '/api/v1/org/playground/projects':
           //   return fs.readFileSync(fixturesFolderPath+'apiResponsesForProjects/list-all-projects-org-playground.json')
@@ -250,14 +323,39 @@ describe('Test End 2 End - Standalone mode', () => {
       .get(/.*/)
       .reply(200, (uri) => {
         switch (uri) {
-          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/dep-graph':
+          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/dep-graph':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/goof-depgraph-from-api-with-one-more-direct-and-indirect-dep.json',
             );
-          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/dep-graph':
+          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/dep-graph':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/goof-depgraph-from-api.json',
+            );
+          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/SNYK-JS-ACORN-559469-issue-paths.json',
+            );
+          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/SNYK-JS-ACORN-559469-issue-paths.json',
+            );
+          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page1.json',
+            );
+          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page1.json',
+            );
+          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=2':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page2.json',
             );
           default:
         }
@@ -280,10 +378,13 @@ describe('Test End 2 End - Standalone mode', () => {
       'Removed 0\n',
       '_____________________________',
       //'\n                                uuuuuuuuuuuuuuuuuuuu\n                              u" uuuuuuuuuuuuuuuuuu "u\n                            u" u$$$$$$$$$$$$$$$$$$$$u "u\n                          u" u$$$$$$$$$$$$$$$$$$$$$$$$u "u\n                        u" u$$$$$$$$$$$$$$$$$$$$$$$$$$$$u "u\n                      u" u$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$u "u\n                    u" u$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$u "u\n                    $ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ $\n                    $ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ $\n                    $ $$$" ... "$...  ...$" ... "$$$  ... "$$$ $\n                    $ $$$u `"$$$$$$$  $$$  $$$$$  $$  $$$  $$$ $\n                    $ $$$$$$uu "$$$$  $$$  $$$$$  $$  """ u$$$ $\n                    $ $$$""$$$  $$$$  $$$u "$$$" u$$  $$$$$$$$ $\n                    $ $$$$....,$$$$$..$$$$$....,$$$$..$$$$$$$$ $\n                    $ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ $\n                    "u "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" u"\n                      "u "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" u"\n                        "u "$$$$$$$$$$$$$$$$$$$$$$$$$$$$" u"\n                          "u "$$$$$$$$$$$$$$$$$$$$$$$$" u"\n                            "u "$$$$$$$$$$$$$$$$$$$$" u"\n                              "u """""""""""""""""" u"\n                                """"""""""""""""""""\n                    ',
-      'New issue introduced !',
-      'Security Vulnerability:\n',
-      '1/1: Denial of Service (DoS) [Medium Severity]',
-      '    Via: ms@1.0.0 => ejs-locals@1.0.2 => ejs@0.8.8',
+      'New issues introduced !',
+      'Security Vulnerabilities:',
+      '1/2: Prototype Pollution [Medium Severity]',
+      '    Via: snyk@1.228.3 => configstore@3.1.2 => dot-prop@4.2.0',
+      '\n',
+      '2/2: Prototype Pollution [Medium Severity]',
+      '    Via: snyk@1.228.3 => update-notifier@2.5.0 => configstore@3.1.2 => dot-prop@4.2.0',
       '\n',
     ];
 
