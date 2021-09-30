@@ -1,0 +1,1278 @@
+{
+  "issues": [
+    {
+      "id": "SNYK-JS-PACRESOLVER-1564857",
+      "issueType": "vuln",
+      "pkgName": "pac-resolver",
+      "pkgVersions": ["3.0.0"],
+      "priorityScore": 798,
+      "priority": {
+        "score": 798,
+        "factors": [
+          {
+            "name": "exploitMaturity",
+            "description": "Proof of Concept exploit"
+          },
+          { "name": "isFresh", "description": "Recently disclosed" },
+          { "name": "isFixable", "description": "Has a fix available" },
+          { "name": "cvssScore", "description": "CVSS 8.1" }
+        ]
+      },
+      "issueData": {
+        "id": "SNYK-JS-PACRESOLVER-1564857",
+        "title": "Remote Code Execution (RCE)",
+        "severity": "high",
+        "url": "https://snyk.io/vuln/SNYK-JS-PACRESOLVER-1564857",
+        "identifiers": { "CVE": ["CVE-2021-23406"], "CWE": ["CWE-94"] },
+        "credit": ["Tim Perry"],
+        "exploitMaturity": "proof-of-concept",
+        "semver": { "vulnerable": ["<5.0.0"] },
+        "publicationTime": "2021-08-22T13:26:31.060241Z",
+        "disclosureTime": "2021-05-30T13:37:37Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H/E:P",
+        "cvssScore": 8.1,
+        "language": "js",
+        "patches": [],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": true,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": true,
+        "nearestFixedInVersion": "",
+        "fixedIn": ["5.0.0"]
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/9d64b8a9-883e-42f9-abd3-66b274b66a4c/history/1c51341a-42e4-48fd-9887-a06122847e6d/issue/SNYK-JS-PACRESOLVER-1564857/paths"
+      }
+    },
+    {
+      "id": "SNYK-JS-NETMASK-1089716",
+      "issueType": "vuln",
+      "pkgName": "netmask",
+      "pkgVersions": ["1.0.6"],
+      "priorityScore": 706,
+      "priority": {
+        "score": 706,
+        "factors": [
+          {
+            "name": "exploitMaturity",
+            "description": "Proof of Concept exploit"
+          },
+          { "name": "isFixable", "description": "Has a fix available" },
+          { "name": "cvssScore", "description": "CVSS 7.7" }
+        ]
+      },
+      "issueData": {
+        "id": "SNYK-JS-NETMASK-1089716",
+        "title": "Server-side Request Forgery (SSRF)",
+        "severity": "high",
+        "url": "https://snyk.io/vuln/SNYK-JS-NETMASK-1089716",
+        "identifiers": {
+          "CVE": ["CVE-2021-28918", "CVE-2021-29418"],
+          "CWE": ["CWE-20", "CWE-918"],
+          "GHSA": ["GHSA-pch5-whg9-qr2r"]
+        },
+        "credit": ["Unknown"],
+        "exploitMaturity": "proof-of-concept",
+        "semver": { "vulnerable": ["<2.0.1"] },
+        "publicationTime": "2021-03-30T14:57:04Z",
+        "disclosureTime": "2021-03-29T21:32:05Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:L/E:P",
+        "cvssScore": 7.7,
+        "language": "js",
+        "patches": [],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": true,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": true,
+        "nearestFixedInVersion": "",
+        "fixedIn": ["2.0.1"]
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/9d64b8a9-883e-42f9-abd3-66b274b66a4c/history/1c51341a-42e4-48fd-9887-a06122847e6d/issue/SNYK-JS-NETMASK-1089716/paths"
+      }
+    },
+    {
+      "id": "SNYK-JS-EXPRESSFILEUPLOAD-595969",
+      "issueType": "vuln",
+      "pkgName": "express-fileupload",
+      "pkgVersions": ["0.0.5"],
+      "priorityScore": 696,
+      "priority": {
+        "score": 696,
+        "factors": [
+          {
+            "name": "exploitMaturity",
+            "description": "Proof of Concept exploit"
+          },
+          { "name": "isFixable", "description": "Has a fix available" },
+          { "name": "cvssScore", "description": "CVSS 7.5" }
+        ]
+      },
+      "issueData": {
+        "id": "SNYK-JS-EXPRESSFILEUPLOAD-595969",
+        "title": "Prototype Pollution",
+        "severity": "high",
+        "url": "https://snyk.io/vuln/SNYK-JS-EXPRESSFILEUPLOAD-595969",
+        "identifiers": {
+          "CVE": ["CVE-2020-7699"],
+          "CWE": ["CWE-400"],
+          "GHSA": ["GHSA-9wcg-jrwf-8gg7"]
+        },
+        "credit": ["po6ix"],
+        "exploitMaturity": "proof-of-concept",
+        "semver": { "vulnerable": ["<1.1.10"] },
+        "publicationTime": "2020-07-30T15:28:18Z",
+        "disclosureTime": "2020-07-29T15:08:59Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:P/RL:O/RC:C",
+        "cvssScore": 7.5,
+        "language": "js",
+        "patches": [],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": true,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": true,
+        "nearestFixedInVersion": "",
+        "fixedIn": ["1.1.10"]
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/9d64b8a9-883e-42f9-abd3-66b274b66a4c/history/1c51341a-42e4-48fd-9887-a06122847e6d/issue/SNYK-JS-EXPRESSFILEUPLOAD-595969/paths"
+      }
+    },
+    {
+      "id": "SNYK-JS-TREEKILL-536781",
+      "issueType": "vuln",
+      "pkgName": "tree-kill",
+      "pkgVersions": ["1.2.1"],
+      "priorityScore": 671,
+      "priority": {
+        "score": 671,
+        "factors": [
+          {
+            "name": "exploitMaturity",
+            "description": "Proof of Concept exploit"
+          },
+          { "name": "isFixable", "description": "Has a fix available" },
+          { "name": "cvssScore", "description": "CVSS 7" }
+        ]
+      },
+      "issueData": {
+        "id": "SNYK-JS-TREEKILL-536781",
+        "title": "Command Injection",
+        "severity": "high",
+        "url": "https://snyk.io/vuln/SNYK-JS-TREEKILL-536781",
+        "identifiers": {
+          "CVE": ["CVE-2019-15598", "CVE-2019-15599"],
+          "CWE": ["CWE-78"],
+          "NSP": ["1432", "1433"]
+        },
+        "credit": ["mik317"],
+        "exploitMaturity": "proof-of-concept",
+        "semver": { "vulnerable": ["<1.2.2"] },
+        "publicationTime": "2019-12-05T10:51:40Z",
+        "disclosureTime": "2019-12-04T19:54:11Z",
+        "CVSSv3": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H/E:P/RL:U/RC:C",
+        "cvssScore": 7,
+        "language": "js",
+        "patches": [
+          {
+            "id": "patch:SNYK-JS-TREEKILL-536781:0",
+            "urls": [
+              "https://snyk-patches.s3.amazonaws.com/npm/tree-kill/20191210/tree-kill_0_0_20191210_e5d66d1fbd4b392294512d4644ac22bdc888573c.patch"
+            ],
+            "version": ">=1.0.0",
+            "comments": [],
+            "modificationTime": "2019-12-11T11:57:51.268946Z"
+          }
+        ],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": true,
+        "isPinnable": false,
+        "isPatchable": true,
+        "isPartiallyFixable": true,
+        "nearestFixedInVersion": "",
+        "fixedIn": ["1.2.2"]
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/9d64b8a9-883e-42f9-abd3-66b274b66a4c/history/1c51341a-42e4-48fd-9887-a06122847e6d/issue/SNYK-JS-TREEKILL-536781/paths"
+      }
+    },
+    {
+      "id": "SNYK-JS-LODASH-567746",
+      "issueType": "vuln",
+      "pkgName": "lodash",
+      "pkgVersions": ["4.17.15"],
+      "priorityScore": 636,
+      "priority": {
+        "score": 636,
+        "factors": [
+          {
+            "name": "exploitMaturity",
+            "description": "Proof of Concept exploit"
+          },
+          { "name": "isFixable", "description": "Has a fix available" },
+          { "name": "cvssScore", "description": "CVSS 6.3" }
+        ]
+      },
+      "issueData": {
+        "id": "SNYK-JS-LODASH-567746",
+        "title": "Prototype Pollution",
+        "severity": "medium",
+        "url": "https://snyk.io/vuln/SNYK-JS-LODASH-567746",
+        "identifiers": {
+          "CVE": ["CVE-2020-8203"],
+          "CWE": ["CWE-400"],
+          "NSP": ["1523"],
+          "GHSA": ["GHSA-p6mc-m468-83gw"]
+        },
+        "credit": ["posix"],
+        "exploitMaturity": "proof-of-concept",
+        "semver": { "vulnerable": ["<4.17.16"] },
+        "publicationTime": "2020-04-28T14:59:14Z",
+        "disclosureTime": "2020-04-27T22:14:18Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:U/RC:C",
+        "cvssScore": 6.3,
+        "language": "js",
+        "patches": [
+          {
+            "id": "patch:SNYK-JS-LODASH-567746:0",
+            "urls": [
+              "https://snyk-patches.s3.amazonaws.com/npm/lodash/20200430/lodash_0_0_20200430_6baae67d501e4c45021280876d42efe351e77551.patch"
+            ],
+            "version": ">=4.14.2",
+            "comments": [],
+            "modificationTime": "2020-04-30T14:28:46.729327Z"
+          }
+        ],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": true,
+        "isPinnable": false,
+        "isPatchable": true,
+        "isPartiallyFixable": true,
+        "nearestFixedInVersion": "",
+        "fixedIn": ["4.17.16"]
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/9d64b8a9-883e-42f9-abd3-66b274b66a4c/history/1c51341a-42e4-48fd-9887-a06122847e6d/issue/SNYK-JS-LODASH-567746/paths"
+      }
+    },
+    {
+      "id": "SNYK-JS-HTTPSPROXYAGENT-469131",
+      "issueType": "vuln",
+      "pkgName": "https-proxy-agent",
+      "pkgVersions": ["2.2.2"],
+      "priorityScore": 626,
+      "priority": {
+        "score": 626,
+        "factors": [
+          {
+            "name": "exploitMaturity",
+            "description": "Proof of Concept exploit"
+          },
+          { "name": "isFixable", "description": "Has a fix available" },
+          { "name": "cvssScore", "description": "CVSS 6.1" }
+        ]
+      },
+      "issueData": {
+        "id": "SNYK-JS-HTTPSPROXYAGENT-469131",
+        "title": "Man-in-the-Middle (MitM)",
+        "severity": "medium",
+        "url": "https://snyk.io/vuln/SNYK-JS-HTTPSPROXYAGENT-469131",
+        "identifiers": { "CVE": [], "CWE": ["CWE-300"], "NSP": ["1184"] },
+        "credit": ["Kris Adler"],
+        "exploitMaturity": "proof-of-concept",
+        "semver": { "vulnerable": ["<2.2.3"] },
+        "publicationTime": "2019-10-02T08:08:11Z",
+        "disclosureTime": "2019-09-25T08:21:57Z",
+        "CVSSv3": "CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:C/C:H/I:N/A:N/E:P/RL:U/RC:C",
+        "cvssScore": 6.1,
+        "language": "js",
+        "patches": [
+          {
+            "id": "patch:SNYK-JS-HTTPSPROXYAGENT-469131:0",
+            "urls": [
+              "https://snyk-patches.s3.amazonaws.com/npm/https-proxy-agent/20190929/https-proxy-agent_0_0_20190929.patch"
+            ],
+            "version": "=2.2.1",
+            "comments": [],
+            "modificationTime": "2019-12-03T11:40:45.721480Z"
+          },
+          {
+            "id": "patch:SNYK-JS-HTTPSPROXYAGENT-469131:1",
+            "urls": [
+              "https://snyk-patches.s3.amazonaws.com/npm/https-proxy-agent/20190929/https-proxy-agent_0_1_20190929.patch"
+            ],
+            "version": "=2.2.2",
+            "comments": [],
+            "modificationTime": "2019-12-03T11:40:45.723464Z"
+          }
+        ],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": true,
+        "isPinnable": false,
+        "isPatchable": true,
+        "isPartiallyFixable": true,
+        "nearestFixedInVersion": "",
+        "fixedIn": ["2.2.3"]
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/9d64b8a9-883e-42f9-abd3-66b274b66a4c/history/1c51341a-42e4-48fd-9887-a06122847e6d/issue/SNYK-JS-HTTPSPROXYAGENT-469131/paths"
+      }
+    },
+    {
+      "id": "SNYK-JS-UNDERSCORE-1080984",
+      "issueType": "vuln",
+      "pkgName": "underscore",
+      "pkgVersions": ["1.9.1"],
+      "priorityScore": 596,
+      "priority": {
+        "score": 596,
+        "factors": [
+          {
+            "name": "exploitMaturity",
+            "description": "Proof of Concept exploit"
+          },
+          { "name": "isFixable", "description": "Has a fix available" },
+          { "name": "cvssScore", "description": "CVSS 5.5" }
+        ]
+      },
+      "issueData": {
+        "id": "SNYK-JS-UNDERSCORE-1080984",
+        "title": "Arbitrary Code Injection",
+        "severity": "medium",
+        "url": "https://snyk.io/vuln/SNYK-JS-UNDERSCORE-1080984",
+        "identifiers": {
+          "CVE": ["CVE-2021-23358"],
+          "CWE": ["CWE-94"],
+          "GHSA": ["GHSA-cf4h-3jhx-xvhq"]
+        },
+        "credit": ["Alessio Della Libera (@d3lla)"],
+        "exploitMaturity": "proof-of-concept",
+        "semver": { "vulnerable": [">=1.13.0-0 <1.13.0-2", ">=1.3.2 <1.12.1"] },
+        "publicationTime": "2021-03-29T14:54:59Z",
+        "disclosureTime": "2021-03-02T19:51:03Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:L/A:L/E:P/RL:O/RC:C",
+        "cvssScore": 5.5,
+        "language": "js",
+        "patches": [],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": true,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": true,
+        "nearestFixedInVersion": "",
+        "fixedIn": ["1.13.0-2", "1.12.1"]
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/9d64b8a9-883e-42f9-abd3-66b274b66a4c/history/1c51341a-42e4-48fd-9887-a06122847e6d/issue/SNYK-JS-UNDERSCORE-1080984/paths"
+      }
+    },
+    {
+      "id": "SNYK-JS-EXPRESSFILEUPLOAD-473997",
+      "issueType": "vuln",
+      "pkgName": "express-fileupload",
+      "pkgVersions": ["0.0.5"],
+      "priorityScore": 589,
+      "priority": {
+        "score": 589,
+        "factors": [
+          { "name": "isFixable", "description": "Has a fix available" },
+          { "name": "cvssScore", "description": "CVSS 7.5" }
+        ]
+      },
+      "issueData": {
+        "id": "SNYK-JS-EXPRESSFILEUPLOAD-473997",
+        "title": "Denial of Service (DoS)",
+        "severity": "high",
+        "url": "https://snyk.io/vuln/SNYK-JS-EXPRESSFILEUPLOAD-473997",
+        "identifiers": {
+          "CVE": [],
+          "CWE": ["CWE-400"],
+          "NSP": ["1216"],
+          "GHSA": ["GHSA-q3w9-g74q-vp5f"]
+        },
+        "credit": ["Roman Burunkov"],
+        "exploitMaturity": "no-known-exploit",
+        "semver": { "vulnerable": ["<1.1.6-alpha.6"] },
+        "publicationTime": "2019-10-22T15:08:40Z",
+        "disclosureTime": "2019-10-18T11:17:09Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "cvssScore": 7.5,
+        "language": "js",
+        "patches": [],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": true,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": true,
+        "nearestFixedInVersion": "",
+        "fixedIn": ["1.1.6-alpha.6"]
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/9d64b8a9-883e-42f9-abd3-66b274b66a4c/history/1c51341a-42e4-48fd-9887-a06122847e6d/issue/SNYK-JS-EXPRESSFILEUPLOAD-473997/paths"
+      }
+    },
+    {
+      "id": "SNYK-JS-EJS-1049328",
+      "issueType": "vuln",
+      "pkgName": "ejs",
+      "pkgVersions": ["2.5.5", "0.8.8"],
+      "priorityScore": 526,
+      "priority": {
+        "score": 526,
+        "factors": [
+          {
+            "name": "exploitMaturity",
+            "description": "Proof of Concept exploit"
+          },
+          { "name": "isFixable", "description": "Has a fix available" },
+          { "name": "cvssScore", "description": "CVSS 4.1" }
+        ]
+      },
+      "issueData": {
+        "id": "SNYK-JS-EJS-1049328",
+        "title": "Arbitrary Code Injection",
+        "severity": "medium",
+        "url": "https://snyk.io/vuln/SNYK-JS-EJS-1049328",
+        "identifiers": { "CVE": [], "CWE": ["CWE-94"] },
+        "credit": ["fangzequn"],
+        "exploitMaturity": "proof-of-concept",
+        "semver": { "vulnerable": ["<3.1.6"] },
+        "publicationTime": "2021-01-20T16:41:56Z",
+        "disclosureTime": "2020-12-09T11:56:29Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:L/I:L/A:L/E:P/RL:U/RC:C",
+        "cvssScore": 4.1,
+        "language": "js",
+        "patches": [],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": true,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": true,
+        "nearestFixedInVersion": "",
+        "fixedIn": ["3.1.6"]
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/9d64b8a9-883e-42f9-abd3-66b274b66a4c/history/1c51341a-42e4-48fd-9887-a06122847e6d/issue/SNYK-JS-EJS-1049328/paths"
+      }
+    },
+    {
+      "id": "snyk:lic:npm:goof:GPL-2.0",
+      "issueType": "license",
+      "pkgName": "goof",
+      "pkgVersions": ["0.0.3"],
+      "priorityScore": 500,
+      "priority": {
+        "score": 500,
+        "factors": [{ "name": "severity", "description": "High severity" }]
+      },
+      "issueData": {
+        "id": "snyk:lic:npm:goof:GPL-2.0",
+        "title": "GPL-2.0 license",
+        "severity": "high",
+        "url": "https://snyk.io/vuln/snyk:lic:npm:goof:GPL-2.0",
+        "exploitMaturity": "no-data",
+        "semver": { "vulnerable": [">=0"] },
+        "publicationTime": "2021-07-02T00:14:22.812Z",
+        "language": "js",
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": false,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": false,
+        "nearestFixedInVersion": ""
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/9d64b8a9-883e-42f9-abd3-66b274b66a4c/history/1c51341a-42e4-48fd-9887-a06122847e6d/issue/snyk:lic:npm:goof:GPL-2.0/paths"
+      }
+    },
+    {
+      "id": "SNYK-JS-BL-608877",
+      "issueType": "vuln",
+      "pkgName": "bl",
+      "pkgVersions": ["1.2.2"],
+      "priorityScore": 492,
+      "priority": {
+        "score": 492,
+        "factors": [
+          {
+            "name": "exploitMaturity",
+            "description": "Proof of Concept exploit"
+          },
+          { "name": "cvssScore", "description": "CVSS 7.7" }
+        ]
+      },
+      "issueData": {
+        "id": "SNYK-JS-BL-608877",
+        "title": "Remote Memory Exposure",
+        "severity": "high",
+        "url": "https://snyk.io/vuln/SNYK-JS-BL-608877",
+        "identifiers": {
+          "CVE": ["CVE-2020-8244"],
+          "CWE": ["CWE-9"],
+          "NSP": ["1555"],
+          "GHSA": ["GHSA-pp7h-53gx-mx7r"]
+        },
+        "credit": ["chalker"],
+        "exploitMaturity": "proof-of-concept",
+        "semver": {
+          "vulnerable": [
+            ">=2.2.0 <2.2.1",
+            ">=3.0.0 <3.0.1",
+            ">=4.0.0 <4.0.3",
+            "<1.2.3"
+          ]
+        },
+        "publicationTime": "2020-08-28T12:18:48Z",
+        "disclosureTime": "2020-08-27T15:16:42Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:L/A:L/E:P",
+        "cvssScore": 7.7,
+        "language": "js",
+        "patches": [],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": true,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": false,
+        "nearestFixedInVersion": "",
+        "fixedIn": ["2.2.1", "3.0.1", "4.0.3", "1.2.3"]
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/9d64b8a9-883e-42f9-abd3-66b274b66a4c/history/1c51341a-42e4-48fd-9887-a06122847e6d/issue/SNYK-JS-BL-608877/paths"
+      }
+    },
+    {
+      "id": "SNYK-JS-LODASH-590103",
+      "issueType": "vuln",
+      "pkgName": "lodash",
+      "pkgVersions": ["4.17.15"],
+      "priorityScore": 490,
+      "priority": {
+        "score": 490,
+        "factors": [{ "name": "cvssScore", "description": "CVSS 9.8" }]
+      },
+      "issueData": {
+        "id": "SNYK-JS-LODASH-590103",
+        "title": "Prototype Pollution",
+        "severity": "critical",
+        "url": "https://snyk.io/vuln/SNYK-JS-LODASH-590103",
+        "identifiers": { "CVE": [], "CWE": ["CWE-400"] },
+        "credit": ["reeser"],
+        "exploitMaturity": "no-known-exploit",
+        "semver": { "vulnerable": ["<4.17.20"] },
+        "publicationTime": "2020-08-16T13:09:06Z",
+        "disclosureTime": "2020-07-24T12:00:52Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "cvssScore": 9.8,
+        "language": "js",
+        "patches": [],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": true,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": false,
+        "nearestFixedInVersion": "",
+        "fixedIn": ["4.17.20"]
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/9d64b8a9-883e-42f9-abd3-66b274b66a4c/history/1c51341a-42e4-48fd-9887-a06122847e6d/issue/SNYK-JS-LODASH-590103/paths"
+      }
+    },
+    {
+      "id": "SNYK-JS-Y18N-1021887",
+      "issueType": "vuln",
+      "pkgName": "y18n",
+      "pkgVersions": ["3.2.1"],
+      "priorityScore": 472,
+      "priority": {
+        "score": 472,
+        "factors": [
+          {
+            "name": "exploitMaturity",
+            "description": "Proof of Concept exploit"
+          },
+          { "name": "cvssScore", "description": "CVSS 7.3" }
+        ]
+      },
+      "issueData": {
+        "id": "SNYK-JS-Y18N-1021887",
+        "title": "Prototype Pollution",
+        "severity": "high",
+        "url": "https://snyk.io/vuln/SNYK-JS-Y18N-1021887",
+        "identifiers": {
+          "CVE": ["CVE-2020-7774"],
+          "CWE": ["CWE-400"],
+          "GHSA": ["GHSA-c4w7-xm78-47vh"]
+        },
+        "credit": ["po6ix"],
+        "exploitMaturity": "proof-of-concept",
+        "semver": {
+          "vulnerable": ["<3.2.2", ">=4.0.0 <4.0.1", ">=5.0.0 <5.0.5"]
+        },
+        "publicationTime": "2020-11-10T15:27:28Z",
+        "disclosureTime": "2020-10-25T14:24:22Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L/E:P",
+        "cvssScore": 7.3,
+        "language": "js",
+        "patches": [],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": true,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": false,
+        "nearestFixedInVersion": "",
+        "fixedIn": ["3.2.2", "4.0.1", "5.0.5"]
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/9d64b8a9-883e-42f9-abd3-66b274b66a4c/history/1c51341a-42e4-48fd-9887-a06122847e6d/issue/SNYK-JS-Y18N-1021887/paths"
+      }
+    },
+    {
+      "id": "SNYK-JS-LODASH-608086",
+      "issueType": "vuln",
+      "pkgName": "lodash",
+      "pkgVersions": ["4.17.15"],
+      "priorityScore": 472,
+      "priority": {
+        "score": 472,
+        "factors": [
+          {
+            "name": "exploitMaturity",
+            "description": "Proof of Concept exploit"
+          },
+          { "name": "cvssScore", "description": "CVSS 7.3" }
+        ]
+      },
+      "issueData": {
+        "id": "SNYK-JS-LODASH-608086",
+        "title": "Prototype Pollution",
+        "severity": "high",
+        "url": "https://snyk.io/vuln/SNYK-JS-LODASH-608086",
+        "identifiers": { "CVE": [], "CWE": ["CWE-400"] },
+        "credit": ["awarau"],
+        "exploitMaturity": "proof-of-concept",
+        "semver": { "vulnerable": ["<4.17.17"] },
+        "publicationTime": "2020-08-21T12:53:03Z",
+        "disclosureTime": "2020-08-21T10:34:29Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "cvssScore": 7.3,
+        "language": "js",
+        "patches": [],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": true,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": false,
+        "nearestFixedInVersion": "",
+        "fixedIn": ["4.17.17"]
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/9d64b8a9-883e-42f9-abd3-66b274b66a4c/history/1c51341a-42e4-48fd-9887-a06122847e6d/issue/SNYK-JS-LODASH-608086/paths"
+      }
+    },
+    {
+      "id": "SNYK-JS-INI-1048974",
+      "issueType": "vuln",
+      "pkgName": "ini",
+      "pkgVersions": ["1.3.5"],
+      "priorityScore": 472,
+      "priority": {
+        "score": 472,
+        "factors": [
+          {
+            "name": "exploitMaturity",
+            "description": "Proof of Concept exploit"
+          },
+          { "name": "cvssScore", "description": "CVSS 7.3" }
+        ]
+      },
+      "issueData": {
+        "id": "SNYK-JS-INI-1048974",
+        "title": "Prototype Pollution",
+        "severity": "high",
+        "url": "https://snyk.io/vuln/SNYK-JS-INI-1048974",
+        "identifiers": {
+          "CVE": ["CVE-2020-7788"],
+          "CWE": ["CWE-400"],
+          "GHSA": ["GHSA-qqgx-2p2h-9c37"]
+        },
+        "credit": [
+          "Eugene Lim",
+          "Government Technology Agency Cyber Security Group"
+        ],
+        "exploitMaturity": "proof-of-concept",
+        "semver": { "vulnerable": ["<1.3.6"] },
+        "publicationTime": "2020-12-10T18:08:38Z",
+        "disclosureTime": "2020-12-08T13:02:04Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L/E:P",
+        "cvssScore": 7.3,
+        "language": "js",
+        "patches": [],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": true,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": false,
+        "nearestFixedInVersion": "",
+        "fixedIn": ["1.3.6"]
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/9d64b8a9-883e-42f9-abd3-66b274b66a4c/history/1c51341a-42e4-48fd-9887-a06122847e6d/issue/SNYK-JS-INI-1048974/paths"
+      }
+    },
+    {
+      "id": "SNYK-JS-LODASH-1040724",
+      "issueType": "vuln",
+      "pkgName": "lodash",
+      "pkgVersions": ["4.17.15"],
+      "priorityScore": 467,
+      "priority": {
+        "score": 467,
+        "factors": [
+          {
+            "name": "exploitMaturity",
+            "description": "Proof of Concept exploit"
+          },
+          { "name": "cvssScore", "description": "CVSS 7.2" }
+        ]
+      },
+      "issueData": {
+        "id": "SNYK-JS-LODASH-1040724",
+        "title": "Command Injection",
+        "severity": "high",
+        "url": "https://snyk.io/vuln/SNYK-JS-LODASH-1040724",
+        "identifiers": {
+          "CVE": ["CVE-2021-23337"],
+          "CWE": ["CWE-78"],
+          "GHSA": ["GHSA-35jh-r3h4-6jhm"]
+        },
+        "credit": ["Marc Hassan"],
+        "exploitMaturity": "proof-of-concept",
+        "semver": { "vulnerable": ["<4.17.21"] },
+        "publicationTime": "2021-02-15T11:50:50Z",
+        "disclosureTime": "2020-11-17T13:02:10Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H/E:P/RL:U/RC:C",
+        "cvssScore": 7.2,
+        "language": "js",
+        "patches": [],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": true,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": false,
+        "nearestFixedInVersion": "",
+        "fixedIn": ["4.17.21"]
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/9d64b8a9-883e-42f9-abd3-66b274b66a4c/history/1c51341a-42e4-48fd-9887-a06122847e6d/issue/SNYK-JS-LODASH-1040724/paths"
+      }
+    },
+    {
+      "id": "SNYK-JS-DOTPROP-543489",
+      "issueType": "vuln",
+      "pkgName": "dot-prop",
+      "pkgVersions": ["4.2.0"],
+      "priorityScore": 422,
+      "priority": {
+        "score": 422,
+        "factors": [
+          {
+            "name": "exploitMaturity",
+            "description": "Proof of Concept exploit"
+          },
+          { "name": "cvssScore", "description": "CVSS 6.3" }
+        ]
+      },
+      "issueData": {
+        "id": "SNYK-JS-DOTPROP-543489",
+        "title": "Prototype Pollution",
+        "severity": "medium",
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "identifiers": {
+          "CVE": ["CVE-2020-8116"],
+          "CWE": ["CWE-400"],
+          "GHSA": ["GHSA-ff7x-qrg7-qggm"]
+        },
+        "credit": ["aaron_costello"],
+        "exploitMaturity": "proof-of-concept",
+        "semver": { "vulnerable": [">1.0.1 <4.2.1", ">=5.0.0 <5.1.1"] },
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "cvssScore": 6.3,
+        "language": "js",
+        "patches": [],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": true,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": false,
+        "nearestFixedInVersion": "",
+        "fixedIn": ["4.2.1", "5.1.1"]
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/9d64b8a9-883e-42f9-abd3-66b274b66a4c/history/1c51341a-42e4-48fd-9887-a06122847e6d/issue/SNYK-JS-DOTPROP-543489/paths"
+      }
+    },
+    {
+      "id": "npm:ejs:20161128",
+      "issueType": "vuln",
+      "pkgName": "ejs",
+      "pkgVersions": ["0.8.8"],
+      "priorityScore": 405,
+      "priority": {
+        "score": 405,
+        "factors": [{ "name": "cvssScore", "description": "CVSS 8.1" }]
+      },
+      "issueData": {
+        "id": "npm:ejs:20161128",
+        "title": "Arbitrary Code Execution",
+        "severity": "high",
+        "url": "https://snyk.io/vuln/npm:ejs:20161128",
+        "identifiers": {
+          "CVE": ["CVE-2017-1000228"],
+          "CWE": ["CWE-94"],
+          "ALTERNATIVE": ["SNYK-JS-EJS-10218"]
+        },
+        "credit": ["Snyk Security Research Team"],
+        "exploitMaturity": "no-known-exploit",
+        "semver": { "vulnerable": ["<2.5.3"] },
+        "publicationTime": "2016-11-28T18:44:12Z",
+        "disclosureTime": "2016-11-27T22:00:00Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "cvssScore": 8.1,
+        "language": "js",
+        "patches": [
+          {
+            "id": "patch:npm:ejs:20161128:0",
+            "urls": [
+              "https://snyk-patches.s3.amazonaws.com/npm/ejs/20161128/ejs_20161128_0_0_3d447c5a335844b25faec04b1132dbc721f9c8f6.patch"
+            ],
+            "version": "<2.5.3 >=2.2.4",
+            "comments": [],
+            "modificationTime": "2019-12-03T11:40:45.851976Z"
+          }
+        ],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": false,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": false,
+        "nearestFixedInVersion": "",
+        "fixedIn": ["2.5.3"]
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/9d64b8a9-883e-42f9-abd3-66b274b66a4c/history/1c51341a-42e4-48fd-9887-a06122847e6d/issue/npm:ejs:20161128/paths"
+      }
+    },
+    {
+      "id": "SNYK-JS-MINIMIST-559764",
+      "issueType": "vuln",
+      "pkgName": "minimist",
+      "pkgVersions": ["0.0.8", "1.2.0"],
+      "priorityScore": 387,
+      "priority": {
+        "score": 387,
+        "factors": [
+          {
+            "name": "exploitMaturity",
+            "description": "Proof of Concept exploit"
+          },
+          { "name": "cvssScore", "description": "CVSS 5.6" }
+        ]
+      },
+      "issueData": {
+        "id": "SNYK-JS-MINIMIST-559764",
+        "title": "Prototype Pollution",
+        "severity": "medium",
+        "url": "https://snyk.io/vuln/SNYK-JS-MINIMIST-559764",
+        "identifiers": {
+          "CVE": ["CVE-2020-7598"],
+          "CWE": ["CWE-400"],
+          "NSP": ["1179"],
+          "GHSA": ["GHSA-vh95-rmgr-6w4m"]
+        },
+        "credit": ["Snyk Security Team"],
+        "exploitMaturity": "proof-of-concept",
+        "semver": { "vulnerable": ["<0.2.1", ">=1.0.0 <1.2.3"] },
+        "publicationTime": "2020-03-11T08:22:19Z",
+        "disclosureTime": "2020-03-10T08:22:24Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "cvssScore": 5.6,
+        "language": "js",
+        "patches": [],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": true,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": false,
+        "nearestFixedInVersion": "",
+        "fixedIn": ["0.2.1", "1.2.3"]
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/9d64b8a9-883e-42f9-abd3-66b274b66a4c/history/1c51341a-42e4-48fd-9887-a06122847e6d/issue/SNYK-JS-MINIMIST-559764/paths"
+      }
+    },
+    {
+      "id": "SNYK-JS-ACORN-559469",
+      "issueType": "vuln",
+      "pkgName": "acorn",
+      "pkgVersions": ["5.7.3"],
+      "priorityScore": 375,
+      "priority": {
+        "score": 375,
+        "factors": [{ "name": "cvssScore", "description": "CVSS 7.5" }]
+      },
+      "issueData": {
+        "id": "SNYK-JS-ACORN-559469",
+        "title": "Regular Expression Denial of Service (ReDoS)",
+        "severity": "high",
+        "url": "https://snyk.io/vuln/SNYK-JS-ACORN-559469",
+        "identifiers": {
+          "CVE": [],
+          "CWE": ["CWE-400"],
+          "NSP": ["1488"],
+          "GHSA": ["GHSA-6chw-6frg-f759"]
+        },
+        "credit": ["Peter van der Zee"],
+        "exploitMaturity": "no-known-exploit",
+        "semver": {
+          "vulnerable": [">=5.5.0 <5.7.4", ">=6.0.0 <6.4.1", ">=7.0.0 <7.1.1"]
+        },
+        "publicationTime": "2020-03-07T00:19:23Z",
+        "disclosureTime": "2020-03-02T19:21:25Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "cvssScore": 7.5,
+        "language": "js",
+        "patches": [],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": true,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": false,
+        "nearestFixedInVersion": "",
+        "fixedIn": ["5.7.4", "6.4.1", "7.1.1"]
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/9d64b8a9-883e-42f9-abd3-66b274b66a4c/history/1c51341a-42e4-48fd-9887-a06122847e6d/issue/SNYK-JS-ACORN-559469/paths"
+      }
+    },
+    {
+      "id": "SNYK-JS-LODASH-1018905",
+      "issueType": "vuln",
+      "pkgName": "lodash",
+      "pkgVersions": ["4.17.15"],
+      "priorityScore": 372,
+      "priority": {
+        "score": 372,
+        "factors": [
+          {
+            "name": "exploitMaturity",
+            "description": "Proof of Concept exploit"
+          },
+          { "name": "cvssScore", "description": "CVSS 5.3" }
+        ]
+      },
+      "issueData": {
+        "id": "SNYK-JS-LODASH-1018905",
+        "title": "Regular Expression Denial of Service (ReDoS)",
+        "severity": "medium",
+        "url": "https://snyk.io/vuln/SNYK-JS-LODASH-1018905",
+        "identifiers": { "CVE": ["CVE-2020-28500"], "CWE": ["CWE-400"] },
+        "credit": ["Liyuan Chen"],
+        "exploitMaturity": "proof-of-concept",
+        "semver": { "vulnerable": ["<4.17.21"] },
+        "publicationTime": "2021-02-15T11:50:49Z",
+        "disclosureTime": "2020-10-16T16:47:34Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L/E:P",
+        "cvssScore": 5.3,
+        "language": "js",
+        "patches": [],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": true,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": false,
+        "nearestFixedInVersion": "",
+        "fixedIn": ["4.17.21"]
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/9d64b8a9-883e-42f9-abd3-66b274b66a4c/history/1c51341a-42e4-48fd-9887-a06122847e6d/issue/SNYK-JS-LODASH-1018905/paths"
+      }
+    },
+    {
+      "id": "SNYK-JS-JSZIP-1251497",
+      "issueType": "vuln",
+      "pkgName": "jszip",
+      "pkgVersions": ["3.2.2"],
+      "priorityScore": 372,
+      "priority": {
+        "score": 372,
+        "factors": [
+          {
+            "name": "exploitMaturity",
+            "description": "Proof of Concept exploit"
+          },
+          { "name": "cvssScore", "description": "CVSS 5.3" }
+        ]
+      },
+      "issueData": {
+        "id": "SNYK-JS-JSZIP-1251497",
+        "title": "Denial of Service (DoS)",
+        "severity": "medium",
+        "url": "https://snyk.io/vuln/SNYK-JS-JSZIP-1251497",
+        "identifiers": { "CVE": ["CVE-2021-23413"], "CWE": ["CWE-400"] },
+        "credit": ["Dave Holoway"],
+        "exploitMaturity": "proof-of-concept",
+        "semver": { "vulnerable": ["<3.7.0"] },
+        "publicationTime": "2021-07-25T14:10:32Z",
+        "disclosureTime": "2021-04-18T13:04:52Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L/E:P",
+        "cvssScore": 5.3,
+        "language": "js",
+        "patches": [],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": true,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": false,
+        "nearestFixedInVersion": "",
+        "fixedIn": ["3.7.0"]
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/9d64b8a9-883e-42f9-abd3-66b274b66a4c/history/1c51341a-42e4-48fd-9887-a06122847e6d/issue/SNYK-JS-JSZIP-1251497/paths"
+      }
+    },
+    {
+      "id": "SNYK-JS-HOSTEDGITINFO-1088355",
+      "issueType": "vuln",
+      "pkgName": "hosted-git-info",
+      "pkgVersions": ["2.8.4"],
+      "priorityScore": 372,
+      "priority": {
+        "score": 372,
+        "factors": [
+          {
+            "name": "exploitMaturity",
+            "description": "Proof of Concept exploit"
+          },
+          { "name": "cvssScore", "description": "CVSS 5.3" }
+        ]
+      },
+      "issueData": {
+        "id": "SNYK-JS-HOSTEDGITINFO-1088355",
+        "title": "Regular Expression Denial of Service (ReDoS)",
+        "severity": "medium",
+        "url": "https://snyk.io/vuln/SNYK-JS-HOSTEDGITINFO-1088355",
+        "identifiers": {
+          "CVE": ["CVE-2021-23362"],
+          "CWE": ["CWE-400"],
+          "GHSA": ["GHSA-43f8-2h32-f4cj"]
+        },
+        "credit": ["Yeting Li"],
+        "exploitMaturity": "proof-of-concept",
+        "semver": { "vulnerable": [">=3.0.0 <3.0.8", "<2.8.9"] },
+        "publicationTime": "2021-03-23T17:13:24Z",
+        "disclosureTime": "2020-11-28T00:00:00Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L/E:P/RL:O/RC:C",
+        "cvssScore": 5.3,
+        "language": "js",
+        "patches": [],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": true,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": false,
+        "nearestFixedInVersion": "",
+        "fixedIn": ["3.0.8", "2.8.9"]
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/9d64b8a9-883e-42f9-abd3-66b274b66a4c/history/1c51341a-42e4-48fd-9887-a06122847e6d/issue/SNYK-JS-HOSTEDGITINFO-1088355/paths"
+      }
+    },
+    {
+      "id": "npm:ejs:20161130-1",
+      "issueType": "vuln",
+      "pkgName": "ejs",
+      "pkgVersions": ["0.8.8"],
+      "priorityScore": 295,
+      "priority": {
+        "score": 295,
+        "factors": [{ "name": "cvssScore", "description": "CVSS 5.9" }]
+      },
+      "issueData": {
+        "id": "npm:ejs:20161130-1",
+        "title": "Denial of Service (DoS)",
+        "severity": "medium",
+        "url": "https://snyk.io/vuln/npm:ejs:20161130-1",
+        "identifiers": {
+          "CVE": ["CVE-2017-1000189"],
+          "CWE": ["CWE-400"],
+          "ALTERNATIVE": ["SNYK-JS-EJS-10226"]
+        },
+        "credit": ["Snyk Security Research Team"],
+        "exploitMaturity": "no-known-exploit",
+        "semver": { "vulnerable": ["<2.5.5"] },
+        "publicationTime": "2016-12-06T15:00:00Z",
+        "disclosureTime": "2016-11-27T22:00:00Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "cvssScore": 5.9,
+        "language": "js",
+        "patches": [],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": false,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": false,
+        "nearestFixedInVersion": "",
+        "fixedIn": ["2.5.5"]
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/9d64b8a9-883e-42f9-abd3-66b274b66a4c/history/1c51341a-42e4-48fd-9887-a06122847e6d/issue/npm:ejs:20161130-1/paths"
+      }
+    },
+    {
+      "id": "npm:ejs:20161130",
+      "issueType": "vuln",
+      "pkgName": "ejs",
+      "pkgVersions": ["0.8.8"],
+      "priorityScore": 295,
+      "priority": {
+        "score": 295,
+        "factors": [{ "name": "cvssScore", "description": "CVSS 5.9" }]
+      },
+      "issueData": {
+        "id": "npm:ejs:20161130",
+        "title": "Cross-site Scripting (XSS)",
+        "severity": "medium",
+        "url": "https://snyk.io/vuln/npm:ejs:20161130",
+        "identifiers": {
+          "CVE": ["CVE-2017-1000188"],
+          "CWE": ["CWE-79"],
+          "ALTERNATIVE": ["SNYK-JS-EJS-10225"]
+        },
+        "credit": ["Snyk Security Research Team"],
+        "exploitMaturity": "no-known-exploit",
+        "semver": { "vulnerable": ["<2.5.5"] },
+        "publicationTime": "2016-12-06T15:00:00Z",
+        "disclosureTime": "2016-11-27T22:00:00Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "cvssScore": 5.9,
+        "language": "js",
+        "patches": [],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": false,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": false,
+        "nearestFixedInVersion": "",
+        "fixedIn": ["2.5.5"]
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/9d64b8a9-883e-42f9-abd3-66b274b66a4c/history/1c51341a-42e4-48fd-9887-a06122847e6d/issue/npm:ejs:20161130/paths"
+      }
+    }
+  ]
+}
