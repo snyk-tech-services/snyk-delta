@@ -8,8 +8,8 @@ import * as dependencies from './snyk/dependencies'
 import * as isUUID from 'is-uuid'
 import { BadInputError } from './customErrors/inputError'
 import { Project } from 'snyk-api-ts-client/dist/client/generated/org';
-import { SnykCliTestOutput, SnykDeltaOutput } from './types'
-import { displayNewVulns, displayOutput } from './snyk/displayOutput';
+import { IssuesPostResponseType, SnykCliTestOutput, SnykDeltaOutput } from './types'
+import { displayOutput } from './snyk/displayOutput';
 export { SnykDeltaOutput } from './types'
 
 const banner =  `
@@ -19,7 +19,6 @@ Snyk Tech Prevent Tool
 ================================================
 ================================================
 `
-
 
 const getDelta = async(snykTestOutput = '', debugMode = false, setPassIfNoBaselineFlag = false):Promise<SnykDeltaOutput|number> => {
    const argv = utils.init(debugMode)
@@ -93,26 +92,23 @@ const getDelta = async(snykTestOutput = '', debugMode = false, setPassIfNoBaseli
     //TODO: If baseline project is '' and strictMode is false, display current vulns
     debug(`Retrieve Snyk Project %s in org %s`, baselineProject, baselineOrg)
     const issueTypeFilter: string = argv.type? argv.type : "all"
-    let snykProject: Project.IssuesPostResponseType
+    let snykProject: IssuesPostResponseType
     const typedSnykTestJsonResults = snykTestJsonResults as SnykCliTestOutput
 
-    
-
     // if no baseline, return returned results straight from CLI
-    if(baselineProject == ''){
-      snykProject = snykTestJsonResults
-      
+    if(baselineProject == ''){      
       newVulns = typedSnykTestJsonResults.vulnerabilities.filter(x => x.type != "license")
       newLicenseIssues = typedSnykTestJsonResults.vulnerabilities.filter(x => x.type == "license")
 
       noBaseline = true      
     } else {
       snykProject = await snyk.getProjectIssues(baselineOrg,baselineProject)
+
       const baselineVulnerabilitiesIssues = snykProject.issues.vulnerabilities
 
       const currentVulnerabilitiesIssues = typedSnykTestJsonResults.vulnerabilities.filter(x => x.type != 'license')
       newVulns = issues.getNewIssues(baselineVulnerabilitiesIssues,currentVulnerabilitiesIssues,snykTestJsonResults.severityThreshold, mode)
-      
+
       const baselineLicenseIssues = snykProject.issues.licenses
       const currentLicensesIssues = typedSnykTestJsonResults.vulnerabilities.filter(x => x.type == 'license')
       newLicenseIssues = issues.getNewIssues(baselineLicenseIssues,currentLicensesIssues,snykTestJsonResults.severityThreshold, mode)

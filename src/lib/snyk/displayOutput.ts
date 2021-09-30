@@ -33,6 +33,7 @@ const displayNewVulns = (
       console.log(chalk.bgMagentaBright('\nNew issues introduced !'));
       console.log('Security Vulnerabilities:');
     }
+
     newVulns.forEach((vuln, index) => {
       const typedVuln: SnykVuln = vuln as SnykVuln;
       switch (vuln.severity) {

@@ -1,0 +1,4876 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test endpoint functions Test GetProjectIssues 1`] = `
+Object {
+  "dependencyCount": 0,
+  "deprecated": "undefined",
+  "issues": Object {
+    "licenses": Array [
+      Object {
+        "cvssScore": NaN,
+        "exploitMaturity": "no-data",
+        "from": Array [
+          "goof@0.0.3",
+        ],
+        "id": "snyk:lic:npm:goof:GPL-2.0",
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "goof",
+        "publicationTime": "2021-07-02T00:14:22.812Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">=0",
+          ],
+        },
+        "severity": "high",
+        "title": "GPL-2.0 license",
+        "upgradePath": Array [],
+        "url": "https://snyk.io/vuln/snyk:lic:npm:goof:GPL-2.0",
+        "version": "0.0.3",
+      },
+    ],
+    "vulnerabilities": Array [
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H/E:P",
+        "credit": Array [
+          "Tim Perry",
+        ],
+        "cvssScore": 8,
+        "disclosureTime": "2021-05-30T13:37:37Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "proxy-agent@3.1.0",
+          "pac-proxy-agent@3.0.0",
+          "pac-resolver@3.0.0",
+        ],
+        "id": "SNYK-JS-PACRESOLVER-1564857",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2021-23406",
+          ],
+          "CWE": Array [
+            "CWE-94",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "pac-resolver",
+        "patches": Array [],
+        "publicationTime": "2021-08-22T13:26:31.060241Z",
+        "semver": Object {
+          "vulnerable": Array [
+            "<5.0.0",
+          ],
+        },
+        "severity": "high",
+        "title": "Remote Code Execution (RCE)",
+        "upgradePath": Array [
+          "snyk@1.230.7",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-PACRESOLVER-1564857",
+        "version": "3.0.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+      Object {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "credit": Array [
+          "aaron_costello",
+        ],
+        "cvssScore": 6,
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "exploitMaturity": "proof-of-concept",
+        "from": Array [
+          "snyk@1.228.3",
+          "update-notifier@2.5.0",
+          "configstore@3.1.2",
+          "dot-prop@4.2.0",
+        ],
+        "id": "SNYK-JS-DOTPROP-543489",
+        "identifiers": Object {
+          "CVE": Array [
+            "CVE-2020-8116",
+          ],
+          "CWE": Array [
+            "CWE-400",
+          ],
+          "GHSA": Array [
+            "GHSA-ff7x-qrg7-qggm",
+          ],
+        },
+        "isIgnored": false,
+        "isPatched": false,
+        "language": "js",
+        "nearestFixedInVersion": "",
+        "package": "dot-prop",
+        "patches": Array [],
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "semver": Object {
+          "vulnerable": Array [
+            ">1.0.1 <4.2.1",
+            ">=5.0.0 <5.1.1",
+          ],
+        },
+        "severity": "medium",
+        "title": "Prototype Pollution",
+        "upgradePath": Array [
+          "snyk@1.228.3",
+        ],
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "version": "4.2.0",
+      },
+    ],
+  },
+  "ok": true,
+  "packageManager": "undefined",
+}
+`;
