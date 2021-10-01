@@ -3,6 +3,7 @@ import { getDebugModule } from './utils';
 import { AggregatedIssuesWithVulnPaths } from 'snyk-api-ts-client/dist/client/abstraction/org/aggregatedissues'; 
 import { IssuesPostResponseType } from '../types';
 import { getUpgradePath } from '../snyk/snyk';
+import { debug } from 'console';
 
 type Unpacked<T> = T extends (infer U)[]
   ? U
@@ -24,7 +25,6 @@ interface LegacyVulnerability {
 
 const isVulnerablePathNew = (monitoredSnapshotPathArray: Array<string>, currentSnapshotPathArray: Array<string> ): boolean => {
 
-    const debug = getDebugModule();
     const versionPatternRegex = /@[a-zA-Z0-9-_\.]+$/
     if(monitoredSnapshotPathArray.length != currentSnapshotPathArray.length){
         // debug('###')
@@ -64,57 +64,52 @@ const convertIntoIssueWithPath = async (aggregatedIssues: AggregatedIssuesWithVu
 
     if (aggregatedIssues.issues) 
     {
-        let i = 0
-        let vulnIssueNumber  = 0
-        let licenseIssueNumber = 0
-        while (i < aggregatedIssues.issues.length)
+        let issueIndex = 0
+
+        while (issueIndex < aggregatedIssues.issues.length)
         {
-            const aggregatedIssueData = aggregatedIssues.issues[i].issueData 
+            const aggregatedIssueData = aggregatedIssues.issues[issueIndex].issueData 
             const issuePaths = await getUpgradePath(orgId, projectId, aggregatedIssueData.id)
             const {cvssScore, ...everythingElse} = aggregatedIssueData
             issuesPostResponse.ok = true
 
-            let j = 0
-            while (j < aggregatedIssues.issues[i].pkgVersions.length)
+            let pkgVersionIndex = 0
+            while (pkgVersionIndex < aggregatedIssues.issues[issueIndex].pkgVersions.length)
             {
-                const versionKey = aggregatedIssues.issues[i].pkgVersions[j]
-                if (aggregatedIssues.issues[i].issueType === 'vuln')
+                const versionKey = aggregatedIssues.issues[issueIndex].pkgVersions[pkgVersionIndex]
+                if (aggregatedIssues.issues[issueIndex].issueType === 'vuln')
                 {
-                    let p = 0
+                    let LegacyPathIndex = 0
                     
-                    while (p < issuePaths.IssueFromLegacy.length)
+                    while (LegacyPathIndex < issuePaths.IssueFromLegacy.length)
                     {
                         const issueDataWithMissingField: IssueDataWithMissingField = { from : [], package: '', upgradePath: [], version: '', isPatched: false, isIgnored: false, cvssScore: parseInt(cvssScore), ...everythingElse }  
 
-                        let sum = vulnIssueNumber + j + p
-
+                        issueDataWithMissingField.package = aggregatedIssues.issues[issueIndex].pkgName
+                        issueDataWithMissingField.version = versionKey
+                        issueDataWithMissingField.from = issuePaths.IssueFromLegacy[LegacyPathIndex]
+                        issueDataWithMissingField.upgradePath = issuePaths.UpgradePathLegacy[LegacyPathIndex]
                         issuesPostResponse.issues.vulnerabilities.push(issueDataWithMissingField)
-                        issuesPostResponse.issues.vulnerabilities[sum].package = aggregatedIssues.issues[i].pkgName
-                        issuesPostResponse.issues.vulnerabilities[sum].version = versionKey
-                        issuesPostResponse.issues.vulnerabilities[sum].from = issuePaths.IssueFromLegacy[p]
-                        issuesPostResponse.issues.vulnerabilities[sum].upgradePath = issuePaths.UpgradePathLegacy[p]
-                        p++
+                        LegacyPathIndex++
                     }
-                    vulnIssueNumber ++ 
                          
-                } else if (aggregatedIssues.issues[i].issueType === 'license')
+                } else if (aggregatedIssues.issues[issueIndex].issueType === 'license')
                 {
-                    let p = 0
-                    while (p < issuePaths.IssueFromLegacy.length)
+                    let LegacyPathIndex = 0
+                    while (LegacyPathIndex < issuePaths.IssueFromLegacy.length)
                     {
                         const issueDataWithMissingField: IssueDataWithMissingField = { from : [], package: '', upgradePath: [], version: '', isPatched: false, isIgnored: false, cvssScore: parseInt(cvssScore), ...everythingElse }  
 
+                        issueDataWithMissingField.package = aggregatedIssues.issues[issueIndex].pkgName
+                        issueDataWithMissingField.version = versionKey
+                        issueDataWithMissingField.from = issuePaths.IssueFromLegacy[LegacyPathIndex]
                         issuesPostResponse.issues.licenses.push(issueDataWithMissingField)
-                        issuesPostResponse.issues.licenses[licenseIssueNumber + j + p].package = aggregatedIssues.issues[i].pkgName
-                        issuesPostResponse.issues.licenses[licenseIssueNumber + j + p].version = versionKey
-                        issuesPostResponse.issues.licenses[licenseIssueNumber + j + p].from = issuePaths.IssueFromLegacy[p]
-                        p++
+                        LegacyPathIndex++
                     }
-                    licenseIssueNumber ++
                 }
-                j++
+                pkgVersionIndex++
             }
-            i = i + 1
+            issueIndex = issueIndex + 1
         }
     }
     return issuesPostResponse
