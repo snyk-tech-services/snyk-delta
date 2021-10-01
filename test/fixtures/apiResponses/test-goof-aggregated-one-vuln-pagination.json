@@ -1,0 +1,55 @@
+{
+  "issues": [
+    {
+      "id": "SNYK-JS-DOTPROP-543489",
+      "issueType": "vuln",
+      "pkgName": "dot-prop",
+      "pkgVersions": ["4.2.0"],
+      "priorityScore": 422,
+      "priority": {
+        "score": 422,
+        "factors": [
+          {
+            "name": "exploitMaturity",
+            "description": "Proof of Concept exploit"
+          },
+          { "name": "cvssScore", "description": "CVSS 6.3" }
+        ]
+      },
+      "issueData": {
+        "id": "SNYK-JS-DOTPROP-543489",
+        "title": "Prototype Pollution",
+        "severity": "medium",
+        "url": "https://snyk.io/vuln/SNYK-JS-DOTPROP-543489",
+        "identifiers": {
+          "CVE": ["CVE-2020-8116"],
+          "CWE": ["CWE-400"],
+          "GHSA": ["GHSA-ff7x-qrg7-qggm"]
+        },
+        "credit": ["aaron_costello"],
+        "exploitMaturity": "proof-of-concept",
+        "semver": { "vulnerable": [">1.0.1 <4.2.1", ">=5.0.0 <5.1.1"] },
+        "publicationTime": "2020-01-28T16:23:39Z",
+        "disclosureTime": "2020-01-28T10:17:51Z",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C",
+        "cvssScore": 6.3,
+        "language": "js",
+        "patches": [],
+        "nearestFixedInVersion": ""
+      },
+      "isPatched": false,
+      "isIgnored": false,
+      "fixInfo": {
+        "isUpgradable": true,
+        "isPinnable": false,
+        "isPatchable": false,
+        "isPartiallyFixable": false,
+        "nearestFixedInVersion": "",
+        "fixedIn": ["4.2.1", "5.1.1"]
+      },
+      "links": {
+        "paths": "https://app.snyk.io/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/9d64b8a9-883e-42f9-abd3-66b274b66a4c/history/1c2130c4-82a5-4130-9632-fcbf204a8267/issue/SNYK-JS-DOTPROP-543489/paths"
+      }
+    }
+  ]
+}
