@@ -46,7 +46,7 @@ or
 
 2. Standalone (Comparing a project in an org with a project in a different org)
 > This usecase comes up when you have 2 same projects (with distinct project ID's) in 2 different orgs and you want to compare them\
-    - ```snyk-delta --baselineOrg xxx --baselineProject xxx --currentOrg xxx --currentProject xxx --setPassIfNoBaseline false```
+```snyk-delta --baselineOrg xxx --baselineProject xxx --currentOrg xxx --currentProject xxx --setPassIfNoBaseline false```
 
 > Note:\
 > BaselineProject value is expected to be a UUID, not simply a name\
