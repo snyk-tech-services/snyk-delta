@@ -45,8 +45,8 @@ or
      `snyk test --json --print-deps | snyk-delta --baselineOrg xxx --baselineProject xxx --setPassIfNoBaseline true`
 
 2. Standalone
-    - ```snyk-delta --baselineOrg xxx --baselineProject xxx --currentOrg xxx --currentProject xxx --setPassIfNoBaseline false
-```
+    - ```snyk-delta --baselineOrg xxx --baselineProject xxx --currentOrg xxx --currentProject xxx --setPassIfNoBaseline false```
+
 > Note:\
 > BaselineProject value is expected to be a UUID, not simply a name\
 > Check your Snyk Web UI or API to retrieve those UUIDs.
