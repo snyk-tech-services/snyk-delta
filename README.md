@@ -31,22 +31,20 @@ or
 
 ## Pre-checks
 
-First, build the dependencies chart that will be the baseline using the ```npm install``` command
+1. Build the dependencies chart that will be the baseline using the ```npm install``` command
 
-Second, run ```snyk test --json --print-deps ``` to confirm the dependency tree is built
+2. Run ```snyk test --json --print-deps ``` to confirm the dependency tree is built
 
 ### 2 mode of operations
 
-1. 
-- Point to a specific snapshot by specifying org+project coordinates\
+1. Point to a specific snapshot by specifying org+project coordinates\
     `snyk test --json --print-deps | snyk-delta --baselineOrg xxx --baselineProject xxx`
 
     - Use the --setPassIfNoBaseline if used with snyk prevent commit status and the project is not monitored. This will prevent snyk-prevent_commit_status to fail.
     setPassIfNoBaseline default to false.\
      `snyk test --json --print-deps | snyk-delta --baselineOrg xxx --baselineProject xxx --setPassIfNoBaseline true`
 
-2.
-- Standalone
+2. Standalone
     - `snyk-delta --baselineOrg xxx --baselineProject xxx --currentOrg xxx --currentProject xxx --setPassIfNoBaseline false
 
 > Note:\
