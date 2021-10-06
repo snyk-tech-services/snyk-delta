@@ -15,6 +15,7 @@ const getNewIssues = (
   snykTestJsonIssuesResults: IssueWithPaths[],
   inboundSeverityThreshold = 'low',
   mode: string,
+  license: boolean
 ): IssueWithPaths[] => {
 
   const debug = getDebugModule();
@@ -35,7 +36,8 @@ const getNewIssues = (
       }
       let issueFromArray = issue.from;
       let upgradePathArray = issue.upgradePath
-      if (mode == 'inline') {
+
+      if (mode == 'inline' && !license) {
         issueFromArray = issueFromArray.slice(1, issueFromArray.length);
         upgradePathArray = upgradePathArray? upgradePathArray.slice(1, issueFromArray.length):undefined;
       }

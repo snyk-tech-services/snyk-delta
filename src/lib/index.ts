@@ -107,11 +107,12 @@ const getDelta = async(snykTestOutput = '', debugMode = false, setPassIfNoBaseli
       const baselineVulnerabilitiesIssues = snykProject.issues.vulnerabilities
 
       const currentVulnerabilitiesIssues = typedSnykTestJsonResults.vulnerabilities.filter(x => x.type != 'license')
-      newVulns = issues.getNewIssues(baselineVulnerabilitiesIssues,currentVulnerabilitiesIssues,snykTestJsonResults.severityThreshold, mode)
+      newVulns = issues.getNewIssues(baselineVulnerabilitiesIssues,currentVulnerabilitiesIssues,snykTestJsonResults.severityThreshold, mode, false)
 
       const baselineLicenseIssues = snykProject.issues.licenses
       const currentLicensesIssues = typedSnykTestJsonResults.vulnerabilities.filter(x => x.type == 'license')
-      newLicenseIssues = issues.getNewIssues(baselineLicenseIssues,currentLicensesIssues,snykTestJsonResults.severityThreshold, mode)
+
+      newLicenseIssues = issues.getNewIssues(baselineLicenseIssues,currentLicensesIssues,snykTestJsonResults.severityThreshold, mode, true)
       
       debug(`New Vulns count =%d`,newVulns.length)
       debug(`New Licenses Issues count =%d`,newLicenseIssues.length)

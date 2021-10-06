@@ -9,7 +9,6 @@ import {
 import * as path from 'path';
 import * as fs from 'fs';
 import * as utils from '../../../src/lib/utils/utils';
-import { Project } from 'snyk-api-ts-client/dist/client/generated/org';
 import {
   SnykCliTestOutput,
   IssuesPostResponseType,
@@ -37,6 +36,7 @@ describe('Test issues functions', () => {
         snykTestJsonResults.vulnerabilities.filter((x) => x.type != 'license'),
         'low',
         'inline',
+        false,
       );
       expect(newVulns.length).toEqual(0);
     });
@@ -59,6 +59,7 @@ describe('Test issues functions', () => {
         snykTestJsonResults.vulnerabilities.filter((x) => x.type != 'license'),
         'low',
         'inline',
+        false,
       );
       expect(newVulns.length).toEqual(0);
     });
@@ -83,6 +84,7 @@ describe('Test issues functions', () => {
         snykTestJsonResults.vulnerabilities.filter((x) => x.type != 'license'),
         'low',
         'inline',
+        false,
       );
       expect(newVulns.length).toEqual(1);
     });
@@ -106,6 +108,7 @@ describe('Test issues functions', () => {
         snykTestJsonResults.vulnerabilities.filter((x) => x.type != 'license'),
         'low',
         'inline',
+        false,
       );
       expect(newVulns.length).toEqual(10);
     });
@@ -127,6 +130,7 @@ describe('Test issues functions', () => {
         snykCurrentProject.issues.vulnerabilities,
         'low',
         'standalone',
+        false,
       );
       expect(newVulns.length).toEqual(0);
     });
@@ -151,6 +155,7 @@ describe('Test issues functions', () => {
         snykCurrentProject.issues.vulnerabilities,
         'low',
         'standalone',
+        false,
       );
       expect(newVulns.length).toEqual(1);
     });
@@ -175,6 +180,7 @@ describe('Test issues functions', () => {
         snykCurrentProject.issues.vulnerabilities,
         'low',
         'standalone',
+        false,
       );
       expect(newVulns.length).toEqual(10);
     });
@@ -198,6 +204,7 @@ describe('Test issues functions', () => {
         snykTestJsonResults.vulnerabilities.filter((x) => x.type == 'license'),
         'low',
         'inline',
+        true,
       );
       expect(newLicenseIssues.length).toEqual(0);
     });
@@ -222,6 +229,7 @@ describe('Test issues functions', () => {
         snykTestJsonResults.vulnerabilities.filter((x) => x.type == 'license'),
         'low',
         'inline',
+        true,
       );
       expect(newLicenseIssues.length).toEqual(1);
     });
@@ -246,6 +254,7 @@ describe('Test issues functions', () => {
         snykTestJsonResults.vulnerabilities.filter((x) => x.type == 'license'),
         'low',
         'inline',
+        true,
       );
       expect(newLicenseIssues.length).toEqual(2);
     });
@@ -267,6 +276,7 @@ describe('Test issues functions', () => {
         snykCurrentProject.issues.licenses,
         'low',
         'standalone',
+        true,
       );
       expect(newLicenseIssues.length).toEqual(0);
     });
@@ -292,6 +302,7 @@ describe('Test issues functions', () => {
         snykCurrentProject.issues.licenses,
         'low',
         'standalone',
+        true,
       );
       expect(newLicenseIssues.length).toEqual(1);
     });
@@ -316,6 +327,7 @@ describe('Test issues functions', () => {
         snykCurrentProject.issues.licenses,
         'low',
         'standalone',
+        true,
       );
       expect(newLicenseIssues.length).toEqual(2);
     });
@@ -359,6 +371,7 @@ describe('Test issues functions', () => {
         snykTestJsonResults.vulnerabilities.filter((x) => x.type != 'license'),
         'low',
         'inline',
+        false,
       );
       displayNewVulns(newVulns, 'inline');
 
@@ -396,6 +409,7 @@ describe('Test issues functions', () => {
         snykTestJsonResults.vulnerabilities.filter((x) => x.type != 'license'),
         'low',
         'inline',
+        false,
       );
       displayNewVulns(newVulns, 'inline');
 
@@ -477,6 +491,7 @@ describe('Test issues functions', () => {
         snykCurrentProject.issues.vulnerabilities,
         'low',
         'standalone',
+        false,
       );
       displayNewVulns(newVulns, 'standalone');
 
@@ -512,6 +527,7 @@ describe('Test issues functions', () => {
         snykCurrentProject.issues.vulnerabilities,
         'low',
         'standalone',
+        false,
       );
       displayNewVulns(newVulns, 'standalone');
 
@@ -585,6 +601,7 @@ describe('Test issues functions', () => {
         snykTestJsonResults.vulnerabilities.filter((x) => x.type == 'license'),
         'low',
         'inline',
+        true,
       );
       displayNewLicenseIssues(newLicenseIssues, 'inline');
 
@@ -626,6 +643,7 @@ describe('Test issues functions', () => {
         snykCurrentProject.issues.licenses,
         'low',
         'standalone',
+        true,
       );
 
       displayNewLicenseIssues(newLicenseIssues, 'standalone');
@@ -662,6 +680,7 @@ describe('Test issues functions', () => {
         snykTestJsonResults.vulnerabilities.filter((x) => x.type != 'license'),
         'low',
         'inline',
+        true,
       );
       const output = getIssuesDetailsPerPackage(newVulns, 'package');
       expect(output).toEqual([]);
@@ -686,6 +705,7 @@ describe('Test issues functions', () => {
         snykTestJsonResults.vulnerabilities.filter((x) => x.type != 'license'),
         'low',
         'inline',
+        true,
       );
       const output = getIssuesDetailsPerPackage(newVulns, 'package', '1.0.0');
       expect(output).toEqual([]);
@@ -710,6 +730,7 @@ describe('Test issues functions', () => {
         snykTestJsonResults.vulnerabilities.filter((x) => x.type != 'license'),
         'low',
         'inline',
+        false,
       );
       const output = getIssuesDetailsPerPackage(newVulns, 'acorn', '5.7.3');
       const issueDetailsForPackage = newVulns[0];
