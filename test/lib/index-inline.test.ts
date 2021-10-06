@@ -40,7 +40,7 @@ beforeEach(() => {
         case '/api/v1/org/playground/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/aggregated-issues':
           return fs.readFileSync(
             fixturesFolderPath +
-              'apiResponses/test-goof-aggregated-one-vuln.json',
+              'apiResponses/test-goof-aggregated-one-vuln-one-license.json',
           );
         case '/api/v1/org/playground/project/09235fa4-c241-42c6-8c63-c053bd272786/aggregated-issues':
           return fs.readFileSync(
@@ -80,6 +80,11 @@ beforeEach(() => {
             fixturesFolderPath +
               'apiResponses/SNYK-JS-ACORN-559469-issue-paths.json',
           );
+        case '/api/v1/org/playground/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/issue/snyk:lic:npm:goof:GPL-2.0/paths?perPage=100&page=1':
+          return fs.readFileSync(
+            fixturesFolderPath +
+              'apiResponses/snyk-lic-npm-goof-GPL-2-0-issue-paths.json',
+          );
         default:
       }
     });
@@ -99,7 +104,7 @@ describe('Test End 2 End - Inline mode', () => {
     }, 100);
 
     const result = await getDelta();
-    //expect(consoleOutput).toContain('No new issues found !');
+    expect(consoleOutput).toContain('No new issues found !');
 
     expect(mockExit).toHaveBeenCalledWith(0);
   });
@@ -127,7 +132,37 @@ describe('Test End 2 End - Inline mode', () => {
     ];
 
     expectedOutput.forEach((line: string) => {
-      //expect(consoleOutput.join()).toContain(line);
+      expect(consoleOutput.join()).toContain(line);
+    });
+    expect(mockExit).toHaveBeenCalledWith(1);
+  });
+
+  it('Test Inline mode - 2 new issue - 1 vuln - 1 license', async () => {
+    setTimeout(() => {
+      stdinMock.send(
+        fs
+          .readFileSync(
+            fixturesFolderPath +
+              'snykTestsOutputs/test-goof-two-vuln-two-license.json',
+          )
+          .toString(),
+      );
+      stdinMock.send(null);
+    }, 100);
+    const result = await getDelta();
+
+    const expectedOutput = [
+      'New issue introduced !',
+      'Security Vulnerability:',
+      '  1/1: Prototype Pollution [Medium Severity]',
+      '    Via: snyk@1.228.3 => configstore@3.1.2 => dot-prop@4.2.0',
+      '    Fixed in: dot-prop 5.1.1',
+      '    Fixable by upgrade:  snyk@1.290.1',
+    ];
+
+    console.log(result);
+    expectedOutput.forEach((line: string) => {
+      expect(consoleOutput.join()).toContain(line);
     });
     expect(mockExit).toHaveBeenCalledWith(1);
   });
