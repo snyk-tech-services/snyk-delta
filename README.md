@@ -41,7 +41,7 @@ or
 
 - To find the projectID go to Snyk -> Select the desired Project -> Grab the UUID from the URL
 
-
+## How to Use this Script
 ### 2 modes of operations
 
 1. Point to a specific snapshot by specifying org+project coordinates\
