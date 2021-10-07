@@ -81,20 +81,12 @@ describe('Test End 2 End - Inline mode with project coordinates', () => {
 
     const expectedOutput = [
       'Direct deps:',
-      'Added 1',
-      'coverage@4.5.2',
-      'Removed 1',
-      'cffi@1.14.5',
+      'Added 0',
+      'Removed 0',
       'Indirect deps:',
-      'Added 1',
-      'cffi@1.14.5',
+      'Added 0',
       'Paths',
-      'cffi@1.14.5 no issue:',
-      'cryptography@3.3.2=>cffi@1.14.5',
-      'psycopg2cffi@2.8.1=>cffi@1.14.5',
-      'social-auth-core@3.3.3=>cryptography@3.3.2=>cffi@1.14.5',
-      'social-auth-app-django@4.0.0=>social-auth-core@3.3.3=>cryptography@3.3.2=>cffi@1.14.5',
-      'Removed 1',
+      'Removed 0',
       'No new issues found !',
     ];
 
