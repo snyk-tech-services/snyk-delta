@@ -44,7 +44,7 @@ or
 ## How to Use this Script
 ### 2 modes of operations
 
-1. Point to a specific snapshot by specifying org+project coordinates\
+1. Point to a specific snapshot by specifying org+project coordinates
 > Note: The OrgID can be found in the Snyk Web UI under Settings and the ProjectID is a UUID that can be found in the URL of the Project in the Web UI or can be found using the Snyk API
    
 ```snyk test --json --print-deps | snyk-delta --baselineOrg <orgID> --baselineProject <projectID>```
