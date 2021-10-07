@@ -38,15 +38,14 @@ or
 ### 2 mode of operations
 
 1. Point to a specific snapshot by specifying org+project coordinates\
-> Note:\
-> BaselineProject value is expected to be a UUID, not simply a name\
+> Note: BaselineProject value is expected to be a UUID, not simply a name\
 > Check your Snyk Web UI or API to retrieve those UUIDs.
 
    ```snyk test --json --print-deps | snyk-delta --baselineOrg xxx --baselineProject xxx```
 
 >Use the --setPassIfNoBaseline if used with snyk prevent commit status and the project is not monitored. This will prevent snyk-prevent_commit_status to fail.
 
-> setPassIfNoBaseline default to false.
+> setPassIfNoBaseline is false (by default)
 
 ```snyk test --json --print-deps | snyk-delta --baselineOrg xxx --baselineProject xxx --setPassIfNoBaseline true```
 
