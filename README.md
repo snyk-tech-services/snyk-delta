@@ -35,7 +35,7 @@ or
 
 2. Run ```snyk test --json --print-deps ``` to confirm the dependency tree is built
 
-### 2 mode of operations
+### 2 modes of operations
 
 1. Point to a specific snapshot by specifying org+project coordinates\
 > Note: The OrgID can be found in the Snyk Web UI under Settings and the ProjectID is a UUID that can be found in the URL of the Project in the Web UI or can be found using the Snyk API
@@ -52,6 +52,9 @@ or
 > This usecase comes up when you have 2 same projects (with distinct project ID's) in 2 different orgs and you want to compare them 
 
 ```snyk-delta --baselineOrg xxx --baselineProject xxx --currentOrg xxx --currentProject xxx --setPassIfNoBaseline false```
+
+>Note: The following is Deprecated
+```snyk test --json --print-deps | snyk-delta ``` 
 
 ## Usage as module
 
