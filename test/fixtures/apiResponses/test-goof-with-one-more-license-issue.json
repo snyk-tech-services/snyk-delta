@@ -1332,7 +1332,7 @@
           "url": "https://snyk.io/vuln/snyk:lic:npm:goof:GPL-2.0",
           "title": "GPL-2.0 license",
           "type": "license",
-          "from": [],
+          "from": [ "goof@0.0.3" ],
           "package": "goof",
           "version": "0.0.3",
           "severity": "high",

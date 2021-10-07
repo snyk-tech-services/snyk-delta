@@ -26,6 +26,11 @@ interface LegacyVulnerability {
 const isVulnerablePathNew = (monitoredSnapshotPathArray: Array<string>, currentSnapshotPathArray: Array<string> ): boolean => {
 
     const versionPatternRegex = /@[a-zA-Z0-9-_\.]+$/
+
+    if (currentSnapshotPathArray.length === 0){
+        return false
+    }
+
     if(monitoredSnapshotPathArray.length != currentSnapshotPathArray.length){
         // debug('###')
         // debug('Existing path')
