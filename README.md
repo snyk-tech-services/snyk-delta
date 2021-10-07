@@ -44,10 +44,11 @@ or
 
    ```snyk test --json --print-deps | snyk-delta --baselineOrg xxx --baselineProject xxx```
 
-    - Use the --setPassIfNoBaseline if used with snyk prevent commit status and the project is not monitored. This will prevent snyk-prevent_commit_status to fail.
-    setPassIfNoBaseline default to false.\
+>Use the --setPassIfNoBaseline if used with snyk prevent commit status and the project is not monitored. This will prevent snyk-prevent_commit_status to fail.
 
-     `snyk test --json --print-deps | snyk-delta --baselineOrg xxx --baselineProject xxx --setPassIfNoBaseline true`
+> setPassIfNoBaseline default to false.
+
+     ```snyk test --json --print-deps | snyk-delta --baselineOrg xxx --baselineProject xxx --setPassIfNoBaseline true```
 
 2. Standalone (Comparing a project in an org with a project in a different org)
 > This usecase comes up when you have 2 same projects (with distinct project ID's) in 2 different orgs and you want to compare them 
