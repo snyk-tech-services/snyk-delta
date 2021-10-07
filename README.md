@@ -41,10 +41,12 @@ or
 > Note:\
 > BaselineProject value is expected to be a UUID, not simply a name\
 > Check your Snyk Web UI or API to retrieve those UUIDs.
-    `snyk test --json --print-deps | snyk-delta --baselineOrg xxx --baselineProject xxx`
+
+   ```snyk test --json --print-deps | snyk-delta --baselineOrg xxx --baselineProject xxx```
 
     - Use the --setPassIfNoBaseline if used with snyk prevent commit status and the project is not monitored. This will prevent snyk-prevent_commit_status to fail.
     setPassIfNoBaseline default to false.\
+
      `snyk test --json --print-deps | snyk-delta --baselineOrg xxx --baselineProject xxx --setPassIfNoBaseline true`
 
 2. Standalone (Comparing a project in an org with a project in a different org)
