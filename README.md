@@ -35,12 +35,19 @@ or
 
 2. Run ```snyk test --json --print-deps ``` to confirm the dependency tree is built
 
+## Script Parameters:
+
+- To find the orgID, go to Snyk -> Settings
+
+- To find the projectID go to Snyk -> Select the desired Project -> Grab the UUID from the URL
+
+
 ### 2 modes of operations
 
 1. Point to a specific snapshot by specifying org+project coordinates\
 > Note: The OrgID can be found in the Snyk Web UI under Settings and the ProjectID is a UUID that can be found in the URL of the Project in the Web UI or can be found using the Snyk API
    
-```snyk test --json --print-deps | snyk-delta --baselineOrg <OrgID> --baselineProject <ProjectID>```
+```snyk test --json --print-deps | snyk-delta --baselineOrg <orgID> --baselineProject <projectID>```
 
 >Use the --setPassIfNoBaseline if used with snyk prevent commit status and the project is not monitored. This will prevent snyk-prevent_commit_status to fail.
 
