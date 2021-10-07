@@ -42,10 +42,10 @@ const displayDependenciesChangeDetails = async (
 
   const snykTestDirectDeps = snykTestGraph
     .toJSON()
-    .pkgs.filter((pkg) => snykTestDirectDepsPkgIDs.indexOf(pkg.id) > 0);
+    .pkgs.filter((pkg) => snykTestDirectDepsPkgIDs.indexOf(pkg.id) >= 0);
   const snykTestIndirectDeps = snykTestGraph
     .toJSON()
-    .pkgs.filter((pkg) => snykTestDirectDepsPkgIDs.indexOf(pkg.id) <= 0);
+    .pkgs.filter((pkg) => snykTestDirectDepsPkgIDs.indexOf(pkg.id) < 0);
 
   const snykProjectGraph = depgraph.createFromJSON(
     monitoredProjectDepGraph.depGraph as depgraph.DepGraphData,
@@ -70,10 +70,10 @@ const displayDependenciesChangeDetails = async (
 
   const snykProjectDirectDeps = snykProjectGraph
     .toJSON()
-    .pkgs.filter((pkg) => snykProjectDirectDepsPkgIDs.indexOf(pkg.id) > 0);
+    .pkgs.filter((pkg) => snykProjectDirectDepsPkgIDs.indexOf(pkg.id) >= 0);
   const snykProjectIndirectDeps = snykProjectGraph
     .toJSON()
-    .pkgs.filter((pkg) => snykProjectDirectDepsPkgIDs.indexOf(pkg.id) <= 0);
+    .pkgs.filter((pkg) => snykProjectDirectDepsPkgIDs.indexOf(pkg.id) < 0);
 
   const addedDirectDeps = _.differenceWith(
     snykTestDirectDeps,

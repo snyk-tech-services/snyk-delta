@@ -1,0 +1,1180 @@
+{
+  "depGraph": {
+    "schemaVersion": "1.2.0",
+    "pkgManager": { "name": "poetry" },
+    "pkgs": [
+      {
+        "id": "mobile-api@1.0.0",
+        "info": { "name": "mobile-api", "version": "1.0.0" }
+      },
+      {
+        "id": "adding-one-deps@1.0.0",
+        "info": { "name": "adding-one-deps", "version": "1.0.0" }
+      },
+      {
+        "id": "async-timeout@3.0.1",
+        "info": { "name": "async-timeout", "version": "3.0.1" }
+      },
+      { "id": "attrs@21.2.0", "info": { "name": "attrs", "version": "21.2.0" } },
+      {
+        "id": "chardet@3.0.4",
+        "info": { "name": "chardet", "version": "3.0.4" }
+      },
+      {
+        "id": "multidict@5.1.0",
+        "info": { "name": "multidict", "version": "5.1.0" }
+      },
+      {
+        "id": "typing-extensions@3.10.0.2",
+        "info": { "name": "typing-extensions", "version": "3.10.0.2" }
+      },
+      { "id": "idna@2.10", "info": { "name": "idna", "version": "2.10" } },
+      { "id": "yarl@1.6.3", "info": { "name": "yarl", "version": "1.6.3" } },
+      {
+        "id": "aiohttp@3.7.4.post0",
+        "info": { "name": "aiohttp", "version": "3.7.4.post0" }
+      },
+      {
+        "id": "aioresponses@0.7.2",
+        "info": { "name": "aioresponses", "version": "0.7.2" }
+      },
+      {
+        "id": "asgiref@3.4.1",
+        "info": { "name": "asgiref", "version": "3.4.1" }
+      },
+      { "id": "pytz@2021.1", "info": { "name": "pytz", "version": "2021.1" } },
+      {
+        "id": "sqlparse@0.4.2",
+        "info": { "name": "sqlparse", "version": "0.4.2" }
+      },
+      {
+        "id": "django@3.1.13",
+        "info": { "name": "django", "version": "3.1.13" }
+      },
+      {
+        "id": "certifi@2021.5.30",
+        "info": { "name": "certifi", "version": "2021.5.30" }
+      },
+      {
+        "id": "pycparser@2.20",
+        "info": { "name": "pycparser", "version": "2.20" }
+      },
+      { "id": "cffi@1.14.6", "info": { "name": "cffi", "version": "1.14.6" } },
+      {
+        "id": "cryptography@3.4.8",
+        "info": { "name": "cryptography", "version": "3.4.8" }
+      },
+      { "id": "six@1.16.0", "info": { "name": "six", "version": "1.16.0" } },
+      {
+        "id": "pyopenssl@20.0.1",
+        "info": { "name": "pyopenssl", "version": "20.0.1" }
+      },
+      {
+        "id": "urllib3@1.25.11",
+        "info": { "name": "urllib3", "version": "1.25.11" }
+      },
+      {
+        "id": "requests@2.23.0",
+        "info": { "name": "requests", "version": "2.23.0" }
+      },
+      {
+        "id": "responses@0.14.0",
+        "info": { "name": "responses", "version": "0.14.0" }
+      },
+      {
+        "id": "boomerang-client@1.23.0",
+        "info": { "name": "boomerang-client", "version": "1.23.0" }
+      },
+      { "id": "boto@2.49.0", "info": { "name": "boto", "version": "2.49.0" } },
+      {
+        "id": "jmespath@0.10.0",
+        "info": { "name": "jmespath", "version": "0.10.0" }
+      },
+      {
+        "id": "python-dateutil@2.8.2",
+        "info": { "name": "python-dateutil", "version": "2.8.2" }
+      },
+      {
+        "id": "botocore@1.21.44",
+        "info": { "name": "botocore", "version": "1.21.44" }
+      },
+      {
+        "id": "s3transfer@0.5.0",
+        "info": { "name": "s3transfer", "version": "0.5.0" }
+      },
+      {
+        "id": "boto3@1.18.44",
+        "info": { "name": "boto3", "version": "1.18.44" }
+      },
+      {
+        "id": "mypy-boto3-s3@1.17.9.0",
+        "info": { "name": "mypy-boto3-s3", "version": "1.17.9.0" }
+      },
+      {
+        "id": "boto3-stubs@1.17.9.0",
+        "info": { "name": "boto3-stubs", "version": "1.17.9.0" }
+      },
+      {
+        "id": "text-unidecode@1.3",
+        "info": { "name": "text-unidecode", "version": "1.3" }
+      },
+      { "id": "faker@8.13.2", "info": { "name": "faker", "version": "8.13.2" } },
+      {
+        "id": "factory-boy@3.2.0",
+        "info": { "name": "factory-boy", "version": "3.2.0" }
+      },
+      {
+        "id": "grpcio@1.40.0",
+        "info": { "name": "grpcio", "version": "1.40.0" }
+      },
+      {
+        "id": "protobuf@3.18.0",
+        "info": { "name": "protobuf", "version": "3.18.0" }
+      },
+      { "id": "wrapt@1.12.1", "info": { "name": "wrapt", "version": "1.12.1" } },
+      {
+        "id": "catalog-client@11.2.0",
+        "info": { "name": "catalog-client", "version": "11.2.0" }
+      },
+      {
+        "id": "ciso8601@2.1.3",
+        "info": { "name": "ciso8601", "version": "2.1.3" }
+      },
+      {
+        "id": "future@0.18.2",
+        "info": { "name": "future", "version": "0.18.2" }
+      },
+      { "id": "polib@1.1.1", "info": { "name": "polib", "version": "1.1.1" } },
+      {
+        "id": "atomicwrites@1.4.0",
+        "info": { "name": "atomicwrites", "version": "1.4.0" }
+      },
+      {
+        "id": "colorama@0.4.4",
+        "info": { "name": "colorama", "version": "0.4.4" }
+      },
+      {
+        "id": "iniconfig@1.1.1",
+        "info": { "name": "iniconfig", "version": "1.1.1" }
+      },
+      {
+        "id": "pyparsing@2.4.7",
+        "info": { "name": "pyparsing", "version": "2.4.7" }
+      },
+      {
+        "id": "packaging@20.4",
+        "info": { "name": "packaging", "version": "20.4" }
+      },
+      { "id": "pluggy@1.0.0", "info": { "name": "pluggy", "version": "1.0.0" } },
+      { "id": "py@1.10.0", "info": { "name": "py", "version": "1.10.0" } },
+      { "id": "toml@0.10.2", "info": { "name": "toml", "version": "0.10.2" } },
+      { "id": "pytest@6.2.5", "info": { "name": "pytest", "version": "6.2.5" } },
+      { "id": "statsd@3.3.0", "info": { "name": "statsd", "version": "3.3.0" } },
+      {
+        "id": "i18n-client@0.1.6",
+        "info": { "name": "i18n-client", "version": "0.1.6" }
+      },
+      {
+        "id": "lyst-taxonomy@2.35.0",
+        "info": { "name": "lyst-taxonomy", "version": "2.35.0" }
+      },
+      {
+        "id": "catalog-utils@4.0.1",
+        "info": { "name": "catalog-utils", "version": "4.0.1" }
+      },
+      {
+        "id": "circuitbreaker@1.3.1",
+        "info": { "name": "circuitbreaker", "version": "1.3.1" }
+      },
+      {
+        "id": "cornucopia-client@0.1.1",
+        "info": { "name": "cornucopia-client", "version": "0.1.1" }
+      },
+      {
+        "id": "discovery-feeds-client@0.23.0",
+        "info": { "name": "discovery-feeds-client", "version": "0.23.0" }
+      },
+      {
+        "id": "django-environ@0.4.5",
+        "info": { "name": "django-environ", "version": "0.4.5" }
+      },
+      {
+        "id": "django-heimdall@0.20.0",
+        "info": { "name": "django-heimdall", "version": "0.20.0" }
+      },
+      {
+        "id": "django-ratelimit@1.1.0",
+        "info": { "name": "django-ratelimit", "version": "1.1.0" }
+      },
+      {
+        "id": "django-storages@1.9.1",
+        "info": { "name": "django-storages", "version": "1.9.1" }
+      },
+      {
+        "id": "djangorestframework@3.12.4",
+        "info": { "name": "djangorestframework", "version": "3.12.4" }
+      },
+      {
+        "id": "djangorestframework-recursive@0.1.2",
+        "info": { "name": "djangorestframework-recursive", "version": "0.1.2" }
+      },
+      {
+        "id": "markupsafe@2.0.1",
+        "info": { "name": "markupsafe", "version": "2.0.1" }
+      },
+      { "id": "jinja2@3.0.1", "info": { "name": "jinja2", "version": "3.0.1" } },
+      {
+        "id": "coreschema@0.0.4",
+        "info": { "name": "coreschema", "version": "0.0.4" }
+      },
+      { "id": "itypes@1.2.0", "info": { "name": "itypes", "version": "1.2.0" } },
+      {
+        "id": "uritemplate@3.0.1",
+        "info": { "name": "uritemplate", "version": "3.0.1" }
+      },
+      {
+        "id": "coreapi@2.3.3",
+        "info": { "name": "coreapi", "version": "2.3.3" }
+      },
+      {
+        "id": "inflection@0.5.1",
+        "info": { "name": "inflection", "version": "0.5.1" }
+      },
+      {
+        "id": "ruamel.yaml.clib@0.2.6",
+        "info": { "name": "ruamel.yaml.clib", "version": "0.2.6" }
+      },
+      {
+        "id": "ruamel.yaml@0.17.16",
+        "info": { "name": "ruamel.yaml", "version": "0.17.16" }
+      },
+      {
+        "id": "drf-yasg@1.20.0",
+        "info": { "name": "drf-yasg", "version": "1.20.0" }
+      },
+      { "id": "redis@3.5.3", "info": { "name": "redis", "version": "3.5.3" } },
+      {
+        "id": "sortedcontainers@2.4.0",
+        "info": { "name": "sortedcontainers", "version": "2.4.0" }
+      },
+      {
+        "id": "fakeredis@1.4.5",
+        "info": { "name": "fakeredis", "version": "1.4.5" }
+      },
+      {
+        "id": "feeds-client@3.3.0",
+        "info": { "name": "feeds-client", "version": "3.3.0" }
+      },
+      {
+        "id": "fireman@2.10.1",
+        "info": { "name": "fireman", "version": "2.10.1" }
+      },
+      {
+        "id": "cachetools@4.2.2",
+        "info": { "name": "cachetools", "version": "4.2.2" }
+      },
+      { "id": "pyasn1@0.4.8", "info": { "name": "pyasn1", "version": "0.4.8" } },
+      {
+        "id": "pyasn1-modules@0.2.8",
+        "info": { "name": "pyasn1-modules", "version": "0.2.8" }
+      },
+      { "id": "rsa@4.7.2", "info": { "name": "rsa", "version": "4.7.2" } },
+      {
+        "id": "google-auth@1.17.0",
+        "info": { "name": "google-auth", "version": "1.17.0" }
+      },
+      {
+        "id": "decorator@5.1.0",
+        "info": { "name": "decorator", "version": "5.1.0" }
+      },
+      {
+        "id": "appnope@0.1.2",
+        "info": { "name": "appnope", "version": "0.1.2" }
+      },
+      {
+        "id": "backcall@0.2.0",
+        "info": { "name": "backcall", "version": "0.2.0" }
+      },
+      { "id": "parso@0.8.2", "info": { "name": "parso", "version": "0.8.2" } },
+      { "id": "jedi@0.18.0", "info": { "name": "jedi", "version": "0.18.0" } },
+      {
+        "id": "traitlets@5.1.0",
+        "info": { "name": "traitlets", "version": "5.1.0" }
+      },
+      {
+        "id": "matplotlib-inline@0.1.3",
+        "info": { "name": "matplotlib-inline", "version": "0.1.3" }
+      },
+      {
+        "id": "ptyprocess@0.7.0",
+        "info": { "name": "ptyprocess", "version": "0.7.0" }
+      },
+      {
+        "id": "pexpect@4.8.0",
+        "info": { "name": "pexpect", "version": "4.8.0" }
+      },
+      {
+        "id": "pickleshare@0.7.5",
+        "info": { "name": "pickleshare", "version": "0.7.5" }
+      },
+      {
+        "id": "wcwidth@0.2.5",
+        "info": { "name": "wcwidth", "version": "0.2.5" }
+      },
+      {
+        "id": "prompt-toolkit@3.0.20",
+        "info": { "name": "prompt-toolkit", "version": "3.0.20" }
+      },
+      {
+        "id": "pygments@2.10.0",
+        "info": { "name": "pygments", "version": "2.10.0" }
+      },
+      {
+        "id": "ipython@7.27.0",
+        "info": { "name": "ipython", "version": "7.27.0" }
+      },
+      { "id": "ipdb@0.13.9", "info": { "name": "ipdb", "version": "0.13.9" } },
+      {
+        "id": "lyst-cms-client@0.1.2",
+        "info": { "name": "lyst-cms-client", "version": "0.1.2" }
+      },
+      {
+        "id": "lyst-scrambler@0.1.2",
+        "info": { "name": "lyst-scrambler", "version": "0.1.2" }
+      },
+      {
+        "id": "lyst-sizing@1.3.0",
+        "info": { "name": "lyst-sizing", "version": "1.3.0" }
+      },
+      {
+        "id": "more-itertools@8.10.0",
+        "info": { "name": "more-itertools", "version": "8.10.0" }
+      },
+      {
+        "id": "newrelic@6.10.0.165",
+        "info": { "name": "newrelic", "version": "6.10.0.165" }
+      },
+      { "id": "pillow@8.3.2", "info": { "name": "pillow", "version": "8.3.2" } },
+      {
+        "id": "plasma-client@0.5.0",
+        "info": { "name": "plasma-client", "version": "0.5.0" }
+      },
+      {
+        "id": "psycopg2@2.9.1",
+        "info": { "name": "psycopg2", "version": "2.9.1" }
+      },
+      { "id": "pyjwt@1.7.1", "info": { "name": "pyjwt", "version": "1.7.1" } },
+      { "id": "coverage@5.5", "info": { "name": "coverage", "version": "5.5" } },
+      {
+        "id": "pytest-cov@2.12.1",
+        "info": { "name": "pytest-cov", "version": "2.12.1" }
+      },
+      {
+        "id": "pytest-django@3.10.0",
+        "info": { "name": "pytest-django", "version": "3.10.0" }
+      },
+      {
+        "id": "pytest-randomly@3.4.1",
+        "info": { "name": "pytest-randomly", "version": "3.4.1" }
+      },
+      {
+        "id": "sentry-sdk@1.4.3",
+        "info": { "name": "sentry-sdk", "version": "1.4.3" }
+      },
+      {
+        "id": "asn1crypto@1.4.0",
+        "info": { "name": "asn1crypto", "version": "1.4.0" }
+      },
+      {
+        "id": "azure-common@1.1.27",
+        "info": { "name": "azure-common", "version": "1.1.27" }
+      },
+      {
+        "id": "azure-core@1.18.0",
+        "info": { "name": "azure-core", "version": "1.18.0" }
+      },
+      {
+        "id": "isodate@0.6.0",
+        "info": { "name": "isodate", "version": "0.6.0" }
+      },
+      {
+        "id": "oauthlib@3.1.1",
+        "info": { "name": "oauthlib", "version": "3.1.1" }
+      },
+      {
+        "id": "requests-oauthlib@1.3.0",
+        "info": { "name": "requests-oauthlib", "version": "1.3.0" }
+      },
+      {
+        "id": "msrest@0.6.21",
+        "info": { "name": "msrest", "version": "0.6.21" }
+      },
+      {
+        "id": "azure-storage-blob@12.9.0",
+        "info": { "name": "azure-storage-blob", "version": "12.9.0" }
+      },
+      {
+        "id": "oscrypto@1.2.1",
+        "info": { "name": "oscrypto", "version": "1.2.1" }
+      },
+      {
+        "id": "pycryptodomex@3.10.1",
+        "info": { "name": "pycryptodomex", "version": "3.10.1" }
+      },
+      {
+        "id": "snowflake-connector-python@2.6.1",
+        "info": { "name": "snowflake-connector-python", "version": "2.6.1" }
+      },
+      {
+        "id": "fastjsonschema@2.15.1",
+        "info": { "name": "fastjsonschema", "version": "2.15.1" }
+      },
+      {
+        "id": "lyst-data-dictionary-schemas@0.16.7",
+        "info": { "name": "lyst-data-dictionary-schemas", "version": "0.16.7" }
+      },
+      {
+        "id": "user-client@0.3.3",
+        "info": { "name": "user-client", "version": "0.3.3" }
+      },
+      {
+        "id": "taste-profile@0.1.3",
+        "info": { "name": "taste-profile", "version": "0.1.3" }
+      },
+      {
+        "id": "time-machine@2.4.0",
+        "info": { "name": "time-machine", "version": "2.4.0" }
+      },
+      {
+        "id": "user-list-client@1.23.0",
+        "info": { "name": "user-list-client", "version": "1.23.0" }
+      },
+      {
+        "id": "uwsgi@2.0.19.1",
+        "info": { "name": "uwsgi", "version": "2.0.19.1" }
+      },
+      {
+        "id": "whitenoise@5.0.1",
+        "info": { "name": "whitenoise", "version": "5.0.1" }
+      }
+    ],
+    "graph": {
+      "rootNodeId": "root-node",
+      "nodes": [
+        {
+          "nodeId": "root-node",
+          "pkgId": "mobile-api@1.0.0",
+          "deps": [
+            { "nodeId": "adding-one-deps@1.0.0" },
+            { "nodeId": "aiohttp@3.7.4.post0" },
+            { "nodeId": "aioresponses@0.7.2" },
+            { "nodeId": "attrs@21.2.0" },
+            { "nodeId": "boomerang-client@1.23.0" },
+            { "nodeId": "boto@2.49.0" },
+            { "nodeId": "boto3@1.18.44" },
+            { "nodeId": "boto3-stubs@1.17.9.0" },
+            { "nodeId": "catalog-client@11.2.0" },
+            { "nodeId": "catalog-utils@4.0.1" },
+            { "nodeId": "circuitbreaker@1.3.1" },
+            { "nodeId": "ciso8601@2.1.3" },
+            { "nodeId": "cornucopia-client@0.1.1" },
+            { "nodeId": "discovery-feeds-client@0.23.0" },
+            { "nodeId": "django@3.1.13" },
+            { "nodeId": "django-environ@0.4.5" },
+            { "nodeId": "django-heimdall@0.20.0" },
+            { "nodeId": "django-ratelimit@1.1.0" },
+            { "nodeId": "django-storages@1.9.1" },
+            { "nodeId": "djangorestframework@3.12.4" },
+            { "nodeId": "djangorestframework-recursive@0.1.2" },
+            { "nodeId": "drf-yasg@1.20.0" },
+            { "nodeId": "factory-boy@3.2.0" },
+            { "nodeId": "fakeredis@1.4.5" },
+            { "nodeId": "feeds-client@3.3.0" },
+            { "nodeId": "fireman@2.10.1" },
+            { "nodeId": "google-auth@1.17.0" },
+            { "nodeId": "i18n-client@0.1.6" },
+            { "nodeId": "ipdb@0.13.9" },
+            { "nodeId": "ipython@7.27.0" },
+            { "nodeId": "lyst-cms-client@0.1.2" },
+            { "nodeId": "lyst-scrambler@0.1.2" },
+            { "nodeId": "lyst-sizing@1.3.0" },
+            { "nodeId": "lyst-taxonomy@2.35.0" },
+            { "nodeId": "more-itertools@8.10.0" },
+            { "nodeId": "newrelic@6.10.0.165" },
+            { "nodeId": "packaging@20.4" },
+            { "nodeId": "pillow@8.3.2" },
+            { "nodeId": "plasma-client@0.5.0" },
+            { "nodeId": "psycopg2@2.9.1" },
+            { "nodeId": "pyjwt@1.7.1" },
+            { "nodeId": "pytest@6.2.5" },
+            { "nodeId": "pytest-cov@2.12.1" },
+            { "nodeId": "pytest-django@3.10.0" },
+            { "nodeId": "pytest-randomly@3.4.1" },
+            { "nodeId": "redis@3.5.3" },
+            { "nodeId": "requests@2.23.0" },
+            { "nodeId": "responses@0.14.0" },
+            { "nodeId": "sentry-sdk@1.4.3" },
+            { "nodeId": "snowflake-connector-python@2.6.1" },
+            { "nodeId": "statsd@3.3.0" },
+            { "nodeId": "taste-profile@0.1.3" },
+            { "nodeId": "time-machine@2.4.0" },
+            { "nodeId": "user-client@0.3.3" },
+            { "nodeId": "user-list-client@1.23.0" },
+            { "nodeId": "uwsgi@2.0.19.1" },
+            { "nodeId": "whitenoise@5.0.1" }
+          ]
+        },
+        {
+          "nodeId": "async-timeout@3.0.1",
+          "pkgId": "async-timeout@3.0.1",
+          "deps": []
+        },
+        { "nodeId": "attrs@21.2.0", "pkgId": "attrs@21.2.0", "deps": [] },
+        { "nodeId": "chardet@3.0.4", "pkgId": "chardet@3.0.4", "deps": [] },
+        { "nodeId": "multidict@5.1.0", "pkgId": "multidict@5.1.0", "deps": [] },
+        {
+          "nodeId": "typing-extensions@3.10.0.2",
+          "pkgId": "typing-extensions@3.10.0.2",
+          "deps": []
+        },
+        { "nodeId": "idna@2.10", "pkgId": "idna@2.10", "deps": [] },
+        {
+          "nodeId": "yarl@1.6.3",
+          "pkgId": "yarl@1.6.3",
+          "deps": [{ "nodeId": "idna@2.10" }, { "nodeId": "multidict@5.1.0" }]
+        },
+        {
+          "nodeId": "aiohttp@3.7.4.post0",
+          "pkgId": "aiohttp@3.7.4.post0",
+          "deps": [
+            { "nodeId": "async-timeout@3.0.1" },
+            { "nodeId": "attrs@21.2.0" },
+            { "nodeId": "chardet@3.0.4" },
+            { "nodeId": "multidict@5.1.0" },
+            { "nodeId": "typing-extensions@3.10.0.2" },
+            { "nodeId": "yarl@1.6.3" }
+          ]
+        },
+        {
+          "nodeId": "adding-one-deps@1.0.0",
+          "pkgId": "adding-one-deps@1.0.0",
+          "deps": []
+        },
+        {
+          "nodeId": "aioresponses@0.7.2",
+          "pkgId": "aioresponses@0.7.2",
+          "deps": [{ "nodeId": "aiohttp@3.7.4.post0" }]
+        },
+        { "nodeId": "asgiref@3.4.1", "pkgId": "asgiref@3.4.1", "deps": [] },
+        { "nodeId": "pytz@2021.1", "pkgId": "pytz@2021.1", "deps": [] },
+        { "nodeId": "sqlparse@0.4.2", "pkgId": "sqlparse@0.4.2", "deps": [] },
+        {
+          "nodeId": "django@3.1.13",
+          "pkgId": "django@3.1.13",
+          "deps": [
+            { "nodeId": "asgiref@3.4.1" },
+            { "nodeId": "pytz@2021.1" },
+            { "nodeId": "sqlparse@0.4.2" }
+          ]
+        },
+        {
+          "nodeId": "certifi@2021.5.30",
+          "pkgId": "certifi@2021.5.30",
+          "deps": []
+        },
+        { "nodeId": "pycparser@2.20", "pkgId": "pycparser@2.20", "deps": [] },
+        {
+          "nodeId": "cffi@1.14.6",
+          "pkgId": "cffi@1.14.6",
+          "deps": [{ "nodeId": "pycparser@2.20" }]
+        },
+        {
+          "nodeId": "cryptography@3.4.8",
+          "pkgId": "cryptography@3.4.8",
+          "deps": [{ "nodeId": "cffi@1.14.6" }]
+        },
+        { "nodeId": "six@1.16.0", "pkgId": "six@1.16.0", "deps": [] },
+        {
+          "nodeId": "pyopenssl@20.0.1",
+          "pkgId": "pyopenssl@20.0.1",
+          "deps": [{ "nodeId": "cryptography@3.4.8" }, { "nodeId": "six@1.16.0" }]
+        },
+        { "nodeId": "urllib3@1.25.11", "pkgId": "urllib3@1.25.11", "deps": [] },
+        {
+          "nodeId": "requests@2.23.0",
+          "pkgId": "requests@2.23.0",
+          "deps": [
+            { "nodeId": "certifi@2021.5.30" },
+            { "nodeId": "chardet@3.0.4" },
+            { "nodeId": "cryptography@3.4.8" },
+            { "nodeId": "idna@2.10" },
+            { "nodeId": "pyopenssl@20.0.1" },
+            { "nodeId": "urllib3@1.25.11" }
+          ]
+        },
+        {
+          "nodeId": "responses@0.14.0",
+          "pkgId": "responses@0.14.0",
+          "deps": [
+            { "nodeId": "requests@2.23.0" },
+            { "nodeId": "six@1.16.0" },
+            { "nodeId": "urllib3@1.25.11" }
+          ]
+        },
+        {
+          "nodeId": "boomerang-client@1.23.0",
+          "pkgId": "boomerang-client@1.23.0",
+          "deps": [
+            { "nodeId": "django@3.1.13" },
+            { "nodeId": "pytz@2021.1" },
+            { "nodeId": "requests@2.23.0" },
+            { "nodeId": "responses@0.14.0" }
+          ]
+        },
+        { "nodeId": "boto@2.49.0", "pkgId": "boto@2.49.0", "deps": [] },
+        { "nodeId": "jmespath@0.10.0", "pkgId": "jmespath@0.10.0", "deps": [] },
+        {
+          "nodeId": "python-dateutil@2.8.2",
+          "pkgId": "python-dateutil@2.8.2",
+          "deps": [{ "nodeId": "six@1.16.0" }]
+        },
+        {
+          "nodeId": "botocore@1.21.44",
+          "pkgId": "botocore@1.21.44",
+          "deps": [
+            { "nodeId": "jmespath@0.10.0" },
+            { "nodeId": "python-dateutil@2.8.2" },
+            { "nodeId": "urllib3@1.25.11" }
+          ]
+        },
+        {
+          "nodeId": "s3transfer@0.5.0",
+          "pkgId": "s3transfer@0.5.0",
+          "deps": [{ "nodeId": "botocore@1.21.44" }]
+        },
+        {
+          "nodeId": "boto3@1.18.44",
+          "pkgId": "boto3@1.18.44",
+          "deps": [
+            { "nodeId": "botocore@1.21.44" },
+            { "nodeId": "jmespath@0.10.0" },
+            { "nodeId": "s3transfer@0.5.0" }
+          ]
+        },
+        {
+          "nodeId": "mypy-boto3-s3@1.17.9.0",
+          "pkgId": "mypy-boto3-s3@1.17.9.0",
+          "deps": []
+        },
+        {
+          "nodeId": "boto3-stubs@1.17.9.0",
+          "pkgId": "boto3-stubs@1.17.9.0",
+          "deps": [{ "nodeId": "mypy-boto3-s3@1.17.9.0" }]
+        },
+        {
+          "nodeId": "text-unidecode@1.3",
+          "pkgId": "text-unidecode@1.3",
+          "deps": []
+        },
+        {
+          "nodeId": "faker@8.13.2",
+          "pkgId": "faker@8.13.2",
+          "deps": [
+            { "nodeId": "python-dateutil@2.8.2" },
+            { "nodeId": "text-unidecode@1.3" }
+          ]
+        },
+        {
+          "nodeId": "factory-boy@3.2.0",
+          "pkgId": "factory-boy@3.2.0",
+          "deps": [{ "nodeId": "faker@8.13.2" }]
+        },
+        {
+          "nodeId": "grpcio@1.40.0",
+          "pkgId": "grpcio@1.40.0",
+          "deps": [{ "nodeId": "six@1.16.0" }]
+        },
+        { "nodeId": "protobuf@3.18.0", "pkgId": "protobuf@3.18.0", "deps": [] },
+        { "nodeId": "wrapt@1.12.1", "pkgId": "wrapt@1.12.1", "deps": [] },
+        {
+          "nodeId": "catalog-client@11.2.0",
+          "pkgId": "catalog-client@11.2.0",
+          "deps": [
+            { "nodeId": "factory-boy@3.2.0" },
+            { "nodeId": "grpcio@1.40.0" },
+            { "nodeId": "protobuf@3.18.0" },
+            { "nodeId": "six@1.16.0" },
+            { "nodeId": "wrapt@1.12.1" }
+          ]
+        },
+        { "nodeId": "ciso8601@2.1.3", "pkgId": "ciso8601@2.1.3", "deps": [] },
+        { "nodeId": "future@0.18.2", "pkgId": "future@0.18.2", "deps": [] },
+        { "nodeId": "polib@1.1.1", "pkgId": "polib@1.1.1", "deps": [] },
+        {
+          "nodeId": "atomicwrites@1.4.0",
+          "pkgId": "atomicwrites@1.4.0",
+          "deps": []
+        },
+        { "nodeId": "colorama@0.4.4", "pkgId": "colorama@0.4.4", "deps": [] },
+        { "nodeId": "iniconfig@1.1.1", "pkgId": "iniconfig@1.1.1", "deps": [] },
+        { "nodeId": "pyparsing@2.4.7", "pkgId": "pyparsing@2.4.7", "deps": [] },
+        {
+          "nodeId": "packaging@20.4",
+          "pkgId": "packaging@20.4",
+          "deps": [{ "nodeId": "pyparsing@2.4.7" }, { "nodeId": "six@1.16.0" }]
+        },
+        { "nodeId": "pluggy@1.0.0", "pkgId": "pluggy@1.0.0", "deps": [] },
+        { "nodeId": "py@1.10.0", "pkgId": "py@1.10.0", "deps": [] },
+        { "nodeId": "toml@0.10.2", "pkgId": "toml@0.10.2", "deps": [] },
+        {
+          "nodeId": "pytest@6.2.5",
+          "pkgId": "pytest@6.2.5",
+          "deps": [
+            { "nodeId": "atomicwrites@1.4.0" },
+            { "nodeId": "attrs@21.2.0" },
+            { "nodeId": "colorama@0.4.4" },
+            { "nodeId": "iniconfig@1.1.1" },
+            { "nodeId": "packaging@20.4" },
+            { "nodeId": "pluggy@1.0.0" },
+            { "nodeId": "py@1.10.0" },
+            { "nodeId": "toml@0.10.2" }
+          ]
+        },
+        { "nodeId": "statsd@3.3.0", "pkgId": "statsd@3.3.0", "deps": [] },
+        {
+          "nodeId": "i18n-client@0.1.6",
+          "pkgId": "i18n-client@0.1.6",
+          "deps": [
+            { "nodeId": "boto3@1.18.44" },
+            { "nodeId": "factory-boy@3.2.0" },
+            { "nodeId": "future@0.18.2" },
+            { "nodeId": "polib@1.1.1" },
+            { "nodeId": "pytest@6.2.5" },
+            { "nodeId": "requests@2.23.0" },
+            { "nodeId": "statsd@3.3.0" }
+          ]
+        },
+        {
+          "nodeId": "lyst-taxonomy@2.35.0",
+          "pkgId": "lyst-taxonomy@2.35.0",
+          "deps": []
+        },
+        {
+          "nodeId": "catalog-utils@4.0.1",
+          "pkgId": "catalog-utils@4.0.1",
+          "deps": [
+            { "nodeId": "catalog-client@11.2.0" },
+            { "nodeId": "ciso8601@2.1.3" },
+            { "nodeId": "django@3.1.13" },
+            { "nodeId": "i18n-client@0.1.6" },
+            { "nodeId": "lyst-taxonomy@2.35.0" }
+          ]
+        },
+        {
+          "nodeId": "circuitbreaker@1.3.1",
+          "pkgId": "circuitbreaker@1.3.1",
+          "deps": []
+        },
+        {
+          "nodeId": "cornucopia-client@0.1.1",
+          "pkgId": "cornucopia-client@0.1.1",
+          "deps": [{ "nodeId": "requests@2.23.0" }]
+        },
+        {
+          "nodeId": "discovery-feeds-client@0.23.0",
+          "pkgId": "discovery-feeds-client@0.23.0",
+          "deps": [
+            { "nodeId": "factory-boy@3.2.0" },
+            { "nodeId": "future@0.18.2" },
+            { "nodeId": "requests@2.23.0" }
+          ]
+        },
+        {
+          "nodeId": "django-environ@0.4.5",
+          "pkgId": "django-environ@0.4.5",
+          "deps": []
+        },
+        {
+          "nodeId": "django-heimdall@0.20.0",
+          "pkgId": "django-heimdall@0.20.0",
+          "deps": [
+            { "nodeId": "django@3.1.13" },
+            { "nodeId": "requests@2.23.0" },
+            { "nodeId": "statsd@3.3.0" }
+          ]
+        },
+        {
+          "nodeId": "django-ratelimit@1.1.0",
+          "pkgId": "django-ratelimit@1.1.0",
+          "deps": []
+        },
+        {
+          "nodeId": "django-storages@1.9.1",
+          "pkgId": "django-storages@1.9.1",
+          "deps": [{ "nodeId": "django@3.1.13" }]
+        },
+        {
+          "nodeId": "djangorestframework@3.12.4",
+          "pkgId": "djangorestframework@3.12.4",
+          "deps": [{ "nodeId": "django@3.1.13" }]
+        },
+        {
+          "nodeId": "djangorestframework-recursive@0.1.2",
+          "pkgId": "djangorestframework-recursive@0.1.2",
+          "deps": [
+            { "nodeId": "django@3.1.13" },
+            { "nodeId": "djangorestframework@3.12.4" }
+          ]
+        },
+        { "nodeId": "markupsafe@2.0.1", "pkgId": "markupsafe@2.0.1", "deps": [] },
+        {
+          "nodeId": "jinja2@3.0.1",
+          "pkgId": "jinja2@3.0.1",
+          "deps": [{ "nodeId": "markupsafe@2.0.1" }]
+        },
+        {
+          "nodeId": "coreschema@0.0.4",
+          "pkgId": "coreschema@0.0.4",
+          "deps": [{ "nodeId": "jinja2@3.0.1" }]
+        },
+        { "nodeId": "itypes@1.2.0", "pkgId": "itypes@1.2.0", "deps": [] },
+        {
+          "nodeId": "uritemplate@3.0.1",
+          "pkgId": "uritemplate@3.0.1",
+          "deps": []
+        },
+        {
+          "nodeId": "coreapi@2.3.3",
+          "pkgId": "coreapi@2.3.3",
+          "deps": [
+            { "nodeId": "coreschema@0.0.4" },
+            { "nodeId": "itypes@1.2.0" },
+            { "nodeId": "requests@2.23.0" },
+            { "nodeId": "uritemplate@3.0.1" }
+          ]
+        },
+        { "nodeId": "inflection@0.5.1", "pkgId": "inflection@0.5.1", "deps": [] },
+        {
+          "nodeId": "ruamel.yaml.clib@0.2.6",
+          "pkgId": "ruamel.yaml.clib@0.2.6",
+          "deps": []
+        },
+        {
+          "nodeId": "ruamel.yaml@0.17.16",
+          "pkgId": "ruamel.yaml@0.17.16",
+          "deps": [{ "nodeId": "ruamel.yaml.clib@0.2.6" }]
+        },
+        {
+          "nodeId": "drf-yasg@1.20.0",
+          "pkgId": "drf-yasg@1.20.0",
+          "deps": [
+            { "nodeId": "coreapi@2.3.3" },
+            { "nodeId": "coreschema@0.0.4" },
+            { "nodeId": "django@3.1.13" },
+            { "nodeId": "djangorestframework@3.12.4" },
+            { "nodeId": "inflection@0.5.1" },
+            { "nodeId": "packaging@20.4" },
+            { "nodeId": "ruamel.yaml@0.17.16" },
+            { "nodeId": "uritemplate@3.0.1" }
+          ]
+        },
+        { "nodeId": "redis@3.5.3", "pkgId": "redis@3.5.3", "deps": [] },
+        {
+          "nodeId": "sortedcontainers@2.4.0",
+          "pkgId": "sortedcontainers@2.4.0",
+          "deps": []
+        },
+        {
+          "nodeId": "fakeredis@1.4.5",
+          "pkgId": "fakeredis@1.4.5",
+          "deps": [
+            { "nodeId": "redis@3.5.3" },
+            { "nodeId": "six@1.16.0" },
+            { "nodeId": "sortedcontainers@2.4.0" }
+          ]
+        },
+        {
+          "nodeId": "feeds-client@3.3.0",
+          "pkgId": "feeds-client@3.3.0",
+          "deps": [{ "nodeId": "requests@2.23.0" }]
+        },
+        {
+          "nodeId": "fireman@2.10.1",
+          "pkgId": "fireman@2.10.1",
+          "deps": [{ "nodeId": "statsd@3.3.0" }]
+        },
+        { "nodeId": "cachetools@4.2.2", "pkgId": "cachetools@4.2.2", "deps": [] },
+        { "nodeId": "pyasn1@0.4.8", "pkgId": "pyasn1@0.4.8", "deps": [] },
+        {
+          "nodeId": "pyasn1-modules@0.2.8",
+          "pkgId": "pyasn1-modules@0.2.8",
+          "deps": [{ "nodeId": "pyasn1@0.4.8" }]
+        },
+        {
+          "nodeId": "rsa@4.7.2",
+          "pkgId": "rsa@4.7.2",
+          "deps": [{ "nodeId": "pyasn1@0.4.8" }]
+        },
+        {
+          "nodeId": "google-auth@1.17.0",
+          "pkgId": "google-auth@1.17.0",
+          "deps": [
+            { "nodeId": "cachetools@4.2.2" },
+            { "nodeId": "pyasn1-modules@0.2.8" },
+            { "nodeId": "rsa@4.7.2" },
+            { "nodeId": "six@1.16.0" }
+          ]
+        },
+        { "nodeId": "decorator@5.1.0", "pkgId": "decorator@5.1.0", "deps": [] },
+        { "nodeId": "appnope@0.1.2", "pkgId": "appnope@0.1.2", "deps": [] },
+        { "nodeId": "backcall@0.2.0", "pkgId": "backcall@0.2.0", "deps": [] },
+        { "nodeId": "parso@0.8.2", "pkgId": "parso@0.8.2", "deps": [] },
+        {
+          "nodeId": "jedi@0.18.0",
+          "pkgId": "jedi@0.18.0",
+          "deps": [{ "nodeId": "parso@0.8.2" }]
+        },
+        { "nodeId": "traitlets@5.1.0", "pkgId": "traitlets@5.1.0", "deps": [] },
+        {
+          "nodeId": "matplotlib-inline@0.1.3",
+          "pkgId": "matplotlib-inline@0.1.3",
+          "deps": [{ "nodeId": "traitlets@5.1.0" }]
+        },
+        { "nodeId": "ptyprocess@0.7.0", "pkgId": "ptyprocess@0.7.0", "deps": [] },
+        {
+          "nodeId": "pexpect@4.8.0",
+          "pkgId": "pexpect@4.8.0",
+          "deps": [{ "nodeId": "ptyprocess@0.7.0" }]
+        },
+        {
+          "nodeId": "pickleshare@0.7.5",
+          "pkgId": "pickleshare@0.7.5",
+          "deps": []
+        },
+        { "nodeId": "wcwidth@0.2.5", "pkgId": "wcwidth@0.2.5", "deps": [] },
+        {
+          "nodeId": "prompt-toolkit@3.0.20",
+          "pkgId": "prompt-toolkit@3.0.20",
+          "deps": [{ "nodeId": "wcwidth@0.2.5" }]
+        },
+        { "nodeId": "pygments@2.10.0", "pkgId": "pygments@2.10.0", "deps": [] },
+        {
+          "nodeId": "ipython@7.27.0",
+          "pkgId": "ipython@7.27.0",
+          "deps": [
+            { "nodeId": "appnope@0.1.2" },
+            { "nodeId": "backcall@0.2.0" },
+            { "nodeId": "colorama@0.4.4" },
+            { "nodeId": "decorator@5.1.0" },
+            { "nodeId": "jedi@0.18.0" },
+            { "nodeId": "matplotlib-inline@0.1.3" },
+            { "nodeId": "pexpect@4.8.0" },
+            { "nodeId": "pickleshare@0.7.5" },
+            { "nodeId": "prompt-toolkit@3.0.20" },
+            { "nodeId": "pygments@2.10.0" },
+            { "nodeId": "traitlets@5.1.0" }
+          ]
+        },
+        {
+          "nodeId": "ipdb@0.13.9",
+          "pkgId": "ipdb@0.13.9",
+          "deps": [
+            { "nodeId": "decorator@5.1.0" },
+            { "nodeId": "ipython@7.27.0" },
+            { "nodeId": "toml@0.10.2" }
+          ]
+        },
+        {
+          "nodeId": "lyst-cms-client@0.1.2",
+          "pkgId": "lyst-cms-client@0.1.2",
+          "deps": [
+            { "nodeId": "circuitbreaker@1.3.1" },
+            { "nodeId": "requests@2.23.0" }
+          ]
+        },
+        {
+          "nodeId": "lyst-scrambler@0.1.2",
+          "pkgId": "lyst-scrambler@0.1.2",
+          "deps": []
+        },
+        {
+          "nodeId": "lyst-sizing@1.3.0",
+          "pkgId": "lyst-sizing@1.3.0",
+          "deps": []
+        },
+        {
+          "nodeId": "more-itertools@8.10.0",
+          "pkgId": "more-itertools@8.10.0",
+          "deps": []
+        },
+        {
+          "nodeId": "newrelic@6.10.0.165",
+          "pkgId": "newrelic@6.10.0.165",
+          "deps": []
+        },
+        { "nodeId": "pillow@8.3.2", "pkgId": "pillow@8.3.2", "deps": [] },
+        {
+          "nodeId": "plasma-client@0.5.0",
+          "pkgId": "plasma-client@0.5.0",
+          "deps": [
+            { "nodeId": "circuitbreaker@1.3.1" },
+            { "nodeId": "future@0.18.2" },
+            { "nodeId": "requests@2.23.0" }
+          ]
+        },
+        { "nodeId": "psycopg2@2.9.1", "pkgId": "psycopg2@2.9.1", "deps": [] },
+        { "nodeId": "pyjwt@1.7.1", "pkgId": "pyjwt@1.7.1", "deps": [] },
+        { "nodeId": "coverage@5.5", "pkgId": "coverage@5.5", "deps": [] },
+        {
+          "nodeId": "pytest-cov@2.12.1",
+          "pkgId": "pytest-cov@2.12.1",
+          "deps": [
+            { "nodeId": "coverage@5.5" },
+            { "nodeId": "pytest@6.2.5" },
+            { "nodeId": "toml@0.10.2" }
+          ]
+        },
+        {
+          "nodeId": "pytest-django@3.10.0",
+          "pkgId": "pytest-django@3.10.0",
+          "deps": [{ "nodeId": "pytest@6.2.5" }]
+        },
+        {
+          "nodeId": "pytest-randomly@3.4.1",
+          "pkgId": "pytest-randomly@3.4.1",
+          "deps": [{ "nodeId": "pytest@6.2.5" }]
+        },
+        {
+          "nodeId": "sentry-sdk@1.4.3",
+          "pkgId": "sentry-sdk@1.4.3",
+          "deps": [
+            { "nodeId": "aiohttp@3.7.4.post0" },
+            { "nodeId": "certifi@2021.5.30" },
+            { "nodeId": "django@3.1.13" },
+            { "nodeId": "urllib3@1.25.11" }
+          ]
+        },
+        { "nodeId": "asn1crypto@1.4.0", "pkgId": "asn1crypto@1.4.0", "deps": [] },
+        {
+          "nodeId": "azure-common@1.1.27",
+          "pkgId": "azure-common@1.1.27",
+          "deps": []
+        },
+        {
+          "nodeId": "azure-core@1.18.0",
+          "pkgId": "azure-core@1.18.0",
+          "deps": [{ "nodeId": "requests@2.23.0" }, { "nodeId": "six@1.16.0" }]
+        },
+        {
+          "nodeId": "isodate@0.6.0",
+          "pkgId": "isodate@0.6.0",
+          "deps": [{ "nodeId": "six@1.16.0" }]
+        },
+        { "nodeId": "oauthlib@3.1.1", "pkgId": "oauthlib@3.1.1", "deps": [] },
+        {
+          "nodeId": "requests-oauthlib@1.3.0",
+          "pkgId": "requests-oauthlib@1.3.0",
+          "deps": [
+            { "nodeId": "oauthlib@3.1.1" },
+            { "nodeId": "requests@2.23.0" }
+          ]
+        },
+        {
+          "nodeId": "msrest@0.6.21",
+          "pkgId": "msrest@0.6.21",
+          "deps": [
+            { "nodeId": "certifi@2021.5.30" },
+            { "nodeId": "isodate@0.6.0" },
+            { "nodeId": "requests@2.23.0" },
+            { "nodeId": "requests-oauthlib@1.3.0" }
+          ]
+        },
+        {
+          "nodeId": "azure-storage-blob@12.9.0",
+          "pkgId": "azure-storage-blob@12.9.0",
+          "deps": [
+            { "nodeId": "azure-core@1.18.0" },
+            { "nodeId": "cryptography@3.4.8" },
+            { "nodeId": "msrest@0.6.21" }
+          ]
+        },
+        {
+          "nodeId": "oscrypto@1.2.1",
+          "pkgId": "oscrypto@1.2.1",
+          "deps": [{ "nodeId": "asn1crypto@1.4.0" }]
+        },
+        {
+          "nodeId": "pycryptodomex@3.10.1",
+          "pkgId": "pycryptodomex@3.10.1",
+          "deps": []
+        },
+        {
+          "nodeId": "snowflake-connector-python@2.6.1",
+          "pkgId": "snowflake-connector-python@2.6.1",
+          "deps": [
+            { "nodeId": "asn1crypto@1.4.0" },
+            { "nodeId": "azure-common@1.1.27" },
+            { "nodeId": "azure-storage-blob@12.9.0" },
+            { "nodeId": "boto3@1.18.44" },
+            { "nodeId": "certifi@2021.5.30" },
+            { "nodeId": "cffi@1.14.6" },
+            { "nodeId": "chardet@3.0.4" },
+            { "nodeId": "cryptography@3.4.8" },
+            { "nodeId": "idna@2.10" },
+            { "nodeId": "oscrypto@1.2.1" },
+            { "nodeId": "pycryptodomex@3.10.1" },
+            { "nodeId": "pyjwt@1.7.1" },
+            { "nodeId": "pyopenssl@20.0.1" },
+            { "nodeId": "pytz@2021.1" },
+            { "nodeId": "requests@2.23.0" }
+          ]
+        },
+        {
+          "nodeId": "fastjsonschema@2.15.1",
+          "pkgId": "fastjsonschema@2.15.1",
+          "deps": []
+        },
+        {
+          "nodeId": "lyst-data-dictionary-schemas@0.16.7",
+          "pkgId": "lyst-data-dictionary-schemas@0.16.7",
+          "deps": [{ "nodeId": "fastjsonschema@2.15.1" }]
+        },
+        {
+          "nodeId": "user-client@0.3.3",
+          "pkgId": "user-client@0.3.3",
+          "deps": [
+            { "nodeId": "boto3@1.18.44" },
+            { "nodeId": "fireman@2.10.1" },
+            { "nodeId": "lyst-data-dictionary-schemas@0.16.7" },
+            { "nodeId": "requests@2.23.0" }
+          ]
+        },
+        {
+          "nodeId": "taste-profile@0.1.3",
+          "pkgId": "taste-profile@0.1.3",
+          "deps": [
+            { "nodeId": "requests@2.23.0" },
+            { "nodeId": "user-client@0.3.3" }
+          ]
+        },
+        {
+          "nodeId": "time-machine@2.4.0",
+          "pkgId": "time-machine@2.4.0",
+          "deps": [{ "nodeId": "python-dateutil@2.8.2" }]
+        },
+        {
+          "nodeId": "user-list-client@1.23.0",
+          "pkgId": "user-list-client@1.23.0",
+          "deps": [
+            { "nodeId": "future@0.18.2" },
+            { "nodeId": "pytest@6.2.5" },
+            { "nodeId": "requests@2.23.0" },
+            { "nodeId": "responses@0.14.0" }
+          ]
+        },
+        { "nodeId": "uwsgi@2.0.19.1", "pkgId": "uwsgi@2.0.19.1", "deps": [] },
+        { "nodeId": "whitenoise@5.0.1", "pkgId": "whitenoise@5.0.1", "deps": [] }
+      ]
+    }
+  }
+}
