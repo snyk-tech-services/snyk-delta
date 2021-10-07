@@ -38,6 +38,9 @@ or
 ### 2 mode of operations
 
 1. Point to a specific snapshot by specifying org+project coordinates\
+> Note:\
+> BaselineProject value is expected to be a UUID, not simply a name\
+> Check your Snyk Web UI or API to retrieve those UUIDs.
     `snyk test --json --print-deps | snyk-delta --baselineOrg xxx --baselineProject xxx`
 
     - Use the --setPassIfNoBaseline if used with snyk prevent commit status and the project is not monitored. This will prevent snyk-prevent_commit_status to fail.
@@ -45,13 +48,9 @@ or
      `snyk test --json --print-deps | snyk-delta --baselineOrg xxx --baselineProject xxx --setPassIfNoBaseline true`
 
 2. Standalone (Comparing a project in an org with a project in a different org)
-> This usecase comes up when you have 2 same projects (with distinct project ID's) in 2 different orgs and you want to compare them \
+> This usecase comes up when you have 2 same projects (with distinct project ID's) in 2 different orgs and you want to compare them 
 
 ```snyk-delta --baselineOrg xxx --baselineProject xxx --currentOrg xxx --currentProject xxx --setPassIfNoBaseline false```
-
-> Note:\
-> BaselineProject value is expected to be a UUID, not simply a name\
-> Check your Snyk Web UI or API to retrieve those UUIDs.
 
 ## Usage as module
 
