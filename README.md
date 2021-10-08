@@ -52,12 +52,12 @@ or
 
 > setPassIfNoBaseline is false (by default)
 
-```snyk test --json --print-deps | snyk-delta --baselineOrg xxx --baselineProject xxx --setPassIfNoBaseline true```
+```snyk test --json --print-deps | snyk-delta --baselineOrg <orgID> --baselineProject <projectID> --setPassIfNoBaseline true```
 
 2. Standalone (Comparing a project in an org with a project in a different org)
 > This usecase comes up when you have 2 same projects (with distinct project ID's) in 2 different orgs and you want to compare them 
 
-```snyk-delta --baselineOrg xxx --baselineProject xxx --currentOrg xxx --currentProject xxx --setPassIfNoBaseline false```
+```snyk-delta --baselineOrg <orgID> --baselineProject <projectID> --currentOrg <different orgID> --currentProject <different projectID> --setPassIfNoBaseline false```
 
 >Note: The following is Deprecated
 ```snyk test --json --print-deps | snyk-delta ``` 
