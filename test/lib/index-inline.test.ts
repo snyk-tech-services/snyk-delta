@@ -160,6 +160,7 @@ describe('Test End 2 End - Inline mode', () => {
       '    Fixable by upgrade:  snyk@1.290.1',
     ];
 
+    console.log(result);
     expectedOutput.forEach((line: string) => {
       expect(consoleOutput.join()).toContain(line);
     });
