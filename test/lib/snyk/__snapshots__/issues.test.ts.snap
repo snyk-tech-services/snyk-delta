@@ -245,7 +245,7 @@ Object {
             "CWE-94",
           ],
         },
-        "isIgnored": false,
+        "isIgnored": true,
         "isPatched": false,
         "language": "js",
         "nearestFixedInVersion": "",
