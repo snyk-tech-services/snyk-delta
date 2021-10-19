@@ -36,7 +36,7 @@
         "nearestFixedInVersion": ""
       },
       "isPatched": false,
-      "isIgnored": false,
+      "isIgnored": true,
       "fixInfo": {
         "isUpgradable": true,
         "isPinnable": false,
