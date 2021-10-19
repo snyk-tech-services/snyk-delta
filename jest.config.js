@@ -4,4 +4,5 @@ module.exports = {
   collectCoverageFrom: ['lib/**/*.ts'],
   coverageReporters: ['text-summary', 'html'],
   verbose: true,
+  testTimeout: 10000,
 };

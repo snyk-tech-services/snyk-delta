@@ -9,8 +9,15 @@ import {
 import * as path from 'path';
 import * as fs from 'fs';
 import * as utils from '../../../src/lib/utils/utils';
-import { Project } from 'snyk-api-ts-client/dist/client/generated/org';
-import { SnykCliTestOutput } from '../../../src/lib/types';
+import {
+  SnykCliTestOutput,
+  IssuesPostResponseType,
+} from '../../../src/lib/types';
+import {
+  convertIntoIssueWithPath,
+  isVulnerablePathNew,
+} from '../../../src/lib/utils/issuesUtils';
+import * as nock from 'nock';
 
 const fixturesFolderPath = path.resolve(__dirname, '../..') + '/fixtures/';
 
@@ -114,7 +121,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykCurrentProject: Project.IssuesPostResponseType = JSON.parse(
+      const snykCurrentProject: IssuesPostResponseType = JSON.parse(
         fs
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
@@ -135,7 +142,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykCurrentProject: Project.IssuesPostResponseType = JSON.parse(
+      const snykCurrentProject: IssuesPostResponseType = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +
@@ -159,7 +166,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykCurrentProject: Project.IssuesPostResponseType = JSON.parse(
+      const snykCurrentProject: IssuesPostResponseType = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +
@@ -254,7 +261,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykCurrentProject: Project.IssuesPostResponseType = JSON.parse(
+      const snykCurrentProject: IssuesPostResponseType = JSON.parse(
         fs
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
@@ -275,7 +282,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykCurrentProject: Project.IssuesPostResponseType = JSON.parse(
+      const snykCurrentProject: IssuesPostResponseType = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +
@@ -300,7 +307,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykCurrentProject: Project.IssuesPostResponseType = JSON.parse(
+      const snykCurrentProject: IssuesPostResponseType = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +
@@ -460,7 +467,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykCurrentProject: Project.IssuesPostResponseType = JSON.parse(
+      const snykCurrentProject: IssuesPostResponseType = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +
@@ -496,7 +503,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykCurrentProject: Project.IssuesPostResponseType = JSON.parse(
+      const snykCurrentProject: IssuesPostResponseType = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +
@@ -609,7 +616,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const snykCurrentProject: Project.IssuesPostResponseType = JSON.parse(
+      const snykCurrentProject: IssuesPostResponseType = JSON.parse(
         fs
           .readFileSync(
             fixturesFolderPath +
@@ -711,6 +718,251 @@ describe('Test issues functions', () => {
       const output = getIssuesDetailsPerPackage(newVulns, 'acorn', '5.7.3');
       const issueDetailsForPackage = newVulns[0];
       expect(output).toEqual([issueDetailsForPackage]);
+    });
+  });
+
+  describe('Test convertIntoIssueWithPath', () => {
+    it('Test convertIntoIssueWithPath - one issue (1 vuln, 0 license) - one path', async () => {
+      // eslint-disable-next-line
+      nock('https://snyk.io')
+        .persist()
+        .get(/.*/)
+        .reply(200, (uri) => {
+          switch (uri) {
+            case '/api/v1/org/123/project/123/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
+              return fs.readFileSync(
+                fixturesFolderPath +
+                  'apiResponses/SNYK-JS-ACORN-559469-issue-paths.json',
+              );
+            default:
+          }
+        });
+
+      const aggregatedIssues = JSON.parse(
+        fs
+          .readFileSync(
+            fixturesFolderPath +
+              'apiResponses/test-goof-aggregated-one-vuln.json',
+          )
+          .toString(),
+      );
+
+      const legacyIssue = await convertIntoIssueWithPath(
+        aggregatedIssues,
+        '123',
+        '123',
+      );
+
+      //  Expecting 1 vulnerabilities
+      //SNYK-JS-ACORN-559469
+      // path ["@snyk/nodejs-runtime-agent@1.14.0", "acorn@5.7.3"]
+
+      expect(legacyIssue).toMatchSnapshot();
+      legacyIssue.issues.vulnerabilities.forEach((vuln) => {
+        expect(vuln['from'].length).toBeGreaterThan(0);
+      });
+      nock.cleanAll();
+    });
+
+    it('Test convertIntoIssueWithPath - 3 issues (3 vuln, 0 license) - 3 paths', async () => {
+      // eslint-disable-next-line
+      nock('https://snyk.io')
+        .persist()
+        .get(/.*/)
+        .reply(200, (uri) => {
+          console.log(uri);
+          switch (uri) {
+            case '/api/v1/org/123/project/123/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
+              return fs.readFileSync(
+                fixturesFolderPath +
+                  'apiResponses/SNYK-JS-ACORN-559469-issue-paths.json',
+              );
+            case '/api/v1/org/123/project/123/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
+              return fs.readFileSync(
+                fixturesFolderPath +
+                  'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page1.json',
+              );
+            default:
+          }
+        });
+
+      const aggregatedIssues = JSON.parse(
+        fs
+          .readFileSync(
+            fixturesFolderPath +
+              'apiResponses/test-goof-aggregated-two-vuln-no-license.json',
+          )
+          .toString(),
+      );
+
+      const legacyIssue = await convertIntoIssueWithPath(
+        aggregatedIssues,
+        '123',
+        '123',
+      );
+
+      //  Expecting 3 vulnerabilities
+      //SNYK-JS-ACORN-559469
+      // path ["@snyk/nodejs-runtime-agent@1.14.0", "acorn@5.7.3"]
+      // SNYK-JS-DOTPROP-543489
+      //path ["snyk@1.228.3", "configstore@3.1.2", "dot-prop@4.2.0"],
+      //upgradePath ["snyk@1.228.3"]
+      // SNYK-JS-DOTPROP-543489
+      //path ["snyk@1.228.3", "update-notifier@2.5.0", "configstore@3.1.2","dot-prop@4.2.0"]
+      //upgradePath ["snyk@1.228.3"]
+
+      expect(legacyIssue).toMatchSnapshot();
+      legacyIssue.issues.vulnerabilities.forEach((vuln) => {
+        expect(vuln['from'].length).toBeGreaterThan(0);
+      });
+      nock.cleanAll();
+    });
+
+    it('Test convertIntoIssueWithPath - 4 issues (3 vuln, 1 license) - 4 paths', async () => {
+      // eslint-disable-next-line
+      nock('https://snyk.io')
+        .persist()
+        .get(/.*/)
+        .reply(200, (uri) => {
+          switch (uri) {
+            case '/api/v1/org/123/project/123/issue/SNYK-JS-PACRESOLVER-1564857/paths?perPage=100&page=1':
+              return fs.readFileSync(
+                fixturesFolderPath +
+                  'apiResponses/SNYK-JS-ACORN-559469-issue-paths.json',
+              );
+            case '/api/v1/org/123/project/123/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
+              return fs.readFileSync(
+                fixturesFolderPath +
+                  'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page1.json',
+              );
+            case '/api/v1/org/123/project/123/issue/snyk:lic:npm:goof:GPL-2.0/paths?perPage=100&page=1':
+              return fs.readFileSync(
+                fixturesFolderPath +
+                  'apiResponses/snyk-lic-npm-goof-GPL-2-0-issue-paths.json',
+              );
+            default:
+          }
+        });
+
+      const aggregatedIssues = JSON.parse(
+        fs
+          .readFileSync(
+            fixturesFolderPath +
+              'apiResponses/test-goof-aggregated-two-vuln-one-license.json',
+          )
+          .toString(),
+      );
+
+      const legacyIssue = await convertIntoIssueWithPath(
+        aggregatedIssues,
+        '123',
+        '123',
+      );
+
+      //  Expecting 3 vulnerabilities
+      //SNYK-JS-PACRESOLVER-1564857
+      // path ["@snyk/nodejs-runtime-agent@1.14.0", "acorn@5.7.3"]
+      // SNYK-JS-DOTPROP-543489
+      //path ["snyk@1.228.3", "configstore@3.1.2", "dot-prop@4.2.0"],
+      //upgradePath ["snyk@1.228.3"]
+      // SNYK-JS-DOTPROP-543489
+      //path ["snyk@1.228.3", "update-notifier@2.5.0", "configstore@3.1.2","dot-prop@4.2.0"]
+      // upgradePath ["snyk@1.228.3"]
+      // snyk:lic:npm:goof:GPL-2.0
+      // path ["goof@0.0.3"]
+
+      expect(legacyIssue).toMatchSnapshot();
+      legacyIssue.issues.vulnerabilities.forEach((vuln) => {
+        expect(vuln['from'].length).toBeGreaterThan(0);
+      });
+      nock.cleanAll();
+    });
+
+    it('Test convertIntoIssueWithPath - 1 issue (0 vuln, 1 license) ', async () => {
+      // eslint-disable-next-line
+      nock('https://snyk.io')
+        .persist()
+        .get(/.*/)
+        .reply(200, (uri) => {
+          switch (uri) {
+            case '/api/v1/org/123/project/123/issue/snyk:lic:npm:goof:GPL-2.0/paths?perPage=100&page=1':
+              return fs.readFileSync(
+                fixturesFolderPath +
+                  'apiResponses/snyk-lic-npm-goof-GPL-2-0-issue-paths.json',
+              );
+            default:
+          }
+        });
+
+      const aggregatedIssues = JSON.parse(
+        fs
+          .readFileSync(
+            fixturesFolderPath +
+              'apiResponses/test-goof-aggregated-one-license.json',
+          )
+          .toString(),
+      );
+
+      const legacyIssue = await convertIntoIssueWithPath(
+        aggregatedIssues,
+        '123',
+        '123',
+      );
+
+      //  Expecting 1 licenses
+      // snyk:lic:npm:goof:GPL-2.0
+      // path ["goof@0.0.3"]
+
+      expect(legacyIssue).toMatchSnapshot();
+      legacyIssue.issues.vulnerabilities.forEach((vuln) => {
+        expect(vuln['from'].length).toBeGreaterThan(0);
+      });
+      nock.cleanAll();
+    });
+
+    it('Test convertIntoIssueWithPath - test pagination ', async () => {
+      // eslint-disable-next-line
+      nock('https://snyk.io')
+        .persist()
+        .get(/.*/)
+        .reply(200, (uri) => {
+          console.log(uri);
+          switch (uri) {
+            case '/api/v1/org/123/project/123/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
+              return fs.readFileSync(
+                fixturesFolderPath +
+                  'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page2.json',
+              );
+            case '/api/v1/org/123/project/123/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=2':
+              return fs.readFileSync(
+                fixturesFolderPath +
+                  'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page1.json',
+              );
+            default:
+          }
+        });
+
+      const aggregatedIssues = JSON.parse(
+        fs
+          .readFileSync(
+            fixturesFolderPath +
+              'apiResponses/test-goof-aggregated-one-vuln-pagination.json',
+          )
+          .toString(),
+      );
+
+      const legacyIssue = await convertIntoIssueWithPath(
+        aggregatedIssues,
+        '123',
+        '123',
+      );
+
+      expect(legacyIssue.issues.vulnerabilities.length).toEqual(102);
+      legacyIssue.issues.vulnerabilities.forEach((vuln) => {
+        expect(vuln['from'].length).toBeGreaterThan(0);
+      });
+      expect(legacyIssue).toMatchSnapshot();
+      nock.cleanAll();
     });
   });
 });

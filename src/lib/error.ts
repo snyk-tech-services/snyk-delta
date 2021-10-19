@@ -1,5 +1,5 @@
 import * as chalk from 'chalk'
-const debugModule = require('debug');
+import debugModule = require('debug');
 
 
 
@@ -26,7 +26,7 @@ const handleError = (error: Error) => {
             debug(error)
             break;
         default:
-            //console.log("Unknown error")
+            console.log("Unknown error")
             debug(error)
     }
 }

@@ -3,6 +3,7 @@ import {displaySplash } from '../utils/utils'
 import { IssueWithPaths, SnykVuln } from '../types'
 import * as chalk from 'chalk';
 import * as terminalLink from 'terminal-link';
+import { SnykDeltaOutput } from '..';
 
 
  const displayOutput = (newVulns: IssueWithPaths[], newLicenseIssues:IssueWithPaths[], issueTypeFilter: string, mode: string) => {
@@ -33,6 +34,7 @@ const displayNewVulns = (
       console.log(chalk.bgMagentaBright('\nNew issues introduced !'));
       console.log('Security Vulnerabilities:');
     }
+
     newVulns.forEach((vuln, index) => {
       const typedVuln: SnykVuln = vuln as SnykVuln;
       switch (vuln.severity) {
@@ -173,9 +175,35 @@ const displayNewVulns = (
     });
   };
 
+  
+  const displaySummary
+  = ( deltaResult: SnykDeltaOutput[] , numberOfProjectWithNewIssue: any): void => {
+
+    // Not all-project no summary needed
+    if (numberOfProjectWithNewIssue < 1)
+    {      
+      return
+    } 
+    displaySplash()
+    console.log("\n\n****** New issues found in " + numberOfProjectWithNewIssue + " projects with new issues ******\n\n")
+
+    deltaResult.forEach(result => {
+      if (result.result === 1) {
+        console.log('\n------------------------------------------------------------------------\n')
+        console.log(' Project: ' + result.projectNameOrId + '\n')
+        if (result.newVulns) {
+          console.log('    ' + result.newVulns.length + ' vulnerabilities introduced !\n')
+        }
+        if (result.newLicenseIssues) {
+          console.log('    ' + result.newLicenseIssues.length + ' license issues introduced !\n')
+        }
+      } 
+    })
+  }
 
   export {
     displayOutput,
     displayNewVulns,
-    displayNewLicenseIssues
+    displayNewLicenseIssues,
+    displaySummary
   };

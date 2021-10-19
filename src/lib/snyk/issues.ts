@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import { getDebugModule } from '../utils/utils';
+import debugModule = require('debug');
 import { IssueWithPaths } from '../../lib/types';
 import { isVulnerablePathNew } from '../utils/issuesUtils';
 
@@ -10,15 +10,14 @@ enum severityThresholds {
   'critical' = 4,
 }
 
-
-
 const getNewIssues = (
   snykProject: IssueWithPaths[],
   snykTestJsonIssuesResults: IssueWithPaths[],
   inboundSeverityThreshold = 'low',
   mode: string,
 ): IssueWithPaths[] => {
-  const debug = getDebugModule();
+
+  const debug = debugModule('snyk')
 
   const MonitoredIssues = snykProject;
   debug(`Monitored snapshot had %d issues`, MonitoredIssues.length);
@@ -31,7 +30,7 @@ const getNewIssues = (
   let newIssues = snykTestJsonIssuesResults;
   MonitoredIssues.forEach((monitoredIssue) => {
     newIssues = _.reject(newIssues, (issue) => {
-      if(!issue.from || !monitoredIssue.from) {
+      if(!issue.from || !monitoredIssue.from) {                      
         debug(`Error: Issue ${issue.id} does not have a vuln path in one of the snapshots`)
       }
       let issueFromArray = issue.from;
@@ -70,6 +69,7 @@ const getIssuesDetailsPerPackage = (
       issues.version == packageVersion,
   );
 };
+
 
 export {
   getNewIssues,

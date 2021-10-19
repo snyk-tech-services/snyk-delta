@@ -40,13 +40,15 @@ beforeEach(() => {
     .post(/.*/)
     .reply(200, (uri) => {
       switch (uri) {
-        case '/api/v1/org/playground/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/issues':
+        case '/api/v1/org/playground/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/aggregated-issues':
           return fs.readFileSync(
-            fixturesFolderPath + 'apiResponses/test-goof.json',
+            fixturesFolderPath +
+              'apiResponses/test-goof-aggregated-one-vuln.json',
           );
-        case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issues':
+        case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/aggregated-issues':
           return fs.readFileSync(
-            fixturesFolderPath + 'apiResponses/test-goof.json',
+            fixturesFolderPath +
+              'apiResponses/test-goof-aggregated-one-vuln.json',
           );
         case '/api/v1/org/playground/projects':
           return fs.readFileSync(
@@ -59,9 +61,14 @@ beforeEach(() => {
     .get(/.*/)
     .reply(200, (uri) => {
       switch (uri) {
-        case '/api/v1/org/playground/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/issues':
+        case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
           return fs.readFileSync(
-            fixturesFolderPath + 'apiResponses/test-goof.json',
+            fixturesFolderPath +
+              'apiResponses/SNYK-JS-ACORN-559469-issue-paths.json',
+          );
+        case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/dep-graph':
+          return fs.readFileSync(
+            fixturesFolderPath + 'apiResponses/goof-depgraph-from-api.json',
           );
         default:
       }
@@ -73,7 +80,9 @@ describe('Test End 2 End - Inline mode with project coordinates', () => {
     setTimeout(() => {
       stdinMock.send(
         fs
-          .readFileSync(fixturesFolderPath + 'snykTestsOutputs/test-goof.json')
+          .readFileSync(
+            fixturesFolderPath + 'snykTestsOutputs/test-goof-one-vuln.json',
+          )
           .toString(),
       );
       stdinMock.send(null);
@@ -91,8 +100,7 @@ describe('Test End 2 End - Inline mode with project coordinates', () => {
       stdinMock.send(
         fs
           .readFileSync(
-            fixturesFolderPath +
-              'snykTestsOutputs/test-goof-with-one-more-vuln.json',
+            fixturesFolderPath + 'snykTestsOutputs/test-goof-two-vuln.json',
           )
           .toString(),
       );
@@ -104,10 +112,10 @@ describe('Test End 2 End - Inline mode with project coordinates', () => {
     const expectedOutput = [
       'New issue introduced !',
       'Security Vulnerability:',
-      '  1/1: Regular Expression Denial of Service (ReDoS) [High Severity]',
-      '    Via: express-fileupload@0.0.5 => @snyk/nodejs-runtime-agent@1.14.0 => acorn@5.7.3',
-      '    Fixed in: acorn 5.7.4, 6.4.1, 7.1.1',
-      '    Fixable by upgrade:  @snyk/nodejs-runtime-agent@1.14.0=>acorn@5.7.4',
+      '  1/1: Prototype Pollution [Medium Severity]',
+      '    Via: snyk@1.228.3 => configstore@3.1.2 => dot-prop@4.2.0',
+      '    Fixed in: dot-prop 5.1.1',
+      '    Fixable by upgrade:  snyk@1.290.1',
     ];
 
     expectedOutput.forEach((line: string) => {

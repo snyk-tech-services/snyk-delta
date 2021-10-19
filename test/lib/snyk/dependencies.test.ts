@@ -282,4 +282,85 @@ describe('Test Snyk Utils make request properly', () => {
     ];
     expect(chalk.white(consoleOutput)).toEqual(chalk.white(expectedResult));
   });
+
+  it('Test displayDependenciesChangeDetails - no change - Graph in different order', async () => {
+    const snykTestJsonDependencies = JSON.parse(
+      fs
+        .readFileSync(fixturesFolderPath + 'dependencies/SnykTestDepgraph.json')
+        .toString(),
+    );
+    const monitoredProjectDepGraph = JSON.parse(
+      fs
+        .readFileSync(
+          fixturesFolderPath + 'dependencies/snykProjectGraphForDepsTest.json',
+        )
+        .toString(),
+    );
+    await displayDependenciesChangeDetails(
+      snykTestJsonDependencies,
+      monitoredProjectDepGraph,
+      'npm',
+      [],
+      [],
+    );
+    const expectedResult = [
+      '_____________________________',
+      'Direct deps:',
+      'Added 0 \n',
+      '===============',
+      'Removed 0\n',
+      '##################',
+      'Indirect deps:',
+      'Added 0 \n',
+      '===============',
+      'Paths',
+      '===============',
+      'Removed 0\n',
+      '_____________________________',
+    ];
+
+    expect(consoleOutput).toEqual(expectedResult);
+  });
+
+  it('Test displayDependenciesChangeDetails - one more deps change - Graph in different order', async () => {
+    const snykTestJsonDependencies = JSON.parse(
+      fs
+        .readFileSync(
+          fixturesFolderPath +
+            'dependencies/SnykTestDepgraph-one-more-deps.json',
+        )
+        .toString(),
+    );
+    const monitoredProjectDepGraph = JSON.parse(
+      fs
+        .readFileSync(
+          fixturesFolderPath + 'dependencies/snykProjectGraphForDepsTest.json',
+        )
+        .toString(),
+    );
+    await displayDependenciesChangeDetails(
+      snykTestJsonDependencies,
+      monitoredProjectDepGraph,
+      'npm',
+      [],
+      [],
+    );
+    const expectedResult = [
+      '_____________________________',
+      'Direct deps:',
+      'Added 1 \nadding-one-deps@1.0.0',
+      '===============',
+      'Removed 0\n',
+      '##################',
+      'Indirect deps:',
+      'Added 0 \n',
+      '===============',
+      'Paths',
+      '===============',
+      'Removed 0\n',
+      '_____________________________',
+    ];
+
+    expect(consoleOutput).toEqual(expectedResult);
+  });
 });
