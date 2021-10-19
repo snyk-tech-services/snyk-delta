@@ -1,0 +1,8 @@
+{
+  "snapshotId": "9139c6c6-66a2-4e2c-a6ff-2f697d1d0e9a",
+  "paths": [[{ "name": "goof", "version": "0.0.3" }]],
+  "total": 1,
+  "links": {
+    "last": "https://app.snyk.io/api/v1/org/f20676f4-3066-40aa-bdf6-ac28ba609ab6/project/a0e4716d-0f0d-495b-a77b-bd9ba5692e31/issue/snyk:lic:npm:goof:GPL-2.0/paths?page=1&snapshotId=9139c6c6-66a2-4e2c-a6ff-2f697d1d0e9a"
+  }
+}
