@@ -50,6 +50,7 @@ beforeEach(() => {
     })
     .get(/.*/)
     .reply(200, (uri) => {
+      console.log(uri);
       switch (uri) {
         case '/api/v1/org/playground/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/dep-graph':
           return fs.readFileSync(
