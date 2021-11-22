@@ -2,6 +2,7 @@
 
 exports[`Test index functions - generateDelta Test generateDelta - inline mode - one project - no new issue 1`] = `
 Object {
+  "error": 0,
   "newLicenseIssues": Array [],
   "newVulns": Array [],
   "noBaseline": false,
@@ -12,6 +13,7 @@ Object {
 
 exports[`Test index functions - generateDelta Test generateDelta - inline mode - one project - one new issue 1`] = `
 Object {
+  "error": 0,
   "newLicenseIssues": Array [],
   "newVulns": Array [
     Object {

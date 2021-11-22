@@ -6,23 +6,23 @@ import * as debug from 'debug';
 import { getDelta } from '../../src/lib/index';
 const fixturesFolderPath = path.resolve(__dirname, '..') + '/fixtures/';
 
-const originalLog = console.log;
-let consoleOutput: Array<string> = [];
-const mockedLog = (output: string): void => {
-  consoleOutput.push(output);
-};
-beforeAll(() => {
-  console.log = mockedLog;
-});
+// const originalLog = console.log;
+// let consoleOutput: Array<string> = [];
+// const mockedLog = (output: string): void => {
+//   consoleOutput.push(output);
+// };
+// beforeAll(() => {
+//   console.log = mockedLog;
+// });
 
-beforeEach(() => {
-  consoleOutput = [];
-});
-afterAll(() => {
-  setTimeout(() => {
-    console.log = originalLog;
-  }, 500);
-});
+// beforeEach(() => {
+//   consoleOutput = [];
+// });
+// afterAll(() => {
+//   setTimeout(() => {
+//     console.log = originalLog;
+//   }, 500);
+// });
 
 beforeEach(() => {
   return nock('https://snyk.io')
@@ -50,7 +50,6 @@ beforeEach(() => {
     })
     .get(/.*/)
     .reply(200, (uri) => {
-      console.log(uri);
       switch (uri) {
         case '/api/v1/org/playground/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/dep-graph':
           return fs.readFileSync(
@@ -80,16 +79,14 @@ describe('Test End 2 End - Module', () => {
         )
         .toString(),
     );
-    const expectedResult = [
-      {
-        result: 0,
-        newVulns: [],
-        newLicenseIssues: [],
-        passIfNoBaseline: false,
-        noBaseline: false,
-        projectNameOrId: 'goof',
-      },
-    ];
+    const expectedResult = {
+      result: 0,
+      newVulns: [],
+      newLicenseIssues: [],
+      passIfNoBaseline: false,
+      noBaseline: false,
+      projectNameOrId: 'goof',
+    };
     expect(result).toEqual(expectedResult);
   });
 
@@ -103,16 +100,14 @@ describe('Test End 2 End - Module', () => {
       true,
     );
     expect(debug('snyk')).toBeTruthy();
-    const expectedResult = [
-      {
-        result: 0,
-        newVulns: [],
-        newLicenseIssues: [],
-        passIfNoBaseline: false,
-        noBaseline: false,
-        projectNameOrId: 'goof',
-      },
-    ];
+    const expectedResult = {
+      result: 0,
+      newVulns: [],
+      newLicenseIssues: [],
+      passIfNoBaseline: false,
+      noBaseline: false,
+      projectNameOrId: 'goof',
+    };
     expect(result).toEqual(expectedResult);
   });
 
@@ -125,67 +120,64 @@ describe('Test End 2 End - Module', () => {
         .toString(),
     );
 
-    const expectedResult = [
-      {
-        result: 1,
-        newVulns: [
-          {
-            CVSSv3:
-              'CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C',
-            alternativeIds: [],
-            creationTime: '2020-01-28T15:18:37.743372Z',
-            credit: ['aaron_costello'],
-            cvssScore: 6.3,
-            description:
-              '## Overview\n\n[dot-prop](https://github.com/sindresorhus/dot-prop#readme) is a package to get, set, or delete a property from a nested object using a dot path.\n\n\nAffected versions of this package are vulnerable to Prototype Pollution.\nIt is possible for a user to modify the prototype of a base object.\r\n\r\n## PoC by aaron_costello \r\n```\r\nvar dotProp = require("dot-prop")\r\nconst object = {};\r\nconsole.log("Before " + object.b); //Undefined\r\ndotProp.set(object, \'__proto__.b\', true);\r\nconsole.log("After " + {}.b); //true\r\n```\n\n## Remediation\n\nUpgrade `dot-prop` to version 5.1.1 or higher.\n\n\n## References\n\n- [GitHub Commit](https://github.com/sindresorhus/dot-prop/commit/3039c8c07f6fdaa8b595ec869ae0895686a7a0f2)\n\n- [HackerOne Report](https://hackerone.com/reports/719856)\n',
-            disclosureTime: '2020-01-28T10:17:51Z',
-            exploit: 'Proof of Concept',
-            fixedIn: ['5.1.1'],
-            functions: [],
-            // eslint-disable-next-line @typescript-eslint/camelcase
-            functions_new: [],
-            id: 'SNYK-JS-DOTPROP-543489',
-            identifiers: { CVE: ['CVE-2020-8116'], CWE: ['CWE-400'] },
-            language: 'js',
-            modificationTime: '2020-01-31T17:21:49.331710Z',
-            moduleName: 'dot-prop',
-            packageManager: 'npm',
-            packageName: 'dot-prop',
-            patches: [],
-            publicationTime: '2020-01-28T16:23:39Z',
-            references: [
-              {
-                title: 'GitHub Commit',
-                url:
-                  'https://github.com/sindresorhus/dot-prop/commit/3039c8c07f6fdaa8b595ec869ae0895686a7a0f2',
-              },
-              {
-                title: 'HackerOne Report',
-                url: 'https://hackerone.com/reports/719856',
-              },
-            ],
-            semver: { vulnerable: ['<5.1.1'] },
-            severity: 'medium',
-            title: 'Prototype Pollution',
-            from: [
-              'goof@0.0.3',
-              'snyk@1.228.3',
-              'configstore@3.1.2',
-              'dot-prop@4.2.0',
-            ],
-            upgradePath: [false, 'snyk@1.290.1'],
-            isUpgradable: true,
-            isPatchable: false,
-            name: 'dot-prop',
-            version: '4.2.0',
-          },
-        ],
-        newLicenseIssues: [],
-        passIfNoBaseline: false,
-        noBaseline: false,
-        projectNameOrId: 'goof',
-      },
-    ];
+    const expectedResult = {
+      result: 1,
+      newVulns: [
+        {
+          CVSSv3: 'CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:O/RC:C',
+          alternativeIds: [],
+          creationTime: '2020-01-28T15:18:37.743372Z',
+          credit: ['aaron_costello'],
+          cvssScore: 6.3,
+          description:
+            '## Overview\n\n[dot-prop](https://github.com/sindresorhus/dot-prop#readme) is a package to get, set, or delete a property from a nested object using a dot path.\n\n\nAffected versions of this package are vulnerable to Prototype Pollution.\nIt is possible for a user to modify the prototype of a base object.\r\n\r\n## PoC by aaron_costello \r\n```\r\nvar dotProp = require("dot-prop")\r\nconst object = {};\r\nconsole.log("Before " + object.b); //Undefined\r\ndotProp.set(object, \'__proto__.b\', true);\r\nconsole.log("After " + {}.b); //true\r\n```\n\n## Remediation\n\nUpgrade `dot-prop` to version 5.1.1 or higher.\n\n\n## References\n\n- [GitHub Commit](https://github.com/sindresorhus/dot-prop/commit/3039c8c07f6fdaa8b595ec869ae0895686a7a0f2)\n\n- [HackerOne Report](https://hackerone.com/reports/719856)\n',
+          disclosureTime: '2020-01-28T10:17:51Z',
+          exploit: 'Proof of Concept',
+          fixedIn: ['5.1.1'],
+          functions: [],
+          // eslint-disable-next-line @typescript-eslint/camelcase
+          functions_new: [],
+          id: 'SNYK-JS-DOTPROP-543489',
+          identifiers: { CVE: ['CVE-2020-8116'], CWE: ['CWE-400'] },
+          language: 'js',
+          modificationTime: '2020-01-31T17:21:49.331710Z',
+          moduleName: 'dot-prop',
+          packageManager: 'npm',
+          packageName: 'dot-prop',
+          patches: [],
+          publicationTime: '2020-01-28T16:23:39Z',
+          references: [
+            {
+              title: 'GitHub Commit',
+              url:
+                'https://github.com/sindresorhus/dot-prop/commit/3039c8c07f6fdaa8b595ec869ae0895686a7a0f2',
+            },
+            {
+              title: 'HackerOne Report',
+              url: 'https://hackerone.com/reports/719856',
+            },
+          ],
+          semver: { vulnerable: ['<5.1.1'] },
+          severity: 'medium',
+          title: 'Prototype Pollution',
+          from: [
+            'goof@0.0.3',
+            'snyk@1.228.3',
+            'configstore@3.1.2',
+            'dot-prop@4.2.0',
+          ],
+          upgradePath: [false, 'snyk@1.290.1'],
+          isUpgradable: true,
+          isPatchable: false,
+          name: 'dot-prop',
+          version: '4.2.0',
+        },
+      ],
+      newLicenseIssues: [],
+      passIfNoBaseline: false,
+      noBaseline: false,
+      projectNameOrId: 'goof',
+    };
 
     expect(result).toEqual(expectedResult);
   });
@@ -271,5 +263,62 @@ describe('Test End 2 End - Module', () => {
     ];
 
     expect(result).toEqual(expectedResult);
+  });
+
+  it('Test module mode - all projects and print-deps', async () => {
+    const result = await getDelta(
+      fs
+        .readFileSync(
+          fixturesFolderPath +
+            'snykTestsOutputs/allProjects-test-java-goof-print-deps.json',
+        )
+        .toString(),
+    );
+
+    const expectedResult = {
+      result: 4,
+      newVulns: undefined,
+      newLicenseIssues: undefined,
+      passIfNoBaseline: false,
+      noBaseline: false,
+      projectNameOrId: undefined,
+    };
+
+    expect(result).toEqual(expectedResult);
+  });
+
+  it('Test module mode - invalid snyk test', async () => {
+    const result = await getDelta(
+      fs
+        .readFileSync(
+          fixturesFolderPath +
+            'snykTestsOutputs/test-goof-one-vuln-invalid.json',
+        )
+        .toString(),
+    );
+
+    const expectedResult = {
+      result: 4,
+      newVulns: undefined,
+      newLicenseIssues: undefined,
+      passIfNoBaseline: false,
+      noBaseline: false,
+      projectNameOrId: undefined,
+    };
+
+    expect(result).toEqual(expectedResult);
+  });
+
+  it('Test module mode - one invalid snyk test all-project', async () => {
+    const result = await getDelta(
+      fs
+        .readFileSync(
+          fixturesFolderPath +
+            'snykTestsOutputs/allProjects-test-goof-two-Projects-two-vuln-one-invalid.json',
+        )
+        .toString(),
+    );
+
+    expect(result).toMatchInlineSnapshot;
   });
 });

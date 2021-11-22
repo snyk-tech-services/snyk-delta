@@ -315,6 +315,7 @@ export interface ProjectDeltaOutput {
   newLicenseIssues: IssueWithPaths[] | undefined
   noBaseline: boolean
   passIfNoBaseline: boolean,
+  error: number,
 }
 
 export interface SnykDeltaInput {
@@ -326,7 +327,7 @@ export interface SnykDeltaInput {
   currentProject: string | '',
   snykTestOutput: string | '',
   type: string | '',
-  dontPassOnFail: boolean | ''
+  passOnFail: boolean | ''
 }
 
 export interface GetSnykTestResult {

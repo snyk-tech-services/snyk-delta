@@ -39,7 +39,7 @@ or
     - Use the --setPassIfNoBaseline if used with snyk prevent commit status and the project is not monitored. This will prevent snyk-prevent_commit_status to fail.
     setPassIfNoBaseline default to false.\
      `snyk test --json --print-deps | snyk-delta --baselineOrg xxx --baselineProject xxx --setPassIfNoBaseline true`
-    - Use the --dontPassOnFail for snyk delta to fail if a new issues are found in a project. Default value: true
+    - Use the --passOnFail for snyk delta to fail if a new issues are found in a project. Default value: false
 
 - Standalone
     - `snyk-delta --baselineOrg xxx --baselineProject xxx --currentOrg xxx --currentProject xxx --setPassIfNoBaseline false
