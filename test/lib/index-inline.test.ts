@@ -252,8 +252,8 @@ describe('Test End 2 End - Inline mode', () => {
     expect(mockExit).toHaveBeenCalledWith(0);
   });
 
-  it('Test Inline mode - 1 new issue - dontPassOnFail is false', async () => {
-    process.argv.push('--dontPassOnFail false');
+  it('Test Inline mode - 1 new issue - passOnFail is false', async () => {
+    process.argv.push('--passOnFail false');
     setTimeout(() => {
       stdinMock.send(
         fs
@@ -408,8 +408,8 @@ describe('Test End 2 End - Inline mode --all-projects', () => {
     expect(mockExit).toHaveBeenCalledWith(1);
   });
 
-  it('Test Inline mode strict mode - all-projects - two project - one new vuln in one - dontPassOnFail is false', async () => {
-    process.argv.push('--dontPassOnFail false');
+  it('Test Inline mode strict mode - all-projects - two project - one new vuln in one - passOnFail is false', async () => {
+    process.argv.push('--passOnFail false');
     setTimeout(() => {
       stdinMock.send(
         fs

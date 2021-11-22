@@ -56,7 +56,7 @@ describe('Test index functions - getSnykTestResult', () => {
         )
         .toString(),
       type: '',
-      dontPassOnFail: true,
+      passOnFail: true,
     };
 
     const snykTestResult = await getSnykTestResult(snykDeltaInput);
@@ -78,7 +78,7 @@ describe('Test index functions - getSnykTestResult', () => {
         )
         .toString(),
       type: '',
-      dontPassOnFail: true,
+      passOnFail: true,
     };
 
     const snykTestResult = await getSnykTestResult(snykDeltaInput);
@@ -101,25 +101,13 @@ describe('Test index functions - getSnykTestResult', () => {
         )
         .toString(),
       type: '',
-      dontPassOnFail: true,
+      passOnFail: true,
     };
 
     const snykTestResult = await getSnykTestResult(snykDeltaInput);
 
     expect(snykTestResult).toMatchSnapshot();
   });
-  // it.todo(
-  //   'Test getSnykTestResult - standalone mode - one project',
-  //   async () => {
-  //     // todo
-  //   },
-  // );
-  // it.todo(
-  //   'Test getSnykTestResult - standalone mode - one project',
-  //   async () => {
-  //     // todo
-  //   },
-  // );
 });
 
 describe('Test index functions - generateDelta', () => {
@@ -137,7 +125,7 @@ describe('Test index functions - generateDelta', () => {
         )
         .toString(),
       type: '',
-      dontPassOnFail: true,
+      passOnFail: true,
     };
 
     const snykTestProperty = fs.readFileSync(
@@ -166,7 +154,7 @@ describe('Test index functions - generateDelta', () => {
         )
         .toString(),
       type: '',
-      dontPassOnFail: true,
+      passOnFail: true,
     };
 
     const snykTestProperty = fs.readFileSync(

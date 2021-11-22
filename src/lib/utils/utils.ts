@@ -46,7 +46,7 @@ const init = (debugMode = false) => {
       currentOrg: { type: 'string', describe: 'Snyk organization ID/name to compare against', demandOption: false },
       currentProject: { type: 'string', describe: 'Snyk project ID/name to compare against', demandOption: false },
       type: { describe: "Specify issue type - default all", choices: ["vuln","license","all"], demandOption: false },
-      dontPassOnFail: { type: 'string', describe: 'fail is new issues are found in a project', demandOption: false },
+      passOnFail: { type: 'string', describe: 'fail is new issues are found in a project', demandOption: false },
     })
     .describe('d', 'Show debug logs')
     .version(pkgJSON.version)

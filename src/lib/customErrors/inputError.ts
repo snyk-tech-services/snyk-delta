@@ -8,6 +8,24 @@ class BadInputError extends Error {
     }
 }
 
+class BadSnykTestOutput extends Error {
+    constructor(message: any){
+        super(message)
+        this.name = "BadSnykTestOutput"
+        this.message = (message || "")
+    }
+}
+
+class PrintDepsError extends Error {
+    constructor(message: any){
+        super(message)
+        this.name = "PrintDepsError"
+        this.message = (message || "")
+    }
+}
+
 export {
-    BadInputError
+    BadInputError,
+    BadSnykTestOutput,
+    PrintDepsError
 }
