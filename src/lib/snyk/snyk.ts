@@ -13,6 +13,7 @@ const getProjectUUID = async (
   orgID: string,
   nonUUIDProjectID: string,
   projectType = 'cli',
+  packageManager: string
 ) => {
   const allProjects = await new snykClient.Org({ orgId: orgID }).projects.post(
     {},
@@ -20,7 +21,7 @@ const getProjectUUID = async (
   const allProjectsArray = allProjects.projects as Array<any>;
   const selectedProjectArray: Array<any> = allProjectsArray.filter(
     (project) =>
-      project.name == nonUUIDProjectID && project.origin == projectType,
+      project.name == nonUUIDProjectID && project.origin == projectType && project.type == packageManager
   );
   if (selectedProjectArray.length == 0) {
     return ''
