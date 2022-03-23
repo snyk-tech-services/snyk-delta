@@ -62,12 +62,13 @@ const getDelta = async(snykTestOutput = '', debugMode = false, setPassIfNoBaseli
 
       baselineOrg = baselineOrg? baselineOrg : snykTestJsonResults.org
       baselineProject = baselineProject? baselineProject : projectNameFromJson
+      const packageManager: string = snykTestJsonResults.packageManager
 
       if(argv.baselineProject && !isUUID.anyNonNil(baselineProject)){
         throw new BadInputError("Project ID must be valid UUID")
       }
       if(!isUUID.anyNonNil(baselineProject)){
-        baselineProject = await snyk.getProjectUUID(baselineOrg,baselineProject)
+        baselineProject = await snyk.getProjectUUID(baselineOrg,baselineProject,'cli',packageManager)
         if(baselineProject == ''){
           console.warn(
             'Snyk API - Could not find a monitored project matching. \
