@@ -84,6 +84,7 @@ describe('Test endpoint functions', () => {
       '689ce7f9-7943-4a71-b704-2ba575f01089',
       'atokeneduser/goof',
       'cli',
+      'npm',
     );
     expect(project).toEqual('6d5813be-7e6d-4ab8-80c2-1e3e2a454545');
   });
@@ -93,6 +94,7 @@ describe('Test endpoint functions', () => {
       '689ce7f9-7943-4a71-b704-2ba575f01089',
       'whatever',
       'cli',
+      'npm',
     );
     expect(project).toEqual('');
   });
@@ -103,6 +105,7 @@ describe('Test endpoint functions', () => {
         '689ce7f9-7943-4a71-b704-2ba575f01089',
         'atokeneduser/clojure',
         'github',
+        'maven',
       );
       expect(project).toThrow();
     } catch (err) {
