@@ -56,6 +56,12 @@ beforeEach(() => {
             fixturesFolderPath +
               'apiResponsesForProjects/list-all-projects-org-playground.json',
           );
+        case '/api/v1/org/customerorg/project/37a29fe9-c342-4d70-8efc-df96a8d730b6/aggregated-issues':
+          return fs.readFileSync(
+            fixturesFolderPath +
+              'apiResponses/projectId-aggregated-issues.json',
+          );
+
         default:
       }
     })
@@ -74,6 +80,10 @@ beforeEach(() => {
           return fs.readFileSync(
             fixturesFolderPath +
               'apiResponses/test-goof-aggregated-two-vuln.json',
+          );
+        case '/api/v1/org/customerorg/project/37a29fe9-c342-4d70-8efc-df96a8d730b6/dep-graph':
+          return fs.readFileSync(
+            fixturesFolderPath + 'dependencies/projectId-depgraph.json',
           );
         case '/api/v1/org/playground/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
           return fs.readFileSync(
@@ -249,6 +259,22 @@ describe('Test End 2 End - Inline mode', () => {
     expectedOutput.forEach((line: string) => {
       expect(consoleOutput.join()).toContain(line);
     });
+    expect(mockExit).toHaveBeenCalledWith(0);
+  });
+
+  it('Test Inline mode - use project ID', async () => {
+    setTimeout(() => {
+      stdinMock.send(
+        fs
+          .readFileSync(fixturesFolderPath + 'snykTestsOutputs/projectId.json')
+          .toString(),
+      );
+      stdinMock.send(null);
+    }, 100);
+
+    const result = await getDelta();
+    expect(consoleOutput).toContain('No new issues found !');
+
     expect(mockExit).toHaveBeenCalledWith(0);
   });
 });
