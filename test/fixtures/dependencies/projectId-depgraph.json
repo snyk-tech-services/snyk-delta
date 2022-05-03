@@ -1,0 +1,20 @@
+{
+  "depGraph": {
+    "schemaVersion": "1.2.0",
+    "pkgManager": { "name": "pip" },
+    "pkgs": [
+      { "id": "app@0.0.0", "info": { "name": "app", "version": "0.0.0" } }
+    ],
+    "graph": {
+      "rootNodeId": "root-node",
+      "nodes": [
+        {
+          "nodeId": "root-node",
+          "pkgId": "app@0.0.0",
+          "deps": [
+          ]
+        }
+      ]
+    }
+  }
+}
