@@ -251,4 +251,5 @@ describe('Test End 2 End - Inline mode', () => {
     });
     expect(mockExit).toHaveBeenCalledWith(0);
   });
+
 });

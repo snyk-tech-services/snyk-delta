@@ -61,7 +61,17 @@ const getDelta = async(snykTestOutput = '', debugMode = false, setPassIfNoBaseli
                                   `${snykTestJsonResults.projectName}`
 
       baselineOrg = baselineOrg? baselineOrg : snykTestJsonResults.org
-      baselineProject = baselineProject? baselineProject : projectNameFromJson
+      const baselineProjectId = snykTestJsonResults.projectId? snykTestJsonResults.projectId: ""
+      if(baselineProject){
+        // User overriding the baseline project manually
+        baselineProject = baselineProject
+      } else if(baselineProjectId) {
+        // If CLI returned project ID, let's use it
+        baselineProject = baselineProjectId
+      } else {
+        // Default case, we'll go look in the list of projects
+        baselineProject = projectNameFromJson
+      }
       const packageManager: string = snykTestJsonResults.packageManager
 
       if(argv.baselineProject && !isUUID.anyNonNil(baselineProject)){
