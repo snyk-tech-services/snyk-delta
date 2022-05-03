@@ -61,7 +61,14 @@ const getDelta = async(snykTestOutput = '', debugMode = false, setPassIfNoBaseli
                                   `${snykTestJsonResults.projectName}`
 
       baselineOrg = baselineOrg? baselineOrg : snykTestJsonResults.org
-      baselineProject = baselineProject? baselineProject : projectNameFromJson
+      const baselineProjectId = snykTestJsonResults.projectId
+      if(baselineProject){
+        baselineProject = baselineProject
+      } else if(baselineProjectId) {
+        baselineProject = baselineProjectId
+      } else {
+        baselineProject = projectNameFromJson
+      }
       const packageManager: string = snykTestJsonResults.packageManager
 
       if(argv.baselineProject && !isUUID.anyNonNil(baselineProject)){

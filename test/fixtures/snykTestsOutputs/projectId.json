@@ -1,0 +1,33 @@
+{
+  "vulnerabilities": [],
+  "ok": true,
+  "dependencyCount": 13,
+  "org": "customerorg",
+  "policy": "# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.\nversion: v1.22.1\nignore: {}\npatch: {}\n",
+  "isPrivate": true,
+  "licensesPolicy": {
+    "severities": {},
+    "orgLicenseRules": {
+      "AGPL-1.0": {
+        "licenseType": "AGPL-1.0",
+        "severity": "high",
+        "instructions": "boh"
+      }
+    }
+  },
+  "packageManager": "pip",
+  "projectId": "37a29fe9-c342-4d70-8efc-df96a8d730b6",
+  "ignoreSettings": {
+    "adminOnly": false,
+    "reasonRequired": false,
+    "disregardFilesystemIgnores": false
+  },
+  "summary": "No known vulnerabilities",
+  "filesystemPolicy": false,
+  "uniqueCount": 0,
+  "targetFile": "api/app/Pipfile",
+  "projectName": "app",
+  "foundProjectCount": 7,
+  "displayTargetFile": "api/app/Pipfile",
+  "path": "/mypath/tomyproject"
+}
