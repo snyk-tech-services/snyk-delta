@@ -19,7 +19,7 @@ Compares snapshots to give details about:
     - Flag path(s) carrying new vulnerabilities
 
 ## Prerequisites
-- Snyk Paid Account - Since it requires API usage, it therefore requires a paid account.
+- Snyk Business or Enterprise Account (requires API).
 - Your project to be monitored
 
 ## Installation
