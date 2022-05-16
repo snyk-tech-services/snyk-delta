@@ -7,7 +7,6 @@ process.argv.push('--setPassIfNoBaseline true');
 
 const stdinMock: MockSTDIN = stdin();
 const mockExit = mockProcessExit();
-import { getDelta } from '../../src/lib/index';
 
 const fixturesFolderPath = path.resolve(__dirname, '..') + '/fixtures/';
 
@@ -86,8 +85,6 @@ describe('Test End 2 End - Inline mode - no baseline', () => {
       );
       stdinMock.send(null);
     }, 100);
-
-    const result = await getDelta();
 
     const expectedOutput = [
       'New issue introduced !',

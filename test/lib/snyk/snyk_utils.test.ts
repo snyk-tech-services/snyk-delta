@@ -1,7 +1,6 @@
 import { getConfig } from '../../../src/lib/snyk/snyk_utils';
 import * as fs from 'fs';
 import * as nock from 'nock';
-import * as _ from 'lodash';
 import * as path from 'path';
 
 const fixturesFolderPath = path.resolve(__dirname, '../..') + '/fixtures/';

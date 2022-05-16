@@ -8,7 +8,6 @@ process.argv.push('--baselineProject=c51c80c2-66a1-442a-91e2-4f55b4256a73');
 process.argv.push('--currentOrg=playground');
 process.argv.push('--currentProject=c51c80c2-66a1-442a-91e2-4f55b4256a72');
 const mockExit = mockProcessExit();
-import { getDelta } from '../../src/lib/index';
 
 const fixturesFolderPath = path.resolve(__dirname, '..') + '/fixtures/';
 
@@ -51,8 +50,6 @@ describe('Test End 2 End - Standalone mode', () => {
               fixturesFolderPath +
                 'apiResponses/test-goof-aggregated-one-vuln.json',
             );
-          // case '/api/v1/org/playground/projects':
-          //   return fs.readFileSync(fixturesFolderPath+'apiResponsesForProjects/list-all-projects-org-playground.json')
           default:
         }
       })
@@ -80,8 +77,6 @@ describe('Test End 2 End - Standalone mode', () => {
           default:
         }
       });
-
-    const result = await getDelta();
 
     const expectedOutput = [
       '_____________________________',
@@ -123,8 +118,6 @@ describe('Test End 2 End - Standalone mode', () => {
               fixturesFolderPath +
                 'apiResponses/test-goof-aggregated-one-vuln.json',
             );
-          // case '/api/v1/org/playground/projects':
-          //   return fs.readFileSync(fixturesFolderPath+'apiResponsesForProjects/list-all-projects-org-playground.json')
           default:
         }
       })
@@ -169,8 +162,6 @@ describe('Test End 2 End - Standalone mode', () => {
           default:
         }
       });
-
-    const result = await getDelta();
 
     const expectedOutput = [
       '_____________________________',
@@ -220,8 +211,6 @@ describe('Test End 2 End - Standalone mode', () => {
               fixturesFolderPath +
                 'apiResponses/test-goof-aggregated-one-vuln.json',
             );
-          // case '/api/v1/org/playground/projects':
-          //   return fs.readFileSync(fixturesFolderPath+'apiResponsesForProjects/list-all-projects-org-playground.json')
           default:
         }
       })
@@ -266,7 +255,6 @@ describe('Test End 2 End - Standalone mode', () => {
         }
       });
 
-    const result = await getDelta();
     const expectedOutput = [
       '_____________________________',
       'Direct deps:',
@@ -315,8 +303,6 @@ describe('Test End 2 End - Standalone mode', () => {
               fixturesFolderPath +
                 'apiResponses/test-goof-aggregated-one-vuln.json',
             );
-          // case '/api/v1/org/playground/projects':
-          //   return fs.readFileSync(fixturesFolderPath+'apiResponsesForProjects/list-all-projects-org-playground.json')
           default:
         }
       })
@@ -361,7 +347,6 @@ describe('Test End 2 End - Standalone mode', () => {
         }
       });
 
-    const result = await getDelta();
     const expectedOutput = [
       '_____________________________',
       'Direct deps:',

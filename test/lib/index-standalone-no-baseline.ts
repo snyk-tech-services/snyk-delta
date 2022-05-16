@@ -9,7 +9,6 @@ process.argv.push('--currentOrg=playground');
 process.argv.push('--currentProject=c51c80c2-66a1-442a-91e2-4f55b4256a73');
 
 const mockExit = mockProcessExit();
-import { getDelta } from '../../src/lib/index';
 
 const fixturesFolderPath = path.resolve(__dirname, '..') + '/fixtures/';
 
@@ -70,8 +69,6 @@ describe('Test End 2 End - Standalone mode without baseline', () => {
         }
       });
 
-    const result = await getDelta();
-
     const expectedOutput = [
       '_____________________________',
       'Direct deps:',
@@ -111,8 +108,6 @@ describe('Test End 2 End - Standalone mode without baseline', () => {
               fixturesFolderPath +
                 'apiResponses/test-goof-with-one-more-vuln.json',
             );
-          // case '/api/v1/org/playground/projects':
-          //   return fs.readFileSync(fixturesFolderPath+'apiResponsesForProjects/list-all-projects-org-playground.json')
           default:
         }
       })
@@ -130,8 +125,6 @@ describe('Test End 2 End - Standalone mode without baseline', () => {
           default:
         }
       });
-
-    const result = await getDelta();
 
     const expectedOutput = [
       '_____________________________',
@@ -177,8 +170,6 @@ describe('Test End 2 End - Standalone mode without baseline', () => {
               fixturesFolderPath +
                 'apiResponses/test-goof-with-one-more-vuln.json',
             );
-          // case '/api/v1/org/playground/projects':
-          //   return fs.readFileSync(fixturesFolderPath+'apiResponsesForProjects/list-all-projects-org-playground.json')
           default:
         }
       })
@@ -198,7 +189,6 @@ describe('Test End 2 End - Standalone mode without baseline', () => {
         }
       });
 
-    const result = await getDelta();
     const expectedOutput = [
       '_____________________________',
       'Direct deps:',
@@ -243,8 +233,6 @@ describe('Test End 2 End - Standalone mode without baseline', () => {
               fixturesFolderPath +
                 'apiResponses/test-goof-with-one-more-vuln.json',
             );
-          // case '/api/v1/org/playground/projects':
-          //   return fs.readFileSync(fixturesFolderPath+'apiResponsesForProjects/list-all-projects-org-playground.json')
           default:
         }
       })
@@ -264,7 +252,6 @@ describe('Test End 2 End - Standalone mode without baseline', () => {
         }
       });
 
-    const result = await getDelta();
     const expectedOutput = [
       '_____________________________',
       'Direct deps:',

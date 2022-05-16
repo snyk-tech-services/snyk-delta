@@ -7,7 +7,6 @@ import {
   getProjectIssues,
   getProjectDepGraph,
   getProjectUUID,
-  getUpgradePath,
 } from '../../../src/lib/snyk/snyk';
 import * as Error from '../../../src/lib/customErrors/apiError';
 

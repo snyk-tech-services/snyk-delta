@@ -3,13 +3,11 @@ import { mockProcessExit } from 'jest-mock-process';
 import * as nock from 'nock';
 import * as path from 'path';
 import * as fs from 'fs';
-//process.argv.push('-d');
 process.argv.push('--baselineOrg=f6999a85-c519-4ee7-ae55-3269b9bfa4b6');
 process.argv.push('--baselineProject=f51c925b-2abe-4c07-8a0d-21b834aa3074');
 
 const stdinMock: MockSTDIN = stdin();
 const mockExit = mockProcessExit();
-import { getDelta } from '../../src/lib/index';
 
 const fixturesFolderPath = path.resolve(__dirname, '..') + '/fixtures/';
 
@@ -76,8 +74,6 @@ describe('Test End 2 End - Inline mode with project coordinates', () => {
       );
       stdinMock.send(null);
     }, 100);
-
-    const result = await getDelta();
 
     const expectedOutput = [
       'Direct deps:',

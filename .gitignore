@@ -12,3 +12,4 @@ snyk-delta-linux
 snyk-delta-macos
 snyk-delta-win.exe
 .vscode/
+.dccache
