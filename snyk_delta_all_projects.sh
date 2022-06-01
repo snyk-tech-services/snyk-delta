@@ -13,7 +13,8 @@ exit_code=0
 echo 'Running snyk-delta-all-projects'
 
 
-for test in `snyk test --all-projects --json $* | jq -r '. | select(.[] or .vulnerabilities) | @base64'`; do    echo ${test} | base64 --decode | snyk-delta -d
+for test in `snyk test --all-projects --json $* | jq -r '. | select(.[] or .vulnerabilities) | @base64'`; do
+    echo ${test} | base64 --decode | snyk-delta -d
     project_exit_code=$?
     exit_code+=$project_exit_code
     if [ $project_exit_code -eq 2 ]
