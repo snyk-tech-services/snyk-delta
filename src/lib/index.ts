@@ -7,13 +7,12 @@ import * as issues from './snyk/issues'
 import * as dependencies from './snyk/dependencies'
 import * as isUUID from 'is-uuid'
 import { BadInputError } from './customErrors/inputError'
-import { Project } from 'snyk-api-ts-client/dist/client/generated/org';
 import { IssuesPostResponseType, SnykCliTestOutput, SnykDeltaOutput } from './types'
 import { displayOutput } from './snyk/displayOutput';
 export { SnykDeltaOutput } from './types'
 
 const banner =  `
-================================================                           
+================================================
 ================================================
 Snyk Tech Prevent Tool
 ================================================
@@ -32,7 +31,7 @@ const getDelta = async(snykTestOutput = '', debugMode = false, setPassIfNoBaseli
     if(process.env.NODE_ENV == 'prod'){
       console.log(banner)
     }
-    
+
     debug(mode,"mode")
 
     let snykTestJsonDependencies, snykTestJsonResults
@@ -53,10 +52,10 @@ const getDelta = async(snykTestOutput = '', debugMode = false, setPassIfNoBaseli
         console.log("Sorry, I can't handle --all-projects commands right now, but soon !")
         process.exitCode = 2
       }
-      
+
       snykTestJsonDependencies = inputData.length > 1 ? inputData[0] : null
       snykTestJsonResults = inputData.length > 1 ? inputData[1]: inputData[0]
-      const projectNameFromJson = snykTestJsonResults.targetFile? 
+      const projectNameFromJson = snykTestJsonResults.targetFile?
                                   `${snykTestJsonResults.projectName}:${snykTestJsonResults.targetFile}` :
                                   `${snykTestJsonResults.projectName}`
 
@@ -94,9 +93,9 @@ const getDelta = async(snykTestOutput = '', debugMode = false, setPassIfNoBaseli
       snykTestJsonDependencies = await snyk.getProjectDepGraph(currentOrg,currentProject)
       const projectIssuesFromAPI = await snyk.getProjectIssues(currentOrg,currentProject)
       snykTestJsonResults = projectIssuesFromAPI.issues
-      
+
     }
-    
+
     //TODO: If baseline project is '' and strictMode is false, display current vulns
     debug(`Retrieve Snyk Project %s in org %s`, baselineProject, baselineOrg)
     const issueTypeFilter: string = argv.type? argv.type : "all"
@@ -104,11 +103,11 @@ const getDelta = async(snykTestOutput = '', debugMode = false, setPassIfNoBaseli
     const typedSnykTestJsonResults = snykTestJsonResults as SnykCliTestOutput
 
     // if no baseline, return returned results straight from CLI
-    if(baselineProject == ''){      
+    if(baselineProject == ''){
       newVulns = typedSnykTestJsonResults.vulnerabilities.filter(x => x.type != "license")
       newLicenseIssues = typedSnykTestJsonResults.vulnerabilities.filter(x => x.type == "license")
 
-      noBaseline = true      
+      noBaseline = true
     } else {
       snykProject = await snyk.getProjectIssues(baselineOrg,baselineProject)
 
@@ -120,21 +119,21 @@ const getDelta = async(snykTestOutput = '', debugMode = false, setPassIfNoBaseli
       const baselineLicenseIssues = snykProject.issues.licenses
       const currentLicensesIssues = typedSnykTestJsonResults.vulnerabilities.filter(x => x.type == 'license')
       newLicenseIssues = issues.getNewIssues(baselineLicenseIssues,currentLicensesIssues,snykTestJsonResults.severityThreshold, mode)
-      
+
       debug(`New Vulns count =%d`,newVulns.length)
       debug(`New Licenses Issues count =%d`,newLicenseIssues.length)
-  
+
       if(snykTestJsonDependencies){
         const monitoredProjectDepGraph = await snyk.getProjectDepGraph(baselineOrg,baselineProject)
         // TODO: Refactor function below
-        await dependencies.displayDependenciesChangeDetails(snykTestJsonDependencies, monitoredProjectDepGraph, snykTestJsonResults.packageManager, newVulns, newLicenseIssues)
+        await dependencies.displayDependenciesChangeDetails(snykTestJsonDependencies, monitoredProjectDepGraph, snykTestJsonResults.packageManager, newVulns)
       }
     }
 
     if(!module.parent || (isJestTesting() && !expect.getState().currentTestName.includes('module'))){
       displayOutput(newVulns,newLicenseIssues,issueTypeFilter,mode)
     }
-    
+
 
     if(newVulns.length + newLicenseIssues.length > 0) {
       if(!noBaseline){
@@ -149,28 +148,28 @@ const getDelta = async(snykTestOutput = '', debugMode = false, setPassIfNoBaseli
     } else {
       process.exitCode = 0
     }
-    
-    
+
+
   } catch (err){
-    
+
     handleError(err)
     process.exitCode = 2
 
-  
+
   } finally {
     if(!module.parent || (isJestTesting() && !expect.getState().currentTestName.includes('module'))){
       process.exit(process.exitCode)
     } else {
       return {result: process.exitCode, newVulns: newVulns,newLicenseIssues: newLicenseIssues, passIfNoBaseline: passIfNoBaseline, noBaseline: noBaseline}
     }
-  
+
   }
 
 }
 
 if(!module.parent){
   getDelta()
-} 
+}
 
 
 

@@ -39,7 +39,7 @@
   "homepage": "https://github.com/snyk-tech-services/snyk-delta",
   "dependencies": {
     "@snyk/configstore": "^3.2.0-rc1",
-    "@snyk/dep-graph": "^1.18.1",
+    "@snyk/dep-graph": "2.3.0",
     "@types/debug": "^4.1.5",
     "@types/is-uuid": "^1.0.0",
     "app-root-path": "^3.0.0",

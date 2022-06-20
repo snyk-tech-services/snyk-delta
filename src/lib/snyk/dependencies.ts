@@ -9,7 +9,6 @@ const displayDependenciesChangeDetails = async (
   monitoredProjectDepGraph: any,
   packageManager: string,
   newVulns: IssueWithPaths[],
-  newLicenseIssues: IssueWithPaths[],
 ) => {
   let snykTestGraph: depgraph.DepGraph;
   if (snykDepsJsonResults && snykDepsJsonResults.depGraph) {
@@ -201,9 +200,12 @@ const consolidateIndirectDepsPaths = (
   listOfDeps: Array<any>,
   snykTestGraph: depgraph.DepGraph,
 ): Map<string, string[][]> => {
+  const pkgPathsToRootOptions = ['maven', 'gradle', 'sbt'].includes(
+    snykTestGraph.pkgManager.name,
+  ) ? { limit: 1} : undefined;
   let snykIndirectDepsPaths = new Map<string, Array<Array<string>>>();
   listOfDeps.forEach((indirectDep) => {
-    snykTestGraph.pkgPathsToRoot(indirectDep.info).forEach((individualPath) => {
+    snykTestGraph.pkgPathsToRoot(indirectDep.info, pkgPathsToRootOptions).forEach((individualPath) => {
       // Group all paths for a given indirect dep together in a map
       let individualPathFormatted = individualPath
         .reverse()

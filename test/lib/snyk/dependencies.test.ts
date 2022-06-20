@@ -75,7 +75,6 @@ describe('Test Snyk Utils make request properly', () => {
       monitoredProjectDepGraph,
       'npm',
       [],
-      [],
     );
     const expectedResult = [
       '_____________________________',
@@ -117,7 +116,6 @@ describe('Test Snyk Utils make request properly', () => {
       monitoredProjectDepGraph,
       'npm',
       [],
-      [],
     );
     const expectedResult = [
       '_____________________________',
@@ -157,7 +155,6 @@ describe('Test Snyk Utils make request properly', () => {
       snykTestJsonDependencies,
       monitoredProjectDepGraph,
       'npm',
-      [],
       [],
     );
     const expectedResult = [
@@ -259,7 +256,6 @@ describe('Test Snyk Utils make request properly', () => {
       monitoredProjectDepGraph,
       'npm',
       newVulns,
-      [],
     );
     const expectedResult = [
       '_____________________________',
@@ -301,7 +297,6 @@ describe('Test Snyk Utils make request properly', () => {
       monitoredProjectDepGraph,
       'npm',
       [],
-      [],
     );
     const expectedResult = [
       '_____________________________',
@@ -342,7 +337,6 @@ describe('Test Snyk Utils make request properly', () => {
       snykTestJsonDependencies,
       monitoredProjectDepGraph,
       'npm',
-      [],
       [],
     );
     const expectedResult = [
