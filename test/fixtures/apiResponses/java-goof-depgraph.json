@@ -1,0 +1,715 @@
+{
+    "depGraph": {
+        "schemaVersion": "1.2.0",
+        "pkgManager": {
+            "name": "maven"
+        },
+        "pkgs": [
+            {
+                "id": "io.github.snyk:todolist-core@1.0-SNAPSHOT",
+                "info": {
+                    "name": "io.github.snyk:todolist-core",
+                    "version": "1.0-SNAPSHOT"
+                }
+            },
+            {
+                "id": "c3p0:c3p0@0.9.1.2",
+                "info": {
+                    "name": "c3p0:c3p0",
+                    "version": "0.9.1.2"
+                }
+            },
+            {
+                "id": "asm:asm@3.3.1",
+                "info": {
+                    "name": "asm:asm",
+                    "version": "3.3.1"
+                }
+            },
+            {
+                "id": "cglib:cglib@2.2.2",
+                "info": {
+                    "name": "cglib:cglib",
+                    "version": "2.2.2"
+                }
+            },
+            {
+                "id": "com.sun.xml.bind:jaxb-core@2.3.0",
+                "info": {
+                    "name": "com.sun.xml.bind:jaxb-core",
+                    "version": "2.3.0"
+                }
+            },
+            {
+                "id": "com.sun.xml.bind:jaxb-impl@2.3.0",
+                "info": {
+                    "name": "com.sun.xml.bind:jaxb-impl",
+                    "version": "2.3.0"
+                }
+            },
+            {
+                "id": "commons-collections:commons-collections@3.2.2",
+                "info": {
+                    "name": "commons-collections:commons-collections",
+                    "version": "3.2.2"
+                }
+            },
+            {
+                "id": "javax.xml.bind:jaxb-api@2.3.0",
+                "info": {
+                    "name": "javax.xml.bind:jaxb-api",
+                    "version": "2.3.0"
+                }
+            },
+            {
+                "id": "org.aspectj:aspectjweaver@1.8.2",
+                "info": {
+                    "name": "org.aspectj:aspectjweaver",
+                    "version": "1.8.2"
+                }
+            },
+            {
+                "id": "org.hibernate.javax.persistence:hibernate-jpa-2.0-api@1.0.1.Final",
+                "info": {
+                    "name": "org.hibernate.javax.persistence:hibernate-jpa-2.0-api",
+                    "version": "1.0.1.Final"
+                }
+            },
+            {
+                "id": "antlr:antlr@2.7.7",
+                "info": {
+                    "name": "antlr:antlr",
+                    "version": "2.7.7"
+                }
+            },
+            {
+                "id": "xml-apis:xml-apis@1.0.b2",
+                "info": {
+                    "name": "xml-apis:xml-apis",
+                    "version": "1.0.b2"
+                }
+            },
+            {
+                "id": "dom4j:dom4j@1.6.1",
+                "info": {
+                    "name": "dom4j:dom4j",
+                    "version": "1.6.1"
+                }
+            },
+            {
+                "id": "org.hibernate.common:hibernate-commons-annotations@4.0.5.Final",
+                "info": {
+                    "name": "org.hibernate.common:hibernate-commons-annotations",
+                    "version": "4.0.5.Final"
+                }
+            },
+            {
+                "id": "org.hibernate.javax.persistence:hibernate-jpa-2.1-api@1.0.0.Final",
+                "info": {
+                    "name": "org.hibernate.javax.persistence:hibernate-jpa-2.1-api",
+                    "version": "1.0.0.Final"
+                }
+            },
+            {
+                "id": "org.javassist:javassist@3.18.1-GA",
+                "info": {
+                    "name": "org.javassist:javassist",
+                    "version": "3.18.1-GA"
+                }
+            },
+            {
+                "id": "org.jboss.logging:jboss-logging@3.1.3.GA",
+                "info": {
+                    "name": "org.jboss.logging:jboss-logging",
+                    "version": "3.1.3.GA"
+                }
+            },
+            {
+                "id": "org.jboss.logging:jboss-logging-annotations@1.2.0.Beta1",
+                "info": {
+                    "name": "org.jboss.logging:jboss-logging-annotations",
+                    "version": "1.2.0.Beta1"
+                }
+            },
+            {
+                "id": "org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec@1.0.0.Final",
+                "info": {
+                    "name": "org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec",
+                    "version": "1.0.0.Final"
+                }
+            },
+            {
+                "id": "org.jboss:jandex@1.1.0.Final",
+                "info": {
+                    "name": "org.jboss:jandex",
+                    "version": "1.1.0.Final"
+                }
+            },
+            {
+                "id": "org.hibernate:hibernate-core@4.3.7.Final",
+                "info": {
+                    "name": "org.hibernate:hibernate-core",
+                    "version": "4.3.7.Final"
+                }
+            },
+            {
+                "id": "org.hibernate:hibernate-entitymanager@4.3.7.Final",
+                "info": {
+                    "name": "org.hibernate:hibernate-entitymanager",
+                    "version": "4.3.7.Final"
+                }
+            },
+            {
+                "id": "org.hsqldb:hsqldb@2.3.2",
+                "info": {
+                    "name": "org.hsqldb:hsqldb",
+                    "version": "2.3.2"
+                }
+            },
+            {
+                "id": "org.springframework:spring-context-support@3.2.6.RELEASE",
+                "info": {
+                    "name": "org.springframework:spring-context-support",
+                    "version": "3.2.6.RELEASE"
+                }
+            },
+            {
+                "id": "org.springframework:spring-aspects@3.2.6.RELEASE",
+                "info": {
+                    "name": "org.springframework:spring-aspects",
+                    "version": "3.2.6.RELEASE"
+                }
+            },
+            {
+                "id": "org.springframework:spring-aop@3.2.6.RELEASE",
+                "info": {
+                    "name": "org.springframework:spring-aop",
+                    "version": "3.2.6.RELEASE"
+                }
+            },
+            {
+                "id": "org.springframework:spring-beans@3.2.6.RELEASE",
+                "info": {
+                    "name": "org.springframework:spring-beans",
+                    "version": "3.2.6.RELEASE"
+                }
+            },
+            {
+                "id": "commons-logging:commons-logging@1.1.1",
+                "info": {
+                    "name": "commons-logging:commons-logging",
+                    "version": "1.1.1"
+                }
+            },
+            {
+                "id": "org.springframework:spring-core@3.2.6.RELEASE",
+                "info": {
+                    "name": "org.springframework:spring-core",
+                    "version": "3.2.6.RELEASE"
+                }
+            },
+            {
+                "id": "org.springframework:spring-expression@3.2.6.RELEASE",
+                "info": {
+                    "name": "org.springframework:spring-expression",
+                    "version": "3.2.6.RELEASE"
+                }
+            },
+            {
+                "id": "org.springframework:spring-context@3.2.6.RELEASE",
+                "info": {
+                    "name": "org.springframework:spring-context",
+                    "version": "3.2.6.RELEASE"
+                }
+            },
+            {
+                "id": "aopalliance:aopalliance@1.0",
+                "info": {
+                    "name": "aopalliance:aopalliance",
+                    "version": "1.0"
+                }
+            },
+            {
+                "id": "org.springframework:spring-jdbc@3.2.6.RELEASE",
+                "info": {
+                    "name": "org.springframework:spring-jdbc",
+                    "version": "3.2.6.RELEASE"
+                }
+            },
+            {
+                "id": "org.springframework:spring-tx@3.2.6.RELEASE",
+                "info": {
+                    "name": "org.springframework:spring-tx",
+                    "version": "3.2.6.RELEASE"
+                }
+            },
+            {
+                "id": "org.springframework:spring-orm@3.2.6.RELEASE",
+                "info": {
+                    "name": "org.springframework:spring-orm",
+                    "version": "3.2.6.RELEASE"
+                }
+            }
+        ],
+        "graph": {
+            "rootNodeId": "root-node",
+            "nodes": [
+                {
+                    "nodeId": "root-node",
+                    "pkgId": "io.github.snyk:todolist-core@1.0-SNAPSHOT",
+                    "deps": [
+                        {
+                            "nodeId": "c3p0:c3p0@0.9.1.2"
+                        },
+                        {
+                            "nodeId": "cglib:cglib@2.2.2"
+                        },
+                        {
+                            "nodeId": "com.sun.xml.bind:jaxb-core@2.3.0"
+                        },
+                        {
+                            "nodeId": "com.sun.xml.bind:jaxb-impl@2.3.0"
+                        },
+                        {
+                            "nodeId": "commons-collections:commons-collections@3.2.2"
+                        },
+                        {
+                            "nodeId": "javax.xml.bind:jaxb-api@2.3.0"
+                        },
+                        {
+                            "nodeId": "org.aspectj:aspectjweaver@1.8.2"
+                        },
+                        {
+                            "nodeId": "org.hibernate.javax.persistence:hibernate-jpa-2.0-api@1.0.1.Final"
+                        },
+                        {
+                            "nodeId": "org.hibernate:hibernate-core@4.3.7.Final"
+                        },
+                        {
+                            "nodeId": "org.hibernate:hibernate-entitymanager@4.3.7.Final"
+                        },
+                        {
+                            "nodeId": "org.hsqldb:hsqldb@2.3.2"
+                        },
+                        {
+                            "nodeId": "org.springframework:spring-aspects@3.2.6.RELEASE"
+                        },
+                        {
+                            "nodeId": "org.springframework:spring-context@3.2.6.RELEASE"
+                        },
+                        {
+                            "nodeId": "org.springframework:spring-orm@3.2.6.RELEASE"
+                        }
+                    ]
+                },
+                {
+                    "nodeId": "c3p0:c3p0@0.9.1.2",
+                    "pkgId": "c3p0:c3p0@0.9.1.2",
+                    "deps": [],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "asm:asm@3.3.1",
+                    "pkgId": "asm:asm@3.3.1",
+                    "deps": [],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "cglib:cglib@2.2.2",
+                    "pkgId": "cglib:cglib@2.2.2",
+                    "deps": [
+                        {
+                            "nodeId": "asm:asm@3.3.1"
+                        }
+                    ],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "com.sun.xml.bind:jaxb-core@2.3.0",
+                    "pkgId": "com.sun.xml.bind:jaxb-core@2.3.0",
+                    "deps": [],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "com.sun.xml.bind:jaxb-impl@2.3.0",
+                    "pkgId": "com.sun.xml.bind:jaxb-impl@2.3.0",
+                    "deps": [],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "commons-collections:commons-collections@3.2.2",
+                    "pkgId": "commons-collections:commons-collections@3.2.2",
+                    "deps": [],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "javax.xml.bind:jaxb-api@2.3.0",
+                    "pkgId": "javax.xml.bind:jaxb-api@2.3.0",
+                    "deps": [],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "org.aspectj:aspectjweaver@1.8.2",
+                    "pkgId": "org.aspectj:aspectjweaver@1.8.2",
+                    "deps": [],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "org.hibernate.javax.persistence:hibernate-jpa-2.0-api@1.0.1.Final",
+                    "pkgId": "org.hibernate.javax.persistence:hibernate-jpa-2.0-api@1.0.1.Final",
+                    "deps": [],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "antlr:antlr@2.7.7",
+                    "pkgId": "antlr:antlr@2.7.7",
+                    "deps": [],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "xml-apis:xml-apis@1.0.b2",
+                    "pkgId": "xml-apis:xml-apis@1.0.b2",
+                    "deps": [],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "dom4j:dom4j@1.6.1",
+                    "pkgId": "dom4j:dom4j@1.6.1",
+                    "deps": [
+                        {
+                            "nodeId": "xml-apis:xml-apis@1.0.b2"
+                        }
+                    ],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "org.hibernate.common:hibernate-commons-annotations@4.0.5.Final",
+                    "pkgId": "org.hibernate.common:hibernate-commons-annotations@4.0.5.Final",
+                    "deps": [],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "org.hibernate.javax.persistence:hibernate-jpa-2.1-api@1.0.0.Final",
+                    "pkgId": "org.hibernate.javax.persistence:hibernate-jpa-2.1-api@1.0.0.Final",
+                    "deps": [],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "org.javassist:javassist@3.18.1-GA",
+                    "pkgId": "org.javassist:javassist@3.18.1-GA",
+                    "deps": [],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "org.jboss.logging:jboss-logging@3.1.3.GA",
+                    "pkgId": "org.jboss.logging:jboss-logging@3.1.3.GA",
+                    "deps": [],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "org.jboss.logging:jboss-logging-annotations@1.2.0.Beta1",
+                    "pkgId": "org.jboss.logging:jboss-logging-annotations@1.2.0.Beta1",
+                    "deps": [],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec@1.0.0.Final",
+                    "pkgId": "org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec@1.0.0.Final",
+                    "deps": [],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "org.jboss:jandex@1.1.0.Final",
+                    "pkgId": "org.jboss:jandex@1.1.0.Final",
+                    "deps": [],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "org.hibernate:hibernate-core@4.3.7.Final",
+                    "pkgId": "org.hibernate:hibernate-core@4.3.7.Final",
+                    "deps": [
+                        {
+                            "nodeId": "antlr:antlr@2.7.7"
+                        },
+                        {
+                            "nodeId": "dom4j:dom4j@1.6.1"
+                        },
+                        {
+                            "nodeId": "org.hibernate.common:hibernate-commons-annotations@4.0.5.Final"
+                        },
+                        {
+                            "nodeId": "org.hibernate.javax.persistence:hibernate-jpa-2.1-api@1.0.0.Final"
+                        },
+                        {
+                            "nodeId": "org.javassist:javassist@3.18.1-GA"
+                        },
+                        {
+                            "nodeId": "org.jboss.logging:jboss-logging@3.1.3.GA"
+                        },
+                        {
+                            "nodeId": "org.jboss.logging:jboss-logging-annotations@1.2.0.Beta1"
+                        },
+                        {
+                            "nodeId": "org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec@1.0.0.Final"
+                        },
+                        {
+                            "nodeId": "org.jboss:jandex@1.1.0.Final"
+                        }
+                    ],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "org.hibernate:hibernate-entitymanager@4.3.7.Final",
+                    "pkgId": "org.hibernate:hibernate-entitymanager@4.3.7.Final",
+                    "deps": [],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "org.hsqldb:hsqldb@2.3.2",
+                    "pkgId": "org.hsqldb:hsqldb@2.3.2",
+                    "deps": [],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "org.springframework:spring-context-support@3.2.6.RELEASE",
+                    "pkgId": "org.springframework:spring-context-support@3.2.6.RELEASE",
+                    "deps": [],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "org.springframework:spring-aspects@3.2.6.RELEASE",
+                    "pkgId": "org.springframework:spring-aspects@3.2.6.RELEASE",
+                    "deps": [
+                        {
+                            "nodeId": "org.springframework:spring-context-support@3.2.6.RELEASE"
+                        }
+                    ],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "org.springframework:spring-aop@3.2.6.RELEASE",
+                    "pkgId": "org.springframework:spring-aop@3.2.6.RELEASE",
+                    "deps": [],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "org.springframework:spring-beans@3.2.6.RELEASE",
+                    "pkgId": "org.springframework:spring-beans@3.2.6.RELEASE",
+                    "deps": [],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "commons-logging:commons-logging@1.1.1",
+                    "pkgId": "commons-logging:commons-logging@1.1.1",
+                    "deps": [],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "org.springframework:spring-core@3.2.6.RELEASE",
+                    "pkgId": "org.springframework:spring-core@3.2.6.RELEASE",
+                    "deps": [
+                        {
+                            "nodeId": "commons-logging:commons-logging@1.1.1"
+                        }
+                    ],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "org.springframework:spring-expression@3.2.6.RELEASE",
+                    "pkgId": "org.springframework:spring-expression@3.2.6.RELEASE",
+                    "deps": [],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "org.springframework:spring-context@3.2.6.RELEASE",
+                    "pkgId": "org.springframework:spring-context@3.2.6.RELEASE",
+                    "deps": [
+                        {
+                            "nodeId": "org.springframework:spring-aop@3.2.6.RELEASE"
+                        },
+                        {
+                            "nodeId": "org.springframework:spring-beans@3.2.6.RELEASE"
+                        },
+                        {
+                            "nodeId": "org.springframework:spring-core@3.2.6.RELEASE"
+                        },
+                        {
+                            "nodeId": "org.springframework:spring-expression@3.2.6.RELEASE"
+                        }
+                    ],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "aopalliance:aopalliance@1.0",
+                    "pkgId": "aopalliance:aopalliance@1.0",
+                    "deps": [],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "org.springframework:spring-jdbc@3.2.6.RELEASE",
+                    "pkgId": "org.springframework:spring-jdbc@3.2.6.RELEASE",
+                    "deps": [],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "org.springframework:spring-tx@3.2.6.RELEASE",
+                    "pkgId": "org.springframework:spring-tx@3.2.6.RELEASE",
+                    "deps": [],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                },
+                {
+                    "nodeId": "org.springframework:spring-orm@3.2.6.RELEASE",
+                    "pkgId": "org.springframework:spring-orm@3.2.6.RELEASE",
+                    "deps": [
+                        {
+                            "nodeId": "aopalliance:aopalliance@1.0"
+                        },
+                        {
+                            "nodeId": "org.springframework:spring-jdbc@3.2.6.RELEASE"
+                        },
+                        {
+                            "nodeId": "org.springframework:spring-tx@3.2.6.RELEASE"
+                        }
+                    ],
+                    "info": {
+                        "labels": {
+                            "scope": "compile"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}
