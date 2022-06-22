@@ -11,6 +11,7 @@ import { getDelta } from '../../src/lib/index';
 const fixturesFolderPath = path.resolve(__dirname, '..') + '/fixtures/';
 
 const originalLog = console.log;
+
 let consoleOutput: Array<string> = [];
 const mockedLog = (output: string): void => {
   consoleOutput.push(output);
@@ -46,10 +47,10 @@ beforeEach(() => {
           return fs.readFileSync(
             fixturesFolderPath + 'apiResponses/test-gomod-aggregated.json',
           );
-        case '/api/v1/org/playground/project/37a29fe9-c342-4d70-8efc-df96a8d730b3/aggregated-issues':
+        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/aggregated-issues':
           return fs.readFileSync(
             fixturesFolderPath +
-              'apiResponses/java-goof-aggregated-two-vuln.json',
+              'apiResponses/java-goof-todolist-core-aggregated-issues.json',
           );
         case '/api/v1/org/playground/projects':
           return fs.readFileSync(
@@ -76,10 +77,10 @@ beforeEach(() => {
           return fs.readFileSync(
             fixturesFolderPath + 'apiResponses/goof-depgraph-from-api.json',
           );
-        case '/api/v1/org/playground/project/37a29fe9-c342-4d70-8efc-df96a8d730b3/dep-graph':
+        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/dep-graph':
           return fs.readFileSync(
             fixturesFolderPath +
-              'apiResponses/test-goof-aggregated-two-vuln.json',
+              'apiResponses/java-goof-todolist-core-depgraph.json',
           );
         case '/api/v1/org/customerorg/project/37a29fe9-c342-4d70-8efc-df96a8d730b6/dep-graph':
           return fs.readFileSync(
@@ -94,6 +95,101 @@ beforeEach(() => {
           return fs.readFileSync(
             fixturesFolderPath +
               'apiResponses/snyk-lic-npm-goof-GPL-2-0-issue-paths.json',
+          );
+        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-ORGSPRINGFRAMEWORK-2436751/paths?perPage=100&page=1':
+          return fs.readFileSync(
+            fixturesFolderPath +
+              'apiResponses/vuln-path-SNYK-JAVA-ORGSPRINGFRAMEWORK-2436751.json',
+          );
+        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-ORGHIBERNATE-1041788/paths?perPage=100&page=1':
+          return fs.readFileSync(
+            fixturesFolderPath +
+              'apiResponses/vuln-path-SNYK-JAVA-ORGHIBERNATE-1041788.json',
+          );
+        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-ORGHIBERNATE-584563/paths?perPage=100&page=1':
+          return fs.readFileSync(
+            fixturesFolderPath +
+              'apiResponses/vuln-path-SNYK-JAVA-ORGHIBERNATE-584563.json',
+          );
+        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-ORGSPRINGFRAMEWORK-2689634/paths?perPage=100&page=1':
+          return fs.readFileSync(
+            fixturesFolderPath +
+              'apiResponses/vuln-path-SNYK-JAVA-ORGSPRINGFRAMEWORK-2689634.json',
+          );
+        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-C3P0-461017/paths?perPage=100&page=1':
+          return fs.readFileSync(
+            fixturesFolderPath +
+              'apiResponses/vuln-path-SNYK-JAVA-C3P0-461017.json',
+          );
+        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-DOM4J-174153/paths?perPage=100&page=1':
+          return fs.readFileSync(
+            fixturesFolderPath +
+              'apiResponses/vuln-path-SNYK-JAVA-DOM4J-174153.json',
+          );
+        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-C3P0-461018/paths?perPage=100&page=1':
+          return fs.readFileSync(
+            fixturesFolderPath +
+              'apiResponses/vuln-path-SNYK-JAVA-C3P0-461018.json',
+          );
+        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-ORGSPRINGFRAMEWORK-31325/paths?perPage=100&page=1':
+          return fs.readFileSync(
+            fixturesFolderPath +
+              'apiResponses/vuln-path-SNYK-JAVA-ORGSPRINGFRAMEWORK-31325.json',
+          );
+        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-ORGSPRINGFRAMEWORK-2823313/paths?perPage=100&page=1':
+          return fs.readFileSync(
+            fixturesFolderPath +
+              'apiResponses/vuln-path-SNYK-JAVA-ORGSPRINGFRAMEWORK-2823313.json',
+          );
+        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-ORGSPRINGFRAMEWORK-2434828/paths?perPage=100&page=1':
+          return fs.readFileSync(
+            fixturesFolderPath +
+              'apiResponses/vuln-path-SNYK-JAVA-ORGSPRINGFRAMEWORK-2434828.json',
+          );
+        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-ORGSPRINGFRAMEWORK-2330878/paths?perPage=100&page=1':
+          return fs.readFileSync(
+            fixturesFolderPath +
+              'apiResponses/vuln-path-SNYK-JAVA-ORGSPRINGFRAMEWORK-2330878.json',
+          );
+        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-ORGSPRINGFRAMEWORK-2329097/paths?perPage=100&page=1':
+          return fs.readFileSync(
+            fixturesFolderPath +
+              'apiResponses/vuln-path-SNYK-JAVA-ORGSPRINGFRAMEWORK-2329097.json',
+          );
+        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/snyk:lic:maven:org.hibernate.javax.persistence:hibernate-jpa-2.1-api:EPL-1.0/paths?perPage=100&page=1':
+          return fs.readFileSync(
+            fixturesFolderPath +
+              'apiResponses/vuln-path-snyk:lic:maven:org.hibernate.javax.persistence:hibernate-jpa-2.1-api:EPL-1.0.json',
+          );
+        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/snyk:lic:maven:org.hibernate:hibernate-entitymanager:LGPL-2.0/paths?perPage=100&page=1':
+          return fs.readFileSync(
+            fixturesFolderPath +
+              'apiResponses/vuln-path-snyk:lic:maven:org.hibernate:hibernate-entitymanager:LGPL-2.0.json',
+          );
+        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/snyk:lic:maven:org.hibernate:hibernate-core:LGPL-2.0/paths?perPage=100&page=1':
+          return fs.readFileSync(
+            fixturesFolderPath +
+              'apiResponses/vuln-path-snyk:lic:maven:org.hibernate:hibernate-core:LGPL-2.0.json',
+          );
+        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/snyk:lic:maven:org.hibernate.common:hibernate-commons-annotations:LGPL-2.1/paths?perPage=100&page=1':
+          return fs.readFileSync(
+            fixturesFolderPath +
+              'apiResponses/vuln-path-snyk:lic:maven:org.hibernate.common:hibernate-commons-annotations:LGPL-2.1.json',
+          );
+        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/snyk:lic:maven:org.aspectj:aspectjweaver:EPL-1.0/paths?perPage=100&page=1':
+          return fs.readFileSync(
+            fixturesFolderPath +
+              'apiResponses/vuln-path-snyk:lic:maven:org.aspectj:aspectjweaver:EPL-1.0.json',
+          );
+        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/snyk:lic:maven:c3p0:c3p0:LGPL-3.0/paths?perPage=100&page=1':
+          return fs.readFileSync(
+            fixturesFolderPath +
+              'apiResponses/vuln-path-snyk:lic:maven:c3p0:c3p0:LGPL-3.0.json',
+          );
+        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-DOM4J-2812975/paths?perPage=100&page=1':
+          return fs.readFileSync(
+            fixturesFolderPath +
+              'apiResponses/vuln-path-SNYK-JAVA-DOM4J-2812975.json',
           );
         default:
       }
@@ -113,7 +209,7 @@ describe('Test End 2 End - Inline mode', () => {
       stdinMock.send(null);
     }, 100);
 
-    const result = await getDelta();
+    await getDelta();
     expect(consoleOutput).toContain('No new issues found !');
 
     expect(mockExit).toHaveBeenCalledWith(0);
@@ -130,7 +226,7 @@ describe('Test End 2 End - Inline mode', () => {
       );
       stdinMock.send(null);
     }, 100);
-    const result = await getDelta();
+    await getDelta();
 
     const expectedOutput = [
       'New issue introduced !',
@@ -159,7 +255,7 @@ describe('Test End 2 End - Inline mode', () => {
       );
       stdinMock.send(null);
     }, 100);
-    const result = await getDelta();
+    await getDelta();
 
     const expectedOutput = [
       'New issue introduced !',
@@ -170,7 +266,6 @@ describe('Test End 2 End - Inline mode', () => {
       '    Fixable by upgrade:  snyk@1.290.1',
     ];
 
-    console.log(result);
     expectedOutput.forEach((line: string) => {
       expect(consoleOutput.join()).toContain(line);
     });
@@ -187,7 +282,7 @@ describe('Test End 2 End - Inline mode', () => {
       stdinMock.send(null);
     }, 100);
 
-    const result = await getDelta();
+    await getDelta();
     expect(consoleOutput).toContain('No new issues found !');
 
     expect(mockExit).toHaveBeenCalledWith(0);
@@ -205,26 +300,26 @@ describe('Test End 2 End - Inline mode', () => {
       stdinMock.send(null);
     }, 100);
 
-    const result = await getDelta();
+    await getDelta();
     expect(consoleOutput).toContain('No new issues found !');
 
     expect(mockExit).toHaveBeenCalledWith(0);
   });
 
-  it.skip('Test Inline mode - no new issue following version upgrade without vuln fix - java', async () => {
+  it('Test Inline mode - no new issue following version upgrade without vuln fix - java', async () => {
     setTimeout(() => {
       stdinMock.send(
         fs
           .readFileSync(
             fixturesFolderPath +
-              'snykTestsOutputs/test-java-goof-two-vuln.json',
+              'snykTestsOutputs/test-java-goof-todolist-core-with-version-upgrade-but-same-vuln-still.json',
           )
           .toString(),
       );
       stdinMock.send(null);
     }, 100);
 
-    const result = await getDelta();
+    await getDelta();
     expect(consoleOutput).toContain('No new issues found !');
 
     expect(mockExit).toHaveBeenCalledWith(0);
@@ -242,7 +337,7 @@ describe('Test End 2 End - Inline mode', () => {
       stdinMock.send(null);
     }, 100);
 
-    const result = await getDelta();
+    await getDelta();
 
     const expectedOutput = [
       'New issue introduced !',
@@ -272,7 +367,7 @@ describe('Test End 2 End - Inline mode', () => {
       stdinMock.send(null);
     }, 100);
 
-    const result = await getDelta();
+    await getDelta();
     expect(consoleOutput).toContain('No new issues found !');
 
     expect(mockExit).toHaveBeenCalledWith(0);

@@ -45,7 +45,8 @@ const init = (debugMode = false) => {
       baselineProject: { type: 'string', describe: 'Snyk baseline project ID/name', demandOption: false },
       currentOrg: { type: 'string', describe: 'Snyk organization ID/name to compare against', demandOption: false },
       currentProject: { type: 'string', describe: 'Snyk project ID/name to compare against', demandOption: false },
-      type: { describe: "Specify issue type - default all", choices: ["vuln","license","all"], demandOption: false }
+      type: { describe: "Specify issue type - default all", choices: ["vuln","license","all"], demandOption: false },
+      "fail-on": { describe: "Mimicks the fail-on option from Snyk CLI", choices: ["all", "upgradable", "patchable"], demandOption: false},
     })
     .describe('d', 'Show debug logs')
     .version(pkgJSON.version)
