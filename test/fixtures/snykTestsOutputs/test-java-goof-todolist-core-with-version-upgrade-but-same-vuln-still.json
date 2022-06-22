@@ -1,0 +1,2165 @@
+{
+  "vulnerabilities": [
+    {
+      "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "alternativeIds": [],
+      "creationTime": "2019-09-05T16:17:58.383761Z",
+      "credit": [
+        "Unknown"
+      ],
+      "cvssScore": 9.8,
+      "description": "## Overview\n\n[c3p0:c3p0](https://mvnrepository.com/artifact/c3p0/c3p0) is a lIbrary for augmenting traditional (DriverManager-based) JDBC drivers with JNDI-bindable DataSources, including DataSources that implement Connection and Statement Pooling, as described by the jdbc3 spec and jdbc2 std extension. Note: This library is no longer maintained and has migrated to the artifact \r\n\"com.mchange:c3p0\"\n\n\nAffected versions of this package are vulnerable to XML External Entity (XXE) Injection.\nvia the `extractXmlConfigFromInputStream` in `com/mchange/v2/c3p0/cfg/C3P0ConfigXmlUtils.java` during initialization.\n\n## Details\nXXE Injection is a type of attack against an application that parses XML input.\r\nXML is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable. By default, many XML processors allow specification of an external entity, a URI that is dereferenced and evaluated during XML processing. When an XML document is being parsed, the parser can make a request and include the content at the specified URI inside of the XML document.\r\n\r\nAttacks can include disclosing local files, which may contain sensitive data such as passwords or private user data, using file: schemes or relative paths in the system identifier.\r\n\r\nFor example, below is a sample XML document, containing an XML element- username.\r\n\r\n```xml\r\n<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\r\n   <username>John</username>\r\n</xml>\r\n```\r\n\r\nAn external XML entity - `xxe`, is defined using a system identifier and present within a DOCTYPE header. These entities can access local or remote content. For example the below code contains an external XML entity that would fetch the content of  `/etc/passwd` and display it to the user rendered by `username`.\r\n\r\n```xml\r\n<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\r\n<!DOCTYPE foo [\r\n   <!ENTITY xxe SYSTEM \"file:///etc/passwd\" >]>\r\n   <username>&xxe;</username>\r\n</xml>\r\n```\r\n\r\nOther XXE Injection attacks can access local resources that may not stop returning data, possibly impacting application availability and leading to Denial of Service.\n\n\n## Remediation\n\nThere is no fixed version for `c3p0:c3p0`.\n\n\n## References\n\n- [GitHub Commit](https://github.com/swaldman/c3p0/commit/7dfdda63f42759a5ec9b63d725b7412f74adb3e1)\n",
+      "disclosureTime": "2018-12-24T13:29:00Z",
+      "exploit": "Not Defined",
+      "functions": [
+        {
+          "functionId": {
+            "filePath": "com/mchange/v2/c3p0/cfg/C3P0ConfigXmlUtils.java",
+            "className": "C3P0ConfigXmlUtils",
+            "functionName": "extractXmlConfigFromInputStream"
+          },
+          "version": [
+            "[0.9.1,]"
+          ]
+        }
+      ],
+      "fixedIn": [],
+      "id": "SNYK-JAVA-C3P0-461017",
+      "identifiers": {
+        "CWE": [
+          "CWE-611"
+        ],
+        "CVE": [
+          "CVE-2018-20433"
+        ]
+      },
+      "language": "java",
+      "malicious": false,
+      "modificationTime": "2020-12-14T14:41:01.987191Z",
+      "moduleName": "c3p0:c3p0",
+      "packageManager": "maven",
+      "packageName": "c3p0:c3p0",
+      "patches": [],
+      "proprietary": false,
+      "publicationTime": "2019-07-21T14:22:18Z",
+      "references": [
+        {
+          "title": "GitHub Commit",
+          "url": "https://github.com/swaldman/c3p0/commit/7dfdda63f42759a5ec9b63d725b7412f74adb3e1"
+        }
+      ],
+      "severity": "critical",
+      "socialTrendAlert": false,
+      "title": "XML External Entity (XXE) Injection",
+      "insights": {
+        "triageAdvice": null
+      },
+      "functions_new": [
+        {
+          "functionId": {
+            "className": "com.mchange.v2.c3p0.cfg.C3P0ConfigXmlUtils",
+            "functionName": "extractXmlConfigFromInputStream"
+          },
+          "version": [
+            "[0.9.1,]"
+          ]
+        }
+      ],
+      "semver": {
+        "vulnerable": [
+          "[0,]"
+        ]
+      },
+      "mavenModuleName": {
+        "groupId": "c3p0",
+        "artifactId": "c3p0"
+      },
+      "severityWithCritical": "critical",
+      "from": [
+        "io.github.snyk:todolist-core@0.0.1-SNAPSHOT",
+        "c3p0:c3p0@0.9.1.2"
+      ],
+      "upgradePath": [],
+      "isUpgradable": false,
+      "isPatchable": false,
+      "name": "c3p0:c3p0",
+      "version": "0.9.1.2"
+    },
+    {
+      "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:P/RL:O",
+      "alternativeIds": [],
+      "creationTime": "2019-09-05T16:24:58.914446Z",
+      "credit": [
+        "Unknown"
+      ],
+      "cvssScore": 7.5,
+      "description": "## Overview\n[c3p0:c3p0](https://mvnrepository.com/artifact/c3p0/c3p0) is a lIbrary for augmenting traditional (DriverManager-based) JDBC drivers with JNDI-bindable DataSources, including DataSources that implement Connection and Statement Pooling, as described by the jdbc3 spec and jdbc2 std extension. Note: This library is no longer maintained and has migrated to the artifact \r\n\"com.mchange:c3p0\"\n\nAffected versions of this package are vulnerable to Denial of Service (DoS) due to missing protections against recursive entity expansion when loading XML configurations.\n\n## Details\n\nDenial of Service (DoS) describes a family of attacks, all aimed at making a system inaccessible to its intended and legitimate users.\n\nUnlike other vulnerabilities, DoS attacks usually do not aim at breaching security. Rather, they are focused on making websites and services unavailable to genuine users resulting in downtime.\n\nOne popular Denial of Service vulnerability is DDoS (a Distributed Denial of Service), an attack that attempts to clog network pipes to the system by generating a large volume of traffic from many machines.\n\nWhen it comes to open source libraries, DoS vulnerabilities allow attackers to trigger such a crash or crippling of the service by using a flaw either in the application code or from the use of open source libraries.\n\nTwo common types of DoS vulnerabilities:\n\n* High CPU/Memory Consumption- An attacker sending crafted requests that could cause the system to take a disproportionate amount of time to process. For example, [commons-fileupload:commons-fileupload](SNYK-JAVA-COMMONSFILEUPLOAD-30082).\n\n* Crash - An attacker sending crafted requests that could cause the system to crash. For Example,  [npm `ws` package](https://snyk.io/vuln/npm:ws:20171108)\n\n## Remediation\nThere is no fixed version for `c3p0:c3p0`.\n## References\n- [POC: Hackerone Report](https://hackerone.com/reports/509315)\n",
+      "disclosureTime": "2019-04-22T22:18:26Z",
+      "exploit": "Proof of Concept",
+      "functions": [
+        {
+          "functionId": {
+            "filePath": "com/mchange/v2/c3p0/cfg/C3P0ConfigXmlUtils.java",
+            "className": "C3P0ConfigXmlUtils",
+            "functionName": "extractXmlConfigFromInputStream"
+          },
+          "version": [
+            "[0.9.1,]"
+          ]
+        }
+      ],
+      "fixedIn": [],
+      "id": "SNYK-JAVA-C3P0-461018",
+      "identifiers": {
+        "CWE": [
+          "CWE-776"
+        ],
+        "GHSA": [
+          "GHSA-84p2-vf58-xhxv"
+        ],
+        "CVE": [
+          "CVE-2019-5427"
+        ]
+      },
+      "language": "java",
+      "malicious": false,
+      "modificationTime": "2022-04-24T11:13:58.306515Z",
+      "moduleName": "c3p0:c3p0",
+      "packageManager": "maven",
+      "packageName": "c3p0:c3p0",
+      "patches": [],
+      "proprietary": false,
+      "publicationTime": "2019-04-22T22:18:26Z",
+      "references": [
+        {
+          "title": "POC: Hackerone Report",
+          "url": "https://hackerone.com/reports/509315"
+        }
+      ],
+      "severity": "high",
+      "socialTrendAlert": false,
+      "title": "Denial of Service (DoS)",
+      "insights": {
+        "triageAdvice": null
+      },
+      "functions_new": [
+        {
+          "functionId": {
+            "className": "com.mchange.v2.c3p0.cfg.C3P0ConfigXmlUtils",
+            "functionName": "extractXmlConfigFromInputStream"
+          },
+          "version": [
+            "[0.9.1,]"
+          ]
+        }
+      ],
+      "semver": {
+        "vulnerable": [
+          "[0,]"
+        ]
+      },
+      "mavenModuleName": {
+        "groupId": "c3p0",
+        "artifactId": "c3p0"
+      },
+      "severityWithCritical": "high",
+      "from": [
+        "io.github.snyk:todolist-core@0.0.1-SNAPSHOT",
+        "c3p0:c3p0@0.9.1.2"
+      ],
+      "upgradePath": [],
+      "isUpgradable": false,
+      "isPatchable": false,
+      "name": "c3p0:c3p0",
+      "version": "0.9.1.2"
+    },
+    {
+      "id": "snyk:lic:maven:c3p0:c3p0:LGPL-3.0",
+      "packageName": "c3p0:c3p0",
+      "semver": {
+        "vulnerable": [
+          "[0,)"
+        ]
+      },
+      "creationTime": "2022-06-18T13:06:26.061Z",
+      "description": "LGPL-3.0 license",
+      "language": "java",
+      "license": "LGPL-3.0",
+      "packageManager": "maven",
+      "publicationTime": "2022-06-18T13:06:26.061Z",
+      "title": "LGPL-3.0 license",
+      "type": "license",
+      "severity": "medium",
+      "severityWithCritical": "medium",
+      "from": [
+        "io.github.snyk:todolist-core@0.0.1-SNAPSHOT",
+        "c3p0:c3p0@0.9.1.2"
+      ],
+      "upgradePath": [],
+      "isUpgradable": false,
+      "isPatchable": false,
+      "name": "c3p0:c3p0",
+      "version": "0.9.1.2"
+    },
+    {
+      "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N/E:P",
+      "alternativeIds": [],
+      "creationTime": "2019-04-10T16:07:04.634619Z",
+      "credit": [
+        "Mario Areias"
+      ],
+      "cvssScore": 7.5,
+      "description": "## Overview\n[dom4j:dom4j](https://github.com/dom4j/dom4j) is a flexible XML framework for Java. *Note*: this artifact has been deprecated for `org.dom4j:dom4j`.\n\nAffected versions of this package are vulnerable to XML External Entity (XXE) Injection due to improper validation of the `QName` inputs.\n\n## Details\nXXE Injection is a type of attack against an application that parses XML input.\nXML is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable. By default, many XML processors allow specification of an external entity, a URI that is dereferenced and evaluated during XML processing. When an XML document is being parsed, the parser can make a request and include the content at the specified URI inside of the XML document.\n\nAttacks can include disclosing local files, which may contain sensitive data such as passwords or private user data, using file: schemes or relative paths in the system identifier.\n\nFor example, below is a sample XML document, containing an XML element- username.\n\n```\n<xml>\n<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n   <username>John</username>\n</xml>\n```\n\nAn external XML entity - `xxe`, is defined using a system identifier and present within a DOCTYPE header. These entities can access local or remote content. For example the below code contains an external XML entity that would fetch the content of  `/etc/passwd` and display it to the user rendered by `username`.\n\n```\n<xml>\n<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<!DOCTYPE foo [\n   <!ENTITY xxe SYSTEM \"file:///etc/passwd\" >]>\n   <username>&xxe;</username>\n</xml>\n```\n\nOther XXE Injection attacks can access local resources that may not stop returning data, possibly impacting application availability and leading to Denial of Service.\n\n## Remediation\nThere is no fixed version for `dom4j:dom4j`.\n## References\n- [GitHub Commit](https://github.com/dom4j/dom4j/commit/e598eb43d418744c4dbf62f647dd2381c9ce9387)\n- [GitHub Issue](https://github.com/dom4j/dom4j/issues/48)\n- [POC: Ihacktoprotect Blog](https://ihacktoprotect.com/post/dom4j-xml-injection/)\n",
+      "disclosureTime": "2018-07-01T19:12:29Z",
+      "exploit": "Proof of Concept",
+      "functions": [
+        {
+          "functionId": {
+            "filePath": "org/dom4j/Namespace.java",
+            "className": "Namespace",
+            "functionName": "<init>"
+          },
+          "version": [
+            "[0,]"
+          ]
+        },
+        {
+          "functionId": {
+            "filePath": "org/dom4j/QName.java",
+            "className": "QName",
+            "functionName": "<init>"
+          },
+          "version": [
+            "[0,]"
+          ]
+        }
+      ],
+      "fixedIn": [],
+      "id": "SNYK-JAVA-DOM4J-174153",
+      "identifiers": {
+        "CWE": [
+          "CWE-611"
+        ],
+        "GHSA": [
+          "GHSA-6pcc-3rfx-4gpm"
+        ],
+        "CVE": [
+          "CVE-2018-1000632"
+        ]
+      },
+      "language": "java",
+      "malicious": false,
+      "modificationTime": "2022-05-22T12:44:25.928596Z",
+      "moduleName": "dom4j:dom4j",
+      "packageManager": "maven",
+      "packageName": "dom4j:dom4j",
+      "patches": [],
+      "proprietary": false,
+      "publicationTime": "2018-08-21T14:16:13Z",
+      "references": [
+        {
+          "title": "GitHub Commit",
+          "url": "https://github.com/dom4j/dom4j/commit/e598eb43d418744c4dbf62f647dd2381c9ce9387"
+        },
+        {
+          "title": "GitHub Issue",
+          "url": "https://github.com/dom4j/dom4j/issues/48"
+        },
+        {
+          "title": "POC: Ihacktoprotect Blog",
+          "url": "https://ihacktoprotect.com/post/dom4j-xml-injection/"
+        }
+      ],
+      "severity": "high",
+      "socialTrendAlert": false,
+      "title": "XML External Entity (XXE) Injection",
+      "insights": {
+        "triageAdvice": null
+      },
+      "functions_new": [
+        {
+          "functionId": {
+            "className": "org.dom4j.Namespace",
+            "functionName": "<init>"
+          },
+          "version": [
+            "[0,]"
+          ]
+        },
+        {
+          "functionId": {
+            "className": "org.dom4j.QName",
+            "functionName": "<init>"
+          },
+          "version": [
+            "[0,]"
+          ]
+        }
+      ],
+      "semver": {
+        "vulnerable": [
+          "[0,]"
+        ]
+      },
+      "mavenModuleName": {
+        "groupId": "dom4j",
+        "artifactId": "dom4j"
+      },
+      "severityWithCritical": "high",
+      "from": [
+        "io.github.snyk:todolist-core@0.0.1-SNAPSHOT",
+        "org.hibernate:hibernate-core@4.3.7.Final",
+        "dom4j:dom4j@1.6.1"
+      ],
+      "upgradePath": [],
+      "isUpgradable": false,
+      "isPatchable": false,
+      "name": "dom4j:dom4j",
+      "version": "1.6.1"
+    },
+    {
+      "CVSSv3": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:H",
+      "alternativeIds": [],
+      "creationTime": "2022-05-10T12:56:27.582369Z",
+      "credit": [
+        "Unknown"
+      ],
+      "cvssScore": 7.4,
+      "description": "## Overview\n[dom4j:dom4j](https://github.com/dom4j/dom4j) is a flexible XML framework for Java. *Note*: this artifact has been deprecated for `org.dom4j:dom4j`.\n\nAffected versions of this package are vulnerable to XML External Entity (XXE) Injection. By using the default `SaxReader()` provided by Dom4J, external DTDs and External Entities are allowed, resulting in a possible XXE.\n\n## Details\nXXE Injection is a type of attack against an application that parses XML input.\nXML is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable. By default, many XML processors allow specification of an external entity, a URI that is dereferenced and evaluated during XML processing. When an XML document is being parsed, the parser can make a request and include the content at the specified URI inside of the XML document.\n\nAttacks can include disclosing local files, which may contain sensitive data such as passwords or private user data, using file: schemes or relative paths in the system identifier.\n\nFor example, below is a sample XML document, containing an XML element- username.\n\n```\n<xml>\n<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n   <username>John</username>\n</xml>\n```\n\nAn external XML entity - `xxe`, is defined using a system identifier and present within a DOCTYPE header. These entities can access local or remote content. For example the below code contains an external XML entity that would fetch the content of  `/etc/passwd` and display it to the user rendered by `username`.\n\n```\n<xml>\n<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<!DOCTYPE foo [\n   <!ENTITY xxe SYSTEM \"file:///etc/passwd\" >]>\n   <username>&xxe;</username>\n</xml>\n```\n\nOther XXE Injection attacks can access local resources that may not stop returning data, possibly impacting application availability and leading to Denial of Service.\n\n## Remediation\nThere is no fixed version for `dom4j:dom4j`.\n## References\n- [GitHub Commit](https://github.com/dom4j/dom4j/commit/a822852)\n- [RedHat Bugzilla Bug](https://bugzilla.redhat.com/show_bug.cgi?id=1694235)\n",
+      "disclosureTime": "2020-04-15T09:38:17Z",
+      "exploit": "Not Defined",
+      "functions": [],
+      "fixedIn": [],
+      "id": "SNYK-JAVA-DOM4J-2812975",
+      "identifiers": {
+        "CWE": [
+          "CWE-611"
+        ],
+        "GHSA": [
+          "GHSA-hwj3-m3p6-hj38"
+        ],
+        "CVE": [
+          "CVE-2020-10683"
+        ]
+      },
+      "language": "java",
+      "malicious": false,
+      "modificationTime": "2022-05-10T12:56:27.582382Z",
+      "moduleName": "dom4j:dom4j",
+      "packageManager": "maven",
+      "packageName": "dom4j:dom4j",
+      "patches": [],
+      "proprietary": false,
+      "publicationTime": "2020-04-16T15:22:50Z",
+      "references": [
+        {
+          "title": "GitHub Commit",
+          "url": "https://github.com/dom4j/dom4j/commit/a822852"
+        },
+        {
+          "title": "RedHat Bugzilla Bug",
+          "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1694235"
+        }
+      ],
+      "severity": "high",
+      "socialTrendAlert": false,
+      "title": "XML External Entity (XXE) Injection",
+      "insights": {
+        "triageAdvice": null
+      },
+      "functions_new": [],
+      "semver": {
+        "vulnerable": [
+          "[0,]"
+        ]
+      },
+      "mavenModuleName": {
+        "groupId": "dom4j",
+        "artifactId": "dom4j"
+      },
+      "severityWithCritical": "high",
+      "from": [
+        "io.github.snyk:todolist-core@0.0.1-SNAPSHOT",
+        "org.hibernate:hibernate-core@4.3.7.Final",
+        "dom4j:dom4j@1.6.1"
+      ],
+      "upgradePath": [],
+      "isUpgradable": false,
+      "isPatchable": false,
+      "name": "dom4j:dom4j",
+      "version": "1.6.1"
+    },
+    {
+      "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N/E:U/RL:O/RC:U",
+      "alternativeIds": [],
+      "creationTime": "2020-11-19T16:51:52.251545Z",
+      "credit": [
+        "Unknown"
+      ],
+      "cvssScore": 8.2,
+      "description": "## Overview\n[org.hibernate:hibernate-core](https://github.com/hibernate/hibernate-orm) is a library providing Object/Relational Mapping (ORM) support to applications, libraries, and frameworks.\n\nAffected versions of this package are vulnerable to SQL Injection. A SQL injection in the implementation of the JPA Criteria API can permit unsanitized literals when a literal is used in the SQL comments of the query. This flaw could allow an attacker to access unauthorized information or possibly conduct further attacks. The highest threat from this vulnerability is to data confidentiality and integrity.\n## Remediation\nUpgrade `org.hibernate:hibernate-core` to version 5.4.24.Final or higher.\n## References\n- [GitHub Commit](https://github.com/hibernate/hibernate-orm/commit/59fede7acaaa1579b561407aefa582311f7ebe78)\n- [Redhat CVE Details](https://access.redhat.com/security/cve/cve-2020-25638)\n",
+      "disclosureTime": "2020-11-19T16:51:45Z",
+      "exploit": "Unproven",
+      "functions": [
+        {
+          "functionId": {
+            "filePath": "org/hibernate/sql/Update.java",
+            "className": "Update",
+            "functionName": "toStatementString"
+          },
+          "version": [
+            "[,5.4.24.Final)"
+          ]
+        },
+        {
+          "functionId": {
+            "filePath": "org/hibernate/sql/SimpleSelect.java",
+            "className": "SimpleSelect",
+            "functionName": "toStatementString"
+          },
+          "version": [
+            "[,5.4.24.Final)"
+          ]
+        },
+        {
+          "functionId": {
+            "filePath": "org/hibernate/sql/Select.java",
+            "className": "Select",
+            "functionName": "toStatementString"
+          },
+          "version": [
+            "[,5.4.24.Final)"
+          ]
+        },
+        {
+          "functionId": {
+            "filePath": "org/hibernate/sql/QuerySelect.java",
+            "className": "QuerySelect",
+            "functionName": "toQueryString"
+          },
+          "version": [
+            "[,5.4.24.Final)"
+          ]
+        },
+        {
+          "functionId": {
+            "filePath": "org/hibernate/sql/InsertSelect.java",
+            "className": "InsertSelect",
+            "functionName": "toStatementString"
+          },
+          "version": [
+            "[,5.4.24.Final)"
+          ]
+        },
+        {
+          "functionId": {
+            "filePath": "org/hibernate/sql/Insert.java",
+            "className": "Insert",
+            "functionName": "toStatementString"
+          },
+          "version": [
+            "[,5.4.24.Final)"
+          ]
+        },
+        {
+          "functionId": {
+            "filePath": "org/hibernate/sql/Delete.java",
+            "className": "Delete",
+            "functionName": "toStatementString"
+          },
+          "version": [
+            "[,5.4.24.Final)"
+          ]
+        },
+        {
+          "functionId": {
+            "filePath": "org/hibernate/loader/plan/exec/query/internal/SelectStatementBuilder.java",
+            "className": "SelectStatementBuilder",
+            "functionName": "toStatementString"
+          },
+          "version": [
+            "[,5.4.24.Final)"
+          ]
+        }
+      ],
+      "fixedIn": [
+        "5.4.24.Final"
+      ],
+      "id": "SNYK-JAVA-ORGHIBERNATE-1041788",
+      "identifiers": {
+        "CWE": [
+          "CWE-89"
+        ],
+        "CVE": [
+          "CVE-2020-25638"
+        ]
+      },
+      "language": "java",
+      "malicious": false,
+      "modificationTime": "2020-12-14T08:10:39.297101Z",
+      "moduleName": "org.hibernate:hibernate-core",
+      "packageManager": "maven",
+      "packageName": "org.hibernate:hibernate-core",
+      "patches": [],
+      "proprietary": false,
+      "publicationTime": "2020-11-19T16:57:14.572204Z",
+      "references": [
+        {
+          "title": "GitHub Commit",
+          "url": "https://github.com/hibernate/hibernate-orm/commit/59fede7acaaa1579b561407aefa582311f7ebe78"
+        },
+        {
+          "title": "Redhat CVE Details",
+          "url": "https://access.redhat.com/security/cve/cve-2020-25638"
+        }
+      ],
+      "severity": "high",
+      "socialTrendAlert": false,
+      "title": "SQL Injection",
+      "insights": {
+        "triageAdvice": null
+      },
+      "functions_new": [
+        {
+          "functionId": {
+            "className": "org.hibernate.sql.Update",
+            "functionName": "toStatementString"
+          },
+          "version": [
+            "[,5.4.24.Final)"
+          ]
+        },
+        {
+          "functionId": {
+            "className": "org.hibernate.sql.SimpleSelect",
+            "functionName": "toStatementString"
+          },
+          "version": [
+            "[,5.4.24.Final)"
+          ]
+        },
+        {
+          "functionId": {
+            "className": "org.hibernate.sql.Select",
+            "functionName": "toStatementString"
+          },
+          "version": [
+            "[,5.4.24.Final)"
+          ]
+        },
+        {
+          "functionId": {
+            "className": "org.hibernate.sql.QuerySelect",
+            "functionName": "toQueryString"
+          },
+          "version": [
+            "[,5.4.24.Final)"
+          ]
+        },
+        {
+          "functionId": {
+            "className": "org.hibernate.sql.InsertSelect",
+            "functionName": "toStatementString"
+          },
+          "version": [
+            "[,5.4.24.Final)"
+          ]
+        },
+        {
+          "functionId": {
+            "className": "org.hibernate.sql.Insert",
+            "functionName": "toStatementString"
+          },
+          "version": [
+            "[,5.4.24.Final)"
+          ]
+        },
+        {
+          "functionId": {
+            "className": "org.hibernate.sql.Delete",
+            "functionName": "toStatementString"
+          },
+          "version": [
+            "[,5.4.24.Final)"
+          ]
+        },
+        {
+          "functionId": {
+            "className": "org.hibernate.loader.plan.exec.query.internal.SelectStatementBuilder",
+            "functionName": "toStatementString"
+          },
+          "version": [
+            "[,5.4.24.Final)"
+          ]
+        }
+      ],
+      "semver": {
+        "vulnerable": [
+          "[,5.4.24.Final)"
+        ]
+      },
+      "mavenModuleName": {
+        "groupId": "org.hibernate",
+        "artifactId": "hibernate-core"
+      },
+      "severityWithCritical": "high",
+      "from": [
+        "io.github.snyk:todolist-core@0.0.1-SNAPSHOT",
+        "org.hibernate:hibernate-core@4.3.7.Final"
+      ],
+      "upgradePath": [
+        false,
+        "org.hibernate:hibernate-core@5.4.24.Final"
+      ],
+      "isUpgradable": true,
+      "isPatchable": false,
+      "name": "org.hibernate:hibernate-core",
+      "version": "4.3.7.Final"
+    },
+    {
+      "CVSSv3": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "alternativeIds": [],
+      "creationTime": "2020-07-15T13:53:15.331818Z",
+      "credit": [
+        "Gail Badner"
+      ],
+      "cvssScore": 8.1,
+      "description": "## Overview\n[org.hibernate:hibernate-core](https://github.com/hibernate/hibernate-orm) is a library providing Object/Relational Mapping (ORM) support to applications, libraries, and frameworks.\n\nAffected versions of this package are vulnerable to SQL Injection. A SQL injection in the implementation of the JPA Criteria API can permit unsanitized literals when a literal is used in the SELECT or GROUP BY parts of the query. This flaw could allow an attacker to access unauthorized information or possibly conduct further attacks.\n## Remediation\nUpgrade `org.hibernate:hibernate-core` to version 5.3.18.Final, 5.4.18.Final or higher.\n## References\n- [GitHub Pull Request](https://github.com/hibernate/hibernate-orm/pull/3438)\n- [Jira Ticket](https://hibernate.atlassian.net/browse/HHH-14077)\n",
+      "disclosureTime": "2020-06-18T13:46:30Z",
+      "exploit": "Not Defined",
+      "functions": [
+        {
+          "functionId": {
+            "filePath": "org/hibernate/query/criteria/internal/expression/LiteralExpression.java",
+            "className": "LiteralExpression",
+            "functionName": "renderProjection"
+          },
+          "version": [
+            "[5.1.18.Final ,5.4.18.Final)"
+          ]
+        }
+      ],
+      "fixedIn": [
+        "5.3.18.Final",
+        "5.4.18.Final"
+      ],
+      "id": "SNYK-JAVA-ORGHIBERNATE-584563",
+      "identifiers": {
+        "CWE": [
+          "CWE-89"
+        ],
+        "CVE": [
+          "CVE-2019-14900"
+        ]
+      },
+      "language": "java",
+      "malicious": false,
+      "modificationTime": "2020-08-12T13:41:12.343011Z",
+      "moduleName": "org.hibernate:hibernate-core",
+      "packageManager": "maven",
+      "packageName": "org.hibernate:hibernate-core",
+      "patches": [],
+      "proprietary": false,
+      "publicationTime": "2020-07-15T16:40:12Z",
+      "references": [
+        {
+          "title": "GitHub Pull Request",
+          "url": "https://github.com/hibernate/hibernate-orm/pull/3438"
+        },
+        {
+          "title": "Jira Ticket",
+          "url": "https://hibernate.atlassian.net/browse/HHH-14077"
+        }
+      ],
+      "severity": "high",
+      "socialTrendAlert": false,
+      "title": "SQL Injection",
+      "insights": {
+        "triageAdvice": null
+      },
+      "functions_new": [
+        {
+          "functionId": {
+            "className": "org.hibernate.query.criteria.internal.expression.LiteralExpression",
+            "functionName": "renderProjection"
+          },
+          "version": [
+            "[5.1.18.Final ,5.4.18.Final)"
+          ]
+        }
+      ],
+      "semver": {
+        "vulnerable": [
+          "[,5.3.18.Final)",
+          "[5.4.0.Final, 5.4.18.Final)"
+        ]
+      },
+      "mavenModuleName": {
+        "groupId": "org.hibernate",
+        "artifactId": "hibernate-core"
+      },
+      "severityWithCritical": "high",
+      "from": [
+        "io.github.snyk:todolist-core@0.0.1-SNAPSHOT",
+        "org.hibernate:hibernate-core@4.3.7.Final"
+      ],
+      "upgradePath": [
+        false,
+        "org.hibernate:hibernate-core@5.3.18.Final"
+      ],
+      "isUpgradable": true,
+      "isPatchable": false,
+      "name": "org.hibernate:hibernate-core",
+      "version": "4.3.7.Final"
+    },
+    {
+      "id": "snyk:lic:maven:org.hibernate:hibernate-core:LGPL-2.0",
+      "packageName": "org.hibernate:hibernate-core",
+      "semver": {
+        "vulnerable": [
+          "[3.3.0.CR1, 5.3.1.Final)"
+        ]
+      },
+      "creationTime": "2022-06-19T08:54:37.554Z",
+      "description": "LGPL-2.0 license",
+      "language": "java",
+      "license": "LGPL-2.0",
+      "packageManager": "maven",
+      "publicationTime": "2022-06-19T08:54:37.554Z",
+      "title": "LGPL-2.0 license",
+      "type": "license",
+      "severity": "medium",
+      "severityWithCritical": "medium",
+      "from": [
+        "io.github.snyk:todolist-core@0.0.1-SNAPSHOT",
+        "org.hibernate:hibernate-core@4.3.7.Final"
+      ],
+      "upgradePath": [
+        false,
+        "org.hibernate:hibernate-core@5.3.1.Final"
+      ],
+      "isUpgradable": true,
+      "isPatchable": false,
+      "name": "org.hibernate:hibernate-core",
+      "version": "4.3.7.Final"
+    },
+    {
+      "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
+      "alternativeIds": [],
+      "creationTime": "2022-01-02T11:14:46.053186Z",
+      "credit": [
+        "Dennis Kennedy"
+      ],
+      "cvssScore": 4.3,
+      "description": "## Overview\n[org.springframework:spring-core](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22spring-core%22) is a core package within the spring-framework that contains multiple classes and utilities.\n\nAffected versions of this package are vulnerable to Improper Output Neutralization for Logs when a user provides malicious input, causing insertion of additional log entries.\n## Remediation\nUpgrade `org.springframework:spring-core` to version 5.3.12, 5.2.18 or higher.\n## References\n- [Github Commit](https://github.com/spring-projects/spring-framework/commit/346b75580267dc5d8d257be198d5841ce4e1add5)\n- [Pivotal Security Advisory](https://pivotal.io/security/cve-2021-22096)\n",
+      "disclosureTime": "2021-10-27T12:52:59Z",
+      "exploit": "Not Defined",
+      "functions": [],
+      "fixedIn": [
+        "5.3.12",
+        "5.2.18"
+      ],
+      "id": "SNYK-JAVA-ORGSPRINGFRAMEWORK-2329097",
+      "identifiers": {
+        "CWE": [
+          "CWE-20"
+        ],
+        "CVE": [
+          "CVE-2021-22096"
+        ]
+      },
+      "language": "java",
+      "malicious": false,
+      "modificationTime": "2022-01-02T11:14:46.378072Z",
+      "moduleName": "org.springframework:spring-core",
+      "packageManager": "maven",
+      "packageName": "org.springframework:spring-core",
+      "patches": [],
+      "proprietary": false,
+      "publicationTime": "2021-10-27T16:55:13Z",
+      "references": [
+        {
+          "title": "Github Commit",
+          "url": "https://github.com/spring-projects/spring-framework/commit/346b75580267dc5d8d257be198d5841ce4e1add5"
+        },
+        {
+          "title": "Pivotal Security Advisory",
+          "url": "https://pivotal.io/security/cve-2021-22096"
+        }
+      ],
+      "severity": "medium",
+      "socialTrendAlert": false,
+      "title": "Improper Output Neutralization for Logs",
+      "insights": {
+        "triageAdvice": null
+      },
+      "functions_new": [],
+      "semver": {
+        "vulnerable": [
+          "[5.3.0,5.3.12)",
+          "[,5.2.18)"
+        ]
+      },
+      "mavenModuleName": {
+        "groupId": "org.springframework",
+        "artifactId": "spring-core"
+      },
+      "severityWithCritical": "medium",
+      "from": [
+        "io.github.snyk:todolist-core@0.0.1-SNAPSHOT",
+        "org.springframework:spring-context@3.2.6.RELEASE",
+        "org.springframework:spring-core@3.2.6.RELEASE"
+      ],
+      "upgradePath": [
+        false,
+        "org.springframework:spring-context@5.2.18.RELEASE",
+        "org.springframework:spring-core@5.2.18.RELEASE"
+      ],
+      "isUpgradable": true,
+      "isPatchable": false,
+      "name": "org.springframework:spring-core",
+      "version": "3.2.6.RELEASE"
+    },
+    {
+      "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
+      "alternativeIds": [],
+      "creationTime": "2022-01-06T12:31:26.181234Z",
+      "credit": [
+        "psytester"
+      ],
+      "cvssScore": 4.3,
+      "description": "## Overview\n[org.springframework:spring-core](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22spring-core%22) is a core package within the spring-framework that contains multiple classes and utilities.\n\nAffected versions of this package are vulnerable to Improper Input Validation when a user provides malicious input, causing insertion of additional log entries.\n## Remediation\nUpgrade `org.springframework:spring-core` to version 5.2.19.RELEASE, 5.3.14 or higher.\n## References\n- [Pivotal Security Advisory](https://pivotal.io/security/cve-2021-22060)\n",
+      "disclosureTime": "2022-01-06T11:18:34Z",
+      "exploit": "Not Defined",
+      "functions": [],
+      "fixedIn": [
+        "5.2.19.RELEASE",
+        "5.3.14"
+      ],
+      "id": "SNYK-JAVA-ORGSPRINGFRAMEWORK-2330878",
+      "identifiers": {
+        "CWE": [
+          "CWE-20"
+        ],
+        "CVE": [
+          "CVE-2021-22060"
+        ]
+      },
+      "language": "java",
+      "malicious": false,
+      "modificationTime": "2022-01-25T15:25:00.337700Z",
+      "moduleName": "org.springframework:spring-core",
+      "packageManager": "maven",
+      "packageName": "org.springframework:spring-core",
+      "patches": [],
+      "proprietary": false,
+      "publicationTime": "2022-01-06T17:17:24.995166Z",
+      "references": [
+        {
+          "title": "Pivotal Security Advisory",
+          "url": "https://pivotal.io/security/cve-2021-22060"
+        }
+      ],
+      "severity": "medium",
+      "socialTrendAlert": false,
+      "title": "Improper Input Validation",
+      "insights": {
+        "triageAdvice": null
+      },
+      "functions_new": [],
+      "semver": {
+        "vulnerable": [
+          "[,5.2.19.RELEASE)",
+          "[5.3.0,5.3.14)"
+        ]
+      },
+      "mavenModuleName": {
+        "groupId": "org.springframework",
+        "artifactId": "spring-core"
+      },
+      "severityWithCritical": "medium",
+      "from": [
+        "io.github.snyk:todolist-core@0.0.1-SNAPSHOT",
+        "org.springframework:spring-context@3.2.6.RELEASE",
+        "org.springframework:spring-core@3.2.6.RELEASE"
+      ],
+      "upgradePath": [
+        false,
+        "org.springframework:spring-context@5.2.19.RELEASE",
+        "org.springframework:spring-core@5.2.19.RELEASE"
+      ],
+      "isUpgradable": true,
+      "isPatchable": false,
+      "name": "org.springframework:spring-core",
+      "version": "3.2.6.RELEASE"
+    },
+    {
+      "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "alternativeIds": [],
+      "creationTime": "2017-02-22T07:28:31.465000Z",
+      "credit": [
+        "Takeshi Terada"
+      ],
+      "cvssScore": 5.3,
+      "description": "## Overview\n[org.springframework:spring-core](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22spring-core%22) is a core package within the spring-framework that contains multiple classes and utilities.\n\nAffected versions of this package are vulnerable to Directory Traversal. It allows remote attackers to read arbitrary files via a crafted URL.\n\n## Details\n\nA Directory Traversal attack (also known as path traversal) aims to access files and directories that are stored outside the intended folder. By manipulating files with \"dot-dot-slash (../)\" sequences and its variations, or by using absolute file paths, it may be possible to access arbitrary files and directories stored on file system, including application source code, configuration, and other critical system files.\n\nDirectory Traversal vulnerabilities can be generally divided into two types:\n\n- **Information Disclosure**: Allows the attacker to gain information about the folder structure or read the contents of sensitive files on the system.\n\n`st` is a module for serving static files on web pages, and contains a [vulnerability of this type](https://snyk.io/vuln/npm:st:20140206). In our example, we will serve files from the `public` route.\n\nIf an attacker requests the following URL from our server, it will in turn leak the sensitive private key of the root user.\n\n```\ncurl http://localhost:8080/public/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/root/.ssh/id_rsa\n```\n**Note** `%2e` is the URL encoded version of `.` (dot).\n\n- **Writing arbitrary files**: Allows the attacker to create or replace existing files. This type of vulnerability is also known as `Zip-Slip`. \n\nOne way to achieve this is by using a malicious `zip` archive that holds path traversal filenames. When each filename in the zip archive gets concatenated to the target extraction folder, without validation, the final path ends up outside of the target folder. If an executable or a configuration file is overwritten with a file containing malicious code, the problem can turn into an arbitrary code execution issue quite easily.\n\nThe following is an example of a `zip` archive with one benign file and one malicious file. Extracting the malicious file will result in traversing out of the target folder, ending up in `/root/.ssh/` overwriting the `authorized_keys` file:\n\n```\n2018-04-15 22:04:29 .....           19           19  good.txt\n2018-04-15 22:04:42 .....           20           20  ../../../../../../root/.ssh/authorized_keys\n```\n\n## Remediation\nUpgrade `org.springframework:spring-core` to version 3.2.9.RELEASE, 4.0.5.RELEASE or higher.\n## References\n- [GitHub Commit](https://github.com/spring-projects/spring-framework/commit/e3e71ba92a8b82dadf474eda76cd2741f65a77a8)\n- [GitHub Commit](https://github.com/spring-projects/spring-framework/commit/f6fddeb6eb7da625fd711ab371ff16512f431e8d)\n- [GitHub Issue](https://github.com/spring-projects/spring-framework/issues/16414)\n- [Jira Issue](https://jira.spring.io/browse/SPR-12354)\n- [JVNDB](http://jvndb.jvn.jp/en/contents/2014/JVNDB-2014-000054.html)\n- [NVD](https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-3578)\n- [Pivotal Security](https://pivotal.io/security/cve-2014-3578)\n- [Pivotal Security](http://www.pivotal.io/security/cve-2014-3578)\n- [RedHat Bugzilla Bug](https://bugzilla.redhat.com/show_bug.cgi?id=1131882)\n",
+      "disclosureTime": "2014-09-05T17:16:58Z",
+      "exploit": "Not Defined",
+      "functions": [
+        {
+          "functionId": {
+            "filePath": "org/springframework/util/StringUtils.java",
+            "className": "StringUtils",
+            "functionName": "cleanPath"
+          },
+          "version": [
+            "[3.0.0.RELEASE, 3.2.9.RELEASE)",
+            "[4.0.0.RELEASE, 4.0.5.RELEASE)"
+          ]
+        }
+      ],
+      "fixedIn": [
+        "3.2.9.RELEASE",
+        "4.0.5.RELEASE"
+      ],
+      "id": "SNYK-JAVA-ORGSPRINGFRAMEWORK-31325",
+      "identifiers": {
+        "CWE": [
+          "CWE-22"
+        ],
+        "CVE": [
+          "CVE-2014-3578"
+        ]
+      },
+      "language": "java",
+      "malicious": false,
+      "modificationTime": "2021-02-01T12:09:21.542397Z",
+      "moduleName": "org.springframework:spring-core",
+      "packageManager": "maven",
+      "packageName": "org.springframework:spring-core",
+      "patches": [],
+      "proprietary": false,
+      "publicationTime": "2014-09-05T17:16:58Z",
+      "references": [
+        {
+          "title": "GitHub Commit",
+          "url": "https://github.com/spring-projects/spring-framework/commit/e3e71ba92a8b82dadf474eda76cd2741f65a77a8"
+        },
+        {
+          "title": "GitHub Commit",
+          "url": "https://github.com/spring-projects/spring-framework/commit/f6fddeb6eb7da625fd711ab371ff16512f431e8d"
+        },
+        {
+          "title": "GitHub Issue",
+          "url": "https://github.com/spring-projects/spring-framework/issues/16414"
+        },
+        {
+          "title": "Jira Issue",
+          "url": "https://jira.spring.io/browse/SPR-12354"
+        },
+        {
+          "title": "JVNDB",
+          "url": "http://jvndb.jvn.jp/en/contents/2014/JVNDB-2014-000054.html"
+        },
+        {
+          "title": "NVD",
+          "url": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-3578"
+        },
+        {
+          "title": "Pivotal Security",
+          "url": "https://pivotal.io/security/cve-2014-3578"
+        },
+        {
+          "title": "Pivotal Security",
+          "url": "http://www.pivotal.io/security/cve-2014-3578"
+        },
+        {
+          "title": "RedHat Bugzilla Bug",
+          "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1131882"
+        }
+      ],
+      "severity": "medium",
+      "socialTrendAlert": false,
+      "title": "Directory Traversal",
+      "insights": {
+        "triageAdvice": null
+      },
+      "functions_new": [
+        {
+          "functionId": {
+            "className": "org.springframework.util.StringUtils",
+            "functionName": "cleanPath"
+          },
+          "version": [
+            "[3.0.0.RELEASE, 3.2.9.RELEASE)",
+            "[4.0.0.RELEASE, 4.0.5.RELEASE)"
+          ]
+        }
+      ],
+      "semver": {
+        "vulnerable": [
+          "[3.0.0.RELEASE, 3.2.9.RELEASE)",
+          "[4.0.0.RELEASE, 4.0.5.RELEASE)"
+        ]
+      },
+      "mavenModuleName": {
+        "groupId": "org.springframework",
+        "artifactId": "spring-core"
+      },
+      "severityWithCritical": "medium",
+      "from": [
+        "io.github.snyk:todolist-core@0.0.1-SNAPSHOT",
+        "org.springframework:spring-context@3.2.6.RELEASE",
+        "org.springframework:spring-core@3.2.6.RELEASE"
+      ],
+      "upgradePath": [
+        false,
+        "org.springframework:spring-context@3.2.9.RELEASE",
+        "org.springframework:spring-core@3.2.9.RELEASE"
+      ],
+      "isUpgradable": true,
+      "isPatchable": false,
+      "name": "org.springframework:spring-core",
+      "version": "3.2.6.RELEASE"
+    },
+    {
+      "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+      "alternativeIds": [],
+      "creationTime": "2022-03-29T10:05:31.971026Z",
+      "credit": [
+        "4ra1n"
+      ],
+      "cvssScore": 5.3,
+      "description": "## Overview\n\nAffected versions of this package are vulnerable to Denial of Service (DoS) by providing a specially crafted SpEL expression, that might result in an `OutOfMemoryError`.\n\n## Details\n\nDenial of Service (DoS) describes a family of attacks, all aimed at making a system inaccessible to its intended and legitimate users.\n\nUnlike other vulnerabilities, DoS attacks usually do not aim at breaching security. Rather, they are focused on making websites and services unavailable to genuine users resulting in downtime.\n\nOne popular Denial of Service vulnerability is DDoS (a Distributed Denial of Service), an attack that attempts to clog network pipes to the system by generating a large volume of traffic from many machines.\n\nWhen it comes to open source libraries, DoS vulnerabilities allow attackers to trigger such a crash or crippling of the service by using a flaw either in the application code or from the use of open source libraries.\n\nTwo common types of DoS vulnerabilities:\n\n* High CPU/Memory Consumption- An attacker sending crafted requests that could cause the system to take a disproportionate amount of time to process. For example, [commons-fileupload:commons-fileupload](SNYK-JAVA-COMMONSFILEUPLOAD-30082).\n\n* Crash - An attacker sending crafted requests that could cause the system to crash. For Example,  [npm `ws` package](https://snyk.io/vuln/npm:ws:20171108)\n\n## Remediation\nUpgrade `org.springframework:spring-expression` to version 5.3.17, 5.2.20.RELEASE or higher.\n## References\n- [GitHub Commit](https://github.com/spring-projects/spring-framework/commit/83ac65915871067c39a4fb255e0d484c785c0c11)\n- [GitHub Issue](https://github.com/spring-projects/spring-framework/issues/28145)\n- [Pivotal Security Advisory](https://pivotal.io/security/cve-2022-22950)\n",
+      "disclosureTime": "2022-03-29T09:51:43Z",
+      "exploit": "Not Defined",
+      "functions": [],
+      "fixedIn": [
+        "5.3.17",
+        "5.2.20.RELEASE"
+      ],
+      "id": "SNYK-JAVA-ORGSPRINGFRAMEWORK-2434828",
+      "identifiers": {
+        "CWE": [
+          "CWE-400"
+        ],
+        "CVE": [
+          "CVE-2022-22950"
+        ]
+      },
+      "language": "java",
+      "malicious": false,
+      "modificationTime": "2022-06-19T15:25:00.676649Z",
+      "moduleName": "org.springframework:spring-expression",
+      "packageManager": "maven",
+      "packageName": "org.springframework:spring-expression",
+      "patches": [],
+      "proprietary": false,
+      "publicationTime": "2022-03-29T14:24:08Z",
+      "references": [
+        {
+          "title": "GitHub Commit",
+          "url": "https://github.com/spring-projects/spring-framework/commit/83ac65915871067c39a4fb255e0d484c785c0c11"
+        },
+        {
+          "title": "GitHub Issue",
+          "url": "https://github.com/spring-projects/spring-framework/issues/28145"
+        },
+        {
+          "title": "Pivotal Security Advisory",
+          "url": "https://pivotal.io/security/cve-2022-22950"
+        }
+      ],
+      "severity": "medium",
+      "socialTrendAlert": false,
+      "title": "Denial of Service (DoS)",
+      "insights": {
+        "triageAdvice": null
+      },
+      "functions_new": [],
+      "semver": {
+        "vulnerable": [
+          "[5.3.0,5.3.17)",
+          "[,5.2.20.RELEASE)"
+        ]
+      },
+      "mavenModuleName": {
+        "groupId": "org.springframework",
+        "artifactId": "spring-expression"
+      },
+      "severityWithCritical": "medium",
+      "from": [
+        "io.github.snyk:todolist-core@0.0.1-SNAPSHOT",
+        "org.springframework:spring-context@3.2.6.RELEASE",
+        "org.springframework:spring-expression@3.2.6.RELEASE"
+      ],
+      "upgradePath": [
+        false,
+        "org.springframework:spring-context@5.2.20.RELEASE",
+        "org.springframework:spring-expression@5.2.20.RELEASE"
+      ],
+      "isUpgradable": true,
+      "isPatchable": false,
+      "name": "org.springframework:spring-expression",
+      "version": "3.2.6.RELEASE"
+    },
+    {
+      "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H/E:H",
+      "alternativeIds": [],
+      "creationTime": "2022-03-30T21:42:31.436000Z",
+      "credit": [
+        "Unknown"
+      ],
+      "cvssScore": 9.8,
+      "description": "## Overview\n[org.springframework:spring-beans](https://www.baeldung.com/spring-bean) is a package that is the basis for Spring Framework's IoC container. The BeanFactory interface provides an advanced configuration mechanism capable of managing any type of object.\n\nAffected versions of this package are vulnerable to Remote Code Execution via manipulation of `ClassLoader` that is achievable with a POST HTTP request. This could allow an attacker to execute a webshell on a victim's application (TomCat), or download arbitrary files from the server (Payara/Glassfish).\r\n\r\n**Note:** \r\n* Current public exploits require victim applications to be built with JRE version 9 (or above) and to be deployed on either Tomcat, Payara or Glassfish. \r\n* However, we have confirmed that it is technically possible for additional exploits to work under additional application configurations as well. \r\n* As such while we recommend users prioritise first remediating against the configuration described above, for full protection we also recommend upgrading all vulnerable versions to the fixed `spring-beans` version regardless of the application configuration.\r\n\r\n### Update Log \r\n* **31/03/2022 -** Severity was raised from 8.1 to 9.8\r\n* **08/04/2022 -** Advisory was updated to reflect that Snyk's security research team was able to author a working PoC of this vulnerability against applications that are deployed on Payara (which is based on Glassfish). \r\n\r\n\r\n## PoC\r\n```java\r\n1/ docker run -p 8888:8080 --rm --interactive --tty --name vm1 tomcat:9.0\r\n2/ ./mvnw install\r\n3/ docker cp target/handling-form-submission-complete.war vm1:/usr/local/tomcat/webapps\r\n4/ curl -X POST \\\r\n  -H \"pre:<%\" \\\r\n  -H \"post:;%>\" \\\r\n  -F 'class.module.classLoader.resources.context.parent.pipeline.first.pattern=%{pre}iSystem.out.println(123)%{post}i' \\\r\n  -F 'class.module.classLoader.resources.context.parent.pipeline.first.suffix=.jsp' \\\r\n  -F 'class.module.classLoader.resources.context.parent.pipeline.first.directory=webapps/handling-form-submission-complete' \\\r\n  -F 'class.module.classLoader.resources.context.parent.pipeline.first.prefix=rce' \\\r\n  -F 'class.module.classLoader.resources.context.parent.pipeline.first.fileDateFormat=' \\\r\n  http://localhost:8888/handling-form-submission-complete/greeting\r\n5/ curl http://localhost:8888/handling-form-submission-complete/rce.jsp\r\n```\n## Remediation\nUpgrade `org.springframework:spring-beans` to version 5.2.20, 5.3.18 or higher.\n## References\n- [CyberKendra Post](https://www.cyberkendra.com/2022/03/springshell-rce-0-day-vulnerability.html)\n- [GitHub Commit](https://github.com/spring-projects/spring-framework/commit/002546b3e4b8d791ea6acccb81eb3168f51abb15)\n- [LunaSec Blog](https://www.lunasec.io/docs/blog/spring-rce-vulnerabilities/)\n- [Payara Blogpost](https://blog.payara.fish/payara-and-spring4shell)\n- [Payara PoC](https://github.com/CalumHutton/CVE-2022-22965-PoC_Payara)\n- [Snyk Blog - Technical Breakdown](https://snyk.io/blog/spring4shell-zero-day-rce-spring-framework-explained/)\n- [Snyk PoC](https://github.com/Kirill89/CVE-2022-22965-PoC)\n- [Spring Security Announcement](https://spring.io/blog/2022/03/31/spring-framework-rce-early-announcement)\n- [Spring Tomcat Mitigation Advice](https://spring.io/blog/2022/04/01/spring-framework-rce-mitigation-alternative)\n",
+      "disclosureTime": "2022-03-30T21:42:24Z",
+      "exploit": "High",
+      "functions": [
+        {
+          "functionId": {
+            "filePath": "org/springframework/beans/CachedIntrospectionResults.java",
+            "className": "CachedIntrospectionResults",
+            "functionName": "<init>"
+          },
+          "version": [
+            "[ ,5.2.20)",
+            "[5.3.0, 5.3.18)"
+          ]
+        }
+      ],
+      "fixedIn": [
+        "5.2.20",
+        "5.3.18"
+      ],
+      "id": "SNYK-JAVA-ORGSPRINGFRAMEWORK-2436751",
+      "identifiers": {
+        "CWE": [
+          "CWE-94"
+        ],
+        "CVE": [
+          "CVE-2022-22965"
+        ]
+      },
+      "language": "java",
+      "malicious": false,
+      "modificationTime": "2022-06-15T15:36:05.947908Z",
+      "moduleName": "org.springframework:spring-beans",
+      "packageManager": "maven",
+      "packageName": "org.springframework:spring-beans",
+      "patches": [],
+      "proprietary": false,
+      "publicationTime": "2022-03-30T22:32:44Z",
+      "references": [
+        {
+          "title": "CyberKendra Post",
+          "url": "https://www.cyberkendra.com/2022/03/springshell-rce-0-day-vulnerability.html"
+        },
+        {
+          "title": "GitHub Commit",
+          "url": "https://github.com/spring-projects/spring-framework/commit/002546b3e4b8d791ea6acccb81eb3168f51abb15"
+        },
+        {
+          "title": "LunaSec Blog",
+          "url": "https://www.lunasec.io/docs/blog/spring-rce-vulnerabilities/"
+        },
+        {
+          "title": "Payara Blogpost",
+          "url": "https://blog.payara.fish/payara-and-spring4shell"
+        },
+        {
+          "title": "Payara PoC",
+          "url": "https://github.com/CalumHutton/CVE-2022-22965-PoC_Payara"
+        },
+        {
+          "title": "Snyk Blog - Technical Breakdown",
+          "url": "https://snyk.io/blog/spring4shell-zero-day-rce-spring-framework-explained/"
+        },
+        {
+          "title": "Snyk PoC",
+          "url": "https://github.com/Kirill89/CVE-2022-22965-PoC"
+        },
+        {
+          "title": "Spring Security Announcement",
+          "url": "https://spring.io/blog/2022/03/31/spring-framework-rce-early-announcement"
+        },
+        {
+          "title": "Spring Tomcat Mitigation Advice",
+          "url": "https://spring.io/blog/2022/04/01/spring-framework-rce-mitigation-alternative"
+        }
+      ],
+      "severity": "critical",
+      "socialTrendAlert": false,
+      "title": "Remote Code Execution",
+      "insights": {
+        "triageAdvice": null
+      },
+      "functions_new": [
+        {
+          "functionId": {
+            "className": "org.springframework.beans.CachedIntrospectionResults",
+            "functionName": "<init>"
+          },
+          "version": [
+            "[ ,5.2.20)",
+            "[5.3.0, 5.3.18)"
+          ]
+        }
+      ],
+      "semver": {
+        "vulnerable": [
+          "[ ,5.2.20)",
+          "[5.3.0, 5.3.18)"
+        ]
+      },
+      "mavenModuleName": {
+        "groupId": "org.springframework",
+        "artifactId": "spring-beans"
+      },
+      "severityWithCritical": "critical",
+      "from": [
+        "io.github.snyk:todolist-core@0.0.1-SNAPSHOT",
+        "org.springframework:spring-context@3.2.6.RELEASE",
+        "org.springframework:spring-beans@3.2.6.RELEASE"
+      ],
+      "upgradePath": [
+        false,
+        "org.springframework:spring-context@5.2.20.RELEASE",
+        "org.springframework:spring-beans@5.2.20.RELEASE"
+      ],
+      "isUpgradable": true,
+      "isPatchable": false,
+      "name": "org.springframework:spring-beans",
+      "version": "3.2.6.RELEASE"
+    },
+    {
+      "CVSSv3": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H",
+      "alternativeIds": [],
+      "creationTime": "2022-05-12T08:45:35.744127Z",
+      "credit": [
+        "Rob Ryan"
+      ],
+      "cvssScore": 5.3,
+      "description": "## Overview\n[org.springframework:spring-beans](https://www.baeldung.com/spring-bean) is a package that is the basis for Spring Framework's IoC container. The BeanFactory interface provides an advanced configuration mechanism capable of managing any type of object.\n\nAffected versions of this package are vulnerable to Denial of Service (DoS) if it relies on data binding to set a `MultipartFile` or `javax.servlet.Part` to a field in a model object.\n\n## Details\n\nDenial of Service (DoS) describes a family of attacks, all aimed at making a system inaccessible to its intended and legitimate users.\n\nUnlike other vulnerabilities, DoS attacks usually do not aim at breaching security. Rather, they are focused on making websites and services unavailable to genuine users resulting in downtime.\n\nOne popular Denial of Service vulnerability is DDoS (a Distributed Denial of Service), an attack that attempts to clog network pipes to the system by generating a large volume of traffic from many machines.\n\nWhen it comes to open source libraries, DoS vulnerabilities allow attackers to trigger such a crash or crippling of the service by using a flaw either in the application code or from the use of open source libraries.\n\nTwo common types of DoS vulnerabilities:\n\n* High CPU/Memory Consumption- An attacker sending crafted requests that could cause the system to take a disproportionate amount of time to process. For example, [commons-fileupload:commons-fileupload](SNYK-JAVA-COMMONSFILEUPLOAD-30082).\n\n* Crash - An attacker sending crafted requests that could cause the system to crash. For Example,  [npm `ws` package](https://snyk.io/vuln/npm:ws:20171108)\n\n## Remediation\nUpgrade `org.springframework:spring-beans` to version 5.2.22.RELEASE, 5.3.20 or higher.\n## References\n- [GitHub Commit](https://github.com/spring-projects/spring-framework/commit/50177b1ad3485bd44239b1756f6c14607476fcf2)\n- [GitHub Commit](https://github.com/spring-projects/spring-framework/commit/83186b689f11f5e6efe7ccc08fdeb92f66fcd583)\n- [Tanzu vmware](https://tanzu.vmware.com/security/cve-2022-22970)\n",
+      "disclosureTime": "2022-05-12T08:17:10Z",
+      "exploit": "Not Defined",
+      "functions": [],
+      "fixedIn": [
+        "5.2.22.RELEASE",
+        "5.3.20"
+      ],
+      "id": "SNYK-JAVA-ORGSPRINGFRAMEWORK-2823313",
+      "identifiers": {
+        "CWE": [
+          "CWE-400"
+        ],
+        "CVE": [
+          "CVE-2022-22970"
+        ]
+      },
+      "language": "java",
+      "malicious": false,
+      "modificationTime": "2022-05-12T09:49:10.835416Z",
+      "moduleName": "org.springframework:spring-beans",
+      "packageManager": "maven",
+      "packageName": "org.springframework:spring-beans",
+      "patches": [],
+      "proprietary": false,
+      "publicationTime": "2022-05-12T09:49:10.833602Z",
+      "references": [
+        {
+          "title": "GitHub Commit",
+          "url": "https://github.com/spring-projects/spring-framework/commit/50177b1ad3485bd44239b1756f6c14607476fcf2"
+        },
+        {
+          "title": "GitHub Commit",
+          "url": "https://github.com/spring-projects/spring-framework/commit/83186b689f11f5e6efe7ccc08fdeb92f66fcd583"
+        },
+        {
+          "title": "Tanzu vmware",
+          "url": "https://tanzu.vmware.com/security/cve-2022-22970"
+        }
+      ],
+      "severity": "medium",
+      "socialTrendAlert": false,
+      "title": "Denial of Service (DoS)",
+      "insights": {
+        "triageAdvice": null
+      },
+      "functions_new": [],
+      "semver": {
+        "vulnerable": [
+          "[,5.2.22.RELEASE)",
+          "[5.3.0,5.3.20)"
+        ]
+      },
+      "mavenModuleName": {
+        "groupId": "org.springframework",
+        "artifactId": "spring-beans"
+      },
+      "severityWithCritical": "medium",
+      "from": [
+        "io.github.snyk:todolist-core@0.0.1-SNAPSHOT",
+        "org.springframework:spring-context@3.2.6.RELEASE",
+        "org.springframework:spring-beans@3.2.6.RELEASE"
+      ],
+      "upgradePath": [
+        false,
+        "org.springframework:spring-context@5.2.22.RELEASE",
+        "org.springframework:spring-beans@5.2.22.RELEASE"
+      ],
+      "isUpgradable": true,
+      "isPatchable": false,
+      "name": "org.springframework:spring-beans",
+      "version": "3.2.6.RELEASE"
+    },
+    {
+      "CVSSv3": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N/E:P",
+      "alternativeIds": [],
+      "creationTime": "2022-04-14T11:54:10.207823Z",
+      "credit": [
+        "Unknown"
+      ],
+      "cvssScore": 3.7,
+      "description": "## Overview\n\nAffected versions of this package are vulnerable to Improper Handling of Case Sensitivity via the patterns for `disallowedFields` on a `DataBinder`. As a result, a field is not effectively protected unless it is listed with both upper and lower case for the first character of the field, including nested fields within the property path.\n## Remediation\nUpgrade `org.springframework:spring-context` to version 5.2.21, 5.3.19 or higher.\n## References\n- [GitHub Commit](https://github.com/spring-projects/spring-framework/commit/833e750175349ab4fd502109a8b41af77e25cdea)\n- [GitHub Issue](https://github.com/spring-projects/spring-framework/issues/28333)\n- [PoC](https://github.com/MarcinGadz/spring-rce-poc)\n- [Spring Blog Post](https://spring.io/blog/2022/04/13/spring-framework-data-binding-rules-vulnerability-cve-2022-22968)\n- [Tanzu Advisory](https://tanzu.vmware.com/security/cve-2022-22968)\n",
+      "disclosureTime": "2022-04-14T11:43:54Z",
+      "exploit": "Proof of Concept",
+      "functions": [],
+      "fixedIn": [
+        "5.2.21",
+        "5.3.19"
+      ],
+      "id": "SNYK-JAVA-ORGSPRINGFRAMEWORK-2689634",
+      "identifiers": {
+        "CWE": [
+          "CWE-178"
+        ],
+        "CVE": [
+          "CVE-2022-22968"
+        ]
+      },
+      "language": "java",
+      "malicious": false,
+      "modificationTime": "2022-05-15T07:59:33.898723Z",
+      "moduleName": "org.springframework:spring-context",
+      "packageManager": "maven",
+      "packageName": "org.springframework:spring-context",
+      "patches": [],
+      "proprietary": false,
+      "publicationTime": "2022-04-14T12:09:40Z",
+      "references": [
+        {
+          "title": "GitHub Commit",
+          "url": "https://github.com/spring-projects/spring-framework/commit/833e750175349ab4fd502109a8b41af77e25cdea"
+        },
+        {
+          "title": "GitHub Issue",
+          "url": "https://github.com/spring-projects/spring-framework/issues/28333"
+        },
+        {
+          "title": "PoC",
+          "url": "https://github.com/MarcinGadz/spring-rce-poc"
+        },
+        {
+          "title": "Spring Blog Post",
+          "url": "https://spring.io/blog/2022/04/13/spring-framework-data-binding-rules-vulnerability-cve-2022-22968"
+        },
+        {
+          "title": "Tanzu Advisory",
+          "url": "https://tanzu.vmware.com/security/cve-2022-22968"
+        }
+      ],
+      "severity": "low",
+      "socialTrendAlert": false,
+      "title": "Improper Handling of Case Sensitivity",
+      "insights": {
+        "triageAdvice": null
+      },
+      "functions_new": [],
+      "semver": {
+        "vulnerable": [
+          "[,5.2.21)",
+          "[5.3.0, 5.3.19)"
+        ]
+      },
+      "mavenModuleName": {
+        "groupId": "org.springframework",
+        "artifactId": "spring-context"
+      },
+      "severityWithCritical": "low",
+      "from": [
+        "io.github.snyk:todolist-core@0.0.1-SNAPSHOT",
+        "org.springframework:spring-context@3.2.6.RELEASE"
+      ],
+      "upgradePath": [
+        false,
+        "org.springframework:spring-context@5.2.21.RELEASE"
+      ],
+      "isUpgradable": true,
+      "isPatchable": false,
+      "name": "org.springframework:spring-context",
+      "version": "3.2.6.RELEASE"
+    },
+    {
+      "id": "snyk:lic:maven:org.aspectj:aspectjweaver:EPL-1.0",
+      "packageName": "org.aspectj:aspectjweaver",
+      "semver": {
+        "vulnerable": [
+          "[0,)"
+        ]
+      },
+      "creationTime": "2022-06-19T11:34:42.621Z",
+      "description": "EPL-1.0 license",
+      "language": "java",
+      "license": "EPL-1.0",
+      "packageManager": "maven",
+      "publicationTime": "2022-06-19T11:34:42.621Z",
+      "title": "EPL-1.0 license",
+      "type": "license",
+      "severity": "medium",
+      "severityWithCritical": "medium",
+      "from": [
+        "io.github.snyk:todolist-core@0.0.1-SNAPSHOT",
+        "org.aspectj:aspectjweaver@1.8.2"
+      ],
+      "upgradePath": [],
+      "isUpgradable": false,
+      "isPatchable": false,
+      "name": "org.aspectj:aspectjweaver",
+      "version": "1.8.2"
+    },
+    {
+      "id": "snyk:lic:maven:org.hibernate.common:hibernate-commons-annotations:LGPL-2.1",
+      "packageName": "org.hibernate.common:hibernate-commons-annotations",
+      "semver": {
+        "vulnerable": [
+          "[0,)"
+        ]
+      },
+      "creationTime": "2022-06-18T23:11:02.834Z",
+      "description": "LGPL-2.1 license",
+      "language": "java",
+      "license": "LGPL-2.1",
+      "packageManager": "maven",
+      "publicationTime": "2022-06-18T23:11:02.834Z",
+      "title": "LGPL-2.1 license",
+      "type": "license",
+      "severity": "medium",
+      "severityWithCritical": "medium",
+      "from": [
+        "io.github.snyk:todolist-core@0.0.1-SNAPSHOT",
+        "org.hibernate:hibernate-core@4.3.7.Final",
+        "org.hibernate.common:hibernate-commons-annotations@4.0.5.Final"
+      ],
+      "upgradePath": [],
+      "isUpgradable": false,
+      "isPatchable": false,
+      "name": "org.hibernate.common:hibernate-commons-annotations",
+      "version": "4.0.5.Final"
+    },
+    {
+      "id": "snyk:lic:maven:org.hibernate.javax.persistence:hibernate-jpa-2.1-api:EPL-1.0",
+      "packageName": "org.hibernate.javax.persistence:hibernate-jpa-2.1-api",
+      "semver": {
+        "vulnerable": [
+          "[0,)"
+        ]
+      },
+      "creationTime": "2022-06-19T00:25:06.968Z",
+      "description": "EPL-1.0 license",
+      "language": "java",
+      "license": "EPL-1.0",
+      "packageManager": "maven",
+      "publicationTime": "2022-06-19T00:25:06.968Z",
+      "title": "EPL-1.0 license",
+      "type": "license",
+      "severity": "medium",
+      "severityWithCritical": "medium",
+      "from": [
+        "io.github.snyk:todolist-core@0.0.1-SNAPSHOT",
+        "org.hibernate:hibernate-core@4.3.7.Final",
+        "org.hibernate.javax.persistence:hibernate-jpa-2.1-api@1.0.0.Final"
+      ],
+      "upgradePath": [],
+      "isUpgradable": false,
+      "isPatchable": false,
+      "name": "org.hibernate.javax.persistence:hibernate-jpa-2.1-api",
+      "version": "1.0.0.Final"
+    },
+    {
+      "id": "snyk:lic:maven:org.hibernate:hibernate-entitymanager:LGPL-2.0",
+      "packageName": "org.hibernate:hibernate-entitymanager",
+      "semver": {
+        "vulnerable": [
+          "[3.5.0.Beta-1, 5.3.1.Final)"
+        ]
+      },
+      "creationTime": "2022-06-19T00:09:57.610Z",
+      "description": "LGPL-2.0 license",
+      "language": "java",
+      "license": "LGPL-2.0",
+      "packageManager": "maven",
+      "publicationTime": "2022-06-19T00:09:57.610Z",
+      "title": "LGPL-2.0 license",
+      "type": "license",
+      "severity": "medium",
+      "severityWithCritical": "medium",
+      "from": [
+        "io.github.snyk:todolist-core@0.0.1-SNAPSHOT",
+        "org.hibernate:hibernate-entitymanager@4.3.7.Final"
+      ],
+      "upgradePath": [
+        false,
+        "org.hibernate:hibernate-entitymanager@5.3.1.Final"
+      ],
+      "isUpgradable": true,
+      "isPatchable": false,
+      "name": "org.hibernate:hibernate-entitymanager",
+      "version": "4.3.7.Final"
+    }
+  ],
+  "ok": false,
+  "dependencyCount": 34,
+  "org": "playground",
+  "policy": "# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.\nversion: v1.25.0\nignore: {}\npatch: {}\n",
+  "isPrivate": true,
+  "licensesPolicy": {
+    "severities": {},
+    "orgLicenseRules": {
+      "AGPL-1.0": {
+        "licenseType": "AGPL-1.0",
+        "severity": "high",
+        "instructions": ""
+      },
+      "AGPL-3.0": {
+        "licenseType": "AGPL-3.0",
+        "severity": "high",
+        "instructions": ""
+      },
+      "Artistic-1.0": {
+        "licenseType": "Artistic-1.0",
+        "severity": "medium",
+        "instructions": ""
+      },
+      "Artistic-2.0": {
+        "licenseType": "Artistic-2.0",
+        "severity": "medium",
+        "instructions": ""
+      },
+      "CDDL-1.0": {
+        "licenseType": "CDDL-1.0",
+        "severity": "medium",
+        "instructions": ""
+      },
+      "CPOL-1.02": {
+        "licenseType": "CPOL-1.02",
+        "severity": "high",
+        "instructions": ""
+      },
+      "EPL-1.0": {
+        "licenseType": "EPL-1.0",
+        "severity": "medium",
+        "instructions": ""
+      },
+      "GPL-2.0": {
+        "licenseType": "GPL-2.0",
+        "severity": "high",
+        "instructions": ""
+      },
+      "GPL-3.0": {
+        "licenseType": "GPL-3.0",
+        "severity": "high",
+        "instructions": ""
+      },
+      "LGPL-2.0": {
+        "licenseType": "LGPL-2.0",
+        "severity": "medium",
+        "instructions": ""
+      },
+      "LGPL-2.1": {
+        "licenseType": "LGPL-2.1",
+        "severity": "medium",
+        "instructions": ""
+      },
+      "LGPL-3.0": {
+        "licenseType": "LGPL-3.0",
+        "severity": "medium",
+        "instructions": ""
+      },
+      "MPL-1.1": {
+        "licenseType": "MPL-1.1",
+        "severity": "medium",
+        "instructions": ""
+      },
+      "MPL-2.0": {
+        "licenseType": "MPL-2.0",
+        "severity": "medium",
+        "instructions": ""
+      },
+      "MS-RL": {
+        "licenseType": "MS-RL",
+        "severity": "medium",
+        "instructions": ""
+      },
+      "SimPL-2.0": {
+        "licenseType": "SimPL-2.0",
+        "severity": "high",
+        "instructions": ""
+      }
+    }
+  },
+  "packageManager": "maven",
+  "projectId": "62b136c4-eaf7-46b1-ae76-ded54bc19a5a",
+  "ignoreSettings": null,
+  "summary": "19 vulnerable dependency paths",
+  "remediation": {
+    "unresolved": [
+      {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "alternativeIds": [],
+        "creationTime": "2019-09-05T16:17:58.383761Z",
+        "credit": [
+          "Unknown"
+        ],
+        "cvssScore": 9.8,
+        "description": "## Overview\n\n[c3p0:c3p0](https://mvnrepository.com/artifact/c3p0/c3p0) is a lIbrary for augmenting traditional (DriverManager-based) JDBC drivers with JNDI-bindable DataSources, including DataSources that implement Connection and Statement Pooling, as described by the jdbc3 spec and jdbc2 std extension. Note: This library is no longer maintained and has migrated to the artifact \r\n\"com.mchange:c3p0\"\n\n\nAffected versions of this package are vulnerable to XML External Entity (XXE) Injection.\nvia the `extractXmlConfigFromInputStream` in `com/mchange/v2/c3p0/cfg/C3P0ConfigXmlUtils.java` during initialization.\n\n## Details\nXXE Injection is a type of attack against an application that parses XML input.\r\nXML is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable. By default, many XML processors allow specification of an external entity, a URI that is dereferenced and evaluated during XML processing. When an XML document is being parsed, the parser can make a request and include the content at the specified URI inside of the XML document.\r\n\r\nAttacks can include disclosing local files, which may contain sensitive data such as passwords or private user data, using file: schemes or relative paths in the system identifier.\r\n\r\nFor example, below is a sample XML document, containing an XML element- username.\r\n\r\n```xml\r\n<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\r\n   <username>John</username>\r\n</xml>\r\n```\r\n\r\nAn external XML entity - `xxe`, is defined using a system identifier and present within a DOCTYPE header. These entities can access local or remote content. For example the below code contains an external XML entity that would fetch the content of  `/etc/passwd` and display it to the user rendered by `username`.\r\n\r\n```xml\r\n<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\r\n<!DOCTYPE foo [\r\n   <!ENTITY xxe SYSTEM \"file:///etc/passwd\" >]>\r\n   <username>&xxe;</username>\r\n</xml>\r\n```\r\n\r\nOther XXE Injection attacks can access local resources that may not stop returning data, possibly impacting application availability and leading to Denial of Service.\n\n\n## Remediation\n\nThere is no fixed version for `c3p0:c3p0`.\n\n\n## References\n\n- [GitHub Commit](https://github.com/swaldman/c3p0/commit/7dfdda63f42759a5ec9b63d725b7412f74adb3e1)\n",
+        "disclosureTime": "2018-12-24T13:29:00Z",
+        "exploit": "Not Defined",
+        "functions": [
+          {
+            "functionId": {
+              "filePath": "com/mchange/v2/c3p0/cfg/C3P0ConfigXmlUtils.java",
+              "className": "C3P0ConfigXmlUtils",
+              "functionName": "extractXmlConfigFromInputStream"
+            },
+            "version": [
+              "[0.9.1,]"
+            ]
+          }
+        ],
+        "fixedIn": [],
+        "id": "SNYK-JAVA-C3P0-461017",
+        "identifiers": {
+          "CWE": [
+            "CWE-611"
+          ],
+          "CVE": [
+            "CVE-2018-20433"
+          ]
+        },
+        "language": "java",
+        "malicious": false,
+        "modificationTime": "2020-12-14T14:41:01.987191Z",
+        "moduleName": "c3p0:c3p0",
+        "packageManager": "maven",
+        "packageName": "c3p0:c3p0",
+        "patches": [],
+        "proprietary": false,
+        "publicationTime": "2019-07-21T14:22:18Z",
+        "references": [
+          {
+            "title": "GitHub Commit",
+            "url": "https://github.com/swaldman/c3p0/commit/7dfdda63f42759a5ec9b63d725b7412f74adb3e1"
+          }
+        ],
+        "severity": "critical",
+        "socialTrendAlert": false,
+        "title": "XML External Entity (XXE) Injection",
+        "insights": {
+          "triageAdvice": null
+        },
+        "functions_new": [
+          {
+            "functionId": {
+              "className": "com.mchange.v2.c3p0.cfg.C3P0ConfigXmlUtils",
+              "functionName": "extractXmlConfigFromInputStream"
+            },
+            "version": [
+              "[0.9.1,]"
+            ]
+          }
+        ],
+        "semver": {
+          "vulnerable": [
+            "[0,]"
+          ]
+        },
+        "mavenModuleName": {
+          "groupId": "c3p0",
+          "artifactId": "c3p0"
+        },
+        "from": [
+          "io.github.snyk:todolist-core@0.0.1-SNAPSHOT",
+          "c3p0:c3p0@0.9.1.2"
+        ],
+        "upgradePath": [],
+        "isUpgradable": false,
+        "isPatchable": false,
+        "isPinnable": false,
+        "isRuntime": false,
+        "name": "c3p0:c3p0",
+        "version": "0.9.1.2",
+        "severityWithCritical": "critical"
+      },
+      {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:P/RL:O",
+        "alternativeIds": [],
+        "creationTime": "2019-09-05T16:24:58.914446Z",
+        "credit": [
+          "Unknown"
+        ],
+        "cvssScore": 7.5,
+        "description": "## Overview\n[c3p0:c3p0](https://mvnrepository.com/artifact/c3p0/c3p0) is a lIbrary for augmenting traditional (DriverManager-based) JDBC drivers with JNDI-bindable DataSources, including DataSources that implement Connection and Statement Pooling, as described by the jdbc3 spec and jdbc2 std extension. Note: This library is no longer maintained and has migrated to the artifact \r\n\"com.mchange:c3p0\"\n\nAffected versions of this package are vulnerable to Denial of Service (DoS) due to missing protections against recursive entity expansion when loading XML configurations.\n\n## Details\n\nDenial of Service (DoS) describes a family of attacks, all aimed at making a system inaccessible to its intended and legitimate users.\n\nUnlike other vulnerabilities, DoS attacks usually do not aim at breaching security. Rather, they are focused on making websites and services unavailable to genuine users resulting in downtime.\n\nOne popular Denial of Service vulnerability is DDoS (a Distributed Denial of Service), an attack that attempts to clog network pipes to the system by generating a large volume of traffic from many machines.\n\nWhen it comes to open source libraries, DoS vulnerabilities allow attackers to trigger such a crash or crippling of the service by using a flaw either in the application code or from the use of open source libraries.\n\nTwo common types of DoS vulnerabilities:\n\n* High CPU/Memory Consumption- An attacker sending crafted requests that could cause the system to take a disproportionate amount of time to process. For example, [commons-fileupload:commons-fileupload](SNYK-JAVA-COMMONSFILEUPLOAD-30082).\n\n* Crash - An attacker sending crafted requests that could cause the system to crash. For Example,  [npm `ws` package](https://snyk.io/vuln/npm:ws:20171108)\n\n## Remediation\nThere is no fixed version for `c3p0:c3p0`.\n## References\n- [POC: Hackerone Report](https://hackerone.com/reports/509315)\n",
+        "disclosureTime": "2019-04-22T22:18:26Z",
+        "exploit": "Proof of Concept",
+        "functions": [
+          {
+            "functionId": {
+              "filePath": "com/mchange/v2/c3p0/cfg/C3P0ConfigXmlUtils.java",
+              "className": "C3P0ConfigXmlUtils",
+              "functionName": "extractXmlConfigFromInputStream"
+            },
+            "version": [
+              "[0.9.1,]"
+            ]
+          }
+        ],
+        "fixedIn": [],
+        "id": "SNYK-JAVA-C3P0-461018",
+        "identifiers": {
+          "CWE": [
+            "CWE-776"
+          ],
+          "GHSA": [
+            "GHSA-84p2-vf58-xhxv"
+          ],
+          "CVE": [
+            "CVE-2019-5427"
+          ]
+        },
+        "language": "java",
+        "malicious": false,
+        "modificationTime": "2022-04-24T11:13:58.306515Z",
+        "moduleName": "c3p0:c3p0",
+        "packageManager": "maven",
+        "packageName": "c3p0:c3p0",
+        "patches": [],
+        "proprietary": false,
+        "publicationTime": "2019-04-22T22:18:26Z",
+        "references": [
+          {
+            "title": "POC: Hackerone Report",
+            "url": "https://hackerone.com/reports/509315"
+          }
+        ],
+        "severity": "high",
+        "socialTrendAlert": false,
+        "title": "Denial of Service (DoS)",
+        "insights": {
+          "triageAdvice": null
+        },
+        "functions_new": [
+          {
+            "functionId": {
+              "className": "com.mchange.v2.c3p0.cfg.C3P0ConfigXmlUtils",
+              "functionName": "extractXmlConfigFromInputStream"
+            },
+            "version": [
+              "[0.9.1,]"
+            ]
+          }
+        ],
+        "semver": {
+          "vulnerable": [
+            "[0,]"
+          ]
+        },
+        "mavenModuleName": {
+          "groupId": "c3p0",
+          "artifactId": "c3p0"
+        },
+        "from": [
+          "io.github.snyk:todolist-core@0.0.1-SNAPSHOT",
+          "c3p0:c3p0@0.9.1.2"
+        ],
+        "upgradePath": [],
+        "isUpgradable": false,
+        "isPatchable": false,
+        "isPinnable": false,
+        "isRuntime": false,
+        "name": "c3p0:c3p0",
+        "version": "0.9.1.2",
+        "severityWithCritical": "high"
+      },
+      {
+        "id": "snyk:lic:maven:c3p0:c3p0:LGPL-3.0",
+        "packageName": "c3p0:c3p0",
+        "semver": {
+          "vulnerable": [
+            "[0,)"
+          ]
+        },
+        "creationTime": "2022-06-18T13:06:26.061Z",
+        "description": "LGPL-3.0 license",
+        "language": "java",
+        "license": "LGPL-3.0",
+        "packageManager": "maven",
+        "publicationTime": "2022-06-18T13:06:26.061Z",
+        "title": "LGPL-3.0 license",
+        "type": "license",
+        "severity": "medium",
+        "from": [
+          "io.github.snyk:todolist-core@0.0.1-SNAPSHOT",
+          "c3p0:c3p0@0.9.1.2"
+        ],
+        "upgradePath": [],
+        "isUpgradable": false,
+        "isPatchable": false,
+        "isPinnable": false,
+        "isRuntime": false,
+        "name": "c3p0:c3p0",
+        "version": "0.9.1.2",
+        "severityWithCritical": "medium"
+      },
+      {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N/E:P",
+        "alternativeIds": [],
+        "creationTime": "2019-04-10T16:07:04.634619Z",
+        "credit": [
+          "Mario Areias"
+        ],
+        "cvssScore": 7.5,
+        "description": "## Overview\n[dom4j:dom4j](https://github.com/dom4j/dom4j) is a flexible XML framework for Java. *Note*: this artifact has been deprecated for `org.dom4j:dom4j`.\n\nAffected versions of this package are vulnerable to XML External Entity (XXE) Injection due to improper validation of the `QName` inputs.\n\n## Details\nXXE Injection is a type of attack against an application that parses XML input.\nXML is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable. By default, many XML processors allow specification of an external entity, a URI that is dereferenced and evaluated during XML processing. When an XML document is being parsed, the parser can make a request and include the content at the specified URI inside of the XML document.\n\nAttacks can include disclosing local files, which may contain sensitive data such as passwords or private user data, using file: schemes or relative paths in the system identifier.\n\nFor example, below is a sample XML document, containing an XML element- username.\n\n```\n<xml>\n<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n   <username>John</username>\n</xml>\n```\n\nAn external XML entity - `xxe`, is defined using a system identifier and present within a DOCTYPE header. These entities can access local or remote content. For example the below code contains an external XML entity that would fetch the content of  `/etc/passwd` and display it to the user rendered by `username`.\n\n```\n<xml>\n<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<!DOCTYPE foo [\n   <!ENTITY xxe SYSTEM \"file:///etc/passwd\" >]>\n   <username>&xxe;</username>\n</xml>\n```\n\nOther XXE Injection attacks can access local resources that may not stop returning data, possibly impacting application availability and leading to Denial of Service.\n\n## Remediation\nThere is no fixed version for `dom4j:dom4j`.\n## References\n- [GitHub Commit](https://github.com/dom4j/dom4j/commit/e598eb43d418744c4dbf62f647dd2381c9ce9387)\n- [GitHub Issue](https://github.com/dom4j/dom4j/issues/48)\n- [POC: Ihacktoprotect Blog](https://ihacktoprotect.com/post/dom4j-xml-injection/)\n",
+        "disclosureTime": "2018-07-01T19:12:29Z",
+        "exploit": "Proof of Concept",
+        "functions": [
+          {
+            "functionId": {
+              "filePath": "org/dom4j/Namespace.java",
+              "className": "Namespace",
+              "functionName": "<init>"
+            },
+            "version": [
+              "[0,]"
+            ]
+          },
+          {
+            "functionId": {
+              "filePath": "org/dom4j/QName.java",
+              "className": "QName",
+              "functionName": "<init>"
+            },
+            "version": [
+              "[0,]"
+            ]
+          }
+        ],
+        "fixedIn": [],
+        "id": "SNYK-JAVA-DOM4J-174153",
+        "identifiers": {
+          "CWE": [
+            "CWE-611"
+          ],
+          "GHSA": [
+            "GHSA-6pcc-3rfx-4gpm"
+          ],
+          "CVE": [
+            "CVE-2018-1000632"
+          ]
+        },
+        "language": "java",
+        "malicious": false,
+        "modificationTime": "2022-05-22T12:44:25.928596Z",
+        "moduleName": "dom4j:dom4j",
+        "packageManager": "maven",
+        "packageName": "dom4j:dom4j",
+        "patches": [],
+        "proprietary": false,
+        "publicationTime": "2018-08-21T14:16:13Z",
+        "references": [
+          {
+            "title": "GitHub Commit",
+            "url": "https://github.com/dom4j/dom4j/commit/e598eb43d418744c4dbf62f647dd2381c9ce9387"
+          },
+          {
+            "title": "GitHub Issue",
+            "url": "https://github.com/dom4j/dom4j/issues/48"
+          },
+          {
+            "title": "POC: Ihacktoprotect Blog",
+            "url": "https://ihacktoprotect.com/post/dom4j-xml-injection/"
+          }
+        ],
+        "severity": "high",
+        "socialTrendAlert": false,
+        "title": "XML External Entity (XXE) Injection",
+        "insights": {
+          "triageAdvice": null
+        },
+        "functions_new": [
+          {
+            "functionId": {
+              "className": "org.dom4j.Namespace",
+              "functionName": "<init>"
+            },
+            "version": [
+              "[0,]"
+            ]
+          },
+          {
+            "functionId": {
+              "className": "org.dom4j.QName",
+              "functionName": "<init>"
+            },
+            "version": [
+              "[0,]"
+            ]
+          }
+        ],
+        "semver": {
+          "vulnerable": [
+            "[0,]"
+          ]
+        },
+        "mavenModuleName": {
+          "groupId": "dom4j",
+          "artifactId": "dom4j"
+        },
+        "from": [
+          "io.github.snyk:todolist-core@0.0.1-SNAPSHOT",
+          "org.hibernate:hibernate-core@4.3.7.Final",
+          "dom4j:dom4j@1.6.1"
+        ],
+        "upgradePath": [],
+        "isUpgradable": false,
+        "isPatchable": false,
+        "isPinnable": false,
+        "isRuntime": false,
+        "name": "dom4j:dom4j",
+        "version": "1.6.1",
+        "severityWithCritical": "high"
+      },
+      {
+        "CVSSv3": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:H",
+        "alternativeIds": [],
+        "creationTime": "2022-05-10T12:56:27.582369Z",
+        "credit": [
+          "Unknown"
+        ],
+        "cvssScore": 7.4,
+        "description": "## Overview\n[dom4j:dom4j](https://github.com/dom4j/dom4j) is a flexible XML framework for Java. *Note*: this artifact has been deprecated for `org.dom4j:dom4j`.\n\nAffected versions of this package are vulnerable to XML External Entity (XXE) Injection. By using the default `SaxReader()` provided by Dom4J, external DTDs and External Entities are allowed, resulting in a possible XXE.\n\n## Details\nXXE Injection is a type of attack against an application that parses XML input.\nXML is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable. By default, many XML processors allow specification of an external entity, a URI that is dereferenced and evaluated during XML processing. When an XML document is being parsed, the parser can make a request and include the content at the specified URI inside of the XML document.\n\nAttacks can include disclosing local files, which may contain sensitive data such as passwords or private user data, using file: schemes or relative paths in the system identifier.\n\nFor example, below is a sample XML document, containing an XML element- username.\n\n```\n<xml>\n<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n   <username>John</username>\n</xml>\n```\n\nAn external XML entity - `xxe`, is defined using a system identifier and present within a DOCTYPE header. These entities can access local or remote content. For example the below code contains an external XML entity that would fetch the content of  `/etc/passwd` and display it to the user rendered by `username`.\n\n```\n<xml>\n<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<!DOCTYPE foo [\n   <!ENTITY xxe SYSTEM \"file:///etc/passwd\" >]>\n   <username>&xxe;</username>\n</xml>\n```\n\nOther XXE Injection attacks can access local resources that may not stop returning data, possibly impacting application availability and leading to Denial of Service.\n\n## Remediation\nThere is no fixed version for `dom4j:dom4j`.\n## References\n- [GitHub Commit](https://github.com/dom4j/dom4j/commit/a822852)\n- [RedHat Bugzilla Bug](https://bugzilla.redhat.com/show_bug.cgi?id=1694235)\n",
+        "disclosureTime": "2020-04-15T09:38:17Z",
+        "exploit": "Not Defined",
+        "functions": [],
+        "fixedIn": [],
+        "id": "SNYK-JAVA-DOM4J-2812975",
+        "identifiers": {
+          "CWE": [
+            "CWE-611"
+          ],
+          "GHSA": [
+            "GHSA-hwj3-m3p6-hj38"
+          ],
+          "CVE": [
+            "CVE-2020-10683"
+          ]
+        },
+        "language": "java",
+        "malicious": false,
+        "modificationTime": "2022-05-10T12:56:27.582382Z",
+        "moduleName": "dom4j:dom4j",
+        "packageManager": "maven",
+        "packageName": "dom4j:dom4j",
+        "patches": [],
+        "proprietary": false,
+        "publicationTime": "2020-04-16T15:22:50Z",
+        "references": [
+          {
+            "title": "GitHub Commit",
+            "url": "https://github.com/dom4j/dom4j/commit/a822852"
+          },
+          {
+            "title": "RedHat Bugzilla Bug",
+            "url": "https://bugzilla.redhat.com/show_bug.cgi?id=1694235"
+          }
+        ],
+        "severity": "high",
+        "socialTrendAlert": false,
+        "title": "XML External Entity (XXE) Injection",
+        "insights": {
+          "triageAdvice": null
+        },
+        "functions_new": [],
+        "semver": {
+          "vulnerable": [
+            "[0,]"
+          ]
+        },
+        "mavenModuleName": {
+          "groupId": "dom4j",
+          "artifactId": "dom4j"
+        },
+        "from": [
+          "io.github.snyk:todolist-core@0.0.1-SNAPSHOT",
+          "org.hibernate:hibernate-core@4.3.7.Final",
+          "dom4j:dom4j@1.6.1"
+        ],
+        "upgradePath": [],
+        "isUpgradable": false,
+        "isPatchable": false,
+        "isPinnable": false,
+        "isRuntime": false,
+        "name": "dom4j:dom4j",
+        "version": "1.6.1",
+        "severityWithCritical": "high"
+      },
+      {
+        "id": "snyk:lic:maven:org.aspectj:aspectjweaver:EPL-1.0",
+        "packageName": "org.aspectj:aspectjweaver",
+        "semver": {
+          "vulnerable": [
+            "[0,)"
+          ]
+        },
+        "creationTime": "2022-06-19T11:34:42.621Z",
+        "description": "EPL-1.0 license",
+        "language": "java",
+        "license": "EPL-1.0",
+        "packageManager": "maven",
+        "publicationTime": "2022-06-19T11:34:42.621Z",
+        "title": "EPL-1.0 license",
+        "type": "license",
+        "severity": "medium",
+        "from": [
+          "io.github.snyk:todolist-core@0.0.1-SNAPSHOT",
+          "org.aspectj:aspectjweaver@1.8.2"
+        ],
+        "upgradePath": [],
+        "isUpgradable": false,
+        "isPatchable": false,
+        "isPinnable": false,
+        "isRuntime": false,
+        "name": "org.aspectj:aspectjweaver",
+        "version": "1.8.2",
+        "severityWithCritical": "medium"
+      },
+      {
+        "id": "snyk:lic:maven:org.hibernate.common:hibernate-commons-annotations:LGPL-2.1",
+        "packageName": "org.hibernate.common:hibernate-commons-annotations",
+        "semver": {
+          "vulnerable": [
+            "[0,)"
+          ]
+        },
+        "creationTime": "2022-06-18T23:11:02.834Z",
+        "description": "LGPL-2.1 license",
+        "language": "java",
+        "license": "LGPL-2.1",
+        "packageManager": "maven",
+        "publicationTime": "2022-06-18T23:11:02.834Z",
+        "title": "LGPL-2.1 license",
+        "type": "license",
+        "severity": "medium",
+        "from": [
+          "io.github.snyk:todolist-core@0.0.1-SNAPSHOT",
+          "org.hibernate:hibernate-core@4.3.7.Final",
+          "org.hibernate.common:hibernate-commons-annotations@4.0.5.Final"
+        ],
+        "upgradePath": [],
+        "isUpgradable": false,
+        "isPatchable": false,
+        "isPinnable": false,
+        "isRuntime": false,
+        "name": "org.hibernate.common:hibernate-commons-annotations",
+        "version": "4.0.5.Final",
+        "severityWithCritical": "medium"
+      },
+      {
+        "id": "snyk:lic:maven:org.hibernate.javax.persistence:hibernate-jpa-2.1-api:EPL-1.0",
+        "packageName": "org.hibernate.javax.persistence:hibernate-jpa-2.1-api",
+        "semver": {
+          "vulnerable": [
+            "[0,)"
+          ]
+        },
+        "creationTime": "2022-06-19T00:25:06.968Z",
+        "description": "EPL-1.0 license",
+        "language": "java",
+        "license": "EPL-1.0",
+        "packageManager": "maven",
+        "publicationTime": "2022-06-19T00:25:06.968Z",
+        "title": "EPL-1.0 license",
+        "type": "license",
+        "severity": "medium",
+        "from": [
+          "io.github.snyk:todolist-core@0.0.1-SNAPSHOT",
+          "org.hibernate:hibernate-core@4.3.7.Final",
+          "org.hibernate.javax.persistence:hibernate-jpa-2.1-api@1.0.0.Final"
+        ],
+        "upgradePath": [],
+        "isUpgradable": false,
+        "isPatchable": false,
+        "isPinnable": false,
+        "isRuntime": false,
+        "name": "org.hibernate.javax.persistence:hibernate-jpa-2.1-api",
+        "version": "1.0.0.Final",
+        "severityWithCritical": "medium"
+      }
+    ],
+    "upgrade": {
+      "org.hibernate:hibernate-core@4.3.7.Final": {
+        "upgradeTo": "org.hibernate:hibernate-core@5.4.24.Final",
+        "upgrades": [
+          "org.hibernate:hibernate-core@4.3.7.Final",
+          "org.hibernate:hibernate-core@4.3.7.Final",
+          "org.hibernate:hibernate-core@4.3.7.Final"
+        ],
+        "vulns": [
+          "SNYK-JAVA-ORGHIBERNATE-1041788",
+          "SNYK-JAVA-ORGHIBERNATE-584563",
+          "snyk:lic:maven:org.hibernate:hibernate-core:LGPL-2.0"
+        ]
+      },
+      "org.hibernate:hibernate-entitymanager@4.3.7.Final": {
+        "upgradeTo": "org.hibernate:hibernate-entitymanager@5.3.1.Final",
+        "upgrades": [
+          "org.hibernate:hibernate-entitymanager@4.3.7.Final"
+        ],
+        "vulns": [
+          "snyk:lic:maven:org.hibernate:hibernate-entitymanager:LGPL-2.0"
+        ]
+      },
+      "org.springframework:spring-context@3.2.6.RELEASE": {
+        "upgradeTo": "org.springframework:spring-context@5.2.22.RELEASE",
+        "upgrades": [
+          "org.springframework:spring-beans@3.2.6.RELEASE",
+          "org.springframework:spring-context@3.2.6.RELEASE",
+          "org.springframework:spring-expression@3.2.6.RELEASE",
+          "org.springframework:spring-beans@3.2.6.RELEASE",
+          "org.springframework:spring-core@3.2.6.RELEASE",
+          "org.springframework:spring-core@3.2.6.RELEASE",
+          "org.springframework:spring-core@3.2.6.RELEASE"
+        ],
+        "vulns": [
+          "SNYK-JAVA-ORGSPRINGFRAMEWORK-2823313",
+          "SNYK-JAVA-ORGSPRINGFRAMEWORK-2689634",
+          "SNYK-JAVA-ORGSPRINGFRAMEWORK-2434828",
+          "SNYK-JAVA-ORGSPRINGFRAMEWORK-2436751",
+          "SNYK-JAVA-ORGSPRINGFRAMEWORK-2330878",
+          "SNYK-JAVA-ORGSPRINGFRAMEWORK-2329097",
+          "SNYK-JAVA-ORGSPRINGFRAMEWORK-31325"
+        ]
+      }
+    },
+    "patch": {},
+    "ignore": {},
+    "pin": {}
+  },
+  "filesystemPolicy": false,
+  "filtered": {
+    "ignore": [],
+    "patch": []
+  },
+  "uniqueCount": 19,
+  "projectName": "io.github.snyk:todolist-core",
+  "displayTargetFile": "pom.xml",
+  "path": "/home/antoine/Documents/SnykSB/java-goof/todolist-goof/todolist-core"
+}

@@ -81,7 +81,7 @@
       "isUpgradable": false,
       "isPatchable": false,
       "name": "c3p0:c3p0",
-      "version": "0.9.1.2"
+      "version": "0.9.1.4"
     },
     {
       "CVSSv3": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H/RL:O",
