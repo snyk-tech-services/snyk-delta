@@ -76,6 +76,9 @@ If no monitored project is found, is will return all the issues found by the CLI
 
 The return code will be 0 if no issue, 1 if issues.
 
+### Fail-on
+[As in Snyk CLI](https://docs.snyk.io/snyk-cli/test-for-vulnerabilities/advanced-failing-of-builds-in-snyk-cli) with the --fail-on flag return non 0 error code when new issues are upgradable, patchable, or both (all)..
+
 ### Caution
 Usage as a module requires list of issues coming from Snyk CLI.
 Currently not compatible with data coming straight from Snyk APIs.

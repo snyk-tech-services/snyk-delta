@@ -11,6 +11,7 @@ import { getDelta } from '../../src/lib/index';
 const fixturesFolderPath = path.resolve(__dirname, '..') + '/fixtures/';
 
 const originalLog = console.log;
+
 let consoleOutput: Array<string> = [];
 const mockedLog = (output: string): void => {
   consoleOutput.push(output);
