@@ -7,9 +7,9 @@ import * as issues from './snyk/issues'
 import * as dependencies from './snyk/dependencies'
 import * as isUUID from 'is-uuid'
 import { BadInputError } from './customErrors/inputError'
-import { Project } from 'snyk-api-ts-client/dist/client/generated/org';
 import { IssuesPostResponseType, SnykCliTestOutput, SnykDeltaOutput } from './types'
 import { displayOutput } from './snyk/displayOutput';
+import { computeFailCode } from './snyk/snyk_utils';
 export { SnykDeltaOutput } from './types'
 
 const banner =  `
@@ -20,13 +20,15 @@ Snyk Tech Prevent Tool
 ================================================
 `
 
-const getDelta = async(snykTestOutput = '', debugMode = false, setPassIfNoBaselineFlag = false):Promise<SnykDeltaOutput|number> => {
+const getDelta = async(snykTestOutput = '', debugMode = false, setPassIfNoBaselineFlag = false, failOnFlagFromModule: string = ""):Promise<SnykDeltaOutput|number> => {
    const argv = utils.init(debugMode)
    const debug = utils.getDebugModule()
    const mode = argv.currentProject || argv.currentOrg ? "standalone" : "inline"
    let newVulns, newLicenseIssues
    const passIfNoBaseline = argv.setPassIfNoBaseline || setPassIfNoBaselineFlag
    let noBaseline = false
+   
+  
 
   try {
     if(process.env.NODE_ENV == 'prod'){
@@ -38,9 +40,16 @@ const getDelta = async(snykTestOutput = '', debugMode = false, setPassIfNoBaseli
     let snykTestJsonDependencies, snykTestJsonResults
     let baselineOrg: string = argv.baselineOrg ? argv.baselineOrg : ""
     let baselineProject: string = argv.baselineProject ? argv.baselineProject : ""
-    const currentOrg: string = argv.currentOrg ? argv.currentOrg: ""
-    const currentProject: string = argv.currentProject ? argv.currentProject: ""
+    const currentOrg: string = argv.currentOrg ? argv.currentOrg : ""
+    const currentProject: string = argv.currentProject ? argv.currentProject : ""
+    const failOnFlag: string = argv["fail-on"]? argv["fail-on"] : failOnFlagFromModule.toLowerCase()
+    
 
+    if(failOnFlag && !["all","upgradable","patchable"].includes(failOnFlag.toLowerCase())){
+      debug("Fail On flag can only have the following values: [all,upgradable,patchable]");
+      process.exit(2);
+     }
+    debug("failon: ",failOnFlag)
     if(mode == "inline"){
 
       const pipedData: string = snykTestOutput == '' ? await utils.getPipedDataIn() : ""+snykTestOutput
@@ -137,14 +146,10 @@ const getDelta = async(snykTestOutput = '', debugMode = false, setPassIfNoBaseli
     
 
     if(newVulns.length + newLicenseIssues.length > 0) {
-      if(!noBaseline){
-        process.exitCode = 1
+      if(noBaseline && passIfNoBaseline){
+        process.exitCode = 0
       } else {
-        if(passIfNoBaseline){
-          process.exitCode = 0
-        } else {
-          process.exitCode = 1
-        }
+        process.exitCode = computeFailCode(newVulns, newLicenseIssues, failOnFlag)
       }
     } else {
       process.exitCode = 0
@@ -153,7 +158,7 @@ const getDelta = async(snykTestOutput = '', debugMode = false, setPassIfNoBaseli
     
   } catch (err){
     
-    handleError(err)
+    handleError(err as Error)
     process.exitCode = 2
 
   
