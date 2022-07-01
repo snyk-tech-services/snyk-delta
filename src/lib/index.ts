@@ -15,6 +15,7 @@ import {
 import { displayOutput } from './snyk/displayOutput';
 import { computeFailCode } from './snyk/snyk_utils';
 export { SnykDeltaOutput } from './types';
+const IS_JEST_TESTING = process.env.JEST_WORKER_ID !== undefined;
 
 const banner = `
 ================================================
@@ -30,11 +31,19 @@ const getDelta = async (
   setPassIfNoBaselineFlag = false,
   failOnFlagFromModule: string = '',
 ): Promise<SnykDeltaOutput | number> => {
-  const argv = utils.init(debugMode);
+  const argv: {
+    currentOrg?: string;
+    currentProject?: string;
+    baselineOrg?: string;
+    baselineProject?: string;
+    'fail-on'?: string;
+    setPassIfNoBaseline?: boolean;
+    type?: string;
+  } = utils.init(debugMode);
   const debug = utils.getDebugModule();
-  const mode = argv.currentProject || argv.currentOrg ? 'standalone' : 'inline';
+  const mode = argv.currentProject ?? argv.currentOrg ? 'standalone' : 'inline';
   let newVulns, newLicenseIssues;
-  const passIfNoBaseline = argv.setPassIfNoBaseline || setPassIfNoBaselineFlag;
+  const passIfNoBaseline = argv.setPassIfNoBaseline ?? setPassIfNoBaselineFlag;
   let noBaseline = false;
 
   try {
@@ -45,17 +54,12 @@ const getDelta = async (
     debug(mode, 'mode');
 
     let snykTestJsonDependencies, snykTestJsonResults;
-    let baselineOrg: string = argv.baselineOrg ? argv.baselineOrg : '';
-    let baselineProject: string = argv.baselineProject
-      ? argv.baselineProject
-      : '';
-    const currentOrg: string = argv.currentOrg ? argv.currentOrg : '';
-    const currentProject: string = argv.currentProject
-      ? argv.currentProject
-      : '';
-    const failOnFlag: string = argv['fail-on']
-      ? argv['fail-on']
-      : failOnFlagFromModule.toLowerCase();
+    let baselineOrg: string = argv.baselineOrg ?? '';
+    let baselineProject: string = argv.baselineProject ?? '';
+    const currentOrg: string = argv.currentOrg ?? '';
+    const currentProject: string = argv.currentProject ?? '';
+    const failOnFlag: string =
+      argv['fail-on'] ?? failOnFlagFromModule.toLowerCase();
 
     if (
       failOnFlag &&
@@ -66,7 +70,7 @@ const getDelta = async (
       );
       process.exit(2);
     }
-    debug('failon: ', failOnFlag);
+    debug('--fail-on: ', failOnFlag);
     if (mode == 'inline') {
       const pipedData: string =
         snykTestOutput == ''
@@ -217,7 +221,7 @@ const getDelta = async (
 
     if (
       !module.parent ||
-      (isJestTesting() && !expect.getState().currentTestName.includes('module'))
+      (IS_JEST_TESTING && !expect.getState().currentTestName.includes('module'))
     ) {
       displayOutput(newVulns, newLicenseIssues, issueTypeFilter, mode);
     }
@@ -241,16 +245,16 @@ const getDelta = async (
   } finally {
     if (
       !module.parent ||
-      (isJestTesting() && !expect.getState().currentTestName.includes('module'))
+      (IS_JEST_TESTING && !expect.getState().currentTestName.includes('module'))
     ) {
       process.exit(process.exitCode);
     } else {
       return {
         result: process.exitCode,
-        newVulns: newVulns,
-        newLicenseIssues: newLicenseIssues,
-        passIfNoBaseline: passIfNoBaseline,
-        noBaseline: noBaseline,
+        newVulns,
+        newLicenseIssues,
+        passIfNoBaseline,
+        noBaseline,
       };
     }
   }
@@ -261,7 +265,3 @@ if (!module.parent) {
 }
 
 export { getDelta };
-
-const isJestTesting = () => {
-  return process.env.JEST_WORKER_ID !== undefined;
-};
