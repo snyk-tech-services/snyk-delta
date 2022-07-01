@@ -61,8 +61,8 @@ const getDelta = async (
       failOnFlag &&
       !['all', 'upgradable', 'patchable'].includes(failOnFlag.toLowerCase())
     ) {
-      debug(
-        'Fail On flag can only have the following values: [all,upgradable,patchable]',
+      console.error(
+        '--fail-on must be one of the following values: all, upgradable, patchable',
       );
       process.exit(2);
     }
@@ -82,8 +82,8 @@ const getDelta = async (
 
       // TODO: Handle --all-projects setups, bail for now
       if (inputData.length > 2) {
-        console.log(
-          "Sorry, I can't handle --all-projects commands right now, but soon !",
+        console.error(
+          '--all-projects is not supported. See the Github README.md for advice.',
         );
         process.exitCode = 2;
       }
@@ -106,7 +106,9 @@ const getDelta = async (
       const packageManager: string = snykTestJsonResults.packageManager;
 
       if (argv.baselineProject && !isUUID.anyNonNil(baselineProject)) {
-        throw new BadInputError('Project ID must be valid UUID');
+        throw new BadInputError(
+          '--baselineProject project ID must be valid UUID',
+        );
       }
       if (!isUUID.anyNonNil(baselineProject)) {
         baselineProject = await snyk.getProjectUUID(
@@ -117,11 +119,10 @@ const getDelta = async (
         );
         if (baselineProject == '') {
           console.warn(
-            'Snyk API - Could not find a monitored project matching. \
-                                              Make sure to specify the right org when snyk test using --org',
+            `Could not find a matching monitored Snyk project. Ensure --org is set correctly for 'snyk test'. Proceeding without a baseline.`,
           );
           console.warn(
-            'snyk-delta will return exit code 1 if any vulns are found in the current project',
+            `'snyk-delta' will return exit code 1 if any vulnerabilities are found in the current project`,
           );
         }
       }
@@ -134,7 +135,7 @@ const getDelta = async (
         !argv.baselineProject
       ) {
         throw new BadInputError(
-          'You must provide org AND project IDs for baseline project and current project',
+          `In 'standalone' mode --currentProject, --currentOrg, --baselineOrg and --baselineProject are required.`,
         );
       }
 
