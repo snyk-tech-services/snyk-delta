@@ -29,7 +29,7 @@ const getDelta = async (
   snykTestOutput: string | undefined = undefined,
   debugMode = false,
   setPassIfNoBaselineFlag = false,
-  failOnFlagFromModule: string = '',
+  failOnOverride?: string,
 ): Promise<SnykDeltaOutput | number> => {
   const argv: {
     currentOrg?: string;
@@ -58,19 +58,21 @@ const getDelta = async (
     let baselineProject: string = argv.baselineProject ?? '';
     const currentOrg: string = argv.currentOrg ?? '';
     const currentProject: string = argv.currentProject ?? '';
-    const failOnFlag: string =
-      argv['fail-on'] ?? failOnFlagFromModule.toLowerCase();
+    const failOnFixableSetting: string | undefined =
+      argv['fail-on'] ?? failOnOverride?.toLowerCase();
 
     if (
-      failOnFlag &&
-      !['all', 'upgradable', 'patchable'].includes(failOnFlag.toLowerCase())
+      failOnFixableSetting &&
+      !['all', 'upgradable', 'patchable'].includes(
+        failOnFixableSetting.toLowerCase(),
+      )
     ) {
       console.error(
         '--fail-on must be one of the following values: all, upgradable, patchable',
       );
       process.exit(2);
     }
-    debug('--fail-on: ', failOnFlag);
+    debug('--fail-on: ', failOnFixableSetting);
     if (mode == 'inline') {
       const rawSnykTestData = snykTestOutput ?? (await utils.getPipedDataIn());
       // Verify it's JSON data structure
@@ -107,11 +109,10 @@ const getDelta = async (
         : `${projectName}`;
 
       baselineOrg = baselineOrg ? baselineOrg : org;
-      const baselineProjectId = projectId;
       if (baselineProject) {
         baselineProject = baselineProject;
-      } else if (baselineProjectId) {
-        baselineProject = baselineProjectId;
+      } else if (projectId) {
+        baselineProject = projectId;
       } else {
         baselineProject = projectNameFromJson;
       }
@@ -241,7 +242,7 @@ const getDelta = async (
         process.exitCode = computeFailCode(
           newVulns,
           newLicenseIssues,
-          failOnFlag,
+          failOnFixableSetting,
         );
       }
     } else {
