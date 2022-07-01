@@ -1,3 +1,7 @@
+import * as path from 'path';
+import * as fs from 'fs';
+import * as nock from 'nock';
+
 import {
   getNewIssues,
   getIssuesDetailsPerPackage,
@@ -6,18 +10,12 @@ import {
   displayNewVulns,
   displayNewLicenseIssues,
 } from '../../../src/lib/snyk/displayOutput';
-import * as path from 'path';
-import * as fs from 'fs';
 import * as utils from '../../../src/lib/utils/utils';
 import {
   SnykCliTestOutput,
   IssuesPostResponseType,
 } from '../../../src/lib/types';
-import {
-  convertIntoIssueWithPath,
-  isVulnerablePathNew,
-} from '../../../src/lib/utils/issuesUtils';
-import * as nock from 'nock';
+import { convertIntoIssueWithPath } from '../../../src/lib/utils/issuesUtils';
 
 const fixturesFolderPath = path.resolve(__dirname, '../..') + '/fixtures/';
 
@@ -46,7 +44,6 @@ describe('Test issues functions', () => {
     });
 
     it('Test getNewVulns - inline mode - no new vuln - test arguments', async () => {
-      const output = utils.init();
       const snykProject = JSON.parse(
         fs
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
@@ -105,7 +102,7 @@ describe('Test issues functions', () => {
           )
           .toString(),
       );
-      const newVulns: Array<any> = getNewIssues(
+      const newVulns = getNewIssues(
         snykProject.issues.vulnerabilities,
         snykTestJsonResults.vulnerabilities.filter((x) => x.type != 'license'),
         'low',
@@ -126,7 +123,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const newVulns: Array<any> = getNewIssues(
+      const newVulns = getNewIssues(
         snykBaselineProject.issues.vulnerabilities,
         snykCurrentProject.issues.vulnerabilities,
         'low',
@@ -150,7 +147,7 @@ describe('Test issues functions', () => {
           )
           .toString(),
       );
-      const newVulns: Array<any> = getNewIssues(
+      const newVulns = getNewIssues(
         snykBaselineProject.issues.vulnerabilities,
         snykCurrentProject.issues.vulnerabilities,
         'low',
@@ -174,7 +171,7 @@ describe('Test issues functions', () => {
           )
           .toString(),
       );
-      const newVulns: Array<any> = getNewIssues(
+      const newVulns = getNewIssues(
         snykBaselineProject.issues.vulnerabilities,
         snykCurrentProject.issues.vulnerabilities,
         'low',
@@ -197,7 +194,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'snykTestsOutputs/test-goof.json')
           .toString(),
       );
-      const newLicenseIssues: Array<any> = getNewIssues(
+      const newLicenseIssues = getNewIssues(
         snykProject.issues.licenses,
         snykTestJsonResults.vulnerabilities.filter((x) => x.type == 'license'),
         'low',
@@ -245,7 +242,7 @@ describe('Test issues functions', () => {
           )
           .toString(),
       );
-      const newLicenseIssues: Array<any> = getNewIssues(
+      const newLicenseIssues = getNewIssues(
         snykProject.issues.licenses,
         snykTestJsonResults.vulnerabilities.filter((x) => x.type == 'license'),
         'low',
@@ -266,7 +263,7 @@ describe('Test issues functions', () => {
           .readFileSync(fixturesFolderPath + 'apiResponses/test-goof.json')
           .toString(),
       );
-      const newLicenseIssues: Array<any> = getNewIssues(
+      const newLicenseIssues = getNewIssues(
         snykBaselineProject.issues.licenses,
         snykCurrentProject.issues.licenses,
         'low',
@@ -291,7 +288,7 @@ describe('Test issues functions', () => {
           .toString(),
       );
 
-      const newLicenseIssues: Array<any> = getNewIssues(
+      const newLicenseIssues = getNewIssues(
         snykBaselineProject.issues.licenses,
         snykCurrentProject.issues.licenses,
         'low',
@@ -315,7 +312,7 @@ describe('Test issues functions', () => {
           )
           .toString(),
       );
-      const newLicenseIssues: Array<any> = getNewIssues(
+      const newLicenseIssues = getNewIssues(
         snykBaselineProject.issues.licenses,
         snykCurrentProject.issues.licenses,
         'low',
@@ -338,8 +335,7 @@ describe('Test issues functions', () => {
     });
 
     it('Test displayNewVulns - inline mode - no new vuln', async () => {
-      const newVulns: Array<any> = [];
-      displayNewVulns(newVulns, 'inline');
+      displayNewVulns([], 'inline');
       expect(consoleOutput).toEqual([]);
     });
 
@@ -454,9 +450,7 @@ describe('Test issues functions', () => {
     });
 
     it('Test displayNewVulns - standalone mode - no new vuln', async () => {
-      // eslint-disable-next-line
-      const newVulns: Array<any> = [];
-      displayNewVulns(newVulns, 'standalone');
+      displayNewVulns([], 'standalone');
       expect(consoleOutput).toEqual([]);
     });
 
@@ -562,9 +556,7 @@ describe('Test issues functions', () => {
       consoleOutput = [];
     });
     it('Test getNewLicenseIssues - inline mode - no new issue', async () => {
-      // eslint-disable-next-line
-      const newLicenseIssues: Array<any> = [];
-      displayNewLicenseIssues(newLicenseIssues, 'inline');
+      displayNewLicenseIssues([], 'inline');
       expect(consoleOutput).toEqual([]);
     });
 
@@ -584,7 +576,7 @@ describe('Test issues functions', () => {
           .toString(),
       );
 
-      const newLicenseIssues: Array<any> = getNewIssues(
+      const newLicenseIssues = getNewIssues(
         snykProject.issues.licenses,
         snykTestJsonResults.vulnerabilities.filter((x) => x.type == 'license'),
         'low',
@@ -604,8 +596,7 @@ describe('Test issues functions', () => {
     });
 
     it('Test displayNewLicenseIssues - standalone mode - no new issue', async () => {
-      const newLicenseIssues: Array<any> = [];
-      displayNewLicenseIssues(newLicenseIssues, 'standalone');
+      displayNewLicenseIssues([], 'standalone');
       expect(consoleOutput).toEqual([]);
     });
 
@@ -709,7 +700,7 @@ describe('Test issues functions', () => {
           )
           .toString(),
       );
-      const newVulns: Array<any> = getNewIssues(
+      const newVulns = getNewIssues(
         snykProject.issues.vulnerabilities,
         snykTestJsonResults.vulnerabilities.filter((x) => x.type != 'license'),
         'low',

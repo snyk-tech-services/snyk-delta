@@ -88,7 +88,7 @@ describe('Test End 2 End - Inline mode with project coordinates', () => {
       stdinMock.send(null);
     }, 100);
 
-    const result = await getDelta();
+    await getDelta();
     expect(consoleOutput).toContain('No new issues found !');
     // => When testing, loaded as module therefore returning code === process.exitCode
     expect(mockExit).toHaveBeenCalledWith(0);
@@ -107,7 +107,7 @@ describe('Test End 2 End - Inline mode with project coordinates', () => {
       stdinMock.send(null);
     }, 100);
 
-    const result = await getDelta();
+    await getDelta();
 
     const expectedOutput = [
       'New issue introduced !',
