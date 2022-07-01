@@ -64,6 +64,12 @@ Compares 2 Snyk project snapshots to provide details on:
   Do not fail with exit code `1` if the current project is not monitored in Snyk and could not be compared. When `snyk-delta` compares test results, it tries to find the same project monitored on the Snyk platform. If no monitored project is found, is will return all the issues found by the CLI scan, essentially acting as pass through if this is enabled.
 
    *Example*: `--setPassIfNoBaseline=true`
+
+- `--type` *optional*
+
+  Specify Snyk issue type to compare. Defaults `all`, available options: `vuln`, `license`, `all`.
+
+   *Example*: `--type=vuln`
 ### Mode: Inline
 - `snyk test --json --print-deps | snyk-delta`
 - Point to a specific Snyk project  snapshot by specifying org+project coordinates
