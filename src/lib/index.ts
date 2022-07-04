@@ -31,6 +31,9 @@ const getDelta = async (
   setPassIfNoBaselineFlag = false,
   failOnOverride?: string,
 ): Promise<SnykDeltaOutput | number> => {
+  if (process.env.NODE_ENV == 'prod') {
+    console.log(banner);
+  }
   const argv: {
     currentOrg?: string;
     currentProject?: string;
@@ -41,21 +44,20 @@ const getDelta = async (
     type?: string;
   } = utils.init(debugMode);
   const debug = utils.getDebugModule();
+
   const mode = argv.currentProject ?? argv.currentOrg ? 'standalone' : 'inline';
-  let newVulns, newLicenseIssues;
+  debug(mode, 'mode');
   const passIfNoBaseline = argv.setPassIfNoBaseline ?? setPassIfNoBaselineFlag;
-  let noBaseline = false;
+  let baselineProjectPublicID: string | undefined = argv.baselineProject;
+  let snykTestJsonDependencies, snykTestJsonResults, newVulns, newLicenseIssues;
 
   try {
-    if (process.env.NODE_ENV == 'prod') {
-      console.log(banner);
+    if (argv.baselineProject && !isUUID.anyNonNil(argv.baselineProject)) {
+      throw new BadInputError(
+        '--baselineProject project ID must be valid UUID',
+      );
     }
-
-    debug(mode, 'mode');
-
-    let snykTestJsonDependencies, snykTestJsonResults;
     let baselineOrg: string = argv.baselineOrg ?? '';
-    let baselineProject: string = argv.baselineProject ?? '';
     const currentOrg: string = argv.currentOrg ?? '';
     const currentProject: string = argv.currentProject ?? '';
     const failOnFixableSetting: string | undefined =
@@ -109,34 +111,24 @@ const getDelta = async (
         : `${projectName}`;
 
       baselineOrg = baselineOrg ? baselineOrg : org;
-      if (baselineProject) {
-        baselineProject = baselineProject;
-      } else if (projectId) {
-        baselineProject = projectId;
-      } else {
-        baselineProject = projectNameFromJson;
+      if (!baselineProjectPublicID) {
+        baselineProjectPublicID =
+          projectId ??
+          (await snyk.getProjectUUID(
+            baselineOrg,
+            projectNameFromJson,
+            'cli',
+            packageManager,
+          ));
       }
 
-      if (argv.baselineProject && !isUUID.anyNonNil(baselineProject)) {
-        throw new BadInputError(
-          '--baselineProject project ID must be valid UUID',
+      if (!baselineProjectPublicID) {
+        console.warn(
+          `Could not find a matching monitored Snyk project. Ensure --org is set correctly for 'snyk test'. Proceeding without a baseline.`,
         );
-      }
-      if (!isUUID.anyNonNil(baselineProject)) {
-        baselineProject = await snyk.getProjectUUID(
-          baselineOrg,
-          baselineProject,
-          'cli',
-          packageManager,
+        console.warn(
+          `'snyk-delta' will return exit code 1 if any vulnerabilities are found in the current project`,
         );
-        if (baselineProject == '') {
-          console.warn(
-            `Could not find a matching monitored Snyk project. Ensure --org is set correctly for 'snyk test'. Proceeding without a baseline.`,
-          );
-          console.warn(
-            `'snyk-delta' will return exit code 1 if any vulnerabilities are found in the current project`,
-          );
-        }
       }
     } else {
       // Pull data from currentOrg/currentProject for issues and dep graph and drop it into input data.
@@ -168,23 +160,28 @@ const getDelta = async (
     }
 
     //TODO: If baseline project is '' and strictMode is false, display current vulns
-    debug(`Retrieve Snyk Project %s in org %s`, baselineProject, baselineOrg);
+    debug(
+      `Retrieving Snyk Project %s in org %s`,
+      baselineProjectPublicID,
+      baselineOrg,
+    );
     const issueTypeFilter: string = argv.type ? argv.type : 'all';
     let snykProject: IssuesPostResponseType;
     const typedSnykTestJsonResults = snykTestJsonResults as SnykCliTestOutput;
 
     // if no baseline, return returned results straight from CLI
-    if (baselineProject == '') {
+    if (!baselineProjectPublicID) {
       newVulns = typedSnykTestJsonResults.vulnerabilities.filter(
         (x) => x.type != 'license',
       );
       newLicenseIssues = typedSnykTestJsonResults.vulnerabilities.filter(
         (x) => x.type == 'license',
       );
-
-      noBaseline = true;
     } else {
-      snykProject = await snyk.getProjectIssues(baselineOrg, baselineProject);
+      snykProject = await snyk.getProjectIssues(
+        baselineOrg,
+        baselineProjectPublicID,
+      );
 
       const baselineVulnerabilitiesIssues = snykProject.issues.vulnerabilities;
 
@@ -215,7 +212,7 @@ const getDelta = async (
       if (snykTestJsonDependencies) {
         const monitoredProjectDepGraph = await snyk.getProjectDepGraph(
           baselineOrg,
-          baselineProject,
+          baselineProjectPublicID,
         );
         // TODO: Refactor function below
         await dependencies.displayDependenciesChangeDetails(
@@ -236,7 +233,7 @@ const getDelta = async (
     }
 
     if (newVulns.length + newLicenseIssues.length > 0) {
-      if (noBaseline && passIfNoBaseline) {
+      if (!baselineProjectPublicID && passIfNoBaseline) {
         process.exitCode = 0;
       } else {
         process.exitCode = computeFailCode(
@@ -263,7 +260,7 @@ const getDelta = async (
         newVulns,
         newLicenseIssues,
         passIfNoBaseline,
-        noBaseline,
+        noBaseline: !baselineProjectPublicID,
       };
     }
   }
