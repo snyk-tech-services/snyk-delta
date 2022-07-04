@@ -16,14 +16,14 @@ function getConfig(): { endpoint: string; token: string } {
 function computeFailCode(
   vulns: IssueWithPaths[],
   licenseIssues: IssueWithPaths[],
-  failOnFlag: string,
+  failOnFixableSetting?: string,
 ): number {
   const debug = getDebugModule();
 
   let exitCodeToReturn = 1;
 
   const issues = [...vulns, ...licenseIssues];
-  switch (failOnFlag) {
+  switch (failOnFixableSetting) {
     case 'upgradable':
       exitCodeToReturn =
         issues.filter((issue) => issue.isUpgradable).length > 0 ? 1 : 0;
@@ -42,7 +42,7 @@ function computeFailCode(
     default:
       exitCodeToReturn = 1;
   }
-  debug(`FailOn ${failOnFlag} returns ${exitCodeToReturn} code`);
+  debug(`--fail-on ${failOnFixableSetting} returns ${exitCodeToReturn} code`);
   return exitCodeToReturn;
 }
 

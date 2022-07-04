@@ -26,10 +26,10 @@ Snyk Tech Prevent Tool
 `;
 
 const getDelta = async (
-  snykTestOutput = '',
+  snykTestOutput: string | undefined = undefined,
   debugMode = false,
   setPassIfNoBaselineFlag = false,
-  failOnFlagFromModule: string = '',
+  failOnOverride?: string,
 ): Promise<SnykDeltaOutput | number> => {
   const argv: {
     currentOrg?: string;
@@ -58,56 +58,64 @@ const getDelta = async (
     let baselineProject: string = argv.baselineProject ?? '';
     const currentOrg: string = argv.currentOrg ?? '';
     const currentProject: string = argv.currentProject ?? '';
-    const failOnFlag: string =
-      argv['fail-on'] ?? failOnFlagFromModule.toLowerCase();
+    const failOnFixableSetting: string | undefined =
+      argv['fail-on'] ?? failOnOverride?.toLowerCase();
 
     if (
-      failOnFlag &&
-      !['all', 'upgradable', 'patchable'].includes(failOnFlag.toLowerCase())
+      failOnFixableSetting &&
+      !['all', 'upgradable', 'patchable'].includes(
+        failOnFixableSetting.toLowerCase(),
+      )
     ) {
       console.error(
         '--fail-on must be one of the following values: all, upgradable, patchable',
       );
       process.exit(2);
     }
-    debug('--fail-on: ', failOnFlag);
+    debug('--fail-on: ', failOnFixableSetting);
     if (mode == 'inline') {
-      const pipedData: string =
-        snykTestOutput == ''
-          ? await utils.getPipedDataIn()
-          : '' + snykTestOutput;
+      const rawSnykTestData = snykTestOutput ?? (await utils.getPipedDataIn());
       // Verify it's JSON data structure
       debug('Verify input data for JSON structure');
-      const inputData: Array<any> = JSON.parse(
+      const snykTestJsonInput: Array<any> = JSON.parse(
         '[' +
-          pipedData.replace(/}\n{/g, '},\n{').replace('}\n[', '},\n[') +
+          rawSnykTestData.replace(/}\n{/g, '},\n{').replace('}\n[', '},\n[') +
           ']',
       );
 
       // TODO: Handle --all-projects setups, bail for now
-      if (inputData.length > 2) {
+      if (snykTestJsonInput.length > 2) {
         console.error(
           '--all-projects is not supported. See the Github README.md for advice.',
         );
         process.exitCode = 2;
       }
 
-      snykTestJsonDependencies = inputData.length > 1 ? inputData[0] : null;
-      snykTestJsonResults = inputData.length > 1 ? inputData[1] : inputData[0];
-      const projectNameFromJson = snykTestJsonResults.targetFile
-        ? `${snykTestJsonResults.projectName}:${snykTestJsonResults.targetFile}`
-        : `${snykTestJsonResults.projectName}`;
+      snykTestJsonDependencies =
+        snykTestJsonInput.length > 1 ? snykTestJsonInput[0] : null;
+      snykTestJsonResults =
+        snykTestJsonInput.length > 1
+          ? snykTestJsonInput[1]
+          : snykTestJsonInput[0];
+      const {
+        packageManager,
+        projectId,
+        targetFile,
+        projectName,
+        org,
+      } = snykTestJsonResults;
+      const projectNameFromJson = targetFile
+        ? `${projectName}:${targetFile}`
+        : `${projectName}`;
 
-      baselineOrg = baselineOrg ? baselineOrg : snykTestJsonResults.org;
-      const baselineProjectId = snykTestJsonResults.projectId;
+      baselineOrg = baselineOrg ? baselineOrg : org;
       if (baselineProject) {
         baselineProject = baselineProject;
-      } else if (baselineProjectId) {
-        baselineProject = baselineProjectId;
+      } else if (projectId) {
+        baselineProject = projectId;
       } else {
         baselineProject = projectNameFromJson;
       }
-      const packageManager: string = snykTestJsonResults.packageManager;
 
       if (argv.baselineProject && !isUUID.anyNonNil(baselineProject)) {
         throw new BadInputError(
@@ -234,7 +242,7 @@ const getDelta = async (
         process.exitCode = computeFailCode(
           newVulns,
           newLicenseIssues,
-          failOnFlag,
+          failOnFixableSetting,
         );
       }
     } else {
