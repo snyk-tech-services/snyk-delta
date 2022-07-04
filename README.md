@@ -33,43 +33,43 @@ Compares 2 Snyk project snapshots to provide details on:
 
   Organization to use as baseline. Snyk organization ID can be located in the [organization settings](https://docs.snyk.io/products/snyk-code/cli-for-snyk-code/before-you-start-set-the-organization-for-the-cli-tests/finding-the-snyk-id-and-internal-name-of-an-organization)
 
-  *Example*: `--orgID=0e9373a6-f858-11ec-b939-0242ac120002`
+  *Example*: `--orgID 0e9373a6-f858-11ec-b939-0242ac120002`
 
 - `--baselineProject` *optional*
 
   Project to use as baseline. Public Snyk project ID can be located in [project settings](https://docs.snyk.io/introducing-snyk/introduction-to-snyk-projects/view-project-settings)
 
-  *Example*: `--baselineProject=0e9373a6-f858-11ec-b939-0242ac120002`
+  *Example*: `--baselineProject 0e9373a6-f858-11ec-b939-0242ac120002`
 
 - `--currentProject` *optional*
 
   Project to compare. Public Snyk project ID can be located in [project settings](https://docs.snyk.io/introducing-snyk/introduction-to-snyk-projects/view-project-settings)
 
 
-  *Example*: `--currentProject=0e9373a6-f858-11ec-b939-0242ac120002`
+  *Example*: `--currentProject 0e9373a6-f858-11ec-b939-0242ac120002`
 
 - `currentOrg` *optional*
 
   Organization to compare. Snyk organization ID can be located in the [organization settings](https://docs.snyk.io/products/snyk-code/cli-for-snyk-code/before-you-start-set-the-organization-for-the-cli-tests/finding-the-snyk-id-and-internal-name-of-an-organization)
 
-  *Example*: `--orgID=0e9373a6-f858-11ec-b939-0242ac120002`
+  *Example*: `--orgID 0e9373a6-f858-11ec-b939-0242ac120002`
 - `--fail-on` *optional*
 
   [As in Snyk CLI](https://docs.snyk.io/snyk-cli/test-for-vulnerabilities/advanced-failing-of-builds-in-snyk-cli) with the `--fail-on` flag return non 0 error code when new issues are upgradable, patchable, or both (all)..
 
-   *Example*: `--fail-on=all`
+   *Example*: `--fail-on all`
 
 - `--setPassIfNoBaseline` *optional*
 
   Do not fail with exit code `1` if the current project is not monitored in Snyk and could not be compared. When `snyk-delta` compares test results, it tries to find the same project monitored on the Snyk platform. If no monitored project is found, is will return all the issues found by the CLI scan, essentially acting as pass through if this is enabled.
 
-   *Example*: `--setPassIfNoBaseline=true`
+   *Example*: `--setPassIfNoBaseline true`
 
 - `--type` *optional*
 
   Specify Snyk issue type to compare. Defaults `all`, available options: `vuln`, `license`, `all`.
 
-   *Example*: `--type=vuln`
+   *Example*: `--type vuln`
 ### Mode: Inline
 - `snyk test --json --print-deps | snyk-delta`
 - Point to a specific Snyk project  snapshot by specifying org+project coordinates
