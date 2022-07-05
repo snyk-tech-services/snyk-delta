@@ -77,7 +77,7 @@ describe('Test End 2 End - Inline mode with project coordinates', () => {
       stdinMock.send(null);
     }, 100);
 
-    const result = await getDelta();
+    await getDelta();
 
     const expectedOutput = [
       'Direct deps:',

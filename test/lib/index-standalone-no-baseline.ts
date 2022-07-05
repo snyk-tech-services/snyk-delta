@@ -70,7 +70,7 @@ describe('Test End 2 End - Standalone mode without baseline', () => {
         }
       });
 
-    const result = await getDelta();
+    await getDelta();
 
     const expectedOutput = [
       '_____________________________',
@@ -131,7 +131,7 @@ describe('Test End 2 End - Standalone mode without baseline', () => {
         }
       });
 
-    const result = await getDelta();
+    await getDelta();
 
     const expectedOutput = [
       '_____________________________',
@@ -198,7 +198,7 @@ describe('Test End 2 End - Standalone mode without baseline', () => {
         }
       });
 
-    const result = await getDelta();
+    await getDelta();
     const expectedOutput = [
       '_____________________________',
       'Direct deps:',
@@ -264,7 +264,7 @@ describe('Test End 2 End - Standalone mode without baseline', () => {
         }
       });
 
-    const result = await getDelta();
+    await getDelta();
     const expectedOutput = [
       '_____________________________',
       'Direct deps:',

@@ -1,74 +1,107 @@
-import * as debugModule from 'debug'
+import * as debugModule from 'debug';
 const yargs = require('yargs');
-import * as fs from 'fs'
-import * as path from 'path'
+import * as fs from 'fs';
+import * as path from 'path';
 //const pkgJSON = require(require('app-root-path').resolve('package.json'))
 import * as chalk from 'chalk';
 import { BadInputError } from '../customErrors/inputError';
 
-const DEBUG_DEFAULT_NAMESPACES = [
-    'snyk'
-  ];
+const DEBUG_DEFAULT_NAMESPACES = ['snyk'];
 
-let debug: debugModule.Debugger
+let debug: debugModule.Debugger;
 
 const getDebugModule = () => {
-    return debug   
-}
+  return debug;
+};
 
 export interface ModuleOptions {
-  debug: boolean
+  debug: boolean;
 }
 
 const init = (debugMode = false) => {
-  
-    const pkgJSONPath = fs.existsSync(__dirname+'/../../../package.json')? __dirname+'/../../../package.json' : path.dirname(path.dirname(__dirname))+'/package.json'
-    const pkgJSON = JSON.parse(fs.readFileSync(pkgJSONPath).toString())
+  const pkgJSONPath = fs.existsSync(__dirname + '/../../../package.json')
+    ? __dirname + '/../../../package.json'
+    : path.dirname(path.dirname(__dirname)) + '/package.json';
+  const pkgJSON = JSON.parse(fs.readFileSync(pkgJSONPath).toString());
+  const argv = yargs
+    .usage(
+      `${chalk.bold('snyk-delta')} has 2 modes of operations: ${chalk.bold(
+        'Inline',
+      )} and ${chalk.bold('Standalone')}
 
-    const argv = yargs
-    .usage('============================')
-    .usage('2 modes of operations - Inline or Standalone')
-    .usage('_________')
-    .usage('Inline: Compares snyk test output to a baseline snapshot')
-    .usage('=> snyk test --json | snyk-delta')
-    .usage('OR')
-    .usage('Standalone: Compares 2 monitored project snapshots by coordinates')
-    .usage('(baseline-org/baseline-project vs org/project)')
-    .usage('=> snyk-delta --baseline-org 123 --baseline-project 456 --org 789 --project abc')
-    .usage('============================')
+Mode: ${chalk.bold('inline')}
+Description: Compares 'snyk test' output to a baseline Snyk project latest snapshot
+Example: ${chalk.bold('$ snyk test --json | snyk-delta')}
+
+Mode: ${chalk.bold('standalone')}
+Description: Compares 2 monitored project snapshots by coordinates (baseline-org/baseline-project vs org/project)
+Example: ${chalk.bold(
+        '$ snyk-delta --baselineOrg uuid-xxx-xxx-xxx --baselineProject uuid-xxx-xxx-xxx --currentOrg uuid-xxx-xxx-xxx --currentProject uuid-xxx-xxx-xxx',
+      )}`,
+    )
     .help('h')
     .alias('h', 'help')
-    .alias('d','debug')
+    .alias('d', 'debug')
     .options({
-      baselineOrg: { type: 'string', describe: 'Snyk baseline organization ID/name', demandOption: false },
-      setPassIfNoBaseline: { type: 'string', describe: "prevent snyk-prevent-commit-status to fail is the project is not monitored", choices: ['true','false'], demandOption: false},
-      baselineProject: { type: 'string', describe: 'Snyk baseline project ID/name', demandOption: false },
-      currentOrg: { type: 'string', describe: 'Snyk organization ID/name to compare against', demandOption: false },
-      currentProject: { type: 'string', describe: 'Snyk project ID/name to compare against', demandOption: false },
-      type: { describe: "Specify issue type - default all", choices: ["vuln","license","all"], demandOption: false },
-      "fail-on": { describe: "Mimicks the fail-on option from Snyk CLI", choices: ["all", "upgradable", "patchable"], demandOption: false},
+      baselineOrg: {
+        type: 'string',
+        describe: 'Snyk baseline organization public ID (UUID)',
+        demandOption: false,
+      },
+      setPassIfNoBaseline: {
+        type: 'string',
+        describe:
+          'Do not fail with exit code `1` if a project is not monitored in Snyk and could not be compared. For use with snyk-prevent-gh-commit-status',
+        choices: ['true', 'false'],
+        demandOption: false,
+      },
+      baselineProject: {
+        type: 'string',
+        describe: 'Snyk baseline project public ID (UUID)',
+        demandOption: false,
+      },
+      currentOrg: {
+        type: 'string',
+        describe: 'Snyk organization public ID (UUID) to compare against',
+        demandOption: false,
+      },
+      currentProject: {
+        type: 'string',
+        describe: 'Snyk project  public ID (UUID) to compare against',
+        demandOption: false,
+      },
+      type: {
+        describe: 'Specify issue type - default all',
+        choices: ['vuln', 'license', 'all'],
+        demandOption: false,
+      },
+      'fail-on': {
+        describe:
+          'Fail only if the detected issues are fixable (patchable / upgradable). Matches the behaviour of `--fail-on` in snyk CLI',
+        choices: ['all', 'upgradable', 'patchable'],
+        demandOption: false,
+      },
     })
     .describe('d', 'Show debug logs')
-    .version(pkgJSON.version)
-    .argv;
+    .version(pkgJSON.version).argv;
 
-    if (argv.debug || argv.d || debugMode) {
-      let enable = DEBUG_DEFAULT_NAMESPACES.join(',');
-      if (process.env.DEBUG) {
-        enable += ',' + process.env.DEBUG;
-      }
-      // Storing in the global state, because just "debugModule.enable" call won't affect different instances of `debug`
-      // module imported by plugins, libraries etc.
-      process.env.DEBUG = enable;
-      debugModule.enable(enable);
-    } else {
-      debugModule.disable()
+  if (argv.debug || argv.d || debugMode) {
+    let enable = DEBUG_DEFAULT_NAMESPACES.join(',');
+    if (process.env.DEBUG) {
+      enable += ',' + process.env.DEBUG;
     }
-    debug = debugModule('snyk')
-    return argv; //debugModule('snyk');
-}
+    // Storing in the global state, because just "debugModule.enable" call won't affect different instances of `debug`
+    // module imported by plugins, libraries etc.
+    process.env.DEBUG = enable;
+    debugModule.enable(enable);
+  } else {
+    debugModule.disable();
+  }
+  debug = debugModule('snyk');
+  return argv; //debugModule('snyk');
+};
 const displaySplash = () => {
-    const stopSign = `
+  const stopSign = `
                                 uuuuuuuuuuuuuuuuuuuu
                               u" uuuuuuuuuuuuuuuuuu "u
                             u" u$$$$$$$$$$$$$$$$$$$$u "u
@@ -91,44 +124,39 @@ const displaySplash = () => {
                             "u "$$$$$$$$$$$$$$$$$$$$" u"
                               "u """""""""""""""""" u"
                                 """"""""""""""""""""
-                    `
+                    `;
 
-    if(process.env.DEBUG) {
-        console.log(chalk.bgRedBright("\nDebug Mode\n"))
-    } else {
-        console.log(stopSign)
-    }
-}
+  if (process.env.DEBUG) {
+    console.log(chalk.bgRedBright('\nDebug Mode\n'));
+  } else {
+    console.log(stopSign);
+  }
+};
 
-  const getPipedDataIn = () => {
-    return new Promise<string>((resolve,reject) => {
-    let data:string = "";
+const getPipedDataIn = () => {
+  return new Promise<string>((resolve, reject) => {
+    let data = '';
 
     process.stdin.resume();
     process.stdin.setEncoding('utf8');
     try {
-      process.stdin.on('data', function(chunk) {
+      process.stdin.on('data', (chunk) => {
         data += chunk;
       });
-    
-      process.stdin.on('end', function() {
-        resolve(data)    
+
+      process.stdin.on('end', () => {
+        resolve(data);
       });
 
-      if(process.stdin.isTTY) {
-          throw new BadInputError('No input data detected. Check out the --help option')
+      if (process.stdin.isTTY) {
+        throw new BadInputError(
+          `In 'inline' mode expected to receive 'snyk test' input data.`,
+        );
       }
-      
     } catch (err) {
-      reject(err)
+      reject(err);
     }
-
   });
-}
-
-export {
-    displaySplash,
-    init,
-    getDebugModule,
-    getPipedDataIn
 };
+
+export { displaySplash, init, getDebugModule, getPipedDataIn };

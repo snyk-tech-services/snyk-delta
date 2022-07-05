@@ -87,7 +87,7 @@ describe('Test End 2 End - Inline mode - no baseline', () => {
       stdinMock.send(null);
     }, 100);
 
-    const result = await getDelta();
+    await getDelta();
 
     const expectedOutput = [
       'New issue introduced !',
