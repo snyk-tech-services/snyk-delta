@@ -135,22 +135,22 @@ const displaySplash = () => {
 
 const getPipedDataIn = () => {
   return new Promise<string>((resolve, reject) => {
-    let data: string = '';
+    let data = '';
 
     process.stdin.resume();
     process.stdin.setEncoding('utf8');
     try {
-      process.stdin.on('data', function(chunk) {
+      process.stdin.on('data', (chunk) => {
         data += chunk;
       });
 
-      process.stdin.on('end', function() {
+      process.stdin.on('end', () => {
         resolve(data);
       });
 
       if (process.stdin.isTTY) {
         throw new BadInputError(
-          'No input data detected. Check out the --help option',
+          `In 'inline' mode expected to receive 'snyk test' input data.`,
         );
       }
     } catch (err) {

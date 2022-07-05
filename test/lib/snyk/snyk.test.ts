@@ -21,13 +21,11 @@ beforeEach(() => {
           return fs.readFileSync(
             fixturesFolderPath + 'apiResponses/allProjects.json',
           );
-          break;
         case '/api/v1/org/123/project/123/aggregated-issues':
           return fs.readFileSync(
             fixturesFolderPath +
               'apiResponses/test-goof-aggregated-two-vuln-one-license.json',
           );
-          break;
         default:
       }
     })
@@ -110,7 +108,7 @@ describe('Test endpoint functions', () => {
     } catch (err) {
       expect(err).toBeInstanceOf(Error.NotFoundError);
       expect(err.message).toContain(
-        'Snyk API - Could not find a monitored project matching accurately',
+        `Searched through all projects in organization 689ce7f9-7943-4a71-b704-2ba575f01089 and could not match to an individual monitored CLI maven project with a name of 'atokeneduser/clojure'`,
       );
     }
   });

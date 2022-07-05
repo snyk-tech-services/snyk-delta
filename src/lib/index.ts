@@ -67,12 +67,10 @@ const getDelta = async (
         failOnFixableSetting.toLowerCase(),
       )
     ) {
-      console.error(
-        '--fail-on must be one of the following values: all, upgradable, patchable',
+      throw new BadInputError(
+        `--fail-on must be one of the following values: all, upgradable, patchable. Received value: ${failOnFixableSetting}`,
       );
-      process.exit(2);
     }
-    debug('--fail-on: ', failOnFixableSetting);
     if (mode == 'inline') {
       const rawSnykTestData = snykTestOutput ?? (await utils.getPipedDataIn());
       // Verify it's JSON data structure
