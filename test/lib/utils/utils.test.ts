@@ -4,6 +4,9 @@ import { stdin, MockSTDIN } from 'mock-stdin';
 const stdinMock: MockSTDIN = stdin();
 
 describe('Test utils functions', () => {
+  beforeAll(() => {
+    jest.resetAllMocks();
+  });
   it('Test getPipedDataIn', async () => {
     setTimeout(() => {
       stdinMock.send('Some text', 'ascii');

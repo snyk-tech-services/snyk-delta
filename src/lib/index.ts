@@ -111,7 +111,6 @@ const getDelta = async (
         baselineOrgPublicId = org;
       }
 
-      // if (!baselineOrgPublicId || !isUUID.anyNonNil(baselineOrgPublicId)) {
       if (!baselineOrgPublicId) {
         throw new BadInputError(
           `In 'inline' mode --baselineOrg or 'snyk test' is required.`,

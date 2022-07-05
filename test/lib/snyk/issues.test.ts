@@ -20,6 +20,9 @@ import { convertIntoIssueWithPath } from '../../../src/lib/utils/issuesUtils';
 const fixturesFolderPath = path.resolve(__dirname, '../..') + '/fixtures/';
 
 describe('Test issues functions', () => {
+  beforeAll(() => {
+    jest.resetAllMocks();
+  });
   describe('Test getNewVulns', () => {
     it('Test getNewVulns - inline mode - no new vuln', async () => {
       utils.init();
