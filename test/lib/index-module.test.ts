@@ -179,8 +179,18 @@ describe('Test End 2 End - Module', () => {
 
     expect(result).toEqual(expectedResult);
   });
+  it('Test module mode - invalid json input', async () => {
+    const result = await getDelta(JSON.stringify({}));
+    expect(result).toEqual({
+      newLicenseIssues: undefined,
+      newVulns: undefined,
+      noBaseline: true,
+      passIfNoBaseline: false,
+      result: 2,
+    });
+  });
 
-  it('Test module mode - 1 new issue fail - fail-on upgradable only', async () => {
+  it('Test module mode - 1 new issue fail --fail-on upgradable only', async () => {
     const result = await getDelta(
       fs
         .readFileSync(
