@@ -50,6 +50,7 @@ const getDelta = async (
   const passIfNoBaseline = argv.setPassIfNoBaseline ?? setPassIfNoBaselineFlag;
   let baselineProjectPublicID: string | undefined = argv.baselineProject;
   let snykTestJsonDependencies, snykTestJsonResults, newVulns, newLicenseIssues;
+  let baselineOrgPublicId: string | undefined = argv.baselineOrg;
 
   try {
     if (argv.baselineProject && !isUUID.anyNonNil(argv.baselineProject)) {
@@ -57,7 +58,6 @@ const getDelta = async (
         '--baselineProject project ID must be valid UUID',
       );
     }
-    let baselineOrg: string = argv.baselineOrg ?? '';
     const currentOrg: string = argv.currentOrg ?? '';
     const currentProject: string = argv.currentProject ?? '';
     const failOnFixableSetting: string | undefined =
@@ -83,7 +83,6 @@ const getDelta = async (
           ']',
       );
 
-      // TODO: Handle --all-projects setups, bail for now
       if (snykTestJsonInput.length > 2) {
         console.error(
           '--all-projects is not supported. See the Github README.md for advice.',
@@ -108,12 +107,21 @@ const getDelta = async (
         ? `${projectName}:${targetFile}`
         : `${projectName}`;
 
-      baselineOrg = baselineOrg ? baselineOrg : org;
+      if (!baselineOrgPublicId) {
+        baselineOrgPublicId = org;
+      }
+
+      if (!baselineOrgPublicId) {
+        throw new BadInputError(
+          `In 'inline' mode --baselineOrg or 'snyk test' is required.`,
+        );
+      }
+
       if (!baselineProjectPublicID) {
         baselineProjectPublicID =
           projectId ??
           (await snyk.getProjectUUID(
-            baselineOrg,
+            baselineOrgPublicId,
             projectNameFromJson,
             'cli',
             packageManager,
@@ -133,7 +141,7 @@ const getDelta = async (
       if (
         !argv.currentProject ||
         !argv.currentOrg ||
-        !argv.baselineOrg ||
+        !baselineOrgPublicId ||
         !argv.baselineProject
       ) {
         throw new BadInputError(
@@ -157,16 +165,20 @@ const getDelta = async (
       snykTestJsonResults = projectIssuesFromAPI.issues;
     }
 
-    //TODO: If baseline project is '' and strictMode is false, display current vulns
     debug(
       `Retrieving Snyk Project %s in org %s`,
       baselineProjectPublicID,
-      baselineOrg,
+      baselineOrgPublicId,
     );
     const issueTypeFilter: string = argv.type ? argv.type : 'all';
     let snykProject: IssuesPostResponseType;
     const typedSnykTestJsonResults = snykTestJsonResults as SnykCliTestOutput;
 
+    if (!typedSnykTestJsonResults.vulnerabilities) {
+      throw new BadInputError(
+        "Expected 'snyk test --json' output to contain .vulnerabilities[] property but none was found. Ensure 'snyk test --json' completed successfully.",
+      );
+    }
     // if no baseline, return returned results straight from CLI
     if (!baselineProjectPublicID) {
       newVulns = typedSnykTestJsonResults.vulnerabilities.filter(
@@ -177,7 +189,7 @@ const getDelta = async (
       );
     } else {
       snykProject = await snyk.getProjectIssues(
-        baselineOrg,
+        baselineOrgPublicId,
         baselineProjectPublicID,
       );
 
@@ -209,7 +221,7 @@ const getDelta = async (
 
       if (snykTestJsonDependencies) {
         const monitoredProjectDepGraph = await snyk.getProjectDepGraph(
-          baselineOrg,
+          baselineOrgPublicId,
           baselineProjectPublicID,
         );
         // TODO: Refactor function below

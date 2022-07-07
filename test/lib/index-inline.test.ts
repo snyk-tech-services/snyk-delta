@@ -10,193 +10,193 @@ import { getDelta } from '../../src/lib/index';
 
 const fixturesFolderPath = path.resolve(__dirname, '..') + '/fixtures/';
 
-const originalLog = console.log;
-
-let consoleOutput: Array<string> = [];
-const mockedLog = (output: string): void => {
-  consoleOutput.push(output);
-};
-beforeAll(() => {
-  console.log = mockedLog;
-});
-afterEach(() => {
-  stdinMock.reset();
-});
-
-beforeEach(() => {
-  consoleOutput = [];
-});
-afterAll(() => {
-  setTimeout(() => {
-    console.log = originalLog;
-  }, 500);
-});
-
-beforeEach(() => {
-  return nock('https://snyk.io')
-    .persist()
-    .post(/.*/)
-    .reply(200, (uri) => {
-      switch (uri) {
-        case '/api/v1/org/playground/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/aggregated-issues':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/test-goof-aggregated-one-vuln-one-license.json',
-          );
-        case '/api/v1/org/playground/project/09235fa4-c241-42c6-8c63-c053bd272786/aggregated-issues':
-          return fs.readFileSync(
-            fixturesFolderPath + 'apiResponses/test-gomod-aggregated.json',
-          );
-        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/aggregated-issues':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/java-goof-todolist-core-aggregated-issues.json',
-          );
-        case '/api/v1/org/playground/projects':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponsesForProjects/list-all-projects-org-playground.json',
-          );
-        case '/api/v1/org/customerorg/project/37a29fe9-c342-4d70-8efc-df96a8d730b6/aggregated-issues':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/projectId-aggregated-issues.json',
-          );
-
-        default:
-      }
-    })
-    .get(/.*/)
-    .reply(200, (uri) => {
-      switch (uri) {
-        case '/api/v1/org/playground/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/dep-graph':
-          return fs.readFileSync(
-            fixturesFolderPath + 'apiResponses/goof-depgraph-from-api.json',
-          );
-        case '/api/v1/org/playground/project/09235fa4-c241-42c6-8c63-c053bd272786/dep-graph':
-          return fs.readFileSync(
-            fixturesFolderPath + 'apiResponses/goof-depgraph-from-api.json',
-          );
-        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/dep-graph':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/java-goof-todolist-core-depgraph.json',
-          );
-        case '/api/v1/org/customerorg/project/37a29fe9-c342-4d70-8efc-df96a8d730b6/dep-graph':
-          return fs.readFileSync(
-            fixturesFolderPath + 'dependencies/projectId-depgraph.json',
-          );
-        case '/api/v1/org/playground/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/SNYK-JS-ACORN-559469-issue-paths.json',
-          );
-        case '/api/v1/org/playground/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/issue/snyk:lic:npm:goof:GPL-2.0/paths?perPage=100&page=1':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/snyk-lic-npm-goof-GPL-2-0-issue-paths.json',
-          );
-        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-ORGSPRINGFRAMEWORK-2436751/paths?perPage=100&page=1':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/vuln-path-SNYK-JAVA-ORGSPRINGFRAMEWORK-2436751.json',
-          );
-        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-ORGHIBERNATE-1041788/paths?perPage=100&page=1':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/vuln-path-SNYK-JAVA-ORGHIBERNATE-1041788.json',
-          );
-        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-ORGHIBERNATE-584563/paths?perPage=100&page=1':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/vuln-path-SNYK-JAVA-ORGHIBERNATE-584563.json',
-          );
-        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-ORGSPRINGFRAMEWORK-2689634/paths?perPage=100&page=1':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/vuln-path-SNYK-JAVA-ORGSPRINGFRAMEWORK-2689634.json',
-          );
-        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-C3P0-461017/paths?perPage=100&page=1':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/vuln-path-SNYK-JAVA-C3P0-461017.json',
-          );
-        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-DOM4J-174153/paths?perPage=100&page=1':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/vuln-path-SNYK-JAVA-DOM4J-174153.json',
-          );
-        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-C3P0-461018/paths?perPage=100&page=1':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/vuln-path-SNYK-JAVA-C3P0-461018.json',
-          );
-        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-ORGSPRINGFRAMEWORK-31325/paths?perPage=100&page=1':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/vuln-path-SNYK-JAVA-ORGSPRINGFRAMEWORK-31325.json',
-          );
-        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-ORGSPRINGFRAMEWORK-2823313/paths?perPage=100&page=1':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/vuln-path-SNYK-JAVA-ORGSPRINGFRAMEWORK-2823313.json',
-          );
-        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-ORGSPRINGFRAMEWORK-2434828/paths?perPage=100&page=1':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/vuln-path-SNYK-JAVA-ORGSPRINGFRAMEWORK-2434828.json',
-          );
-        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-ORGSPRINGFRAMEWORK-2330878/paths?perPage=100&page=1':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/vuln-path-SNYK-JAVA-ORGSPRINGFRAMEWORK-2330878.json',
-          );
-        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-ORGSPRINGFRAMEWORK-2329097/paths?perPage=100&page=1':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/vuln-path-SNYK-JAVA-ORGSPRINGFRAMEWORK-2329097.json',
-          );
-        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/snyk:lic:maven:org.hibernate.javax.persistence:hibernate-jpa-2.1-api:EPL-1.0/paths?perPage=100&page=1':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/vuln-path-snyk:lic:maven:org.hibernate.javax.persistence:hibernate-jpa-2.1-api:EPL-1.0.json',
-          );
-        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/snyk:lic:maven:org.hibernate:hibernate-entitymanager:LGPL-2.0/paths?perPage=100&page=1':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/vuln-path-snyk:lic:maven:org.hibernate:hibernate-entitymanager:LGPL-2.0.json',
-          );
-        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/snyk:lic:maven:org.hibernate:hibernate-core:LGPL-2.0/paths?perPage=100&page=1':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/vuln-path-snyk:lic:maven:org.hibernate:hibernate-core:LGPL-2.0.json',
-          );
-        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/snyk:lic:maven:org.hibernate.common:hibernate-commons-annotations:LGPL-2.1/paths?perPage=100&page=1':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/vuln-path-snyk:lic:maven:org.hibernate.common:hibernate-commons-annotations:LGPL-2.1.json',
-          );
-        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/snyk:lic:maven:org.aspectj:aspectjweaver:EPL-1.0/paths?perPage=100&page=1':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/vuln-path-snyk:lic:maven:org.aspectj:aspectjweaver:EPL-1.0.json',
-          );
-        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/snyk:lic:maven:c3p0:c3p0:LGPL-3.0/paths?perPage=100&page=1':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/vuln-path-snyk:lic:maven:c3p0:c3p0:LGPL-3.0.json',
-          );
-        case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-DOM4J-2812975/paths?perPage=100&page=1':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/vuln-path-SNYK-JAVA-DOM4J-2812975.json',
-          );
-        default:
-      }
-    });
-});
-
 describe('Test End 2 End - Inline mode', () => {
+  const originalLog = console.log;
+
+  let consoleOutput: Array<string> = [];
+  const mockedLog = (output: string): void => {
+    consoleOutput.push(output);
+  };
+  beforeAll(() => {
+    console.log = mockedLog;
+  });
+  afterEach(() => {
+    stdinMock.reset();
+  });
+
+  beforeEach(() => {
+    consoleOutput = [];
+  });
+  afterAll(() => {
+    jest.resetAllMocks();
+    setTimeout(() => {
+      console.log = originalLog;
+    }, 500);
+  });
+
+  beforeEach(() => {
+    return nock('https://snyk.io')
+      .persist()
+      .post(/.*/)
+      .reply(200, (uri) => {
+        switch (uri) {
+          case '/api/v1/org/playground/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/aggregated-issues':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/test-goof-aggregated-one-vuln-one-license.json',
+            );
+          case '/api/v1/org/playground/project/09235fa4-c241-42c6-8c63-c053bd272786/aggregated-issues':
+            return fs.readFileSync(
+              fixturesFolderPath + 'apiResponses/test-gomod-aggregated.json',
+            );
+          case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/aggregated-issues':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/java-goof-todolist-core-aggregated-issues.json',
+            );
+          case '/api/v1/org/playground/projects':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponsesForProjects/list-all-projects-org-playground.json',
+            );
+          case '/api/v1/org/customerorg/project/37a29fe9-c342-4d70-8efc-df96a8d730b6/aggregated-issues':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/projectId-aggregated-issues.json',
+            );
+
+          default:
+        }
+      })
+      .get(/.*/)
+      .reply(200, (uri) => {
+        switch (uri) {
+          case '/api/v1/org/playground/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/dep-graph':
+            return fs.readFileSync(
+              fixturesFolderPath + 'apiResponses/goof-depgraph-from-api.json',
+            );
+          case '/api/v1/org/playground/project/09235fa4-c241-42c6-8c63-c053bd272786/dep-graph':
+            return fs.readFileSync(
+              fixturesFolderPath + 'apiResponses/goof-depgraph-from-api.json',
+            );
+          case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/dep-graph':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/java-goof-todolist-core-depgraph.json',
+            );
+          case '/api/v1/org/customerorg/project/37a29fe9-c342-4d70-8efc-df96a8d730b6/dep-graph':
+            return fs.readFileSync(
+              fixturesFolderPath + 'dependencies/projectId-depgraph.json',
+            );
+          case '/api/v1/org/playground/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/SNYK-JS-ACORN-559469-issue-paths.json',
+            );
+          case '/api/v1/org/playground/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/issue/snyk:lic:npm:goof:GPL-2.0/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/snyk-lic-npm-goof-GPL-2-0-issue-paths.json',
+            );
+          case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-ORGSPRINGFRAMEWORK-2436751/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/vuln-path-SNYK-JAVA-ORGSPRINGFRAMEWORK-2436751.json',
+            );
+          case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-ORGHIBERNATE-1041788/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/vuln-path-SNYK-JAVA-ORGHIBERNATE-1041788.json',
+            );
+          case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-ORGHIBERNATE-584563/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/vuln-path-SNYK-JAVA-ORGHIBERNATE-584563.json',
+            );
+          case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-ORGSPRINGFRAMEWORK-2689634/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/vuln-path-SNYK-JAVA-ORGSPRINGFRAMEWORK-2689634.json',
+            );
+          case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-C3P0-461017/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/vuln-path-SNYK-JAVA-C3P0-461017.json',
+            );
+          case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-DOM4J-174153/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/vuln-path-SNYK-JAVA-DOM4J-174153.json',
+            );
+          case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-C3P0-461018/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/vuln-path-SNYK-JAVA-C3P0-461018.json',
+            );
+          case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-ORGSPRINGFRAMEWORK-31325/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/vuln-path-SNYK-JAVA-ORGSPRINGFRAMEWORK-31325.json',
+            );
+          case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-ORGSPRINGFRAMEWORK-2823313/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/vuln-path-SNYK-JAVA-ORGSPRINGFRAMEWORK-2823313.json',
+            );
+          case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-ORGSPRINGFRAMEWORK-2434828/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/vuln-path-SNYK-JAVA-ORGSPRINGFRAMEWORK-2434828.json',
+            );
+          case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-ORGSPRINGFRAMEWORK-2330878/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/vuln-path-SNYK-JAVA-ORGSPRINGFRAMEWORK-2330878.json',
+            );
+          case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-ORGSPRINGFRAMEWORK-2329097/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/vuln-path-SNYK-JAVA-ORGSPRINGFRAMEWORK-2329097.json',
+            );
+          case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/snyk:lic:maven:org.hibernate.javax.persistence:hibernate-jpa-2.1-api:EPL-1.0/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/vuln-path-snyk:lic:maven:org.hibernate.javax.persistence:hibernate-jpa-2.1-api:EPL-1.0.json',
+            );
+          case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/snyk:lic:maven:org.hibernate:hibernate-entitymanager:LGPL-2.0/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/vuln-path-snyk:lic:maven:org.hibernate:hibernate-entitymanager:LGPL-2.0.json',
+            );
+          case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/snyk:lic:maven:org.hibernate:hibernate-core:LGPL-2.0/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/vuln-path-snyk:lic:maven:org.hibernate:hibernate-core:LGPL-2.0.json',
+            );
+          case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/snyk:lic:maven:org.hibernate.common:hibernate-commons-annotations:LGPL-2.1/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/vuln-path-snyk:lic:maven:org.hibernate.common:hibernate-commons-annotations:LGPL-2.1.json',
+            );
+          case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/snyk:lic:maven:org.aspectj:aspectjweaver:EPL-1.0/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/vuln-path-snyk:lic:maven:org.aspectj:aspectjweaver:EPL-1.0.json',
+            );
+          case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/snyk:lic:maven:c3p0:c3p0:LGPL-3.0/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/vuln-path-snyk:lic:maven:c3p0:c3p0:LGPL-3.0.json',
+            );
+          case '/api/v1/org/playground/project/62b136c4-eaf7-46b1-ae76-ded54bc19a5a/issue/SNYK-JAVA-DOM4J-2812975/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/vuln-path-SNYK-JAVA-DOM4J-2812975.json',
+            );
+          default:
+        }
+      });
+  });
   it('Test Inline mode - no new issue', async () => {
     setTimeout(() => {
       stdinMock.send(
