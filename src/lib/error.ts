@@ -34,7 +34,7 @@ const handleError = (error: Error) => {
       debug(error);
       break;
     default:
-      console.log(`Unexpected error: ${error.message}\n${debugModeMessage}`);
+      console.error(`Unexpected error: ${error.message}\n${debugModeMessage}`);
       debug(error);
   }
 };

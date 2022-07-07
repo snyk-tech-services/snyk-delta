@@ -10,63 +10,63 @@ process.argv.push('--baselineProject=f51c925b-2abe-4c07-8a0d-21b834aa3074');
 const stdinMock: MockSTDIN = stdin();
 const mockExit = mockProcessExit();
 import { getDelta } from '../../src/lib/index';
-
 const fixturesFolderPath = path.resolve(__dirname, '..') + '/fixtures/';
 
-const originalLog = console.log;
-let consoleOutput: Array<string> = [];
-const mockedLog = (output: string): void => {
-  consoleOutput.push(output);
-};
-beforeAll(() => {
-  console.log = mockedLog;
-});
-afterEach(() => {
-  stdinMock.reset();
-});
-
-beforeEach(() => {
-  consoleOutput = [];
-});
-afterAll(() => {
-  setTimeout(() => {
-    console.log = originalLog;
-  }, 500);
-});
-beforeEach(() => {
-  return nock('https://snyk.io')
-    .persist()
-    .post(/.*/)
-    .reply(200, (uri) => {
-      switch (uri) {
-        case '/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/f51c925b-2abe-4c07-8a0d-21b834aa3074/issues':
-          return fs.readFileSync(
-            fixturesFolderPath + 'apiResponses/test-poetry.json',
-          );
-        case '/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/projects':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponsesForProjects/list-all-projects-platform.json',
-          );
-        default:
-      }
-    })
-    .get(/.*/)
-    .reply(200, (uri) => {
-      switch (uri) {
-        case '/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/f51c925b-2abe-4c07-8a0d-21b834aa3074/issues':
-          return fs.readFileSync(
-            fixturesFolderPath + 'apiResponses/test-poetry.json',
-          );
-        case '/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/f51c925b-2abe-4c07-8a0d-21b834aa3074/dep-graph':
-          return fs.readFileSync(
-            fixturesFolderPath + 'apiResponses/poetry-depgraph.json',
-          );
-        default:
-      }
-    });
-});
 describe('Test End 2 End - Inline mode with project coordinates', () => {
+  const originalLog = console.log;
+  let consoleOutput: Array<string> = [];
+  const mockedLog = (output: string): void => {
+    consoleOutput.push(output);
+  };
+  beforeAll(() => {
+    console.log = mockedLog;
+  });
+  afterEach(() => {
+    stdinMock.reset();
+  });
+
+  beforeEach(() => {
+    consoleOutput = [];
+  });
+  afterAll(() => {
+    jest.resetAllMocks();
+    setTimeout(() => {
+      console.log = originalLog;
+    }, 500);
+  });
+  beforeEach(() => {
+    return nock('https://snyk.io')
+      .persist()
+      .post(/.*/)
+      .reply(200, (uri) => {
+        switch (uri) {
+          case '/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/f51c925b-2abe-4c07-8a0d-21b834aa3074/issues':
+            return fs.readFileSync(
+              fixturesFolderPath + 'apiResponses/test-poetry.json',
+            );
+          case '/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/projects':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponsesForProjects/list-all-projects-platform.json',
+            );
+          default:
+        }
+      })
+      .get(/.*/)
+      .reply(200, (uri) => {
+        switch (uri) {
+          case '/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/f51c925b-2abe-4c07-8a0d-21b834aa3074/issues':
+            return fs.readFileSync(
+              fixturesFolderPath + 'apiResponses/test-poetry.json',
+            );
+          case '/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/f51c925b-2abe-4c07-8a0d-21b834aa3074/dep-graph':
+            return fs.readFileSync(
+              fixturesFolderPath + 'apiResponses/poetry-depgraph.json',
+            );
+          default:
+        }
+      });
+  });
   it('Test Inline mode with specified project coordinates - no new issue', async () => {
     setTimeout(() => {
       stdinMock.send(
