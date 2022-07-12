@@ -9,8 +9,15 @@ describe('`snyk-delta <...>`', () => {
       `node ${main} --currentOrg uuid --currentProject uuid`,
       (err, stdout, stderr) => {
         expect(err).not.toBeNull();
-        expect(stripAnsi(stderr)).toMatchSnapshot();
-        expect(stripAnsi(stdout)).toMatchSnapshot();
+        expect(stripAnsi(stderr)).toMatchInlineSnapshot(`
+          "BadInputError: In 'standalone' mode --currentProject, --currentOrg, --baselineOrg and --baselineProject are required.
+          Please review the available documentation via -h or the README
+          "
+        `);
+        expect(stripAnsi(stdout)).toMatchInlineSnapshot(`
+          "Hint: use debug mode -d for more information
+          "
+        `);
       },
     ).on('exit', (code) => {
       expect(code).toEqual(2);
