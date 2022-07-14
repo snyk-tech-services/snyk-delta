@@ -25,6 +25,15 @@ Compares 2 Snyk project snapshots to provide details on:
 - Project must be monitored in Snyk to provide a baseline to compare against
 - set the API token in the `SNYK_TOKEN` enviroment variable. Create a [service account](https://docs.snyk.io/features/user-and-group-management/managing-groups-and-organizations/service-accounts) in Snyk and use the provided token.
 
+## Supported Snyk products
+
+| Product | Supported |
+| ---- | --------- |
+| Open Source    | ✅        |
+| Container   | ✅        |
+| IaC   | ✅        |
+| Code   | ❌        |
+
 ## Installation
 `npm i -g snyk-delta` or grab a binary from [the release page](https://github.com/snyk-tech-services/snyk-delta/releases)
 
