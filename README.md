@@ -31,7 +31,7 @@ Compares 2 Snyk project snapshots to provide details on:
 | ---- | --------- |
 | Open Source    | ✅        |
 | Container   | ✅        |
-| IaC   | ✅        |
+| IaC   | ❌         |
 | Code   | ❌        |
 
 ## Installation
