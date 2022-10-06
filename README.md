@@ -4,9 +4,10 @@
 
 [![Known Vulnerabilities](https://snyk.io/test/github/snyk-tech-services/snyk-delta/badge.svg)](https://snyk.io/test/github/snyk/snyk-delta)
 [![CircleCI](https://circleci.com/gh/snyk-tech-services/snyk-delta.svg?style=svg&circle-token=bfb34e49aa301cfa4ef4272541360a475ff95ad4)](https://circleci.com/gh/snyk-tech-services/snyk-delta)
-[![Not Maintained](https://img.shields.io/badge/Maintenance%20Level-Not%20Maintained-yellow.svg)](https://gist.github.com/cheerfulstoic/d107229326a01ff0f333a1d3476e068d)
+[![Inactively Maintained](https://img.shields.io/badge/Maintenance%20Level-Inactively%20Maintained-yellowgreen.svg)](https://gist.github.com/cheerfulstoic/d107229326a01ff0f333a1d3476e068d)
 
-**This repository is not in active development and critical bug fixes only will be considered.**
+
+**This repository is in maintenance mode, no new features are being developed. Bug & security fixes will continue to be delivered. Open source contributions are welcome for small features & fixes (no breaking changes)**
 
 # Snyk snyk-delta
 Fail the [Snyk CLI](https://github.com/snyk/cli) scans during CI/CD only if there are new issues introduced (similar to Snyk PR checks).
