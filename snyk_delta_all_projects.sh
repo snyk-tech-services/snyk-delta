@@ -29,7 +29,7 @@ run_snyk_test () {
         snyk_exit_code=$?
         if [ $snyk_exit_code -eq 2 ]
         then
-            echo 'snyk test command was not successfull, retry with -d to see more information'
+            echo 'snyk test command was not successful, retry with -d to see more information'
             exit 2
         fi
     }
