@@ -14,7 +14,7 @@ formatted_json=''
 args=("$*")
 
 run_snyk_delta () {
-    # add in any other aguments you would like to use
+    # add in any other arguments you would like to use
     snyk-delta
 }
 
