@@ -16,12 +16,12 @@ function getConfig(): { endpoint: string; token: string } {
 function computeFailCode(
   vulns: IssueWithPaths[],
   licenseIssues: IssueWithPaths[],
-  failOnFixableSetting?: string,
+  failOnFixableSetting?: string
 ): number {
   const debug = getDebugModule();
 
   let exitCodeToReturn = 1;
-
+  
   const issues = [...vulns, ...licenseIssues];
   switch (failOnFixableSetting) {
     case 'upgradable':
