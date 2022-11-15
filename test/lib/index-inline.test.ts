@@ -403,4 +403,35 @@ describe('Test End 2 End - Inline mode', () => {
 
     expect(mockExit).toHaveBeenCalledWith(0);
   });
+
+  it('Test Inline mode - no new issue if license filter on', async () => {
+    process.env.TYPE = 'vuln';
+    setTimeout(() => {
+      stdinMock.send(
+        fs
+          .readFileSync(
+            fixturesFolderPath + 'snykTestsOutputs/test-goof-two-vuln.json',
+          )
+          .toString(),
+      );
+      stdinMock.send(null);
+    }, 100);
+
+    await getDelta();
+
+    const expectedOutput = [
+      'New issue introduced !',
+      'Security Vulnerability:',
+      '  1/1: Prototype Pollution [Medium Severity]',
+      '    Via: snyk@1.228.3 => configstore@3.1.2 => dot-prop@4.2.0',
+      '    Fixed in: dot-prop 5.1.1',
+      '    Fixable by upgrade:  snyk@1.290.1',
+    ];
+
+    expectedOutput.forEach((line: string) => {
+      expect(consoleOutput.join()).toContain(line);
+    });
+
+    expect(mockExit).toHaveBeenCalledWith(1);
+  });
 });

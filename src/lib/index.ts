@@ -245,7 +245,7 @@ const getDelta = async (
     }
     
     const issuesFilter = []
-    if(issueTypeFilter == 'vulns'){
+    if(issueTypeFilter == 'vuln'){
       issuesFilter.push(...newVulns)
     } else if(issueTypeFilter == 'license'){
       issuesFilter.push(...newLicenseIssues)
