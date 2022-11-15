@@ -5,7 +5,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 
 const stdinMock: MockSTDIN = stdin();
-const mockExit = mockProcessExit();
+let mockExit = mockProcessExit();
 import { getDelta } from '../../src/lib/index';
 
 const fixturesFolderPath = path.resolve(__dirname, '..') + '/fixtures/';
@@ -22,10 +22,12 @@ describe('Test End 2 End - Inline mode', () => {
   });
   afterEach(() => {
     stdinMock.reset();
+    mockExit.mockClear();
   });
 
   beforeEach(() => {
     consoleOutput = [];
+    mockExit = mockProcessExit();
   });
   afterAll(() => {
     jest.resetAllMocks();
@@ -354,7 +356,7 @@ describe('Test End 2 End - Inline mode', () => {
     expectedOutput.forEach((line: string) => {
       expect(consoleOutput.join()).toContain(line);
     });
-    expect(mockExit).toHaveBeenCalledWith(0);
+    expect(mockExit).toHaveBeenCalledWith(1);
   });
 
   it('Test Inline mode - use project ID', async () => {
@@ -368,6 +370,35 @@ describe('Test End 2 End - Inline mode', () => {
     }, 100);
 
     await getDelta();
+    expect(consoleOutput).toContain('No new issues found !');
+
+    expect(mockExit).toHaveBeenCalledWith(0);
+  });
+
+  it('Test Inline mode - no new issue if license filter on', async () => {
+    process.env.TYPE = 'license';
+    setTimeout(() => {
+      stdinMock.send(
+        fs
+          .readFileSync(
+            fixturesFolderPath + 'snykTestsOutputs/test-goof-two-vuln.json',
+          )
+          .toString(),
+      );
+      stdinMock.send(null);
+    }, 100);
+
+    await getDelta();
+
+    const expectedOutput = [
+      'New issue introduced !',
+      'Security Vulnerability:',
+      '  1/1: Prototype Pollution [Medium Severity]',
+      '    Via: snyk@1.228.3 => configstore@3.1.2 => dot-prop@4.2.0',
+      '    Fixed in: dot-prop 5.1.1',
+      '    Fixable by upgrade:  snyk@1.290.1',
+    ];
+
     expect(consoleOutput).toContain('No new issues found !');
 
     expect(mockExit).toHaveBeenCalledWith(0);

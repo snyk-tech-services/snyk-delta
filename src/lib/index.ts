@@ -44,7 +44,9 @@ const getDelta = async (
     type?: string;
   } = utils.init(debugMode);
   const debug = utils.getDebugModule();
-
+  if (process.env.NODE_ENV == 'test') {
+    argv.type = process.env.TYPE? process.env.TYPE : 'all'
+  }
   const mode = argv.currentProject ?? argv.currentOrg ? 'standalone' : 'inline';
   debug(mode, 'mode');
   const passIfNoBaseline = argv.setPassIfNoBaseline ?? setPassIfNoBaselineFlag;
@@ -241,15 +243,23 @@ const getDelta = async (
     ) {
       displayOutput(newVulns, newLicenseIssues, issueTypeFilter, mode);
     }
-
-    if (newVulns.length + newLicenseIssues.length > 0) {
+    
+    const issuesFilter = []
+    if(issueTypeFilter == 'vulns'){
+      issuesFilter.push(...newVulns)
+    } else if(issueTypeFilter == 'license'){
+      issuesFilter.push(...newLicenseIssues)
+    } else {
+      issuesFilter.push(...newVulns,...newLicenseIssues)
+    }
+    if (issuesFilter.length > 0) {
       if (!baselineProjectPublicID && passIfNoBaseline) {
         process.exitCode = 0;
       } else {
         process.exitCode = computeFailCode(
           newVulns,
           newLicenseIssues,
-          failOnFixableSetting,
+          failOnFixableSetting
         );
       }
     } else {
