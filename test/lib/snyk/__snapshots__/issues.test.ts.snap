@@ -7,7 +7,7 @@ Object {
   "issues": Object {
     "licenses": Array [
       Object {
-        "cvssScore": NaN,
+        "cvssScore": undefined,
         "exploitMaturity": "no-data",
         "from": Array [
           "goof@0.0.3",
@@ -50,7 +50,7 @@ Object {
         "credit": Array [
           "Peter van der Zee",
         ],
-        "cvssScore": 7,
+        "cvssScore": 7.5,
         "disclosureTime": "2020-03-02T19:21:25Z",
         "exploitMaturity": "no-known-exploit",
         "from": Array [
@@ -97,7 +97,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -143,7 +143,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -199,7 +199,7 @@ Object {
   "issues": Object {
     "licenses": Array [
       Object {
-        "cvssScore": NaN,
+        "cvssScore": undefined,
         "exploitMaturity": "no-data",
         "from": Array [
           "goof@0.0.3",
@@ -229,7 +229,7 @@ Object {
         "credit": Array [
           "Tim Perry",
         ],
-        "cvssScore": 8,
+        "cvssScore": 8.1,
         "disclosureTime": "2021-05-30T13:37:37Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -270,7 +270,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -316,7 +316,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -377,7 +377,7 @@ Object {
         "credit": Array [
           "Peter van der Zee",
         ],
-        "cvssScore": 7,
+        "cvssScore": 7.5,
         "disclosureTime": "2020-03-02T19:21:25Z",
         "exploitMaturity": "no-known-exploit",
         "from": Array [
@@ -438,7 +438,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -485,7 +485,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -532,7 +532,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -579,7 +579,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -626,7 +626,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -673,7 +673,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -720,7 +720,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -767,7 +767,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -814,7 +814,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -861,7 +861,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -908,7 +908,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -955,7 +955,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -1002,7 +1002,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -1049,7 +1049,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -1096,7 +1096,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -1143,7 +1143,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -1190,7 +1190,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -1237,7 +1237,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -1284,7 +1284,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -1331,7 +1331,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -1378,7 +1378,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -1425,7 +1425,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -1472,7 +1472,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -1519,7 +1519,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -1566,7 +1566,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -1613,7 +1613,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -1660,7 +1660,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -1707,7 +1707,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -1754,7 +1754,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -1801,7 +1801,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -1848,7 +1848,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -1895,7 +1895,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -1942,7 +1942,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -1989,7 +1989,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -2036,7 +2036,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -2083,7 +2083,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -2130,7 +2130,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -2177,7 +2177,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -2224,7 +2224,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -2271,7 +2271,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -2318,7 +2318,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -2365,7 +2365,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -2412,7 +2412,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -2459,7 +2459,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -2506,7 +2506,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -2553,7 +2553,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -2600,7 +2600,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -2647,7 +2647,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -2694,7 +2694,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -2741,7 +2741,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -2788,7 +2788,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -2835,7 +2835,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -2882,7 +2882,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -2929,7 +2929,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -2976,7 +2976,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -3023,7 +3023,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -3070,7 +3070,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -3117,7 +3117,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -3164,7 +3164,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -3211,7 +3211,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -3258,7 +3258,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -3305,7 +3305,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -3352,7 +3352,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -3399,7 +3399,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -3446,7 +3446,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -3493,7 +3493,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -3540,7 +3540,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -3587,7 +3587,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -3634,7 +3634,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -3681,7 +3681,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -3728,7 +3728,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -3775,7 +3775,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -3822,7 +3822,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -3869,7 +3869,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -3916,7 +3916,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -3963,7 +3963,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -4010,7 +4010,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -4057,7 +4057,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -4104,7 +4104,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -4151,7 +4151,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -4198,7 +4198,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -4245,7 +4245,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -4292,7 +4292,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -4339,7 +4339,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -4386,7 +4386,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -4433,7 +4433,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -4480,7 +4480,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -4527,7 +4527,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -4574,7 +4574,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -4621,7 +4621,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -4668,7 +4668,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -4715,7 +4715,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -4762,7 +4762,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -4809,7 +4809,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -4856,7 +4856,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -4903,7 +4903,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -4950,7 +4950,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -4997,7 +4997,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -5044,7 +5044,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -5091,7 +5091,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -5138,7 +5138,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [
@@ -5184,7 +5184,7 @@ Object {
         "credit": Array [
           "aaron_costello",
         ],
-        "cvssScore": 6,
+        "cvssScore": 6.3,
         "disclosureTime": "2020-01-28T10:17:51Z",
         "exploitMaturity": "proof-of-concept",
         "from": Array [

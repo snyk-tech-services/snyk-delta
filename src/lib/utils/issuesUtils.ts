@@ -88,7 +88,7 @@ const convertIntoIssueWithPath = async (aggregatedIssues: AggregatedIssuesWithVu
                     
                     while (LegacyPathIndex < issuePaths.IssueFromLegacy.length)
                     {
-                        const issueDataWithMissingField: IssueDataWithMissingField = { from : [], package: '', upgradePath: [], version: '', isPatched: aggregatedIssues.issues[issueIndex].isPatched, isIgnored: aggregatedIssues.issues[issueIndex].isIgnored, cvssScore: parseInt(cvssScore), ...everythingElse }  
+                        const issueDataWithMissingField: IssueDataWithMissingField = { from : [], package: '', upgradePath: [], version: '', isPatched: aggregatedIssues.issues[issueIndex].isPatched, isIgnored: aggregatedIssues.issues[issueIndex].isIgnored,cvssScore: cvssScore, ...everythingElse }  
 
                         issueDataWithMissingField.package = aggregatedIssues.issues[issueIndex].pkgName
                         issueDataWithMissingField.version = versionKey
@@ -103,7 +103,7 @@ const convertIntoIssueWithPath = async (aggregatedIssues: AggregatedIssuesWithVu
                     let LegacyPathIndex = 0
                     while (LegacyPathIndex < issuePaths.IssueFromLegacy.length)
                     {
-                        const issueDataWithMissingField: IssueDataWithMissingField = { from : [], package: '', upgradePath: [], version: '', isPatched: aggregatedIssues.issues[issueIndex].isPatched, isIgnored: aggregatedIssues.issues[issueIndex].isIgnored, cvssScore: parseInt(cvssScore), ...everythingElse }  
+                        const issueDataWithMissingField: IssueDataWithMissingField = { from : [], package: '', upgradePath: [], version: '', isPatched: aggregatedIssues.issues[issueIndex].isPatched, isIgnored: aggregatedIssues.issues[issueIndex].isIgnored, cvssScore: cvssScore, ...everythingElse }  
 
                         issueDataWithMissingField.package = aggregatedIssues.issues[issueIndex].pkgName
                         issueDataWithMissingField.version = versionKey
