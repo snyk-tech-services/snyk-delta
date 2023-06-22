@@ -12,7 +12,7 @@ import * as Error from '../../../src/lib/customErrors/apiError';
 
 const fixturesFolderPath = path.resolve(__dirname, '../..') + '/fixtures/';
 beforeEach(() => {
-  return nock('https://snyk.io')
+  nock('https://snyk.io')
     .persist()
     .post(/^(?!.*xyz).*$/)
     .reply(200, (uri) => {
@@ -65,6 +65,27 @@ beforeEach(() => {
           );
           break;
 
+        default:
+      }
+    });
+
+  nock('https://api.snyk.io')
+    .persist()
+    .get(/^(?!.*xyz).*$/)
+    .reply(200, (uri) => {
+      switch (uri) {
+        case '/rest/orgs/689ce7f9-7943-4a71-b704-2ba575f01089/projects?version=2023-05-29&limit=10':
+          return fs.readFileSync(
+            fixturesFolderPath + 'apiResponses/projectsV3.json',
+          );
+        case '/rest/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/projects?version=2023-05-29&limit=10&starting_after=v1.eyJpZCI6MzU2NTI5Mzd9':
+          return fs.readFileSync(
+            fixturesFolderPath + 'apiResponses/projectsV3-page2.json',
+          );
+        case '/rest/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/projects?version=2023-05-29&limit=10&starting_after=v1.eyJpZCI6NjQyMjIxfQ%3D%3D':
+          return fs.readFileSync(
+            fixturesFolderPath + 'apiResponses/projectsV3-page3.json',
+          );
         default:
       }
     });

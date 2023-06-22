@@ -15,10 +15,8 @@ async function getProjectUUID(
   projectType = 'cli',
   packageManager: string,
 ): Promise<string> {
-  const allProjects = await new snykClient.Org({ orgId: orgID }).projects.post(
-    {},
-  );
-  const allProjectsArray = allProjects.projects as Array<any>;
+  const  allProjects = await new snykClient.Org({ orgId: orgID }).projects.getV3();
+  const allProjectsArray = allProjects?.projects as Array<any>;
   const selectedProjectArray: Array<{
     name: string;
     origin: string;

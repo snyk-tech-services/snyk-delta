@@ -1,0 +1,350 @@
+{
+    "jsonapi": {
+      "version": "1.0"
+    },
+    "data": [
+      {
+        "type": "project",
+        "id": "6d5813be-7e6d-4ab8-80c2-1e3e2a454545",
+        "meta": {},
+        "attributes": {
+          "name": "atokeneduser/goof",
+          "type": "npm",
+          "target_file": "package.json",
+          "target_reference": "master",
+          "origin": "cli",
+          "created": "2018-10-21T03:17:46.799Z",
+          "status": "active",
+          "business_criticality": [],
+          "environment": [],
+          "lifecycle": [],
+          "tags": [],
+          "settings": {
+            "recurring_tests": {
+              "frequency": "daily"
+            },
+            "pull_requests": {
+              "fail_only_for_issues_with_fix": false
+            }
+          }
+        },
+        "relationships": {
+          "organization": {
+            "data": {
+              "type": "org",
+              "id": "361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            }
+          },
+          "target": {
+            "data": {
+              "type": "target",
+              "id": "f70c166d-a059-4df8-9ee7-72131654616f"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/targets/f70c166d-a059-4df8-9ee7-72131654616f"
+            }
+          },
+          "importer": {
+            "data": {
+              "type": "user",
+              "id": "4eee4035-64c1-4d66-a2b2-5bfdcee0c448"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/users/4eee4035-64c1-4d66-a2b2-5bfdcee0c448"
+            }
+          }
+        }
+      },
+      {
+        "type": "project",
+        "id": "7439e322-f9c1-4c42-8367-002b33b9d946",
+        "meta": {},
+        "attributes": {
+          "name": "aarlaud-snyk/gitlab-stats:package.json",
+          "type": "npm",
+          "target_file": "package.json",
+          "target_reference": "master",
+          "origin": "github",
+          "created": "2018-06-22T17:41:23.633Z",
+          "status": "active",
+          "business_criticality": [],
+          "environment": [],
+          "lifecycle": [],
+          "tags": [],
+          "settings": {
+            "recurring_tests": {
+              "frequency": "daily"
+            },
+            "pull_requests": {
+              "fail_only_for_issues_with_fix": false
+            }
+          }
+        },
+        "relationships": {
+          "organization": {
+            "data": {
+              "type": "org",
+              "id": "361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            }
+          },
+          "target": {
+            "data": {
+              "type": "target",
+              "id": "4a9462cc-c837-4082-ad29-c0b4732f2049"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/targets/4a9462cc-c837-4082-ad29-c0b4732f2049"
+            }
+          }
+        }
+      },
+      {
+        "type": "project",
+        "id": "994beb01-b69e-449b-afa9-17764b7d9c09",
+        "meta": {},
+        "attributes": {
+          "name": "aarlaud-snyk/angularSnykScanner:package.json",
+          "type": "npm",
+          "target_file": "package.json",
+          "target_reference": "master",
+          "origin": "github",
+          "created": "2018-05-03T21:31:06.135Z",
+          "status": "active",
+          "business_criticality": [],
+          "environment": [],
+          "lifecycle": [],
+          "tags": [],
+          "settings": {
+            "recurring_tests": {
+              "frequency": "daily"
+            },
+            "pull_requests": {
+              "fail_only_for_issues_with_fix": false
+            }
+          }
+        },
+        "relationships": {
+          "organization": {
+            "data": {
+              "type": "org",
+              "id": "361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            }
+          },
+          "target": {
+            "data": {
+              "type": "target",
+              "id": "b115066f-0ef6-4d50-8ac2-b8e4d154ed84"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/targets/b115066f-0ef6-4d50-8ac2-b8e4d154ed84"
+            }
+          }
+        }
+      },
+      {
+        "type": "project",
+        "id": "14e85ea8-e34c-4aff-865c-ae95ad4ed351",
+        "meta": {},
+        "attributes": {
+          "name": "aarlaud-snyk/angularSnykScanner:templates/package.json",
+          "type": "npm",
+          "target_file": "templates/package.json",
+          "target_reference": "master",
+          "origin": "github",
+          "created": "2018-05-03T21:31:06.115Z",
+          "status": "active",
+          "business_criticality": [],
+          "environment": [],
+          "lifecycle": [],
+          "tags": [],
+          "settings": {
+            "recurring_tests": {
+              "frequency": "daily"
+            },
+            "pull_requests": {
+              "fail_only_for_issues_with_fix": false
+            }
+          }
+        },
+        "relationships": {
+          "organization": {
+            "data": {
+              "type": "org",
+              "id": "361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            }
+          },
+          "target": {
+            "data": {
+              "type": "target",
+              "id": "b115066f-0ef6-4d50-8ac2-b8e4d154ed84"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/targets/b115066f-0ef6-4d50-8ac2-b8e4d154ed84"
+            }
+          }
+        }
+      },
+      {
+        "type": "project",
+        "id": "0f376a8b-8590-40de-8388-24fa99b406a5",
+        "meta": {},
+        "attributes": {
+          "name": "aarlaud-snyk/angularSnykScanner:tmp/package.json",
+          "type": "npm",
+          "target_file": "tmp/package.json",
+          "target_reference": "master",
+          "origin": "github",
+          "created": "2018-05-03T21:31:06.104Z",
+          "status": "active",
+          "business_criticality": [],
+          "environment": [],
+          "lifecycle": [],
+          "tags": [],
+          "settings": {
+            "recurring_tests": {
+              "frequency": "daily"
+            },
+            "pull_requests": {
+              "fail_only_for_issues_with_fix": false
+            }
+          }
+        },
+        "relationships": {
+          "organization": {
+            "data": {
+              "type": "org",
+              "id": "361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            }
+          },
+          "target": {
+            "data": {
+              "type": "target",
+              "id": "b115066f-0ef6-4d50-8ac2-b8e4d154ed84"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/targets/b115066f-0ef6-4d50-8ac2-b8e4d154ed84"
+            }
+          }
+        }
+      },
+      {
+        "type": "project",
+        "id": "26e10cce-7279-4583-8be7-2d4f4c82a0ca",
+        "meta": {},
+        "attributes": {
+          "name": "aarlaud-snyk/snyk-filter:package.json",
+          "type": "npm",
+          "target_file": "package.json",
+          "target_reference": "master",
+          "origin": "github",
+          "created": "2018-03-22T00:43:40.538Z",
+          "status": "active",
+          "business_criticality": [],
+          "environment": [],
+          "lifecycle": [],
+          "tags": [],
+          "settings": {
+            "recurring_tests": {
+              "frequency": "daily"
+            },
+            "pull_requests": {
+              "fail_only_for_issues_with_fix": false
+            }
+          }
+        },
+        "relationships": {
+          "organization": {
+            "data": {
+              "type": "org",
+              "id": "361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            }
+          },
+          "target": {
+            "data": {
+              "type": "target",
+              "id": "508d2263-ea8a-4e42-bc9d-844de21f4172"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/targets/508d2263-ea8a-4e42-bc9d-844de21f4172"
+            }
+          },
+          "importer": {
+            "data": {
+              "type": "user",
+              "id": "4eee4035-64c1-4d66-a2b2-5bfdcee0c448"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/users/4eee4035-64c1-4d66-a2b2-5bfdcee0c448"
+            }
+          }
+        }
+      },
+      {
+        "type": "project",
+        "id": "afd64e9a-e96a-4049-83ce-ceed670dde4f",
+        "meta": {},
+        "attributes": {
+          "name": "aarlaud-snyk/github-stats:package.json",
+          "type": "npm",
+          "target_file": "package.json",
+          "target_reference": "master",
+          "origin": "github",
+          "created": "2018-02-03T23:02:21.713Z",
+          "status": "active",
+          "business_criticality": [],
+          "environment": [],
+          "lifecycle": [],
+          "tags": [],
+          "settings": {
+            "recurring_tests": {
+              "frequency": "daily"
+            },
+            "pull_requests": {
+              "fail_only_for_issues_with_fix": false
+            }
+          }
+        },
+        "relationships": {
+          "organization": {
+            "data": {
+              "type": "org",
+              "id": "361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            }
+          },
+          "target": {
+            "data": {
+              "type": "target",
+              "id": "93df1a05-99b7-44d2-b385-f6e9264cc3ff"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/targets/93df1a05-99b7-44d2-b385-f6e9264cc3ff"
+            }
+          }
+        }
+      }
+    ],
+    "links": {
+      "prev": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/projects?version=2023-05-29&limit=10&ending_before=v1.eyJpZCI6Mjc4NDU5fQ%3D%3D"
+    }
+  }
