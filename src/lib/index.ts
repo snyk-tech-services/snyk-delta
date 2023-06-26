@@ -118,7 +118,6 @@ const getDelta = async (
           `In 'inline' mode --baselineOrg or 'snyk test' is required.`,
         );
       }
-
       if (!baselineProjectPublicID) {
         baselineProjectPublicID =
           projectId ??

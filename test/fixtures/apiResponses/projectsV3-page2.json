@@ -1,0 +1,547 @@
+{
+    "jsonapi": {
+      "version": "1.0"
+    },
+    "data": [
+      {
+        "type": "project",
+        "id": "af127b96-6966-46c1-826b-2e79ac49bbd9",
+        "meta": {},
+        "attributes": {
+          "name": "atokeneduser/clojure",
+          "type": "maven",
+          "target_file": "",
+          "target_reference": "master",
+          "origin": "github",
+          "created": "2023-01-10T13:25:59.163Z",
+          "status": "active",
+          "business_criticality": [],
+          "environment": [],
+          "lifecycle": [],
+          "tags": [],
+          "settings": {
+            "recurring_tests": {
+              "frequency": "weekly"
+            },
+            "pull_requests": {
+              "fail_only_for_issues_with_fix": false
+            }
+          }
+        },
+        "relationships": {
+          "organization": {
+            "data": {
+              "type": "org",
+              "id": "361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            }
+          },
+          "target": {
+            "data": {
+              "type": "target",
+              "id": "220b8775-bf97-4466-84c0-56e58da600cd"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/targets/220b8775-bf97-4466-84c0-56e58da600cd"
+            }
+          },
+          "importer": {
+            "data": {
+              "type": "user",
+              "id": "822a3565-9b97-4960-ac2b-7313da2202ed"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/users/822a3565-9b97-4960-ac2b-7313da2202ed"
+            }
+          }
+        }
+      },
+      {
+        "type": "project",
+        "id": "af127b96-6966-46c1-826b-2e79ac49bbd8",
+        "meta": {},
+        "attributes": {
+          "name": "atokeneduser/clojure",
+          "type": "maven",
+          "target_file": "",
+          "target_reference": "master",
+          "origin": "github",
+          "created": "2023-01-10T13:25:59.163Z",
+          "status": "active",
+          "business_criticality": [],
+          "environment": [],
+          "lifecycle": [],
+          "tags": [],
+          "settings": {
+            "recurring_tests": {
+              "frequency": "weekly"
+            },
+            "pull_requests": {
+              "fail_only_for_issues_with_fix": false
+            }
+          }
+        },
+        "relationships": {
+          "organization": {
+            "data": {
+              "type": "org",
+              "id": "361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            }
+          },
+          "target": {
+            "data": {
+              "type": "target",
+              "id": "220b8775-bf97-4466-84c0-56e58da600cd"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/targets/220b8775-bf97-4466-84c0-56e58da600cd"
+            }
+          },
+          "importer": {
+            "data": {
+              "type": "user",
+              "id": "822a3565-9b97-4960-ac2b-7313da2202ed"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/users/822a3565-9b97-4960-ac2b-7313da2202ed"
+            }
+          }
+        }
+      },
+      {
+        "type": "project",
+        "id": "ac7c3f02-5ef4-4123-9d13-88a8f89dd821",
+        "meta": {},
+        "attributes": {
+          "name": "antoine-snyk-demo/TestRepoAntoine:goof/package.json",
+          "type": "npm",
+          "target_file": "goof/package.json",
+          "target_reference": "master",
+          "origin": "bitbucket-server",
+          "created": "2023-01-10T12:43:25.935Z",
+          "status": "active",
+          "business_criticality": [],
+          "environment": [],
+          "lifecycle": [],
+          "tags": [],
+          "settings": {
+            "recurring_tests": {
+              "frequency": "daily"
+            },
+            "pull_requests": {
+              "fail_only_for_issues_with_fix": false
+            }
+          }
+        },
+        "relationships": {
+          "organization": {
+            "data": {
+              "type": "org",
+              "id": "361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            }
+          },
+          "target": {
+            "data": {
+              "type": "target",
+              "id": "c1a61cbb-dd2a-4a19-a5ba-32615a7f925c"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/targets/c1a61cbb-dd2a-4a19-a5ba-32615a7f925c"
+            }
+          },
+          "importer": {
+            "data": {
+              "type": "user",
+              "id": "822a3565-9b97-4960-ac2b-7313da2202ed"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/users/822a3565-9b97-4960-ac2b-7313da2202ed"
+            }
+          }
+        }
+      },
+      {
+        "type": "project",
+        "id": "9f803629-6836-4f1f-82d7-93765df5c794",
+        "meta": {},
+        "attributes": {
+          "name": "antoine-snyk-demo/testOrgana:pom.xml",
+          "type": "maven",
+          "target_file": "pom.xml",
+          "target_reference": "master",
+          "origin": "bitbucket-server",
+          "created": "2023-01-10T12:43:21.306Z",
+          "status": "active",
+          "business_criticality": [],
+          "environment": [],
+          "lifecycle": [],
+          "tags": [],
+          "settings": {
+            "recurring_tests": {
+              "frequency": "daily"
+            },
+            "pull_requests": {
+              "fail_only_for_issues_with_fix": false
+            }
+          }
+        },
+        "relationships": {
+          "organization": {
+            "data": {
+              "type": "org",
+              "id": "361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            }
+          },
+          "target": {
+            "data": {
+              "type": "target",
+              "id": "220b8775-bf97-4466-84c0-56e58da600cd"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/targets/220b8775-bf97-4466-84c0-56e58da600cd"
+            }
+          },
+          "importer": {
+            "data": {
+              "type": "user",
+              "id": "822a3565-9b97-4960-ac2b-7313da2202ed"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/users/822a3565-9b97-4960-ac2b-7313da2202ed"
+            }
+          }
+        }
+      },
+      {
+        "type": "project",
+        "id": "5634c570-cfd4-4964-b96f-42cc54c39e61",
+        "meta": {},
+        "attributes": {
+          "name": "aarlaud-playground/python-flask-sample-app",
+          "type": "sast",
+          "target_file": "",
+          "target_reference": "master",
+          "origin": "github",
+          "created": "2023-01-05T23:39:41.297Z",
+          "status": "active",
+          "business_criticality": [],
+          "environment": [],
+          "lifecycle": [],
+          "tags": [],
+          "settings": {
+            "recurring_tests": {
+              "frequency": "weekly"
+            },
+            "pull_requests": {
+              "fail_only_for_issues_with_fix": false
+            }
+          }
+        },
+        "relationships": {
+          "organization": {
+            "data": {
+              "type": "org",
+              "id": "361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            }
+          },
+          "target": {
+            "data": {
+              "type": "target",
+              "id": "2d35d186-e961-45bc-b273-d61104c4c18a"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/targets/2d35d186-e961-45bc-b273-d61104c4c18a"
+            }
+          },
+          "importer": {
+            "data": {
+              "type": "user",
+              "id": "822a3565-9b97-4960-ac2b-7313da2202ed"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/users/822a3565-9b97-4960-ac2b-7313da2202ed"
+            }
+          }
+        }
+      },
+      {
+        "type": "project",
+        "id": "70c8adbd-18cb-4b4f-8200-16e8c458839e",
+        "meta": {},
+        "attributes": {
+          "name": "aarlaud-playground/python-flask-sample-app:Dockerfile",
+          "type": "dockerfile",
+          "target_file": "Dockerfile",
+          "target_reference": "master",
+          "origin": "github",
+          "created": "2023-01-05T23:36:30.682Z",
+          "status": "active",
+          "business_criticality": [],
+          "environment": [],
+          "lifecycle": [],
+          "tags": [],
+          "settings": {
+            "recurring_tests": {
+              "frequency": "daily"
+            },
+            "pull_requests": {
+              "fail_only_for_issues_with_fix": false
+            }
+          }
+        },
+        "relationships": {
+          "organization": {
+            "data": {
+              "type": "org",
+              "id": "361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            }
+          },
+          "target": {
+            "data": {
+              "type": "target",
+              "id": "2d35d186-e961-45bc-b273-d61104c4c18a"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/targets/2d35d186-e961-45bc-b273-d61104c4c18a"
+            }
+          },
+          "importer": {
+            "data": {
+              "type": "user",
+              "id": "822a3565-9b97-4960-ac2b-7313da2202ed"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/users/822a3565-9b97-4960-ac2b-7313da2202ed"
+            }
+          }
+        }
+      },
+      {
+        "type": "project",
+        "id": "048e7057-bd8d-4868-a2db-8db7b0918581",
+        "meta": {
+          "cli_monitored_at": "2021-10-21T11:43:42.442Z"
+        },
+        "attributes": {
+          "name": "github-stats",
+          "type": "npm",
+          "target_file": "",
+          "target_reference": "",
+          "origin": "cli",
+          "created": "2021-10-21T11:43:42.450Z",
+          "status": "active",
+          "business_criticality": [],
+          "environment": [],
+          "lifecycle": [],
+          "tags": [],
+          "settings": {
+            "recurring_tests": {
+              "frequency": "daily"
+            },
+            "pull_requests": {
+              "fail_only_for_issues_with_fix": false
+            }
+          }
+        },
+        "relationships": {
+          "organization": {
+            "data": {
+              "type": "org",
+              "id": "361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            }
+          },
+          "target": {
+            "data": {
+              "type": "target",
+              "id": "064dfb56-0ec2-41f8-9201-9a6c75718647"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/targets/064dfb56-0ec2-41f8-9201-9a6c75718647"
+            }
+          },
+          "importer": {
+            "data": {
+              "type": "user",
+              "id": "4eee4035-64c1-4d66-a2b2-5bfdcee0c448"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/users/4eee4035-64c1-4d66-a2b2-5bfdcee0c448"
+            }
+          }
+        }
+      },
+      {
+        "type": "project",
+        "id": "175d3317-e43e-4046-b23b-422e2a2da6db",
+        "meta": {
+          "cli_monitored_at": "2020-07-16T11:58:56.018Z"
+        },
+        "attributes": {
+          "name": "github-stats",
+          "type": "npm",
+          "target_file": "",
+          "target_reference": "",
+          "origin": "cli",
+          "created": "2019-10-28T14:27:09.573Z",
+          "status": "active",
+          "business_criticality": [],
+          "environment": [],
+          "lifecycle": [],
+          "tags": [],
+          "settings": {
+            "recurring_tests": {
+              "frequency": "daily"
+            },
+            "pull_requests": {
+              "fail_only_for_issues_with_fix": false
+            }
+          }
+        },
+        "relationships": {
+          "organization": {
+            "data": {
+              "type": "org",
+              "id": "361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            }
+          },
+          "target": {
+            "data": {
+              "type": "target",
+              "id": "849c4cbe-49fd-4ade-99cc-c367e146f93a"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/targets/849c4cbe-49fd-4ade-99cc-c367e146f93a"
+            }
+          },
+          "importer": {
+            "data": {
+              "type": "user",
+              "id": "4eee4035-64c1-4d66-a2b2-5bfdcee0c448"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/users/4eee4035-64c1-4d66-a2b2-5bfdcee0c448"
+            }
+          }
+        }
+      },
+      {
+        "type": "project",
+        "id": "3b96638d-0611-4184-9746-0431cee363c4",
+        "meta": {},
+        "attributes": {
+          "name": "snyk-filter",
+          "type": "npm",
+          "target_file": "",
+          "target_reference": "",
+          "origin": "cli",
+          "created": "2019-10-10T19:37:21.928Z",
+          "status": "active",
+          "business_criticality": [],
+          "environment": [],
+          "lifecycle": [],
+          "tags": [],
+          "settings": {
+            "recurring_tests": {
+              "frequency": "daily"
+            },
+            "pull_requests": {
+              "fail_only_for_issues_with_fix": false
+            }
+          }
+        },
+        "relationships": {
+          "organization": {
+            "data": {
+              "type": "org",
+              "id": "361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            }
+          },
+          "target": {
+            "data": {
+              "type": "target",
+              "id": "34616fa0-a643-4d1a-8c67-ccbdadca90c2"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/targets/34616fa0-a643-4d1a-8c67-ccbdadca90c2"
+            }
+          }
+        }
+      },
+      {
+        "type": "project",
+        "id": "c19ad262-4100-4918-b9be-ad361904e9b8",
+        "meta": {},
+        "attributes": {
+          "name": "/Users/antoine/Documents/dev/Snyk/licenseTextAndCopyrightBOM:go.mod",
+          "type": "gomodules",
+          "target_file": "go.mod",
+          "target_reference": "",
+          "origin": "cli",
+          "created": "2019-08-14T01:36:44.431Z",
+          "status": "active",
+          "business_criticality": [],
+          "environment": [],
+          "lifecycle": [],
+          "tags": [],
+          "settings": {
+            "recurring_tests": {
+              "frequency": "daily"
+            },
+            "pull_requests": {
+              "fail_only_for_issues_with_fix": false
+            }
+          }
+        },
+        "relationships": {
+          "organization": {
+            "data": {
+              "type": "org",
+              "id": "361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            }
+          },
+          "target": {
+            "data": {
+              "type": "target",
+              "id": "413ab78b-dbf9-4996-ba57-3857fcb77e99"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/targets/413ab78b-dbf9-4996-ba57-3857fcb77e99"
+            }
+          }
+        }
+      }
+    ],
+    "links": {
+      "next": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/projects?version=2023-05-29&limit=10&starting_after=v1.eyJpZCI6NjQyMjIxfQ%3D%3D",
+      "prev": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/projects?version=2023-05-29&limit=10&ending_before=v1.eyJpZCI6MzU2NTAzNzh9"
+    }
+  }

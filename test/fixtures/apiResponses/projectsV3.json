@@ -1,0 +1,560 @@
+{
+    "jsonapi": {
+      "version": "1.0"
+    },
+    "data": [
+      {
+        "type": "project",
+        "id": "7c62c3bd-539a-4ee6-b1a0-1f3b5196849b",
+        "meta": {},
+        "attributes": {
+          "name": "snyk-tech-services/snyk-delta:package.json",
+          "type": "npm",
+          "target_file": "package.json",
+          "target_reference": "develop",
+          "origin": "github",
+          "created": "2023-01-10T16:37:37.804Z",
+          "status": "active",
+          "business_criticality": [],
+          "environment": [],
+          "lifecycle": [],
+          "tags": [],
+          "settings": {
+            "recurring_tests": {
+              "frequency": "daily"
+            },
+            "pull_requests": {
+              "fail_only_for_issues_with_fix": false
+            }
+          }
+        },
+        "relationships": {
+          "organization": {
+            "data": {
+              "type": "org",
+              "id": "361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            }
+          },
+          "target": {
+            "data": {
+              "type": "target",
+              "id": "60744bad-77b8-45c2-8d7d-696f9ab54552"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/targets/60744bad-77b8-45c2-8d7d-696f9ab54552"
+            }
+          },
+          "importer": {
+            "data": {
+              "type": "user",
+              "id": "822a3565-9b97-4960-ac2b-7313da2202ed"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/users/822a3565-9b97-4960-ac2b-7313da2202ed"
+            }
+          }
+        }
+      },
+      {
+        "type": "project",
+        "id": "ab9e037f-9020-4f77-9c48-b1cb0295a4b6",
+        "meta": {},
+        "attributes": {
+          "name": "goof",
+          "type": "npm",
+          "target_file": "",
+          "target_reference": "master",
+          "origin": "cli",
+          "created": "2023-01-10T14:10:03.186Z",
+          "status": "active",
+          "business_criticality": [],
+          "environment": [],
+          "lifecycle": [],
+          "tags": [],
+          "settings": {
+            "recurring_tests": {
+              "frequency": "weekly"
+            },
+            "pull_requests": {
+              "fail_only_for_issues_with_fix": false
+            }
+          }
+        },
+        "relationships": {
+          "organization": {
+            "data": {
+              "type": "org",
+              "id": "361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            }
+          },
+          "target": {
+            "data": {
+              "type": "target",
+              "id": "c1a61cbb-dd2a-4a19-a5ba-32615a7f925c"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/targets/c1a61cbb-dd2a-4a19-a5ba-32615a7f925c"
+            }
+          },
+          "importer": {
+            "data": {
+              "type": "user",
+              "id": "822a3565-9b97-4960-ac2b-7313da2202ed"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/users/822a3565-9b97-4960-ac2b-7313da2202ed"
+            }
+          }
+        }
+      },
+      {
+        "type": "project",
+        "id": "0cc9d21b-4ac7-4f27-8c6a-b32b4cdf5c68",
+        "meta": {},
+        "attributes": {
+          "name": "Snyk Demo/java-goof",
+          "type": "sast",
+          "target_file": "",
+          "target_reference": "master",
+          "origin": "bitbucket-server",
+          "created": "2023-01-10T13:49:49.395Z",
+          "status": "active",
+          "business_criticality": [],
+          "environment": [],
+          "lifecycle": [],
+          "tags": [],
+          "settings": {
+            "recurring_tests": {
+              "frequency": "weekly"
+            },
+            "pull_requests": {
+              "fail_only_for_issues_with_fix": false
+            }
+          }
+        },
+        "relationships": {
+          "organization": {
+            "data": {
+              "type": "org",
+              "id": "361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            }
+          },
+          "target": {
+            "data": {
+              "type": "target",
+              "id": "3dfebab7-c6d3-4343-a712-54bc3b02b8d2"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/targets/3dfebab7-c6d3-4343-a712-54bc3b02b8d2"
+            }
+          },
+          "importer": {
+            "data": {
+              "type": "user",
+              "id": "822a3565-9b97-4960-ac2b-7313da2202ed"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/users/822a3565-9b97-4960-ac2b-7313da2202ed"
+            }
+          }
+        }
+      },
+      {
+        "type": "project",
+        "id": "38e02916-0cf7-4927-ba98-06afae9fef36",
+        "meta": {},
+        "attributes": {
+          "name": "Snyk Demo/java-goof:todolist-web-struts/pom.xml",
+          "type": "maven",
+          "target_file": "todolist-web-struts/pom.xml",
+          "target_reference": "master",
+          "origin": "bitbucket-server",
+          "created": "2023-01-10T13:49:42.637Z",
+          "status": "active",
+          "business_criticality": [],
+          "environment": [],
+          "lifecycle": [],
+          "tags": [],
+          "settings": {
+            "recurring_tests": {
+              "frequency": "daily"
+            },
+            "pull_requests": {
+              "fail_only_for_issues_with_fix": false
+            }
+          }
+        },
+        "relationships": {
+          "organization": {
+            "data": {
+              "type": "org",
+              "id": "361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            }
+          },
+          "target": {
+            "data": {
+              "type": "target",
+              "id": "3dfebab7-c6d3-4343-a712-54bc3b02b8d2"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/targets/3dfebab7-c6d3-4343-a712-54bc3b02b8d2"
+            }
+          },
+          "importer": {
+            "data": {
+              "type": "user",
+              "id": "822a3565-9b97-4960-ac2b-7313da2202ed"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/users/822a3565-9b97-4960-ac2b-7313da2202ed"
+            }
+          }
+        }
+      },
+      {
+        "type": "project",
+        "id": "019e3f03-5230-4d4f-9326-2fdc7161016f",
+        "meta": {},
+        "attributes": {
+          "name": "Snyk Demo/java-goof:todolist-core/pom.xml",
+          "type": "maven",
+          "target_file": "todolist-core/pom.xml",
+          "target_reference": "master",
+          "origin": "bitbucket-server",
+          "created": "2023-01-10T13:49:42.616Z",
+          "status": "active",
+          "business_criticality": [],
+          "environment": [],
+          "lifecycle": [],
+          "tags": [],
+          "settings": {
+            "recurring_tests": {
+              "frequency": "daily"
+            },
+            "pull_requests": {
+              "fail_only_for_issues_with_fix": false
+            }
+          }
+        },
+        "relationships": {
+          "organization": {
+            "data": {
+              "type": "org",
+              "id": "361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            }
+          },
+          "target": {
+            "data": {
+              "type": "target",
+              "id": "3dfebab7-c6d3-4343-a712-54bc3b02b8d2"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/targets/3dfebab7-c6d3-4343-a712-54bc3b02b8d2"
+            }
+          },
+          "importer": {
+            "data": {
+              "type": "user",
+              "id": "822a3565-9b97-4960-ac2b-7313da2202ed"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/users/822a3565-9b97-4960-ac2b-7313da2202ed"
+            }
+          }
+        }
+      },
+      {
+        "type": "project",
+        "id": "4737fc9c-3894-40ba-9dc5-aa8ae658c9f6",
+        "meta": {},
+        "attributes": {
+          "name": "Snyk Demo/java-goof:todolist-web-common/pom.xml",
+          "type": "maven",
+          "target_file": "todolist-web-common/pom.xml",
+          "target_reference": "master",
+          "origin": "bitbucket-server",
+          "created": "2023-01-10T13:49:42.572Z",
+          "status": "active",
+          "business_criticality": [],
+          "environment": [],
+          "lifecycle": [],
+          "tags": [],
+          "settings": {
+            "recurring_tests": {
+              "frequency": "daily"
+            },
+            "pull_requests": {
+              "fail_only_for_issues_with_fix": false
+            }
+          }
+        },
+        "relationships": {
+          "organization": {
+            "data": {
+              "type": "org",
+              "id": "361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            }
+          },
+          "target": {
+            "data": {
+              "type": "target",
+              "id": "3dfebab7-c6d3-4343-a712-54bc3b02b8d2"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/targets/3dfebab7-c6d3-4343-a712-54bc3b02b8d2"
+            }
+          },
+          "importer": {
+            "data": {
+              "type": "user",
+              "id": "822a3565-9b97-4960-ac2b-7313da2202ed"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/users/822a3565-9b97-4960-ac2b-7313da2202ed"
+            }
+          }
+        }
+      },
+      {
+        "type": "project",
+        "id": "7ae91d60-d686-4035-b94e-32159359b253",
+        "meta": {},
+        "attributes": {
+          "name": "jeff-snyk-demo/java-goof",
+          "type": "sast",
+          "target_file": "",
+          "target_reference": "master",
+          "origin": "bitbucket-server",
+          "created": "2023-01-10T13:43:11.924Z",
+          "status": "active",
+          "business_criticality": [],
+          "environment": [],
+          "lifecycle": [],
+          "tags": [],
+          "settings": {
+            "recurring_tests": {
+              "frequency": "weekly"
+            },
+            "pull_requests": {
+              "fail_only_for_issues_with_fix": false
+            }
+          }
+        },
+        "relationships": {
+          "organization": {
+            "data": {
+              "type": "org",
+              "id": "361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            }
+          },
+          "target": {
+            "data": {
+              "type": "target",
+              "id": "a745345b-11e3-4145-84ae-d0f5aeaeae5f"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/targets/a745345b-11e3-4145-84ae-d0f5aeaeae5f"
+            }
+          },
+          "importer": {
+            "data": {
+              "type": "user",
+              "id": "822a3565-9b97-4960-ac2b-7313da2202ed"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/users/822a3565-9b97-4960-ac2b-7313da2202ed"
+            }
+          }
+        }
+      },
+      {
+        "type": "project",
+        "id": "f3b2e1cf-69e2-4fab-89a0-b17e0979abc6",
+        "meta": {},
+        "attributes": {
+          "name": "jeff-snyk-demo/java-goof:todolist-web-struts/pom.xml",
+          "type": "maven",
+          "target_file": "todolist-web-struts/pom.xml",
+          "target_reference": "master",
+          "origin": "bitbucket-server",
+          "created": "2023-01-10T13:42:20.990Z",
+          "status": "active",
+          "business_criticality": [],
+          "environment": [],
+          "lifecycle": [],
+          "tags": [],
+          "settings": {
+            "recurring_tests": {
+              "frequency": "daily"
+            },
+            "pull_requests": {
+              "fail_only_for_issues_with_fix": false
+            }
+          }
+        },
+        "relationships": {
+          "organization": {
+            "data": {
+              "type": "org",
+              "id": "361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            }
+          },
+          "target": {
+            "data": {
+              "type": "target",
+              "id": "a745345b-11e3-4145-84ae-d0f5aeaeae5f"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/targets/a745345b-11e3-4145-84ae-d0f5aeaeae5f"
+            }
+          },
+          "importer": {
+            "data": {
+              "type": "user",
+              "id": "822a3565-9b97-4960-ac2b-7313da2202ed"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/users/822a3565-9b97-4960-ac2b-7313da2202ed"
+            }
+          }
+        }
+      },
+      {
+        "type": "project",
+        "id": "b9046a1a-3e69-4d21-a6d2-c71f649cb7b5",
+        "meta": {},
+        "attributes": {
+          "name": "jeff-snyk-demo/java-goof:todolist-web-common/pom.xml",
+          "type": "maven",
+          "target_file": "todolist-web-common/pom.xml",
+          "target_reference": "master",
+          "origin": "bitbucket-server",
+          "created": "2023-01-10T13:42:20.894Z",
+          "status": "active",
+          "business_criticality": [],
+          "environment": [],
+          "lifecycle": [],
+          "tags": [],
+          "settings": {
+            "recurring_tests": {
+              "frequency": "daily"
+            },
+            "pull_requests": {
+              "fail_only_for_issues_with_fix": false
+            }
+          }
+        },
+        "relationships": {
+          "organization": {
+            "data": {
+              "type": "org",
+              "id": "361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            }
+          },
+          "target": {
+            "data": {
+              "type": "target",
+              "id": "a745345b-11e3-4145-84ae-d0f5aeaeae5f"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/targets/a745345b-11e3-4145-84ae-d0f5aeaeae5f"
+            }
+          },
+          "importer": {
+            "data": {
+              "type": "user",
+              "id": "822a3565-9b97-4960-ac2b-7313da2202ed"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/users/822a3565-9b97-4960-ac2b-7313da2202ed"
+            }
+          }
+        }
+      },
+      {
+        "type": "project",
+        "id": "b4d24542-e0ee-4166-80bc-cd474c2bc968",
+        "meta": {},
+        "attributes": {
+          "name": "jeff-snyk-demo/java-goof:todolist-core/pom.xml",
+          "type": "maven",
+          "target_file": "todolist-core/pom.xml",
+          "target_reference": "master",
+          "origin": "bitbucket-server",
+          "created": "2023-01-10T13:42:20.782Z",
+          "status": "active",
+          "business_criticality": [],
+          "environment": [],
+          "lifecycle": [],
+          "tags": [],
+          "settings": {
+            "recurring_tests": {
+              "frequency": "daily"
+            },
+            "pull_requests": {
+              "fail_only_for_issues_with_fix": false
+            }
+          }
+        },
+        "relationships": {
+          "organization": {
+            "data": {
+              "type": "org",
+              "id": "361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            }
+          },
+          "target": {
+            "data": {
+              "type": "target",
+              "id": "a745345b-11e3-4145-84ae-d0f5aeaeae5f"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/targets/a745345b-11e3-4145-84ae-d0f5aeaeae5f"
+            }
+          },
+          "importer": {
+            "data": {
+              "type": "user",
+              "id": "822a3565-9b97-4960-ac2b-7313da2202ed"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/users/822a3565-9b97-4960-ac2b-7313da2202ed"
+            }
+          }
+        }
+      }
+    ],
+    "links": {
+      "next": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/projects?version=2023-05-29&limit=10&starting_after=v1.eyJpZCI6MzU2NTI5Mzd9"
+    }
+  }

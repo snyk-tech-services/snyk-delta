@@ -34,31 +34,52 @@ describe('Test End 2 End - Inline mode - no baseline', () => {
   });
 
   beforeEach(() => {
-    return nock('https://snyk.io')
+    nock('https://api.snyk.io')
+      .persist()
+      .get(/^(?!.*xyz).*$/)
+      .reply(200, (uri) => {
+        switch (uri) {
+          case '/rest/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/projects?version=2023-05-29&limit=10':
+            return fs.readFileSync(
+              fixturesFolderPath + 'apiResponses/projectsV3.json',
+            );
+          case '/rest/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/projects?version=2023-05-29&limit=10&starting_after=v1.eyJpZCI6MzU2NTI5Mzd9':
+            return fs.readFileSync(
+              fixturesFolderPath + 'apiResponses/projectsV3-page2.json',
+            );
+          case '/rest/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/projects?version=2023-05-29&limit=10&starting_after=v1.eyJpZCI6NjQyMjIxfQ%3D%3D':
+            return fs.readFileSync(
+              fixturesFolderPath + 'apiResponses/projectsV3-page3.json',
+            );
+          default:
+        }
+      });
+
+    nock('https://snyk.io')
       .persist()
       .post(/.*/)
       .reply(200, (uri) => {
         switch (uri) {
-          case '/api/v1/org/playground/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/issues':
+          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/issues':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/test-goof.json',
             );
-          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issues':
+          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issues':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/test-goof.json',
             );
-          case '/api/v1/org/playground/project/09235fa4-c241-42c6-8c63-c053bd272786/issues':
+          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/09235fa4-c241-42c6-8c63-c053bd272786/issues':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/test-gomod.json',
             );
-          case '/api/v1/org/playground/project/37a29fe9-c342-4d70-8efc-df96a8d730b3/issues':
+          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/37a29fe9-c342-4d70-8efc-df96a8d730b3/issues':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/java-goof.json',
             );
-          case '/api/v1/org/playground/projects':
+          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/projects':
             return fs.readFileSync(
               fixturesFolderPath +
-                'apiResponsesForProjects/list-all-projects-org-playground.json',
+                'apiResponsesForProjects/list-all-projects-org-361fd3c0-41d4-4ea4-ba77-09bb17890967.json',
             );
           default:
         }
@@ -66,7 +87,7 @@ describe('Test End 2 End - Inline mode - no baseline', () => {
       .get(/.*/)
       .reply(200, (uri) => {
         switch (uri) {
-          case '/api/v1/org/playground/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/issues':
+          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/issues':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/test-goof.json',
             );

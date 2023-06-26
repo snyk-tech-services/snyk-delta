@@ -764,7 +764,6 @@ describe('Test issues functions', () => {
         .persist()
         .get(/.*/)
         .reply(200, (uri) => {
-          console.log(uri);
           switch (uri) {
             case '/api/v1/org/123/project/123/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
               return fs.readFileSync(
@@ -920,7 +919,6 @@ describe('Test issues functions', () => {
         .persist()
         .get(/.*/)
         .reply(200, (uri) => {
-          console.log(uri);
           switch (uri) {
             case '/api/v1/org/123/project/123/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
               return fs.readFileSync(
