@@ -225,7 +225,7 @@ export interface IssuesPostResponseType {
               /**
                * The ranges that are vulnerable to the issue
                */
-              vulnerable?: string;
+              vulnerable?: string[];
               /**
                * The ranges that are unaffected by the issue
                */
@@ -234,11 +234,11 @@ export interface IssuesPostResponseType {
           /**
            * The list of reasons why the issue was ignored
            */
-          ignored?: string[];
+          ignored?: string[] | string | undefined;
           /**
            * The list of patches applied to the issue
            */
-          patched?: string[];
+          patched?: string[] | string | undefined;
       }[];
       /**
        * A list of vulnerability issues

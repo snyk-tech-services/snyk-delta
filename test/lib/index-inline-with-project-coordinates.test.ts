@@ -4,7 +4,7 @@ import * as nock from 'nock';
 import * as path from 'path';
 import * as fs from 'fs';
 //process.argv.push('-d');
-process.argv.push('--baselineOrg=playground');
+process.argv.push('--baselineOrg=361fd3c0-41d4-4ea4-ba77-09bb17890967');
 process.argv.push('--baselineProject=c51c80c2-66a1-442a-91e2-4f55b4256a72');
 
 const stdinMock: MockSTDIN = stdin();
@@ -36,25 +36,45 @@ describe('Test End 2 End - Inline mode with project coordinates', () => {
   });
 
   beforeEach(() => {
-    return nock('https://snyk.io')
+    nock('https://api.snyk.io')
+      .persist()
+      .get(/^(?!.*xyz).*$/)
+      .reply(200, (uri) => {
+        switch (uri) {
+          case '/rest/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/projects?version=2023-05-29&limit=10':
+            return fs.readFileSync(
+              fixturesFolderPath + 'apiResponses/projectsV3.json',
+            );
+          case '/rest/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/projects?version=2023-05-29&limit=10&starting_after=v1.eyJpZCI6MzU2NTI5Mzd9':
+            return fs.readFileSync(
+              fixturesFolderPath + 'apiResponses/projectsV3-page2.json',
+            );
+          case '/rest/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/projects?version=2023-05-29&limit=10&starting_after=v1.eyJpZCI6NjQyMjIxfQ%3D%3D':
+            return fs.readFileSync(
+              fixturesFolderPath + 'apiResponses/projectsV3-page3.json',
+            );
+          default:
+        }
+      });
+    nock('https://snyk.io')
       .persist()
       .post(/.*/)
       .reply(200, (uri) => {
         switch (uri) {
-          case '/api/v1/org/playground/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/aggregated-issues':
+          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/aggregated-issues':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/test-goof-aggregated-one-vuln.json',
             );
-          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/aggregated-issues':
+          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/aggregated-issues':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/test-goof-aggregated-one-vuln.json',
             );
-          case '/api/v1/org/playground/projects':
+          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/projects':
             return fs.readFileSync(
               fixturesFolderPath +
-                'apiResponsesForProjects/list-all-projects-org-playground.json',
+                'apiResponsesForProjects/list-all-projects-org-361fd3c0-41d4-4ea4-ba77-09bb17890967.json',
             );
           default:
         }
@@ -62,12 +82,12 @@ describe('Test End 2 End - Inline mode with project coordinates', () => {
       .get(/.*/)
       .reply(200, (uri) => {
         switch (uri) {
-          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
+          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/SNYK-JS-ACORN-559469-issue-paths.json',
             );
-          case '/api/v1/org/playground/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/dep-graph':
+          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/dep-graph':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/goof-depgraph-from-api.json',
             );
