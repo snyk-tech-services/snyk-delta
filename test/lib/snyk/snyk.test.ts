@@ -7,6 +7,7 @@ import {
   getProjectIssues,
   getProjectDepGraph,
   getProjectUUID,
+  getOrgUUID,
 } from '../../../src/lib/snyk/snyk';
 import * as Error from '../../../src/lib/customErrors/apiError';
 
@@ -86,6 +87,15 @@ beforeEach(() => {
           return fs.readFileSync(
             fixturesFolderPath + 'apiResponses/projectsV3-page3.json',
           );
+        case '/rest/orgs?version=2023-06-22~beta&limit=10&slug=customerorg':
+          return fs.readFileSync(
+            fixturesFolderPath + 'apiResponses/customerorgSlugToUUID.json',
+          );
+        case '/rest/orgs?version=2023-06-22~beta&limit=10&slug=customerorg2':
+          return fs.readFileSync(
+            fixturesFolderPath + 'apiResponses/emptyorgSlugToUUID.json',
+          );
+
         default:
       }
     });
@@ -95,6 +105,15 @@ describe('Test endpoint functions', () => {
   it('Test GetProject', async () => {
     const project = await getProject('123', '123');
     expect(project).toEqual('project');
+  });
+
+  it('Test GetOrgUUID', async () => {
+    const project = await getOrgUUID('customerorg');
+    expect(project).toEqual('1234-1234-1234-1234-123456789012');
+  });
+  it('Test GetOrgUUID non existing org', async () => {
+    const project = await getOrgUUID('customerorg2');
+    expect(project).toEqual('');
   });
 
   it('Test GetProjectUUID', async () => {
