@@ -110,7 +110,8 @@ const getDelta = async (
         : `${projectName}`;
 
       if (!baselineOrgPublicId) {
-        baselineOrgPublicId = org;
+        // swap out org slug for org ID
+        baselineOrgPublicId = !isUUID.anyNonNil(org) ? await snyk.getOrgUUID(org) : org
       }
 
       if (!baselineOrgPublicId) {

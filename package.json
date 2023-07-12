@@ -47,6 +47,7 @@
     "is-uuid": "^1.0.2",
     "lodash": "^4.17.15",
     "snyk-api-ts-client": "1.11.1",
+    "snyk-request-manager": "^1.8.1",
     "source-map-support": "^0.5.16",
     "terminal-link": "^2.1.1",
     "tslib": "^1.10.0",
