@@ -1,6 +1,7 @@
 import * as Error from '../customErrors/apiError';
 import * as snykClient from 'snyk-api-ts-client';
 import { convertIntoIssueWithPath } from '../utils/issuesUtils';
+import { requestsManager } from 'snyk-request-manager';
 
 const getProject = async (orgID: string, projectID: string) => {
   const project = await new snykClient.Org({ orgId: orgID })
@@ -8,7 +9,28 @@ const getProject = async (orgID: string, projectID: string) => {
     .get();
   return project;
 };
+async function getOrgUUID(orgSlug: string): Promise<string> {
+  const requestManager = new requestsManager({userAgentPrefix: 'snyk-delta'})
+  let orgUUID = ''
 
+  let url = '/orgs';
+  let urlQueryParams: Array<string> = ['version=2023-06-22~beta', 'limit=10',`slug=${orgSlug}`];
+
+  if (urlQueryParams.length > 0) {
+    url += `?${urlQueryParams.join('&')}`;
+  }
+  try {
+    const orgMetadata = await requestManager.request({verb: 'GET', url: url, useRESTApi: true})
+    if(orgMetadata.data.data.length > 1){
+      throw new Error.GenericError(`Found more than one orgUUID for org slug ${orgSlug}. Unable to continue result comparison.`)
+    } else {
+      orgUUID = orgMetadata.data.data[0]?.id || ''
+    }
+  } catch(err){
+    throw new Error.GenericError(`Error getting org UUID: ${err}`)
+  }
+  return orgUUID
+}
 async function getProjectUUID(
   orgID: string,
   nonUUIDProjectID: string,
@@ -153,6 +175,7 @@ export {
   getProject,
   getProjectIssues,
   getProjectDepGraph,
+  getOrgUUID,
   getProjectUUID,
   getUpgradePath,
 };

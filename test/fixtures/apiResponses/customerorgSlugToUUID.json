@@ -1,0 +1,20 @@
+{
+  "data": [
+    {
+      "attributes": {
+        "group_id": "1234-1234-1234-1234-1234567890ab",
+        "is_personal": false,
+        "name": "customerorg",
+        "slug": "customerorg"
+      },
+      "id": "1234-1234-1234-1234-123456789012",
+      "type": "org"
+    }
+  ],
+  "jsonapi": {
+    "version": "1.0"
+  },
+  "links": {
+    "prev": "/rest/orgs?ending_before=v1.eyJuYW1lIjoiYW50b2luZSBwbGF5Z3JvdW5kIiwic2x1ZyI6ImFudG9pbmUtcGxheWdyb3VuZCJ9&limit=10&slug=customerorg&version=2023-05-29"
+  }
+}

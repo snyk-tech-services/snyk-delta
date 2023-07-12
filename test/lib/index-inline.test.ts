@@ -54,6 +54,10 @@ describe('Test End 2 End - Inline mode', () => {
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/projectsV3-page3.json',
             );
+          case '/rest/orgs?version=2023-06-22~beta&limit=10&slug=customerorg':
+            return fs.readFileSync(
+              fixturesFolderPath + 'apiResponses/customerorgSlugToUUID.json',
+            );
           default:
         }
       });
@@ -82,7 +86,7 @@ describe('Test End 2 End - Inline mode', () => {
               fixturesFolderPath +
                 'apiResponsesForProjects/list-all-projects-org-361fd3c0-41d4-4ea4-ba77-09bb17890967.json',
             );
-          case '/api/v1/org/customerorg/project/37a29fe9-c342-4d70-8efc-df96a8d730b6/aggregated-issues':
+          case '/api/v1/org/1234-1234-1234-1234-123456789012/project/37a29fe9-c342-4d70-8efc-df96a8d730b6/aggregated-issues':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/projectId-aggregated-issues.json',
@@ -107,7 +111,7 @@ describe('Test End 2 End - Inline mode', () => {
               fixturesFolderPath +
                 'apiResponses/java-goof-todolist-core-depgraph.json',
             );
-          case '/api/v1/org/customerorg/project/37a29fe9-c342-4d70-8efc-df96a8d730b6/dep-graph':
+          case '/api/v1/org/1234-1234-1234-1234-123456789012/project/37a29fe9-c342-4d70-8efc-df96a8d730b6/dep-graph':
             return fs.readFileSync(
               fixturesFolderPath + 'dependencies/projectId-depgraph.json',
             );
