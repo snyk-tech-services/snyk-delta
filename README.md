@@ -117,3 +117,5 @@ Currently not compatible with data coming straight from Snyk APIs.
 ### `snyk test --all-projects` support
 Snyk-delta doesn't currently support the `--all-projects` option, but you can try to use [snyk_delta_all_projects.sh](./snyk_delta_all_projects.sh) as an example of how to work around this.
 
+## Technical notes
+Check out the docs folder.
