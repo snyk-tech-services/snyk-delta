@@ -72,6 +72,7 @@ export type SnykCliTestOutput = {
 
 export type IssueWithPaths = {
   id: string;
+  cvssScore?: number;
   from: Array<string>;
   severity: string;
   title: string;
