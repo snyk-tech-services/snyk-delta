@@ -258,7 +258,7 @@ describe('Test End 2 End - Inline mode', () => {
     const expectedOutput = [
       'New issue introduced !',
       'Security Vulnerability:',
-      '  1/1: SNYK-JS-DOTPROP-543489:Prototype Pollution [Medium Severity]',
+      '  1/1: SNYK-JS-DOTPROP-543489:Prototype Pollution [Medium Severity][cvssScore: 6.3]',
       '    Via: snyk@1.228.3 => configstore@3.1.2 => dot-prop@4.2.0',
       '    Fixed in: dot-prop 5.1.1',
       '    Fixable by upgrade:  snyk@1.290.1',
@@ -287,7 +287,7 @@ describe('Test End 2 End - Inline mode', () => {
     const expectedOutput = [
       'New issue introduced !',
       'Security Vulnerability:',
-      '  1/1: SNYK-JS-DOTPROP-543489:Prototype Pollution [Medium Severity]',
+      '  1/1: SNYK-JS-DOTPROP-543489:Prototype Pollution [Medium Severity][cvssScore: 6.3]',
       '    Via: snyk@1.228.3 => configstore@3.1.2 => dot-prop@4.2.0',
       '    Fixed in: dot-prop 5.1.1',
       '    Fixable by upgrade:  snyk@1.290.1',
@@ -369,7 +369,7 @@ describe('Test End 2 End - Inline mode', () => {
     const expectedOutput = [
       'New issue introduced !',
       'Security Vulnerability:',
-      '  1/1: SNYK-JS-ACORN-559469:Regular Expression Denial of Service (ReDoS) [High Severity]',
+      '  1/1: SNYK-JS-ACORN-559469:Regular Expression Denial of Service (ReDoS) [High Severity][cvssScore: 7.5]',
       '    Via: @snyk/nodejs-runtime-agent@1.14.0 => acorn@5.7.3',
       '    Fixed in: acorn 5.7.4, 6.4.1, 7.1.1',
       '    Fixable by upgrade:  @snyk/nodejs-runtime-agent@1.14.0=>acorn@5.7.4',
@@ -418,7 +418,7 @@ describe('Test End 2 End - Inline mode', () => {
     const expectedOutput = [
       'New issue introduced !',
       'Security Vulnerability:',
-      '  1/1: Prototype Pollution [Medium Severity]',
+      '  1/1: Prototype Pollution [Medium Severity][]',
       '    Via: snyk@1.228.3 => configstore@3.1.2 => dot-prop@4.2.0',
       '    Fixed in: dot-prop 5.1.1',
       '    Fixable by upgrade:  snyk@1.290.1',
@@ -447,7 +447,7 @@ describe('Test End 2 End - Inline mode', () => {
     const expectedOutput = [
       'New issue introduced !',
       'Security Vulnerability:',
-      '  1/1: SNYK-JS-DOTPROP-543489:Prototype Pollution [Medium Severity]',
+      '  1/1: SNYK-JS-DOTPROP-543489:Prototype Pollution [Medium Severity][cvssScore: 6.3]',
       '    Via: snyk@1.228.3 => configstore@3.1.2 => dot-prop@4.2.0',
       '    Fixed in: dot-prop 5.1.1',
       '    Fixable by upgrade:  snyk@1.290.1',

@@ -48,7 +48,7 @@ const displayNewVulns = (
           chalk.bold.red(
             `  ${index + 1}/${newVulns.length}: ${vuln.id}:${vuln.title} [${_.capitalize(
               vuln.severity,
-            )} Severity]`,
+            )} Severity][cvssScore: ${vuln.cvssScore || 'NA'}]`,
           ),
         );
         break;
@@ -57,7 +57,7 @@ const displayNewVulns = (
           chalk.bold.yellow(
             `  ${index + 1}/${newVulns.length}: ${vuln.id}:${vuln.title} [${_.capitalize(
               vuln.severity,
-            )} Severity]`,
+            )} Severity][cvssScore: ${vuln.cvssScore || 'NA'}]`,
           ),
         );
         break;
@@ -66,7 +66,7 @@ const displayNewVulns = (
           chalk.bold.blue(
             `  ${index + 1}/${newVulns.length}: ${vuln.id}:${vuln.title} [${_.capitalize(
               vuln.severity,
-            )} Severity]`,
+            )} Severity][cvssScore: ${vuln.cvssScore || 'NA'}]`,
           ),
         );
         break;
@@ -75,7 +75,7 @@ const displayNewVulns = (
           chalk.bold(
             `  ${index + 1}/${newVulns.length}: ${vuln.id}:${vuln.title} [${_.capitalize(
               vuln.severity,
-            )} Severity]`,
+            )} Severity][cvssScore: ${vuln.cvssScore || 'NA'}]`,
           ),
         );
     }
