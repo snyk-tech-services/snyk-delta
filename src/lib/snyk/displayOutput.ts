@@ -46,7 +46,7 @@ const displayNewVulns = (
       case 'high':
         console.log(
           chalk.bold.red(
-            `  ${index + 1}/${newVulns.length}: ${vuln.title} [${_.capitalize(
+            `  ${index + 1}/${newVulns.length}: ${vuln.id}:${vuln.title} [${_.capitalize(
               vuln.severity,
             )} Severity]`,
           ),
@@ -55,7 +55,7 @@ const displayNewVulns = (
       case 'medium':
         console.log(
           chalk.bold.yellow(
-            `  ${index + 1}/${newVulns.length}: ${vuln.title} [${_.capitalize(
+            `  ${index + 1}/${newVulns.length}: ${vuln.id}:${vuln.title} [${_.capitalize(
               vuln.severity,
             )} Severity]`,
           ),
@@ -64,7 +64,7 @@ const displayNewVulns = (
       case 'low':
         console.log(
           chalk.bold.blue(
-            `  ${index + 1}/${newVulns.length}: ${vuln.title} [${_.capitalize(
+            `  ${index + 1}/${newVulns.length}: ${vuln.id}:${vuln.title} [${_.capitalize(
               vuln.severity,
             )} Severity]`,
           ),
@@ -73,7 +73,7 @@ const displayNewVulns = (
       default:
         console.log(
           chalk.bold(
-            `  ${index + 1}/${newVulns.length}: ${vuln.title} [${_.capitalize(
+            `  ${index + 1}/${newVulns.length}: ${vuln.id}:${vuln.title} [${_.capitalize(
               vuln.severity,
             )} Severity]`,
           ),
