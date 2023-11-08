@@ -132,7 +132,7 @@ describe('Test End 2 End - Inline mode with project coordinates', () => {
     const expectedOutput = [
       'New issue introduced !',
       'Security Vulnerability:',
-      '  1/1: Prototype Pollution [Medium Severity]',
+      '  1/1: SNYK-JS-DOTPROP-543489:Prototype Pollution [Medium Severity]',
       '    Via: snyk@1.228.3 => configstore@3.1.2 => dot-prop@4.2.0',
       '    Fixed in: dot-prop 5.1.1',
       '    Fixable by upgrade:  snyk@1.290.1',

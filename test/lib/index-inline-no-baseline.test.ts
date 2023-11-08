@@ -113,7 +113,7 @@ describe('Test End 2 End - Inline mode - no baseline', () => {
     const expectedOutput = [
       'New issue introduced !',
       'Security Vulnerability',
-      '  1/1: Regular Expression Denial of Service (ReDoS) [High Severity]',
+      '  1/1: SNYK-JS-ACORN-559469:Regular Expression Denial of Service (ReDoS) [High Severity]',
       '    Via: @snyk/nodejs-runtime-agent@1.14.0 => acorn@5.7.3',
       '    Fixed in: acorn 5.7.4, 6.4.1, 7.1.1',
       '    Fixable by upgrade:  @snyk/nodejs-runtime-agent@1.14.0=>acorn@5.7.4',
