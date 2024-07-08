@@ -31,6 +31,9 @@ const getDelta = async (
   setPassIfNoBaselineFlag = false,
   failOnOverride?: string,
 ): Promise<SnykDeltaOutput | number> => {
+
+  /* eslint-disable no-unsafe-finally */
+
   if (process.env.NODE_ENV == 'prod') {
     console.log(banner);
   }
@@ -284,6 +287,7 @@ const getDelta = async (
       };
     }
   }
+  /* eslint-enable no-unsafe-finally */
 };
 
 if (!module.parent) {

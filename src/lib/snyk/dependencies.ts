@@ -4,13 +4,42 @@ import * as chalk from 'chalk';
 import { getIssuesDetailsPerPackage } from '../snyk/issues';
 import { IssueWithPaths } from '../types';
 
+const consolidateIndirectDepsPaths = (
+  listOfDeps: Array<any>,
+  snykTestGraph: depgraph.DepGraph,
+): Map<string, string[][]> => {
+  const snykIndirectDepsPaths = new Map<string, Array<Array<string>>>();
+  listOfDeps.forEach((indirectDep) => {
+    snykTestGraph.pkgPathsToRoot(indirectDep.info).forEach((individualPath) => {
+      // Group all paths for a given indirect dep together in a map
+      const individualPathFormatted = individualPath
+        .reverse()
+        .slice(1)
+        .map((pkgInfo) => pkgInfo.name + '@' + pkgInfo.version);
+      if (snykIndirectDepsPaths.has(indirectDep.id)) {
+        const pathsArray = snykIndirectDepsPaths.get(indirectDep.id) as Array<
+          Array<string>
+        >;
+        pathsArray.push(individualPathFormatted);
+        snykIndirectDepsPaths.set(indirectDep.id, pathsArray);
+      } else {
+        const pathsArray: string[][] = [];
+        pathsArray.push(individualPathFormatted);
+        snykIndirectDepsPaths.set(indirectDep.id, pathsArray);
+      }
+    });
+  });
+
+  return snykIndirectDepsPaths;
+};
+
 const displayDependenciesChangeDetails = async (
   snykDepsJsonResults: any,
   monitoredProjectDepGraph: any,
   packageManager: string,
   newVulns: IssueWithPaths[],
-  newLicenseIssues: IssueWithPaths[],
-) => {
+  _newLicenseIssues: IssueWithPaths[],
+):Promise<void> => {
   let snykTestGraph: depgraph.DepGraph;
   if (snykDepsJsonResults && snykDepsJsonResults.depGraph) {
     // Getting graph
@@ -115,18 +144,17 @@ const displayDependenciesChangeDetails = async (
   );
   console.log('===============');
   console.log('Paths');
-
   const consolidatedIndirectlyAddedDepsPaths = consolidateIndirectDepsPaths(
     addedIndirectDeps,
     snykTestGraph,
   );
   addedIndirectDeps.forEach((addedDep) => {
     //Display all the indirect deps and their paths
-    let allPathsForGivenDep = consolidatedIndirectlyAddedDepsPaths.get(
+    const allPathsForGivenDep = consolidatedIndirectlyAddedDepsPaths.get(
       addedDep.id,
     );
 
-    let vulnsForDep = getIssuesDetailsPerPackage(
+    const vulnsForDep = getIssuesDetailsPerPackage(
       newVulns,
       addedDep.info.name,
       addedDep.info.version,
@@ -148,6 +176,7 @@ const displayDependenciesChangeDetails = async (
           break;
         case 1:
           count = chalk.redBright('1 issue');
+          break;
         default:
           count = chalk.redBright(vulnsCount + ' issue');
           paths = chalk.redBright(paths);
@@ -178,7 +207,7 @@ const displayDependenciesChangeDetails = async (
   );
   addedIndirectDeps.forEach((removedDep) => {
     //Display all the indirect deps and their paths
-    let allPathsForGivenDep = consolidatedIndirectlyRemovedDepsPaths.get(
+    const allPathsForGivenDep = consolidatedIndirectlyRemovedDepsPaths.get(
       removedDep.id,
     );
     if (allPathsForGivenDep) {
@@ -197,32 +226,5 @@ const displayDependenciesChangeDetails = async (
   });
 };
 
-const consolidateIndirectDepsPaths = (
-  listOfDeps: Array<any>,
-  snykTestGraph: depgraph.DepGraph,
-): Map<string, string[][]> => {
-  let snykIndirectDepsPaths = new Map<string, Array<Array<string>>>();
-  listOfDeps.forEach((indirectDep) => {
-    snykTestGraph.pkgPathsToRoot(indirectDep.info).forEach((individualPath) => {
-      // Group all paths for a given indirect dep together in a map
-      let individualPathFormatted = individualPath
-        .reverse()
-        .slice(1)
-        .map((pkgInfo) => pkgInfo.name + '@' + pkgInfo.version);
-      if (snykIndirectDepsPaths.has(indirectDep.id)) {
-        let pathsArray = snykIndirectDepsPaths.get(indirectDep.id) as Array<
-          Array<string>
-        >;
-        pathsArray.push(individualPathFormatted);
-        snykIndirectDepsPaths.set(indirectDep.id, pathsArray);
-      } else {
-        let pathsArray: Array<Array<string>> = new Array();
-        pathsArray.push(individualPathFormatted);
-        snykIndirectDepsPaths.set(indirectDep.id, pathsArray);
-      }
-    });
-  });
 
-  return snykIndirectDepsPaths;
-};
 export { displayDependenciesChangeDetails, consolidateIndirectDepsPaths };

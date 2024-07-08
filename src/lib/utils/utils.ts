@@ -10,7 +10,7 @@ const DEBUG_DEFAULT_NAMESPACES = ['snyk'];
 
 let debug: debugModule.Debugger;
 
-const getDebugModule = () => {
+const getDebugModule = ():debugModule.Debugger => {
   return debug;
 };
 
@@ -18,7 +18,7 @@ export interface ModuleOptions {
   debug: boolean;
 }
 
-const init = (debugMode = false) => {
+const init = (debugMode = false):any => {
   const pkgJSONPath = fs.existsSync(__dirname + '/../../../package.json')
     ? __dirname + '/../../../package.json'
     : path.dirname(path.dirname(__dirname)) + '/package.json';
@@ -100,13 +100,13 @@ Example: ${chalk.bold(
   debug = debugModule('snyk');
   return argv; //debugModule('snyk');
 };
-const displaySplash = () => {
+const displaySplash = ():void => {
   if (process.env.DEBUG) {
     console.log(chalk.bgRedBright('\nDebug Mode\n'));
   }
 };
 
-const getPipedDataIn = () => {
+const getPipedDataIn = ():Promise<string> => {
   return new Promise<string>((resolve, reject) => {
     let data = '';
 

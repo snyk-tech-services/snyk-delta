@@ -4,30 +4,6 @@ import { IssueWithPaths, SnykVuln } from '../types';
 import * as chalk from 'chalk';
 import * as terminalLink from 'terminal-link';
 
-const displayOutput = (
-  newVulns: IssueWithPaths[],
-  newLicenseIssues: IssueWithPaths[],
-  issueTypeFilter: string,
-  mode: string,
-) => {
-  if (
-    (newVulns.length > 0 && issueTypeFilter != 'license') ||
-    (newLicenseIssues.length > 0 && issueTypeFilter != 'vuln')
-  ) {
-    displaySplash();
-    if (newVulns.length > 0 && issueTypeFilter != 'license') {
-      displayNewVulns(newVulns, mode);
-    }
-    if (newLicenseIssues.length > 0 && issueTypeFilter != 'vuln') {
-      displayNewLicenseIssues(newLicenseIssues, mode);
-    }
-    process.exitCode = 1;
-  } else {
-    console.log('No new issues found !');
-    process.exitCode = 0;
-  }
-};
-
 const displayNewVulns = (
   newVulns: Array<IssueWithPaths>,
   mode: string,
@@ -80,7 +56,7 @@ const displayNewVulns = (
         );
     }
 
-    let paths = vuln.from as Array<string>;
+    const paths = vuln.from as Array<string>;
     if (mode == 'inline') {
       paths.shift();
     }
@@ -172,12 +148,36 @@ const displayNewLicenseIssues = (
         );
     }
 
-    let paths = issue.from as Array<string>;
+    const paths = issue.from as Array<string>;
     if (mode == 'inline') {
       paths.shift();
     }
     console.log(chalk('    Via:', paths.join(' => '), '\n'));
   });
+};
+
+const displayOutput = (
+  newVulns: IssueWithPaths[],
+  newLicenseIssues: IssueWithPaths[],
+  issueTypeFilter: string,
+  mode: string,
+):void => {
+  if (
+    (newVulns.length > 0 && issueTypeFilter != 'license') ||
+    (newLicenseIssues.length > 0 && issueTypeFilter != 'vuln')
+  ) {
+    displaySplash();
+    if (newVulns.length > 0 && issueTypeFilter != 'license') {
+      displayNewVulns(newVulns, mode);
+    }
+    if (newLicenseIssues.length > 0 && issueTypeFilter != 'vuln') {
+      displayNewLicenseIssues(newLicenseIssues, mode);
+    }
+    process.exitCode = 1;
+  } else {
+    console.log('No new issues found !');
+    process.exitCode = 0;
+  }
 };
 
 export { displayOutput, displayNewVulns, displayNewLicenseIssues };
