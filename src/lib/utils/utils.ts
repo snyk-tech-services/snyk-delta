@@ -1,5 +1,5 @@
 import debugModule from 'debug';
-const yargs = require('yargs');
+
 import * as fs from 'fs';
 import * as path from 'path';
 //const pkgJSON = require(require('app-root-path').resolve('package.json'))
@@ -19,6 +19,7 @@ export interface ModuleOptions {
 }
 
 const init = (debugMode = false):any => {
+  const yargs = require('yargs');
   const pkgJSONPath = fs.existsSync(__dirname + '/../../../package.json')
     ? __dirname + '/../../../package.json'
     : path.dirname(path.dirname(__dirname)) + '/package.json';
@@ -84,7 +85,7 @@ Example: ${chalk.bold(
     })
     .describe('d', 'Show debug logs')
     .version(pkgJSON.version).argv;
-
+    
   if (argv.debug || argv.d || debugMode) {
     let enable = DEBUG_DEFAULT_NAMESPACES.join(',');
     if (process.env.DEBUG) {
@@ -109,7 +110,6 @@ const displaySplash = ():void => {
 const getPipedDataIn = ():Promise<string> => {
   return new Promise<string>((resolve, reject) => {
     let data = '';
-
     process.stdin.resume();
     process.stdin.setEncoding('utf8');
     try {
