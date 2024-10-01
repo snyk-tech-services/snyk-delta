@@ -1,0 +1,35 @@
+{
+    "data": [
+      {
+        "attributes": {
+          "created_at": "2022-03-16T00:00:00Z",
+          "group_id": "59d6d97e-3106-4ebb-b608-352fad9c5b34",
+          "is_personal": true,
+          "name": "My Org",
+          "slug": "my-org",
+          "updated_at": "2022-03-16T00:00:00Z"
+        },
+        "id": "361fd3c0-41d4-4ea4-ba77-09bb17890967",
+        "relationships": {
+          "member_role": {
+            "data": {
+              "attributes": {
+                "name": "Collaborator"
+              },
+              "id": "f60ff965-6889-4db2-8c86-0285d62f35ab",
+              "type": "resource"
+            }
+          }
+        },
+        "type": "resource"
+      }
+    ],
+    "jsonapi": {
+      "version": "1.0"
+    },
+    "links": {
+      "first": "https://example.com/api/resource?ending_before=v1.eyJpZCI6IjExIn0K",
+      "last": "https://example.com/api/resource?starting_after=v1.eyJpZCI6IjMwIn0K",
+      "next": "https://example.com/api/resource?starting_after=v1.eyJpZCI6IjEwIn0K"
+    }
+  }

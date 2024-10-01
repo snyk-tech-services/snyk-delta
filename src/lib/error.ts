@@ -1,4 +1,4 @@
-import * as chalk from 'chalk';
+import chalk from 'chalk';
 const debugModule = require('debug');
 
 const debugModeMessage =

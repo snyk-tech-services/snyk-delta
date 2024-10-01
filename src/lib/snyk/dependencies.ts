@@ -1,6 +1,6 @@
 import * as depgraph from '@snyk/dep-graph';
 import * as _ from 'lodash';
-import * as chalk from 'chalk';
+import chalk from 'chalk';
 import { getIssuesDetailsPerPackage } from '../snyk/issues';
 import { IssueWithPaths } from '../types';
 

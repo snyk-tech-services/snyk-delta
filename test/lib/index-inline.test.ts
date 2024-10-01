@@ -1,6 +1,6 @@
 import { stdin, MockSTDIN } from 'mock-stdin';
 import { mockProcessExit } from 'jest-mock-process';
-import * as nock from 'nock';
+import nock from 'nock';
 import * as path from 'path';
 import * as fs from 'fs';
 

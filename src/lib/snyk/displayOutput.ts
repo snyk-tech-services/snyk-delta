@@ -1,8 +1,8 @@
 import * as _ from 'lodash';
 import { displaySplash } from '../utils/utils';
 import { IssueWithPaths, SnykVuln } from '../types';
-import * as chalk from 'chalk';
-import * as terminalLink from 'terminal-link';
+import chalk from 'chalk';
+import terminalLink from 'terminal-link';
 
 const displayNewVulns = (
   newVulns: Array<IssueWithPaths>,

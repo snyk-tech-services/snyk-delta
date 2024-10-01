@@ -1,9 +1,9 @@
-import * as debugModule from 'debug';
+import debugModule from 'debug';
 const yargs = require('yargs');
 import * as fs from 'fs';
 import * as path from 'path';
 //const pkgJSON = require(require('app-root-path').resolve('package.json'))
-import * as chalk from 'chalk';
+import chalk from 'chalk';
 import { BadInputError } from '../customErrors/inputError';
 
 const DEBUG_DEFAULT_NAMESPACES = ['snyk'];

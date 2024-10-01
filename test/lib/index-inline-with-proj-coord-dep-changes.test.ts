@@ -1,8 +1,8 @@
 import { stdin, MockSTDIN } from 'mock-stdin';
 import { mockProcessExit } from 'jest-mock-process';
-import * as nock from 'nock';
-import * as path from 'path';
-import * as fs from 'fs';
+import nock from 'nock';
+import path from 'path';
+import fs from 'fs';
 //process.argv.push('-d');
 process.argv.push('--baselineOrg=f6999a85-c519-4ee7-ae55-3269b9bfa4b6');
 process.argv.push('--baselineProject=f51c925b-2abe-4c07-8a0d-21b834aa3074');
@@ -40,6 +40,10 @@ describe('Test End 2 End - Inline mode with project coordinates', () => {
       .get(/^(?!.*xyz).*$/)
       .reply(200, (uri) => {
         switch (uri) {
+          case '/rest/orgs?version=2023-06-22~beta&limit=10&slug=platform-sgr':
+            return fs.readFileSync(
+              fixturesFolderPath + 'apiResponses/orgPlatformSgrSlug.json',
+            );
           case '/rest/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/projects?version=2023-05-29&limit=10':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/projectsV3.json',
@@ -60,11 +64,11 @@ describe('Test End 2 End - Inline mode with project coordinates', () => {
       .post(/.*/)
       .reply(200, (uri) => {
         switch (uri) {
-          case '/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/f51c925b-2abe-4c07-8a0d-21b834aa3074/issues':
+          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/f51c925b-2abe-4c07-8a0d-21b834aa3074/issues':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/test-poetry.json',
             );
-          case '/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/projects':
+          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/projects':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponsesForProjects/list-all-projects-platform.json',
@@ -75,11 +79,11 @@ describe('Test End 2 End - Inline mode with project coordinates', () => {
       .get(/.*/)
       .reply(200, (uri) => {
         switch (uri) {
-          case '/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/f51c925b-2abe-4c07-8a0d-21b834aa3074/issues':
+          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/f51c925b-2abe-4c07-8a0d-21b834aa3074/issues':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/test-poetry.json',
             );
-          case '/api/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/f51c925b-2abe-4c07-8a0d-21b834aa3074/dep-graph':
+          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/f51c925b-2abe-4c07-8a0d-21b834aa3074/dep-graph':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/poetry-depgraph.json',
             );
@@ -109,7 +113,6 @@ describe('Test End 2 End - Inline mode with project coordinates', () => {
       'Removed 0',
       'No new issues found !',
     ];
-
     expectedOutput.forEach((line: string) => {
       expect(consoleOutput.join()).toContain(line);
     });

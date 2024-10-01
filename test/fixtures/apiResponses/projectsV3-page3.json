@@ -299,14 +299,14 @@
       },
       {
         "type": "project",
-        "id": "afd64e9a-e96a-4049-83ce-ceed670dde4f",
+        "id": "f51c925b-2abe-4c07-8a0d-21b834aa3074",
         "meta": {},
         "attributes": {
-          "name": "aarlaud-snyk/github-stats:package.json",
-          "type": "npm",
+          "name": "poetry:pyproject.toml",
+          "type": "poetry",
           "target_file": "package.json",
           "target_reference": "master",
-          "origin": "github",
+          "origin": "cli",
           "created": "2018-02-03T23:02:21.713Z",
           "status": "active",
           "business_criticality": [],

@@ -1,7 +1,7 @@
-import * as nock from 'nock';
+import nock from 'nock';
 import * as path from 'path';
 import * as fs from 'fs';
-import * as debug from 'debug';
+import debug from 'debug';
 
 import { getDelta } from '../../src/lib/index';
 const fixturesFolderPath = path.resolve(__dirname, '..') + '/fixtures/';
