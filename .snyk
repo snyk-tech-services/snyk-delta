@@ -14,6 +14,11 @@ ignore:
         reason: Not applicable in such cli tool.snoozing temporarily.
         expires: 2024-10-31T11:59:43.057Z
         created: 2024-10-01T11:59:43.064Z
+  SNYK-JS-AXIOS-6124857:
+    - '*':
+        reason: REDOS Not applicable in such cli tool.
+        expires: 2024-10-31T12:02:05.327Z
+        created: 2024-10-01T12:02:05.330Z
 # patches apply the minimum changes required to fix a vulnerability
 patch:
   SNYK-JS-LODASH-450202:
