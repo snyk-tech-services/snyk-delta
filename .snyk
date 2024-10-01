@@ -11,9 +11,9 @@ ignore:
         expires: '2021-10-03T13:14:14.049Z'
   SNYK-JS-AXIOS-6032459:
     - '*':
-        reason: Not applicable to this lib and tool
-        expires: 2024-01-10T00:00:00.000Z
-        created: 2023-11-08T22:43:00.182Z
+        reason: Not applicable in such cli tool.snoozing temporarily.
+        expires: 2024-10-31T11:59:43.057Z
+        created: 2024-10-01T11:59:43.064Z
 # patches apply the minimum changes required to fix a vulnerability
 patch:
   SNYK-JS-LODASH-450202:
