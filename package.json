@@ -10,7 +10,7 @@
     "format:check": "prettier --check '{''{lib,test}/!(fixtures)/**/*,*}.{js,ts,json,yml}'",
     "format": "prettier --write '{''{lib,test}/!(fixtures)/**/*,*}.{js,ts,json,yml}'",
     "lint": "npm run format:check && npm run lint:eslint",
-    "lint:eslint": "eslint --cache '{lib,test}/**/*.ts'",
+    "lint:eslint": "eslint --cache 'src/**/*.ts'",
     "test": "npm run lint && npm run test:unit",
     "test:unit": "jest",
     "test:coverage": "npm run test:unit -- --coverage",
@@ -47,23 +47,25 @@
     "is-uuid": "^1.0.2",
     "lodash": "^4.17.15",
     "snyk-api-ts-client": "^1.11.2",
-    "snyk-request-manager": "^1.8.3",
+    "snyk-request-manager": "^1.8.6",
     "source-map-support": "^0.5.16",
     "terminal-link": "^2.1.1",
     "tslib": "^1.10.0",
     "yargs": "^16.0.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.25.4",
+    "@babel/preset-typescript": "^7.24.7",
     "@types/jest": "26.0.24",
     "@types/lodash": "4.14.182",
     "@types/node": "^12.12.31",
     "@types/strip-ansi": "5.2.1",
     "@typescript-eslint/eslint-plugin": "^2.18.0",
     "@typescript-eslint/parser": "^2.18.0",
-    "axios": "^0.20.0",
+    "axios": "^0.27.2",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
-    "jest": "26.6.3",
+    "jest": "^26.6.3",
     "jest-mock-process": "^1.4.0",
     "mock-stdin": "^1.0.0",
     "nock": "^12.0.3",
@@ -72,7 +74,7 @@
     "ts-jest": "26.5.6",
     "ts-node": "8.6.2",
     "tsc-watch": "^4.1.0",
-    "typescript": "^3.7.5"
+    "typescript": "^4.9.5"
   },
   "pkg": {
     "scripts": [

@@ -1,12 +1,13 @@
-import { mockProcessExit } from 'jest-mock-process';
-import * as nock from 'nock';
-import * as path from 'path';
-import * as fs from 'fs';
 process.argv.push('-d');
 process.argv.push('--baselineOrg=361fd3c0-41d4-4ea4-ba77-09bb17890967');
 process.argv.push('--baselineProject=c51c80c2-66a1-442a-91e2-4f55b4256a73');
 process.argv.push('--currentOrg=361fd3c0-41d4-4ea4-ba77-09bb17890967');
 process.argv.push('--currentProject=c51c80c2-66a1-442a-91e2-4f55b4256a72');
+import { mockProcessExit } from 'jest-mock-process';
+import nock from 'nock';
+import * as path from 'path';
+import * as fs from 'fs';
+
 const mockExit = mockProcessExit();
 import { getDelta } from '../../src/lib/index';
 

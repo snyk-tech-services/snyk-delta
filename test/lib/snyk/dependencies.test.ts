@@ -6,7 +6,7 @@ import * as depgraph from '@snyk/dep-graph';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as _ from 'lodash';
-import * as chalk from 'chalk';
+import chalk from 'chalk';
 
 const fixturesFolderPath = path.resolve(__dirname, '../..') + '/fixtures/';
 
@@ -275,12 +275,12 @@ describe('Test Snyk Utils make request properly', () => {
       '   added-indirectdep@1.0.0 ' +
         chalk.redBright('1 issue') +
         ':\n' +
-        chalk.redBright('     added-dep@1.0.0=>added-indirectdep@1.0.0'),
+        '     added-dep@1.0.0=>added-indirectdep@1.0.0',
       '===============',
       'Removed 0\n',
       '_____________________________',
     ];
-    expect(chalk.white(consoleOutput)).toEqual(chalk.white(expectedResult));
+    expect(consoleOutput).toEqual(expectedResult);
   });
 
   it('Test displayDependenciesChangeDetails - no change - Graph in different order', async () => {

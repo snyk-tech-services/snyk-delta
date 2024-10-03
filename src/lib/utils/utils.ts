@@ -1,16 +1,16 @@
-import * as debugModule from 'debug';
-const yargs = require('yargs');
+import debugModule from 'debug';
+
 import * as fs from 'fs';
 import * as path from 'path';
 //const pkgJSON = require(require('app-root-path').resolve('package.json'))
-import * as chalk from 'chalk';
+import chalk from 'chalk';
 import { BadInputError } from '../customErrors/inputError';
 
 const DEBUG_DEFAULT_NAMESPACES = ['snyk'];
 
 let debug: debugModule.Debugger;
 
-const getDebugModule = () => {
+const getDebugModule = ():debugModule.Debugger => {
   return debug;
 };
 
@@ -18,7 +18,8 @@ export interface ModuleOptions {
   debug: boolean;
 }
 
-const init = (debugMode = false) => {
+const init = (debugMode = false):any => {
+  const yargs = require('yargs');
   const pkgJSONPath = fs.existsSync(__dirname + '/../../../package.json')
     ? __dirname + '/../../../package.json'
     : path.dirname(path.dirname(__dirname)) + '/package.json';
@@ -84,7 +85,7 @@ Example: ${chalk.bold(
     })
     .describe('d', 'Show debug logs')
     .version(pkgJSON.version).argv;
-
+    
   if (argv.debug || argv.d || debugMode) {
     let enable = DEBUG_DEFAULT_NAMESPACES.join(',');
     if (process.env.DEBUG) {
@@ -100,16 +101,15 @@ Example: ${chalk.bold(
   debug = debugModule('snyk');
   return argv; //debugModule('snyk');
 };
-const displaySplash = () => {
+const displaySplash = ():void => {
   if (process.env.DEBUG) {
     console.log(chalk.bgRedBright('\nDebug Mode\n'));
   }
 };
 
-const getPipedDataIn = () => {
+const getPipedDataIn = ():Promise<string> => {
   return new Promise<string>((resolve, reject) => {
     let data = '';
-
     process.stdin.resume();
     process.stdin.setEncoding('utf8');
     try {
