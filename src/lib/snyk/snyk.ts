@@ -2,8 +2,9 @@ import * as Error from '../customErrors/apiError';
 import * as snykClient from 'snyk-api-ts-client';
 import { convertIntoIssueWithPath } from '../utils/issuesUtils';
 import { requestsManager } from 'snyk-request-manager';
+import { IssuesPostResponseType } from '../types';
 
-const getProject = async (orgID: string, projectID: string) => {
+const getProject = async (orgID: string, projectID: string):Promise<snykClient.OrgTypes.ProjectGetResponseType> => {
   const project = await new snykClient.Org({ orgId: orgID })
     .project({ projectId: projectID })
     .get();
@@ -14,7 +15,7 @@ async function getOrgUUID(orgSlug: string): Promise<string> {
   let orgUUID = ''
 
   let url = '/orgs';
-  let urlQueryParams: Array<string> = ['version=2023-06-22~beta', 'limit=10',`slug=${orgSlug}`];
+  const urlQueryParams: Array<string> = ['version=2023-06-22~beta', 'limit=10',`slug=${orgSlug}`];
 
   if (urlQueryParams.length > 0) {
     url += `?${urlQueryParams.join('&')}`;
@@ -59,7 +60,7 @@ async function getProjectUUID(
   }
   return selectedProjectArray[0].id;
 }
-const getProjectIssues = async (orgID: string, projectID: string) => {
+const getProjectIssues = async (orgID: string, projectID: string):Promise<IssuesPostResponseType> => {
   // No filter on patched or non patch issue, getting both
   const filters: snykClient.OrgTypes.Project.AggregatedissuesPostBodyType = {
     includeDescription: false,
@@ -94,7 +95,7 @@ const getProjectIssues = async (orgID: string, projectID: string) => {
   );
 };
 
-const getProjectDepGraph = async (orgID: string, projectID: string) => {
+const getProjectDepGraph = async (orgID: string, projectID: string):Promise<snykClient.OrgTypes.Project.DepgraphGetResponseType> => {
   const projectDepGraph = await new snykClient.Org({ orgId: orgID })
     .project({ projectId: projectID })
     .depgraph.get();
@@ -110,7 +111,7 @@ const getUpgradePath = async (
   orgID: string,
   projectID: string,
   issueId: string,
-) => {
+):Promise<ProjectIssuePathsLegacy> => {
   let projectIssuePaths = await new snykClient.Org({ orgId: orgID })
     .project({ projectId: projectID })
     .issue({ issueId: issueId })

@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import * as nock from 'nock';
+import nock from 'nock';
 import * as _ from 'lodash';
 import * as path from 'path';
 import {
@@ -147,6 +147,7 @@ describe('Test endpoint functions', () => {
       expect(project).toThrow();
     } catch (err) {
       expect(err).toBeInstanceOf(Error.NotFoundError);
+      // @ts-ignore
       expect(err.message).toContain(
         `Searched through all projects in organization 689ce7f9-7943-4a71-b704-2ba575f01089 and could not match to an individual monitored CLI maven project with a name of 'atokeneduser/clojure'`,
       );

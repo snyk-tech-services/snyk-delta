@@ -1,9 +1,9 @@
-import * as chalk from 'chalk';
+import chalk from 'chalk';
 const debugModule = require('debug');
 
 const debugModeMessage =
   'Re-run in debug mode for more information: DEBUG=* snyk-delta <...>';
-const handleError = (error: Error) => {
+const handleError = (error: Error):void => {
   const debug = debugModule('snyk');
   if (!process.env.DEBUG) {
     console.log(

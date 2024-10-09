@@ -2,7 +2,7 @@
 import 'source-map-support/register';
 import * as snyk from './snyk/snyk';
 import handleError from './error';
-import * as utils from './utils/utils';
+import {getPipedDataIn, init, getDebugModule} from './utils/utils';
 import * as issues from './snyk/issues';
 import * as dependencies from './snyk/dependencies';
 import * as isUUID from 'is-uuid';
@@ -31,6 +31,9 @@ const getDelta = async (
   setPassIfNoBaselineFlag = false,
   failOnOverride?: string,
 ): Promise<SnykDeltaOutput | number> => {
+
+  /* eslint-disable no-unsafe-finally */
+
   if (process.env.NODE_ENV == 'prod') {
     console.log(banner);
   }
@@ -42,8 +45,8 @@ const getDelta = async (
     'fail-on'?: string;
     setPassIfNoBaseline?: boolean;
     type?: string;
-  } = utils.init(debugMode);
-  const debug = utils.getDebugModule();
+  } = init(debugMode);
+  const debug = getDebugModule();
   if (process.env.NODE_ENV == 'test') {
     argv.type = process.env.TYPE? process.env.TYPE : 'all'
   }
@@ -76,7 +79,7 @@ const getDelta = async (
       );
     }
     if (mode == 'inline') {
-      const rawSnykTestData = snykTestOutput ?? (await utils.getPipedDataIn());
+      const rawSnykTestData = snykTestOutput ?? (await getPipedDataIn());
       // Verify it's JSON data structure
       debug('Verify input data for JSON structure');
       const snykTestJsonInput: Array<any> = JSON.parse(
@@ -284,6 +287,7 @@ const getDelta = async (
       };
     }
   }
+  /* eslint-enable no-unsafe-finally */
 };
 
 if (!module.parent) {
