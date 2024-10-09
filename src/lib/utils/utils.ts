@@ -71,6 +71,11 @@ Example: ${chalk.bold(
         describe: 'Snyk project  public ID (UUID) to compare against',
         demandOption: false,
       },
+      targetReference: {
+        type: 'string',
+        describe: 'Snyk project target reference to compare against',
+        demandOption: false,
+      },
       type: {
         describe: 'Specify issue type - default all',
         choices: ['vuln', 'license', 'all'],
