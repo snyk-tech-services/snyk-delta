@@ -78,7 +78,8 @@
   },
   "pkg": {
     "scripts": [
-      "dist/**/*.js"
+      "dist/**/*.js",
+      "./node_modules/snyk-request-manager/node_modules/axios/dist/node/axios.cjs"
     ]
   },
   "snyk": true
