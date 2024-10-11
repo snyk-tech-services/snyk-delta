@@ -11,8 +11,8 @@ const getProject = async (orgID: string, projectID: string):Promise<snykClient.O
   return project;
 };
 async function getOrgUUID(orgSlug: string): Promise<string> {
-  const requestManager = new requestsManager({userAgentPrefix: 'snyk-delta'})
-  let orgUUID = ''
+  const requestManager = new requestsManager({ userAgentPrefix: 'snyk-delta' });
+  let orgUUID = '';
 
   let url = '/orgs';
   const urlQueryParams: Array<string> = ['version=2023-06-22~beta', 'limit=10',`slug=${orgSlug}`];
@@ -21,24 +21,33 @@ async function getOrgUUID(orgSlug: string): Promise<string> {
     url += `?${urlQueryParams.join('&')}`;
   }
   try {
-    const orgMetadata = await requestManager.request({verb: 'GET', url: url, useRESTApi: true})
-    if(orgMetadata.data.data.length > 1){
-      throw new Error.GenericError(`Found more than one orgUUID for org slug ${orgSlug}. Unable to continue result comparison.`)
+    const orgMetadata = await requestManager.request({
+      verb: 'GET',
+      url: url,
+      useRESTApi: true,
+    });
+    if (orgMetadata.data.data.length > 1) {
+      throw new Error.GenericError(
+        `Found more than one orgUUID for org slug ${orgSlug}. Unable to continue result comparison.`,
+      );
     } else {
-      orgUUID = orgMetadata.data.data[0]?.id || ''
+      orgUUID = orgMetadata.data.data[0]?.id || '';
     }
-  } catch(err){
-    throw new Error.GenericError(`Error getting org UUID: ${err}`)
+  } catch (err) {
+    throw new Error.GenericError(`Error getting org UUID: ${err}`);
   }
-  return orgUUID
+  return orgUUID;
 }
 async function getProjectUUID(
   orgID: string,
   nonUUIDProjectID: string,
   projectType = 'cli',
   packageManager: string,
+  targetReference?: string,
 ): Promise<string> {
-  const  allProjects = await new snykClient.Org({ orgId: orgID }).projects.getV3();
+  const allProjects = await new snykClient.Org({
+    orgId: orgID,
+  }).projects.getV3();
   const allProjectsArray = allProjects?.projects as Array<any>;
   const selectedProjectArray: Array<{
     name: string;
@@ -49,7 +58,8 @@ async function getProjectUUID(
     (project) =>
       project.name == nonUUIDProjectID &&
       project.origin == projectType &&
-      project.type == packageManager,
+      project.type == packageManager &&
+      (targetReference ? project.targetReference == targetReference : true),
   );
   if (selectedProjectArray.length == 0) {
     return '';

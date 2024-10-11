@@ -343,7 +343,64 @@
           "name": "github-stats",
           "type": "npm",
           "target_file": "",
-          "target_reference": "",
+          "target_reference": "branch1",
+          "origin": "cli",
+          "created": "2021-10-21T11:43:42.450Z",
+          "status": "active",
+          "business_criticality": [],
+          "environment": [],
+          "lifecycle": [],
+          "tags": [],
+          "settings": {
+            "recurring_tests": {
+              "frequency": "daily"
+            },
+            "pull_requests": {
+              "fail_only_for_issues_with_fix": false
+            }
+          }
+        },
+        "relationships": {
+          "organization": {
+            "data": {
+              "type": "org",
+              "id": "361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967"
+            }
+          },
+          "target": {
+            "data": {
+              "type": "target",
+              "id": "064dfb56-0ec2-41f8-9201-9a6c75718647"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/targets/064dfb56-0ec2-41f8-9201-9a6c75718647"
+            }
+          },
+          "importer": {
+            "data": {
+              "type": "user",
+              "id": "4eee4035-64c1-4d66-a2b2-5bfdcee0c448"
+            },
+            "links": {
+              "related": "/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/users/4eee4035-64c1-4d66-a2b2-5bfdcee0c448"
+            }
+          }
+        }
+      },
+      {
+        "type": "project",
+        "id": "048e7057-bd8d-4868-a2db-8db7b0918581",
+        "meta": {
+          "cli_monitored_at": "2021-10-21T11:43:42.442Z"
+        },
+        "attributes": {
+          "name": "github-stats",
+          "type": "npm",
+          "target_file": "",
+          "target_reference": "branch2",
           "origin": "cli",
           "created": "2021-10-21T11:43:42.450Z",
           "status": "active",

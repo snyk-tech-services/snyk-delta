@@ -126,6 +126,17 @@ describe('Test endpoint functions', () => {
     expect(project).toEqual('6d5813be-7e6d-4ab8-80c2-1e3e2a454545');
   });
 
+  it('Test GetProjectUUID for specific target reference', async () => {
+    const project = await getProjectUUID(
+      '689ce7f9-7943-4a71-b704-2ba575f01089',
+      'github-stats',
+      'cli',
+      'npm',
+      'branch2',
+    );
+    expect(project).toEqual('048e7057-bd8d-4868-a2db-8db7b0918581');
+  });
+
   it('Test GetProjectUUID not found', async () => {
     const project = await getProjectUUID(
       '689ce7f9-7943-4a71-b704-2ba575f01089',
