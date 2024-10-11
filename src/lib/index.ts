@@ -45,10 +45,11 @@ const getDelta = async (
     'fail-on'?: string;
     setPassIfNoBaseline?: boolean;
     type?: string;
+    targetReference?: string;
   } = init(debugMode);
   const debug = getDebugModule();
   if (process.env.NODE_ENV == 'test') {
-    argv.type = process.env.TYPE? process.env.TYPE : 'all'
+    argv.type = process.env.TYPE ? process.env.TYPE : 'all';
   }
   const mode = argv.currentProject ?? argv.currentOrg ? 'standalone' : 'inline';
   debug(mode, 'mode');
@@ -114,7 +115,9 @@ const getDelta = async (
 
       if (!baselineOrgPublicId) {
         // swap out org slug for org ID
-        baselineOrgPublicId = !isUUID.anyNonNil(org) ? await snyk.getOrgUUID(org) : org
+        baselineOrgPublicId = !isUUID.anyNonNil(org)
+          ? await snyk.getOrgUUID(org)
+          : org;
       }
 
       if (!baselineOrgPublicId) {
@@ -130,6 +133,7 @@ const getDelta = async (
             projectNameFromJson,
             'cli',
             packageManager,
+            argv.targetReference,
           ));
       }
 
@@ -246,14 +250,14 @@ const getDelta = async (
     ) {
       displayOutput(newVulns, newLicenseIssues, issueTypeFilter, mode);
     }
-    
-    const issuesFilter = []
-    if(issueTypeFilter == 'vuln'){
-      issuesFilter.push(...newVulns)
-    } else if(issueTypeFilter == 'license'){
-      issuesFilter.push(...newLicenseIssues)
+
+    const issuesFilter = [];
+    if (issueTypeFilter == 'vuln') {
+      issuesFilter.push(...newVulns);
+    } else if (issueTypeFilter == 'license') {
+      issuesFilter.push(...newLicenseIssues);
     } else {
-      issuesFilter.push(...newVulns,...newLicenseIssues)
+      issuesFilter.push(...newVulns, ...newLicenseIssues);
     }
     if (issuesFilter.length > 0) {
       if (!baselineProjectPublicID && passIfNoBaseline) {
@@ -262,7 +266,7 @@ const getDelta = async (
         process.exitCode = computeFailCode(
           newVulns,
           newLicenseIssues,
-          failOnFixableSetting
+          failOnFixableSetting,
         );
       }
     } else {
