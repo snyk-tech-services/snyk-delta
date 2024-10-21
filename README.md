@@ -51,6 +51,13 @@ Compares 2 Snyk project snapshots to provide details on:
 
   *Example*: `--baselineProject 0e9373a6-f858-11ec-b939-0242ac120002`
 
+- `--targetReference` *optional*
+
+  Target reference to compare. Target references can be used to delineate between branches, tags, or other custom references in the Snyk platform.
+  For more information on target references, see the [Snyk documentation](https://docs.snyk.io/snyk-cli/scan-and-maintain-projects-using-the-cli/group-projects-by-branch-or-version-for-monitoring).
+
+  *Example*: `--targetReference my-branch-name`
+
 - `--currentProject` *optional*
 
   Project to compare. Public Snyk project ID can be located in [project settings](https://docs.snyk.io/introducing-snyk/introduction-to-snyk-projects/view-project-settings)
@@ -58,11 +65,12 @@ Compares 2 Snyk project snapshots to provide details on:
 
   *Example*: `--currentProject 0e9373a6-f858-11ec-b939-0242ac120002`
 
-- `currentOrg` *optional*
+- `--currentOrg` *optional*
 
   Organization to compare. Snyk organization ID can be located in the [organization settings](https://docs.snyk.io/products/snyk-code/cli-for-snyk-code/before-you-start-set-the-organization-for-the-cli-tests/finding-the-snyk-id-and-internal-name-of-an-organization)
 
   *Example*: `--orgID 0e9373a6-f858-11ec-b939-0242ac120002`
+
 - `--fail-on` *optional*
 
   [As in Snyk CLI](https://docs.snyk.io/snyk-cli/test-for-vulnerabilities/advanced-failing-of-builds-in-snyk-cli) with the `--fail-on` flag return non 0 error code when new issues are upgradable, patchable, or both (all)..

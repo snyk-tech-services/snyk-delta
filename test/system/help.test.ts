@@ -37,6 +37,8 @@ describe('`snyk-delta help <...>`', () => {
                                      against                                    [string]
               --currentProject       Snyk project  public ID (UUID) to compare against
                                                                                 [string]
+              --targetReference      Snyk project target reference to compare against
+                                                                                [string]
               --type                 Specify issue type - default all
                                                      [choices: \\"vuln\\", \\"license\\", \\"all\\"]
               --fail-on              Fail only if the detected issues are fixable
