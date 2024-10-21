@@ -38,7 +38,7 @@ run_snyk_test () {
 }
 
 format_snyk_test_output() {
-    echo "Procesing snyk test --json output"
+    echo "Processing snyk test --json output"
     {
         formatted_json=`echo $snyk_test_json | jq -r 'if type=="array" then .[] else . end | @base64'`
         } || {
