@@ -18,8 +18,7 @@ const handleError = (error: Error):void => {
       break;
     case 'ApiAuthenticationError':
       console.error(
-        `${error.name}: ${error.message}\nPlease review that the Snyk token is set and has access to the provided Snyk Organization and Snyk Project UUIDs.`,
-        links: [`https://docs.snyk.io/snyk-api/rest-api/authentication-for-api/revoke-and-regenerate-a-snyk-api-token`],
+        `${error.name}: ${error.message}\nPlease review that the Snyk token is set and has access to the provided Snyk Organization and Snyk Project UUIDs. https://docs.snyk.io/snyk-api/rest-api/authentication-for-api/revoke-and-regenerate-a-snyk-api-token`,
       );
       debug(error);
       break;
