@@ -15,7 +15,7 @@ async function getOrgUUID(orgSlug: string): Promise<string> {
   let orgUUID = '';
 
   let url = '/orgs';
-  const urlQueryParams: Array<string> = ['version=2023-06-22~beta', 'limit=10',`slug=${orgSlug}`];
+  const urlQueryParams: Array<string> = ['version=2024-10-15', 'limit=10',`slug=${orgSlug}`];
 
   if (urlQueryParams.length > 0) {
     url += `?${urlQueryParams.join('&')}`;

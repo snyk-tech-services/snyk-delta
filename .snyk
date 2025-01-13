@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.25.0
+version: v1.25.1
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
   SNYK-JS-AXIOS-1579269:
@@ -11,14 +11,19 @@ ignore:
         expires: '2021-10-03T13:14:14.049Z'
   SNYK-JS-AXIOS-6032459:
     - '*':
-        reason: Not applicable in such cli tool.snoozing temporarily.
-        expires: 2024-10-31T11:59:43.057Z
-        created: 2024-10-01T11:59:43.064Z
+        reason: REDOS Not applicable in such cli tool.
+        expires: 2025-02-12T13:35:06.163Z
+        created: 2025-01-13T13:35:06.166Z
   SNYK-JS-AXIOS-6124857:
     - '*':
         reason: REDOS Not applicable in such cli tool.
-        expires: 2024-10-31T12:02:05.327Z
-        created: 2024-10-01T12:02:05.330Z
+        expires: 2025-02-12T13:39:43.795Z
+        created: 2025-01-13T13:39:43.798Z
+  SNYK-JS-AXIOS-6671926:
+    - '*':
+        reason: XSS Not applicable in such cli tool.
+        expires: 2025-02-12T13:40:05.484Z
+        created: 2025-01-13T13:40:05.491Z
 # patches apply the minimum changes required to fix a vulnerability
 patch:
   SNYK-JS-LODASH-450202:
