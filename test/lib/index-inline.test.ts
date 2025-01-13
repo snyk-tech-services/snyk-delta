@@ -54,7 +54,7 @@ describe('Test End 2 End - Inline mode', () => {
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/projectsV3-page3.json',
             );
-          case '/rest/orgs?version=2023-06-22~beta&limit=10&slug=customerorg':
+          case '/rest/orgs?version=2024-10-15&limit=10&slug=customerorg':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/customerorgSlugToUUID.json',
             );

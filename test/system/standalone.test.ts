@@ -11,7 +11,7 @@ describe('`snyk-delta <...>`', () => {
         expect(err).not.toBeNull();
         expect(stripAnsi(stderr)).toMatchInlineSnapshot(`
           "BadInputError: In 'standalone' mode --currentProject, --currentOrg, --baselineOrg and --baselineProject are required.
-          Please review the available documentation via -h or the README
+          Please review the available documentation via -h or the README file.
           "
         `);
         expect(stripAnsi(stdout)).toMatchInlineSnapshot(`
