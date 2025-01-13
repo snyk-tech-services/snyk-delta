@@ -17,8 +17,13 @@ ignore:
   SNYK-JS-AXIOS-6124857:
     - '*':
         reason: REDOS Not applicable in such cli tool.
-        expires: 2024-10-31T12:02:05.327Z
-        created: 2024-10-01T12:02:05.330Z
+        expires: 2025-02-12T13:39:43.795Z
+        created: 2025-01-13T13:39:43.798Z
+  SNYK-JS-AXIOS-6671926:
+    - '*':
+        reason: XSS Not applicable in such cli tool.
+        expires: 2025-02-12T13:40:05.484Z
+        created: 2025-01-13T13:40:05.491Z
 # patches apply the minimum changes required to fix a vulnerability
 patch:
   SNYK-JS-LODASH-450202:
