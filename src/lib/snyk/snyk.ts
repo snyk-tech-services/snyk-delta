@@ -4,11 +4,12 @@ import { convertIntoIssueWithPath } from '../utils/issuesUtils';
 import { requestsManager } from 'snyk-request-manager';
 import { IssuesPostResponseType } from '../types';
 
+const requestManager = new requestsManager({ userAgentPrefix: 'snyk-delta' });
+
 const getProject = async (
   orgID: string,
   projectID: string,
 ): Promise<snykClient.OrgTypes.ProjectGetResponseType> => {
-  const requestManager = new requestsManager({ userAgentPrefix: 'snyk-delta' });
   const url = `/org/${orgID}/project/${projectID}`;
   try {
     const projectData = await requestManager.request({
@@ -29,7 +30,6 @@ const getProject = async (
   }
 };
 async function getOrgUUID(orgSlug: string): Promise<string> {
-  const requestManager = new requestsManager({ userAgentPrefix: 'snyk-delta' });
   let orgUUID = '';
 
   let url = '/orgs';
