@@ -718,12 +718,12 @@ describe('Test issues functions', () => {
   describe('Test convertIntoIssueWithPath', () => {
     it('Test convertIntoIssueWithPath - one issue (1 vuln, 0 license) - one path', async () => {
       // eslint-disable-next-line
-      nock('https://snyk.io')
+      nock('https://api.snyk.io')
         .persist()
         .get(/.*/)
         .reply(200, (uri) => {
           switch (uri) {
-            case '/api/v1/org/123/project/123/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
+            case '/v1/org/123/project/123/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
               return fs.readFileSync(
                 fixturesFolderPath +
                   'apiResponses/SNYK-JS-ACORN-559469-issue-paths.json',
@@ -760,17 +760,17 @@ describe('Test issues functions', () => {
 
     it('Test convertIntoIssueWithPath - 3 issues (3 vuln, 0 license) - 3 paths', async () => {
       // eslint-disable-next-line
-      nock('https://snyk.io')
+      nock('https://api.snyk.io')
         .persist()
         .get(/.*/)
         .reply(200, (uri) => {
           switch (uri) {
-            case '/api/v1/org/123/project/123/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
+            case '/v1/org/123/project/123/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
               return fs.readFileSync(
                 fixturesFolderPath +
                   'apiResponses/SNYK-JS-ACORN-559469-issue-paths.json',
               );
-            case '/api/v1/org/123/project/123/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
+            case '/v1/org/123/project/123/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
               return fs.readFileSync(
                 fixturesFolderPath +
                   'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page1.json',
@@ -813,22 +813,22 @@ describe('Test issues functions', () => {
 
     it('Test convertIntoIssueWithPath - 4 issues (3 vuln, 1 license) - 4 paths', async () => {
       // eslint-disable-next-line
-      nock('https://snyk.io')
+      nock('https://api.snyk.io')
         .persist()
         .get(/.*/)
         .reply(200, (uri) => {
           switch (uri) {
-            case '/api/v1/org/123/project/123/issue/SNYK-JS-PACRESOLVER-1564857/paths?perPage=100&page=1':
+            case '/v1/org/123/project/123/issue/SNYK-JS-PACRESOLVER-1564857/paths?perPage=100&page=1':
               return fs.readFileSync(
                 fixturesFolderPath +
                   'apiResponses/SNYK-JS-ACORN-559469-issue-paths.json',
               );
-            case '/api/v1/org/123/project/123/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
+            case '/v1/org/123/project/123/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
               return fs.readFileSync(
                 fixturesFolderPath +
                   'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page1.json',
               );
-            case '/api/v1/org/123/project/123/issue/snyk:lic:npm:goof:GPL-2.0/paths?perPage=100&page=1':
+            case '/v1/org/123/project/123/issue/snyk:lic:npm:goof:GPL-2.0/paths?perPage=100&page=1':
               return fs.readFileSync(
                 fixturesFolderPath +
                   'apiResponses/snyk-lic-npm-goof-GPL-2-0-issue-paths.json',
@@ -873,12 +873,12 @@ describe('Test issues functions', () => {
 
     it('Test convertIntoIssueWithPath - 1 issue (0 vuln, 1 license) ', async () => {
       // eslint-disable-next-line
-      nock('https://snyk.io')
+      nock('https://api.snyk.io')
         .persist()
         .get(/.*/)
         .reply(200, (uri) => {
           switch (uri) {
-            case '/api/v1/org/123/project/123/issue/snyk:lic:npm:goof:GPL-2.0/paths?perPage=100&page=1':
+            case '/v1/org/123/project/123/issue/snyk:lic:npm:goof:GPL-2.0/paths?perPage=100&page=1':
               return fs.readFileSync(
                 fixturesFolderPath +
                   'apiResponses/snyk-lic-npm-goof-GPL-2-0-issue-paths.json',
@@ -915,17 +915,17 @@ describe('Test issues functions', () => {
 
     it('Test convertIntoIssueWithPath - test pagination ', async () => {
       // eslint-disable-next-line
-      nock('https://snyk.io')
+      nock('https://api.snyk.io')
         .persist()
         .get(/.*/)
         .reply(200, (uri) => {
           switch (uri) {
-            case '/api/v1/org/123/project/123/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
+            case '/v1/org/123/project/123/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
               return fs.readFileSync(
                 fixturesFolderPath +
                   'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page2.json',
               );
-            case '/api/v1/org/123/project/123/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=2':
+            case '/v1/org/123/project/123/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=2':
               return fs.readFileSync(
                 fixturesFolderPath +
                   'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page1.json',

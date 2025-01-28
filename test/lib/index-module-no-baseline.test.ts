@@ -51,6 +51,37 @@ describe('Test End 2 End - Inline mode', () => {
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/projectsV3-page3.json',
             );
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/issues':
+            return fs.readFileSync(
+              fixturesFolderPath + 'apiResponses/test-goof.json',
+            );
+          default:
+        }
+      })
+      .post(/.*/)
+      .reply(200, (uri) => {
+        switch (uri) {
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/issues':
+            return fs.readFileSync(
+              fixturesFolderPath + 'apiResponses/test-goof.json',
+            );
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issues':
+            return fs.readFileSync(
+              fixturesFolderPath + 'apiResponses/test-goof.json',
+            );
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/09235fa4-c241-42c6-8c63-c053bd272786/issues':
+            return fs.readFileSync(
+              fixturesFolderPath + 'apiResponses/test-gomod.json',
+            );
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/37a29fe9-c342-4d70-8efc-df96a8d730b3/issues':
+            return fs.readFileSync(
+              fixturesFolderPath + 'apiResponses/java-goof.json',
+            );
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/projects':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponsesForProjects/list-all-projects-org-361fd3c0-41d4-4ea4-ba77-09bb17890967.json',
+            );
           default:
         }
       });

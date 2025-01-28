@@ -52,6 +52,29 @@ describe('Test End 2 End - Inline mode with project coordinates', () => {
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/projectsV3-page3.json',
             );
+          case '/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/f51c925b-2abe-4c07-8a0d-21b834aa3074/issues':
+            return fs.readFileSync(
+              fixturesFolderPath + 'apiResponses/test-poetry.json',
+            );
+          case '/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/f51c925b-2abe-4c07-8a0d-21b834aa3074/dep-graph':
+            return fs.readFileSync(
+              fixturesFolderPath + 'apiResponses/poetry-depgraph.json',
+            );
+          default:
+        }
+      })
+      .post(/.*/)
+      .reply(200, (uri) => {
+        switch (uri) {
+          case '/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/project/f51c925b-2abe-4c07-8a0d-21b834aa3074/issues':
+            return fs.readFileSync(
+              fixturesFolderPath + 'apiResponses/test-poetry.json',
+            );
+          case '/v1/org/f6999a85-c519-4ee7-ae55-3269b9bfa4b6/projects':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponsesForProjects/list-all-projects-platform.json',
+            );
           default:
         }
       });

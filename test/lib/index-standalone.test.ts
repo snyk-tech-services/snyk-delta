@@ -19,26 +19,26 @@ const mockedLog = (output: string): void => {
   consoleOutput.push(output);
 };
 beforeAll(() => {
-  nock('https://api.snyk.io')
-    .persist()
-    .get(/^(?!.*xyz).*$/)
-    .reply(200, (uri) => {
-      switch (uri) {
-        case '/rest/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/projects?version=2023-05-29&limit=10':
-          return fs.readFileSync(
-            fixturesFolderPath + 'apiResponses/projectsV3.json',
-          );
-        case '/rest/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/projects?version=2023-05-29&limit=10&starting_after=v1.eyJpZCI6MzU2NTI5Mzd9':
-          return fs.readFileSync(
-            fixturesFolderPath + 'apiResponses/projectsV3-page2.json',
-          );
-        case '/rest/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/projects?version=2023-05-29&limit=10&starting_after=v1.eyJpZCI6NjQyMjIxfQ%3D%3D':
-          return fs.readFileSync(
-            fixturesFolderPath + 'apiResponses/projectsV3-page3.json',
-          );
-        default:
-      }
-    });
+  // nock('https://api.snyk.io')
+  //   .persist()
+  //   .get(/^(?!.*xyz).*$/)
+  //   .reply(200, (uri) => {
+  //     switch (uri) {
+  //       case '/rest/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/projects?version=2023-05-29&limit=10':
+  //         return fs.readFileSync(
+  //           fixturesFolderPath + 'apiResponses/projectsV3.json',
+  //         );
+  //       case '/rest/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/projects?version=2023-05-29&limit=10&starting_after=v1.eyJpZCI6MzU2NTI5Mzd9':
+  //         return fs.readFileSync(
+  //           fixturesFolderPath + 'apiResponses/projectsV3-page2.json',
+  //         );
+  //       case '/rest/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/projects?version=2023-05-29&limit=10&starting_after=v1.eyJpZCI6NjQyMjIxfQ%3D%3D':
+  //         return fs.readFileSync(
+  //           fixturesFolderPath + 'apiResponses/projectsV3-page3.json',
+  //         );
+  //       default:
+  //     }
+  //   });
   console.log = mockedLog;
 });
 
@@ -57,17 +57,17 @@ afterEach(() => {
 
 describe('Test End 2 End - Standalone mode', () => {
   it('Test standalone mode - no new issue', async () => {
-    nock('https://snyk.io')
+    nock('https://api.snyk.io')
       .persist()
       .post(/.*/)
       .reply(200, (uri) => {
         switch (uri) {
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/aggregated-issues':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/aggregated-issues':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/test-goof-aggregated-one-vuln.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/aggregated-issues':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/aggregated-issues':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/test-goof-aggregated-one-vuln.json',
@@ -80,20 +80,32 @@ describe('Test End 2 End - Standalone mode', () => {
       .get(/.*/)
       .reply(200, (uri) => {
         switch (uri) {
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/dep-graph':
+          case '/rest/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/projects?version=2023-05-29&limit=10':
+            return fs.readFileSync(
+              fixturesFolderPath + 'apiResponses/projectsV3.json',
+            );
+          case '/rest/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/projects?version=2023-05-29&limit=10&starting_after=v1.eyJpZCI6MzU2NTI5Mzd9':
+            return fs.readFileSync(
+              fixturesFolderPath + 'apiResponses/projectsV3-page2.json',
+            );
+          case '/rest/orgs/361fd3c0-41d4-4ea4-ba77-09bb17890967/projects?version=2023-05-29&limit=10&starting_after=v1.eyJpZCI6NjQyMjIxfQ%3D%3D':
+            return fs.readFileSync(
+              fixturesFolderPath + 'apiResponses/projectsV3-page3.json',
+            );
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/dep-graph':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/goof-depgraph-from-api.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/dep-graph':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/dep-graph':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/goof-depgraph-from-api.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/SNYK-JS-ACORN-559469-issue-paths.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/SNYK-JS-ACORN-559469-issue-paths.json',
@@ -129,17 +141,17 @@ describe('Test End 2 End - Standalone mode', () => {
   });
 
   it('Test standalone mode - 1 new issue', async () => {
-    nock('https://snyk.io')
+    nock('https://api.snyk.io')
       .persist()
       .post(/.*/)
       .reply(200, (uri) => {
         switch (uri) {
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/aggregated-issues':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/aggregated-issues':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/test-goof-aggregated-two-vuln-no-license.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/aggregated-issues':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/aggregated-issues':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/test-goof-aggregated-one-vuln.json',
@@ -152,37 +164,37 @@ describe('Test End 2 End - Standalone mode', () => {
       .get(/.*/)
       .reply(200, (uri) => {
         switch (uri) {
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/dep-graph':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/dep-graph':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/goof-depgraph-from-api.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/dep-graph':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/dep-graph':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/goof-depgraph-from-api.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/SNYK-JS-ACORN-559469-issue-paths.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/SNYK-JS-ACORN-559469-issue-paths.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
             console.log('uri good');
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page1.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
             console.log('uri good');
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page2.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=2':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=2':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page1.json',
@@ -226,17 +238,17 @@ describe('Test End 2 End - Standalone mode', () => {
   });
 
   it('Test standalone mode - 1 new issue 1 new direct dep', async () => {
-    nock('https://snyk.io')
+    nock('https://api.snyk.io')
       .persist()
       .post(/.*/)
       .reply(200, (uri) => {
         switch (uri) {
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/aggregated-issues':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/aggregated-issues':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/test-goof-aggregated-two-vuln-no-license.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/aggregated-issues':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/aggregated-issues':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/test-goof-aggregated-one-vuln.json',
@@ -249,36 +261,36 @@ describe('Test End 2 End - Standalone mode', () => {
       .get(/.*/)
       .reply(200, (uri) => {
         switch (uri) {
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/dep-graph':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/dep-graph':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/goof-depgraph-from-api-with-one-more-direct-dep.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/SNYK-JS-ACORN-559469-issue-paths.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/SNYK-JS-ACORN-559469-issue-paths.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/dep-graph':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/dep-graph':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/goof-depgraph-from-api.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page1.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page1.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=2':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=2':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page2.json',
@@ -321,17 +333,17 @@ describe('Test End 2 End - Standalone mode', () => {
   });
 
   it('Test standalone mode - 1 new issue 1 new direct and 1 new indirect dep', async () => {
-    nock('https://snyk.io')
+    nock('https://api.snyk.io')
       .persist()
       .post(/.*/)
       .reply(200, (uri) => {
         switch (uri) {
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/aggregated-issues':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/aggregated-issues':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/test-goof-aggregated-two-vuln-no-license.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/aggregated-issues':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/aggregated-issues':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/test-goof-aggregated-one-vuln.json',
@@ -344,36 +356,36 @@ describe('Test End 2 End - Standalone mode', () => {
       .get(/.*/)
       .reply(200, (uri) => {
         switch (uri) {
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/dep-graph':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/dep-graph':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/goof-depgraph-from-api-with-one-more-direct-and-indirect-dep.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/dep-graph':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/dep-graph':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/goof-depgraph-from-api.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/SNYK-JS-ACORN-559469-issue-paths.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/SNYK-JS-ACORN-559469-issue-paths.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page1.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page1.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=2':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=2':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page2.json',
