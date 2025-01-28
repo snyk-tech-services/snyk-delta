@@ -97,36 +97,30 @@ beforeEach(() => {
           );
         case '/v1/org/123/project/123':
           return 'project';
-          break;
         case '/v1/org/123/project/123/dep-graph':
           return fs.readFileSync(
             fixturesFolderPath + 'apiResponses/depGraphGoof.json',
           );
-          break;
         case '/v1/org/123/project/123/issue/SNYK-JS-PACRESOLVER-1564857/paths?perPage=100&page=1':
           return fs.readFileSync(
             fixturesFolderPath +
               'apiResponses/SNYK-JS-PACRESOLVER-1564857-issue-paths.json',
           );
-          break;
         case '/v1/org/123/project/123/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
           return fs.readFileSync(
             fixturesFolderPath +
               'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page2.json',
           );
-          break;
         case '/v1/org/123/project/123/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=2':
           return fs.readFileSync(
             fixturesFolderPath +
               'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page1.json',
           );
-          break;
         case '/v1/org/123/project/123/issue/snyk:lic:npm:goof:GPL-2.0/paths?perPage=100&page=1':
           return fs.readFileSync(
             fixturesFolderPath +
               'apiResponses/snyk-lic-npm-goof-GPL-2-0-issue-paths.json',
           );
-          break;
         default:
       }
     });
