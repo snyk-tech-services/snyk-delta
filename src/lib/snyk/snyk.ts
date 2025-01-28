@@ -4,18 +4,40 @@ import { convertIntoIssueWithPath } from '../utils/issuesUtils';
 import { requestsManager } from 'snyk-request-manager';
 import { IssuesPostResponseType } from '../types';
 
-const getProject = async (orgID: string, projectID: string):Promise<snykClient.OrgTypes.ProjectGetResponseType> => {
-  const project = await new snykClient.Org({ orgId: orgID })
-    .project({ projectId: projectID })
-    .get();
-  return project;
+const getProject = async (
+  orgID: string,
+  projectID: string,
+): Promise<snykClient.OrgTypes.ProjectGetResponseType> => {
+  const requestManager = new requestsManager({ userAgentPrefix: 'snyk-delta' });
+  const url = `/org/${orgID}/project/${projectID}`;
+  try {
+    const projectData = await requestManager.request({
+      verb: 'GET',
+      url: url,
+    });
+
+    if (!projectData.data) {
+      throw new Error.NotFoundError(
+        `No project data found for ${projectID} from org ${orgID}.`,
+      );
+    }
+    return projectData.data;
+  } catch (err) {
+    throw new Error.GenericError(
+      `Error getting project ${projectID} from org ${orgID}: ${err}.`,
+    );
+  }
 };
 async function getOrgUUID(orgSlug: string): Promise<string> {
   const requestManager = new requestsManager({ userAgentPrefix: 'snyk-delta' });
   let orgUUID = '';
 
   let url = '/orgs';
-  const urlQueryParams: Array<string> = ['version=2024-10-15', 'limit=10',`slug=${orgSlug}`];
+  const urlQueryParams: Array<string> = [
+    'version=2024-10-15',
+    'limit=10',
+    `slug=${orgSlug}`,
+  ];
 
   if (urlQueryParams.length > 0) {
     url += `?${urlQueryParams.join('&')}`;
@@ -70,7 +92,10 @@ async function getProjectUUID(
   }
   return selectedProjectArray[0].id;
 }
-const getProjectIssues = async (orgID: string, projectID: string):Promise<IssuesPostResponseType> => {
+const getProjectIssues = async (
+  orgID: string,
+  projectID: string,
+): Promise<IssuesPostResponseType> => {
   // No filter on patched or non patch issue, getting both
   const filters: snykClient.OrgTypes.Project.AggregatedissuesPostBodyType = {
     includeDescription: false,
@@ -105,7 +130,10 @@ const getProjectIssues = async (orgID: string, projectID: string):Promise<Issues
   );
 };
 
-const getProjectDepGraph = async (orgID: string, projectID: string):Promise<snykClient.OrgTypes.Project.DepgraphGetResponseType> => {
+const getProjectDepGraph = async (
+  orgID: string,
+  projectID: string,
+): Promise<snykClient.OrgTypes.Project.DepgraphGetResponseType> => {
   const projectDepGraph = await new snykClient.Org({ orgId: orgID })
     .project({ projectId: projectID })
     .depgraph.get();
@@ -121,7 +149,7 @@ const getUpgradePath = async (
   orgID: string,
   projectID: string,
   issueId: string,
-):Promise<ProjectIssuePathsLegacy> => {
+): Promise<ProjectIssuePathsLegacy> => {
   let projectIssuePaths = await new snykClient.Org({ orgId: orgID })
     .project({ projectId: projectID })
     .issue({ issueId: issueId })
