@@ -121,6 +121,26 @@ beforeEach(() => {
             fixturesFolderPath +
               'apiResponses/snyk-lic-npm-goof-GPL-2-0-issue-paths.json',
           );
+        case '/v1/org/123/project/123/aggregated-issues':
+          return fs.readFileSync(
+            fixturesFolderPath +
+              'apiResponses/test-goof-aggregated-two-vuln-one-license.json',
+          );
+        default:
+      }
+    })
+    .post(/^(?!.*xyz).*$/)
+    .reply(200, (uri) => {
+      switch (uri) {
+        case '/v1/org/689ce7f9-7943-4a71-b704-2ba575f01089/projects':
+          return fs.readFileSync(
+            fixturesFolderPath + 'apiResponses/allProjects.json',
+          );
+        case '/v1/org/123/project/123/aggregated-issues':
+          return fs.readFileSync(
+            fixturesFolderPath +
+              'apiResponses/test-goof-aggregated-two-vuln-one-license.json',
+          );
         default:
       }
     });
