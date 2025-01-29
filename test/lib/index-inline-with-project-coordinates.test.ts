@@ -53,6 +53,36 @@ describe('Test End 2 End - Inline mode with project coordinates', () => {
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/projectsV3-page3.json',
             );
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/SNYK-JS-ACORN-559469-issue-paths.json',
+            );
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/dep-graph':
+            return fs.readFileSync(
+              fixturesFolderPath + 'apiResponses/goof-depgraph-from-api.json',
+            );
+          default:
+        }
+      })
+      .post(/.*/)
+      .reply(200, (uri) => {
+        switch (uri) {
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/aggregated-issues':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/test-goof-aggregated-one-vuln.json',
+            );
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/aggregated-issues':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponses/test-goof-aggregated-one-vuln.json',
+            );
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/projects':
+            return fs.readFileSync(
+              fixturesFolderPath +
+                'apiResponsesForProjects/list-all-projects-org-361fd3c0-41d4-4ea4-ba77-09bb17890967.json',
+            );
           default:
         }
       });

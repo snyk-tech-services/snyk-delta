@@ -95,7 +95,52 @@ beforeEach(() => {
           return fs.readFileSync(
             fixturesFolderPath + 'apiResponses/emptyorgSlugToUUID.json',
           );
-
+        case '/v1/org/123/project/123':
+          return 'project';
+        case '/v1/org/123/project/123/dep-graph':
+          return fs.readFileSync(
+            fixturesFolderPath + 'apiResponses/depGraphGoof.json',
+          );
+        case '/v1/org/123/project/123/issue/SNYK-JS-PACRESOLVER-1564857/paths?perPage=100&page=1':
+          return fs.readFileSync(
+            fixturesFolderPath +
+              'apiResponses/SNYK-JS-PACRESOLVER-1564857-issue-paths.json',
+          );
+        case '/v1/org/123/project/123/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
+          return fs.readFileSync(
+            fixturesFolderPath +
+              'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page2.json',
+          );
+        case '/v1/org/123/project/123/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=2':
+          return fs.readFileSync(
+            fixturesFolderPath +
+              'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page1.json',
+          );
+        case '/v1/org/123/project/123/issue/snyk:lic:npm:goof:GPL-2.0/paths?perPage=100&page=1':
+          return fs.readFileSync(
+            fixturesFolderPath +
+              'apiResponses/snyk-lic-npm-goof-GPL-2-0-issue-paths.json',
+          );
+        case '/v1/org/123/project/123/aggregated-issues':
+          return fs.readFileSync(
+            fixturesFolderPath +
+              'apiResponses/test-goof-aggregated-two-vuln-one-license.json',
+          );
+        default:
+      }
+    })
+    .post(/^(?!.*xyz).*$/)
+    .reply(200, (uri) => {
+      switch (uri) {
+        case '/v1/org/689ce7f9-7943-4a71-b704-2ba575f01089/projects':
+          return fs.readFileSync(
+            fixturesFolderPath + 'apiResponses/allProjects.json',
+          );
+        case '/v1/org/123/project/123/aggregated-issues':
+          return fs.readFileSync(
+            fixturesFolderPath +
+              'apiResponses/test-goof-aggregated-two-vuln-one-license.json',
+          );
         default:
       }
     });

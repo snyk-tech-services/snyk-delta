@@ -1,9 +1,8 @@
 import * as _ from 'lodash'
-import { getDebugModule } from './utils';
-import { AggregatedIssuesWithVulnPaths } from 'snyk-api-ts-client/dist/client/abstraction/org/aggregatedissues'; 
 import { IssuesPostResponseType } from '../types';
 import { getUpgradePath } from '../snyk/snyk';
 import { debug } from 'console';
+import { AggregatedIssuesWithVulnPaths } from '../snyk/aggregatedIssues';
 
 type Unpacked<T> = T extends (infer U)[]
   ? U
