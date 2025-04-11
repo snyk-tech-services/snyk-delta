@@ -11,6 +11,12 @@ import { getDelta } from '../../src/lib/index';
 const fixturesFolderPath = path.resolve(__dirname, '..') + '/fixtures/';
 
 describe('Test End 2 End - Inline mode', () => {
+  beforeAll(() => {
+    process.env.SNYK_API = 'https://api.snyk.io/v1';
+  });
+  afterAll(() => {
+    delete process.env.SNYK_API;
+  });
   const originalLog = console.log;
 
   let consoleOutput: Array<string> = [];

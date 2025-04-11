@@ -5,7 +5,7 @@ import * as path from 'path';
 
 const fixturesFolderPath = path.resolve(__dirname, '../..') + '/fixtures/';
 beforeEach(() => {
-  return nock('https://snyk.io')
+  return nock('https://api.snyk.io')
     .get(/\/xyz/)
     .reply(404, '404')
     .post(/\/xyz/)
@@ -25,7 +25,7 @@ beforeEach(() => {
     .post(/^(?!.*xyz).*$/)
     .reply(200, (uri, requestBody) => {
       switch (uri) {
-        case '/api/v1/':
+        case '/v1/':
           return requestBody;
           break;
         default:
@@ -34,7 +34,7 @@ beforeEach(() => {
     .get(/^(?!.*xyz).*$/)
     .reply(200, (uri) => {
       switch (uri) {
-        case '/api/v1/':
+        case '/v1/':
           return fs.readFileSync(
             fixturesFolderPath + 'apiResponses/general-doc.json',
           );
@@ -61,7 +61,7 @@ describe('Test getConfig function', () => {
   });
 
   it('Get snyk.io api endpoint default', async () => {
-    expect(getConfig().endpoint).toEqual('https://snyk.io/api/v1');
+    expect(getConfig().endpoint).toEqual('https://api.snyk.io/v1');
   });
 
   it('Get snyk api endpoint via env var', async () => {

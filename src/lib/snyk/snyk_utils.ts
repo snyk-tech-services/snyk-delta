@@ -7,7 +7,7 @@ function getConfig(): { endpoint: string; token: string } {
   const snykApiEndpoint: string =
     process.env.SNYK_API ||
     new Configstore('snyk').get('endpoint') ||
-    'https://snyk.io/api/v1';
+    'https://api.snyk.io/v1';
   const snykToken =
     process.env.SNYK_TOKEN || new Configstore('snyk').get('api');
   return { endpoint: snykApiEndpoint, token: snykToken };
