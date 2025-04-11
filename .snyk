@@ -24,6 +24,16 @@ ignore:
         reason: XSS Not applicable in such cli tool.
         expires: 2025-02-12T13:40:05.484Z
         created: 2025-01-13T13:40:05.491Z
+  SNYK-JS-AXIOS-9292519:
+    - '*':
+        reason: SSRF not applicable in cli tool
+        expires: 2025-05-11T13:59:23.536Z
+        created: 2025-04-11T13:59:23.538Z
+  SNYK-JS-AXIOS-9403194:
+    - '*':
+        reason: SSRF not applicable in cli tool
+        expires: 2025-05-11T13:59:35.869Z
+        created: 2025-04-11T13:59:35.872Z
 # patches apply the minimum changes required to fix a vulnerability
 patch:
   SNYK-JS-LODASH-450202:
