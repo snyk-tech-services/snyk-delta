@@ -716,6 +716,13 @@ describe('Test issues functions', () => {
   });
 
   describe('Test convertIntoIssueWithPath', () => {
+    beforeAll(() => {
+      process.env.SNYK_API = 'https://api.snyk.io/v1';
+    });
+    afterAll(() => {
+      delete process.env.SNYK_API;
+    });
+
     it('Test convertIntoIssueWithPath - one issue (1 vuln, 0 license) - one path', async () => {
       // eslint-disable-next-line
       nock('https://api.snyk.io')

@@ -9,6 +9,12 @@ const fixturesFolderPath = path.resolve(__dirname, '..') + '/fixtures/';
 process.argv.push('--setPassIfNoBaseline true');
 
 describe('Test End 2 End - Inline mode - no baseline', () => {
+  beforeAll(() => {
+    process.env.SNYK_API = 'https://api.snyk.io/v1';
+  });
+  afterAll(() => {
+    delete process.env.SNYK_API;
+  });
   const stdinMock: MockSTDIN = stdin();
   const mockExit = mockProcessExit();
   const originalLog = console.log;
@@ -85,28 +91,28 @@ describe('Test End 2 End - Inline mode - no baseline', () => {
           default:
         }
       });
-    nock('https://snyk.io')
+    nock('https://api.snyk.io')
       .persist()
       .post(/.*/)
       .reply(200, (uri) => {
         switch (uri) {
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/issues':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/issues':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/test-goof.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issues':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issues':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/test-goof.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/09235fa4-c241-42c6-8c63-c053bd272786/issues':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/09235fa4-c241-42c6-8c63-c053bd272786/issues':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/test-gomod.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/37a29fe9-c342-4d70-8efc-df96a8d730b3/issues':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/37a29fe9-c342-4d70-8efc-df96a8d730b3/issues':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/java-goof.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/projects':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/projects':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponsesForProjects/list-all-projects-org-361fd3c0-41d4-4ea4-ba77-09bb17890967.json',

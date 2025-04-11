@@ -6,6 +6,12 @@ import debug from 'debug';
 import { getDelta } from '../../src/lib/index';
 const fixturesFolderPath = path.resolve(__dirname, '..') + '/fixtures/';
 describe('Test End 2 End - Module', () => {
+  beforeAll(() => {
+    process.env.SNYK_API = 'https://api.snyk.io/v1';
+  });
+  afterAll(() => {
+    delete process.env.SNYK_API;
+  });
   const originalLog = console.log;
   let consoleOutput: Array<string> = [];
   const mockedLog = (output: string): void => {
@@ -83,7 +89,7 @@ describe('Test End 2 End - Module', () => {
         }
       });
 
-    nock('https://snyk.io')
+    nock('https://api.snyk.io')
       .persist()
       .post(/.*/)
       .reply(200, (uri) => {
@@ -110,16 +116,16 @@ describe('Test End 2 End - Module', () => {
       .reply(200, (uri) => {
         console.log(uri);
         switch (uri) {
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/dep-graph':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/dep-graph':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/goof-depgraph-from-api.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/issue/SNYK-JS-ACORN-559469/paths?perPage=100&page=1':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/SNYK-JS-ACORN-559469-issue-paths.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/ab9e037f-9020-4f77-9c48-b1cb0295a4b6/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page1.json',

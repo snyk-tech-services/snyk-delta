@@ -2,7 +2,7 @@
 import 'source-map-support/register';
 import * as snyk from './snyk/snyk';
 import handleError from './error';
-import {getPipedDataIn, init, getDebugModule} from './utils/utils';
+import { getPipedDataIn, init, getDebugModule } from './utils/utils';
 import * as issues from './snyk/issues';
 import * as dependencies from './snyk/dependencies';
 import * as isUUID from 'is-uuid';
@@ -15,6 +15,8 @@ import {
 import { displayOutput } from './snyk/displayOutput';
 import { computeFailCode } from './snyk/snyk_utils';
 export { SnykDeltaOutput } from './types';
+const Configstore = require('@snyk/configstore');
+
 const IS_JEST_TESTING = process.env.JEST_WORKER_ID !== undefined;
 
 const banner = `
@@ -31,6 +33,11 @@ const getDelta = async (
   setPassIfNoBaselineFlag = false,
   failOnOverride?: string,
 ): Promise<SnykDeltaOutput | number> => {
+  const configuredApi =
+    process.env.SNYK_API || new Configstore('snyk').get('endpoint');
+  if (!`${configuredApi}`.endsWith('/v1')) {
+    process.env.SNYK_API = `${configuredApi}/v1`;
+  }
 
   /* eslint-disable no-unsafe-finally */
 
