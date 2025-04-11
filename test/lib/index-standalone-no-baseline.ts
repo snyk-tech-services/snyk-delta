@@ -57,16 +57,16 @@ afterEach(() => {
 
 describe('Test End 2 End - Standalone mode without baseline', () => {
   it('Test standalone mode - no new issue', async () => {
-    nock('https://snyk.io')
+    nock('https://api.snyk.io')
       .persist()
       .post(/.*/)
       .reply(200, (uri) => {
         switch (uri) {
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issues':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issues':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/test-goof.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issues':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issues':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/test-goof.json',
             );
@@ -78,11 +78,11 @@ describe('Test End 2 End - Standalone mode without baseline', () => {
       .get(/.*/)
       .reply(200, (uri) => {
         switch (uri) {
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/dep-graph':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/dep-graph':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/goof-depgraph-from-api.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/dep-graph':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/dep-graph':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/goof-depgraph-from-api.json',
             );
@@ -117,16 +117,16 @@ describe('Test End 2 End - Standalone mode without baseline', () => {
   });
 
   it('Test standalone mode - 1 new issue', async () => {
-    nock('https://snyk.io')
+    nock('https://api.snyk.io')
       .persist()
       .post(/.*/)
       .reply(200, (uri) => {
         switch (uri) {
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issues':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issues':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/test-goof.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issues':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issues':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/test-goof-with-one-more-vuln.json',
@@ -139,11 +139,11 @@ describe('Test End 2 End - Standalone mode without baseline', () => {
       .get(/.*/)
       .reply(200, (uri) => {
         switch (uri) {
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/dep-graph':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/dep-graph':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/goof-depgraph-from-api.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/dep-graph':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/dep-graph':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/goof-depgraph-from-api.json',
             );
@@ -183,16 +183,16 @@ describe('Test End 2 End - Standalone mode without baseline', () => {
   });
 
   it('Test standalone mode - 1 new issue 1 new direct dep', async () => {
-    nock('https://snyk.io')
+    nock('https://api.snyk.io')
       .persist()
       .post(/.*/)
       .reply(200, (uri) => {
         switch (uri) {
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issues':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issues':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/test-goof.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issues':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issues':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/test-goof-with-one-more-vuln.json',
@@ -205,12 +205,12 @@ describe('Test End 2 End - Standalone mode without baseline', () => {
       .get(/.*/)
       .reply(200, (uri) => {
         switch (uri) {
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/dep-graph':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/dep-graph':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/goof-depgraph-from-api-with-one-more-direct-dep.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/dep-graph':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/dep-graph':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/goof-depgraph-from-api.json',
             );
@@ -249,16 +249,16 @@ describe('Test End 2 End - Standalone mode without baseline', () => {
   });
 
   it('Test standalone mode - 1 new issue 1 new direct and 1 new indirect dep', async () => {
-    nock('https://snyk.io')
+    nock('https://api.snyk.io')
       .persist()
       .post(/.*/)
       .reply(200, (uri) => {
         switch (uri) {
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issues':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/issues':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/test-goof.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issues':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/issues':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/test-goof-with-one-more-vuln.json',
@@ -271,12 +271,12 @@ describe('Test End 2 End - Standalone mode without baseline', () => {
       .get(/.*/)
       .reply(200, (uri) => {
         switch (uri) {
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/dep-graph':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a73/dep-graph':
             return fs.readFileSync(
               fixturesFolderPath +
                 'apiResponses/goof-depgraph-from-api-with-one-more-direct-and-indirect-dep.json',
             );
-          case '/api/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/dep-graph':
+          case '/v1/org/361fd3c0-41d4-4ea4-ba77-09bb17890967/project/c51c80c2-66a1-442a-91e2-4f55b4256a72/dep-graph':
             return fs.readFileSync(
               fixturesFolderPath + 'apiResponses/goof-depgraph-from-api.json',
             );

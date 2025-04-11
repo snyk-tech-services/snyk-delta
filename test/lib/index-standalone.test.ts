@@ -41,6 +41,12 @@ beforeAll(() => {
   //   });
   console.log = mockedLog;
 });
+beforeAll(() => {
+  process.env.SNYK_API = 'https://api.snyk.io/v1';
+});
+afterAll(() => {
+  delete process.env.SNYK_API;
+});
 
 beforeEach(() => {
   consoleOutput = [];
