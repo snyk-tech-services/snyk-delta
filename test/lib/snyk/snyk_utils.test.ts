@@ -70,7 +70,7 @@ describe('Test getConfig function', () => {
   });
 
   it('Check snyk api endpoint is /v1', async () => {
-    process.env.SNYK_API = 'https://api.snyk.io/';
+    process.env.SNYK_API = 'https://api.snyk.io';
     expect(getConfig().endpoint).toEqual('https://api.snyk.io/v1');
   });
 });
