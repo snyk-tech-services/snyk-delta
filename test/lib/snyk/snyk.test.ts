@@ -131,12 +131,6 @@ beforeEach(() => {
 });
 
 describe('Test endpoint functions', () => {
-  beforeAll(() => {
-    process.env.SNYK_API = 'https://api.snyk.io/v1';
-  });
-  afterAll(() => {
-    delete process.env.SNYK_API;
-  });
   it('Test GetProject', async () => {
     const project = await getProject('123', '123');
     expect(project).toEqual('project');

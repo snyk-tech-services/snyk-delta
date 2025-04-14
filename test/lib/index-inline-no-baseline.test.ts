@@ -9,12 +9,6 @@ const fixturesFolderPath = path.resolve(__dirname, '..') + '/fixtures/';
 process.argv.push('--setPassIfNoBaseline true');
 
 describe('Test End 2 End - Inline mode - no baseline', () => {
-  beforeAll(() => {
-    process.env.SNYK_API = 'https://api.snyk.io/v1';
-  });
-  afterAll(() => {
-    delete process.env.SNYK_API;
-  });
   const stdinMock: MockSTDIN = stdin();
   const mockExit = mockProcessExit();
   const originalLog = console.log;
