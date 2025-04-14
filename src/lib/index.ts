@@ -33,12 +33,6 @@ const getDelta = async (
   setPassIfNoBaselineFlag = false,
   failOnOverride?: string,
 ): Promise<SnykDeltaOutput | number> => {
-  const configuredApi =
-    process.env.SNYK_API || new Configstore('snyk').get('endpoint');
-  if (!`${configuredApi}`.endsWith('/v1')) {
-    process.env.SNYK_API = `${configuredApi}/v1`;
-  }
-
   /* eslint-disable no-unsafe-finally */
 
   if (process.env.NODE_ENV == 'prod') {

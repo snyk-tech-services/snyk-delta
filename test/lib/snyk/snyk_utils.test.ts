@@ -68,4 +68,9 @@ describe('Test getConfig function', () => {
     process.env.SNYK_API = 'API';
     expect(getConfig().endpoint).toEqual('API');
   });
+
+  it('Get snyk api endpoint via env var', async () => {
+    process.env.SNYK_API = 'https://api.snyk.io/';
+    expect(getConfig().endpoint).toEqual('https://api.snyk.io/v1');
+  });
 });

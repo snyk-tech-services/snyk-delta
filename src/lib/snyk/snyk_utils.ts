@@ -4,10 +4,13 @@ import { getDebugModule } from '../utils/utils';
 const Configstore = require('@snyk/configstore');
 
 function getConfig(): { endpoint: string; token: string } {
-  const snykApiEndpoint: string =
+  let snykApiEndpoint: string =
     process.env.SNYK_API ||
     new Configstore('snyk').get('endpoint') ||
-    'https://api.snyk.io/v1';
+    'https://api.snyk.io';
+  if (!`${snykApiEndpoint}`.endsWith('/v1')) {
+    snykApiEndpoint = `${snykApiEndpoint}/v1`;
+  }
   const snykToken =
     process.env.SNYK_TOKEN || new Configstore('snyk').get('api');
   return { endpoint: snykApiEndpoint, token: snykToken };
