@@ -34,7 +34,7 @@ const getDelta = async (
   failOnOverride?: string,
 ): Promise<SnykDeltaOutput | number> => {
   const configuredApi =
-    process.env.SNYK_API || new Configstore('snyk').get('endpoint');
+    process.env.SNYK_API || new Configstore('snyk').get('endpoint') || 'https://api.snyk.io';
   if (!`${configuredApi}`.endsWith('/v1')) {
     process.env.SNYK_API = `${configuredApi}/v1`;
   }
