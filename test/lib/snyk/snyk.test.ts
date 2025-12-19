@@ -44,26 +44,6 @@ beforeEach(() => {
           return fs.readFileSync(
             fixturesFolderPath + 'apiResponses/depGraphGoof.json',
           );
-        case '/v1/org/123/project/123/issue/SNYK-JS-PACRESOLVER-1564857/paths?perPage=100&page=1':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/SNYK-JS-PACRESOLVER-1564857-issue-paths.json',
-          );
-        case '/v1/org/123/project/123/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page2.json',
-          );
-        case '/v1/org/123/project/123/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=2':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page1.json',
-          );
-        case '/v1/org/123/project/123/issue/snyk:lic:npm:goof:GPL-2.0/paths?perPage=100&page=1':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/snyk-lic-npm-goof-GPL-2-0-issue-paths.json',
-          );
         case '/v1/org/123/project/123/aggregated-issues':
           return fs.readFileSync(
             fixturesFolderPath +
@@ -77,31 +57,8 @@ beforeEach(() => {
             fixturesFolderPath + 'apiResponses/depGraphGoof.json',
           );
           break;
-        case '/v1/org/123/project/123/issue/SNYK-JS-PACRESOLVER-1564857/paths?perPage=100&page=1':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/SNYK-JS-PACRESOLVER-1564857-issue-paths.json',
-          );
-          break;
-        case '/v1/org/123/project/123/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page2.json',
-          );
-          break;
-        case '/v1/org/123/project/123/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=2':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page1.json',
-          );
-          break;
-        case '/v1/org/123/project/123/issue/snyk:lic:npm:goof:GPL-2.0/paths?perPage=100&page=1':
-          return fs.readFileSync(
-            fixturesFolderPath +
-              'apiResponses/snyk-lic-npm-goof-GPL-2-0-issue-paths.json',
-          );
-          break;
         default:
+          return {};
       }
     })
     .post(/^(?!.*xyz).*$/)
@@ -126,8 +83,13 @@ beforeEach(() => {
               'apiResponses/test-goof-aggregated-two-vuln-one-license.json',
           );
         default:
+          return {};
       }
     });
+});
+
+afterEach(() => {
+  nock.cleanAll();
 });
 
 describe('Test endpoint functions', () => {
@@ -202,6 +164,15 @@ describe('Test endpoint functions', () => {
 
   it('Test GetProjectIssues', async () => {
     const project = await getProjectIssues('123', '123');
+    // Ensure no legacy per-issue paths calls were needed (paths come from dep-graph)
+    expect(nock.pendingMocks()).toEqual(
+      expect.not.arrayContaining([expect.stringContaining('/issue/')]),
+    );
+    // Validate structure changes: depGraph present and from paths populated
+    expect(project.depGraph?.depGraph?.schemaVersion).toBeDefined();
+    expect(project.issues.vulnerabilities.length).toBeGreaterThan(0);
+    const sample = project.issues.vulnerabilities[0];
+    expect(sample.from.length).toBeGreaterThan(0);
     expect(project).toMatchSnapshot();
   });
 

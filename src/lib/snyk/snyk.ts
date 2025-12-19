@@ -1,6 +1,7 @@
 import * as Error from '../customErrors/apiError';
 import { convertIntoIssueWithPath } from '../utils/issuesUtils';
 import { requestsManager } from 'snyk-request-manager';
+import { AxiosResponse } from 'axios';
 import { IssuesPostResponseType } from '../types';
 import {
   ProjectGetResponseType,
@@ -15,7 +16,14 @@ import {
   RestIssuesListResponse,
 } from './issuesTypes';
 
+interface RestOrgsListResponse {
+  data?: { id?: string }[];
+}
 
+interface RestProjectsListResponseWithData {
+  data: ProjectsData[];
+  links?: { next?: string };
+}
 
 const getProject = async (
   orgID: string,
@@ -24,10 +32,10 @@ const getProject = async (
   const url = `/org/${orgID}/project/${projectID}`;
   try {
     const requestManager = new requestsManager({ userAgentPrefix: 'snyk-delta' });
-    const projectData = await requestManager.request({
+    const projectData = (await requestManager.request({
       verb: 'GET',
       url: url,
-    });
+    })) as AxiosResponse<ProjectGetResponseType>;
 
     if (!projectData.data) {
       throw new Error.NotFoundError(
@@ -56,17 +64,17 @@ async function getOrgUUID(orgSlug: string): Promise<string> {
   }
   try {
     const requestManager = new requestsManager({ userAgentPrefix: 'snyk-delta' });
-    const orgMetadata = await requestManager.request({
+    const orgMetadata = (await requestManager.request({
       verb: 'GET',
       url: url,
       useRESTApi: true,
-    });
-    if (orgMetadata.data.data.length > 1) {
+    })) as AxiosResponse<RestOrgsListResponse>;
+    if ((orgMetadata.data.data?.length || 0) > 1) {
       throw new Error.GenericError(
         `Found more than one orgUUID for org slug ${orgSlug}. Unable to continue result comparison.`,
       );
     } else {
-      orgUUID = orgMetadata.data.data[0]?.id || '';
+      orgUUID = orgMetadata.data.data?.[0]?.id || '';
     }
   } catch (err) {
     throw new Error.GenericError(`Error getting org UUID: ${err}`);
@@ -88,13 +96,13 @@ async function getProjects(orgID: string): Promise<ProjectsPostResponseType> {
     let isThereNextPage = false;
     do {
       const requestManager = new requestsManager({ userAgentPrefix: 'snyk-delta' });
-      const result = await requestManager.request({
+      const result = (await requestManager.request({
         verb: 'get',
         url: url,
         useRESTApi: true,
-      });
-      isThereNextPage = result.data.links.next ? true : false;
-      if (isThereNextPage) {
+      })) as AxiosResponse<RestProjectsListResponseWithData>;
+      isThereNextPage = result.data.links?.next ? true : false;
+      if (isThereNextPage && result.data.links?.next) {
         url = result.data.links.next;
       }
       resultSet.push(result.data.data);
@@ -184,11 +192,17 @@ const getProjectIssues = async (
     projectID,
   );
 
-  return await convertIntoIssueWithPath(
+  const issuesWithPaths = await convertIntoIssueWithPath(
     projectAggregatedIssues,
     orgID,
     projectID,
   );
+
+  if (projectAggregatedIssues.depGraph) {
+    issuesWithPaths.depGraph = projectAggregatedIssues.depGraph;
+  }
+
+  return issuesWithPaths;
 };
 
 const getProjectDepGraph = async (
@@ -197,10 +211,10 @@ const getProjectDepGraph = async (
 ): Promise<DepgraphGetResponseType> => {
   const requestManager = new requestsManager({ userAgentPrefix: 'snyk-delta' });
   const depGraphUrl = `/org/${orgID}/project/${projectID}/dep-graph`;
-  const projectDepGraph = await requestManager.request({
+  const projectDepGraph = (await requestManager.request({
     verb: 'GET',
     url: depGraphUrl,
-  });
+  })) as AxiosResponse<DepgraphGetResponseType>;
   if (!projectDepGraph.data || !projectDepGraph.data.depGraph) {
     throw new Error.NotFoundError(
       `No depgraph data found for ${projectID} from org ${orgID}.`,
@@ -238,14 +252,14 @@ const getIssuePaths = async (
   }
   try {
     const requestManager = new requestsManager({ userAgentPrefix: 'snyk-delta' });
-    const result = await requestManager.request({
+    const result = (await requestManager.request({
       verb: 'get',
       url: url,
-    });
+    })) as AxiosResponse<PathsGetResponseType>;
     if (!result.data) {
       throw new Error.NotFoundError(`Issue path not found for issue ${issueID} of project ${projectID} in org ${orgID}`)
     }
-    return result.data as PathsGetResponseType
+    return result.data
   } catch (err) {
     throw new Error.GenericError(`Error getting Issue path for issue ${issueID} of project ${projectID} in org ${orgID}:${err}`);
   }
@@ -341,12 +355,12 @@ async function getOrgCodeIssues(
   try {
     let hasNext = true;
     while (hasNext) {
-      const result = await requestManager.request({
+      const result = (await requestManager.request({
         verb: 'GET',
         url,
         useRESTApi: true,
-      });
-      const body = result.data as RestIssuesListResponse;
+      })) as AxiosResponse<RestIssuesListResponse>;
+      const body = result.data;
       if (body.data && body.data.length > 0) {
         allData.push(...body.data);
       }
@@ -390,12 +404,12 @@ async function getCodeAnalysisProject(
   try {
     let hasNext = true;
     while (hasNext) {
-      const result = await requestManager.request({
+      const result = (await requestManager.request({
         verb: 'GET',
         url,
         useRESTApi: true,
-      });
-      const body = result.data as RestProjectsListResponse;
+      })) as AxiosResponse<RestProjectsListResponse>;
+      const body = result.data;
       if (body.data && body.data.length > 0) {
         allData.push(...body.data);
       }

@@ -1,7 +1,5 @@
 import * as _ from 'lodash'
 import { IssuesPostResponseType } from '../types';
-import { getUpgradePath } from '../snyk/snyk';
-import { debug } from 'console';
 import { AggregatedIssuesWithVulnPaths } from '../snyk/aggregatedIssues';
 
 type Unpacked<T> = T extends (infer U)[]
@@ -47,9 +45,13 @@ const isVulnerablePathNew = (monitoredSnapshotPathArray: Array<string>, currentS
     }))
 }
 
-type IssueDataWithMissingField = LegacyVulnerability & Omit<Unpacked<AggregatedIssuesWithVulnPaths['issues']>['issueData'], 'cvssScore'>
+type IssueDataWithMissingField = LegacyVulnerability & Omit<Unpacked<AggregatedIssuesWithVulnPaths['issues']>['issueData'], 'cvssScore'> & {
+    isUpgradable?: boolean;
+    isPatchable?: boolean;
+    isPinnable?: boolean;
+}
 
-const convertIntoIssueWithPath = async (aggregatedIssues: AggregatedIssuesWithVulnPaths, orgId: string, projectId: string): Promise<IssuesPostResponseType> => {
+const convertIntoIssueWithPath = async (aggregatedIssues: AggregatedIssuesWithVulnPaths, _orgId: string, _projectId: string): Promise<IssuesPostResponseType> => {
 
     const issuesPostResponse: IssuesPostResponseType = {
         ok: false,
@@ -72,41 +74,49 @@ const convertIntoIssueWithPath = async (aggregatedIssues: AggregatedIssuesWithVu
 
         while (issueIndex < aggregatedIssues.issues.length)
         {
-            const aggregatedIssueData = aggregatedIssues.issues[issueIndex].issueData 
-            const issuePaths = await getUpgradePath(orgId, projectId, aggregatedIssueData.id)
+            const aggregatedIssue = aggregatedIssues.issues[issueIndex]
+            const aggregatedIssueData = aggregatedIssue.issueData 
             const {cvssScore, ...everythingElse} = aggregatedIssueData
             issuesPostResponse.ok = true
 
+            const fixInfo = aggregatedIssue.fixInfo
             let pkgVersionIndex = 0
-            while (pkgVersionIndex < aggregatedIssues.issues[issueIndex].pkgVersions.length)
+            while (pkgVersionIndex < aggregatedIssue.pkgVersions.length)
             {
-                const versionKey = aggregatedIssues.issues[issueIndex].pkgVersions[pkgVersionIndex]
-                if (aggregatedIssues.issues[issueIndex].issueType === 'vuln')
+                const versionKey = aggregatedIssue.pkgVersions[pkgVersionIndex]
+                const pathsForVersionEntry = aggregatedIssue.pkgVersionsWithPaths?.find((entry) => Object.prototype.hasOwnProperty.call(entry, versionKey)) as { [key: string]: Array<Array<string>> } | undefined
+                const pathsForVersion = pathsForVersionEntry?.[versionKey] ?? []
+                const upgradePath = fixInfo?.fixedIn?.length ? fixInfo.fixedIn.map((fixedVersion) => `${aggregatedIssue.pkgName}@${fixedVersion}`) : []
+
+                if (aggregatedIssue.issueType === 'vuln')
                 {
                     let LegacyPathIndex = 0
                     
-                    while (LegacyPathIndex < issuePaths.IssueFromLegacy.length)
+                    while (LegacyPathIndex < pathsForVersion.length)
                     {
-                        const issueDataWithMissingField: IssueDataWithMissingField = { from : [], package: '', upgradePath: [], version: '', isPatched: aggregatedIssues.issues[issueIndex].isPatched, isIgnored: aggregatedIssues.issues[issueIndex].isIgnored,cvssScore: cvssScore, ...everythingElse }  
+                        const issueDataWithMissingField: IssueDataWithMissingField = { from : [], package: '', upgradePath: [], version: '', isPatched: aggregatedIssue.isPatched, isIgnored: aggregatedIssue.isIgnored,cvssScore: cvssScore, ...everythingElse }  
 
-                        issueDataWithMissingField.package = aggregatedIssues.issues[issueIndex].pkgName
+                        issueDataWithMissingField.package = aggregatedIssue.pkgName
                         issueDataWithMissingField.version = versionKey
-                        issueDataWithMissingField.from = issuePaths.IssueFromLegacy[LegacyPathIndex]
-                        issueDataWithMissingField.upgradePath = issuePaths.UpgradePathLegacy[LegacyPathIndex]
+                        issueDataWithMissingField.from = pathsForVersion[LegacyPathIndex]
+                        issueDataWithMissingField.upgradePath = upgradePath
+                        issueDataWithMissingField.isUpgradable = fixInfo?.isUpgradable
+                        issueDataWithMissingField.isPatchable = fixInfo?.isPatchable
+                        issueDataWithMissingField.isPinnable = fixInfo?.isPinnable
                         issuesPostResponse.issues.vulnerabilities.push(issueDataWithMissingField)
                         LegacyPathIndex++
                     }
                          
-                } else if (aggregatedIssues.issues[issueIndex].issueType === 'license')
+                } else if (aggregatedIssue.issueType === 'license')
                 {
                     let LegacyPathIndex = 0
-                    while (LegacyPathIndex < issuePaths.IssueFromLegacy.length)
+                    while (LegacyPathIndex < pathsForVersion.length)
                     {
-                        const issueDataWithMissingField: IssueDataWithMissingField = { from : [], package: '', upgradePath: [], version: '', isPatched: aggregatedIssues.issues[issueIndex].isPatched, isIgnored: aggregatedIssues.issues[issueIndex].isIgnored, cvssScore: cvssScore, ...everythingElse }  
+                        const issueDataWithMissingField: IssueDataWithMissingField = { from : [], package: '', upgradePath: [], version: '', isPatched: aggregatedIssue.isPatched, isIgnored: aggregatedIssue.isIgnored, cvssScore: cvssScore, ...everythingElse }  
 
-                        issueDataWithMissingField.package = aggregatedIssues.issues[issueIndex].pkgName
+                        issueDataWithMissingField.package = aggregatedIssue.pkgName
                         issueDataWithMissingField.version = versionKey
-                        issueDataWithMissingField.from = issuePaths.IssueFromLegacy[LegacyPathIndex]
+                        issueDataWithMissingField.from = pathsForVersion[LegacyPathIndex]
                         issuesPostResponse.issues.licenses.push(issueDataWithMissingField)
                         LegacyPathIndex++
                     }

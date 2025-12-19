@@ -921,26 +921,6 @@ describe('Test issues functions', () => {
     });
 
     it('Test convertIntoIssueWithPath - test pagination ', async () => {
-      // eslint-disable-next-line
-      nock('https://api.snyk.io')
-        .persist()
-        .get(/.*/)
-        .reply(200, (uri) => {
-          switch (uri) {
-            case '/v1/org/123/project/123/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=1':
-              return fs.readFileSync(
-                fixturesFolderPath +
-                  'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page2.json',
-              );
-            case '/v1/org/123/project/123/issue/SNYK-JS-DOTPROP-543489/paths?perPage=100&page=2':
-              return fs.readFileSync(
-                fixturesFolderPath +
-                  'apiResponses/SNYK-JS-DOTPROP-543489-issue-paths-page1.json',
-              );
-            default:
-          }
-        });
-
       const aggregatedIssues = JSON.parse(
         fs
           .readFileSync(
@@ -950,18 +930,28 @@ describe('Test issues functions', () => {
           .toString(),
       );
 
+      // Simulate server-provided pkgVersionsWithPaths (would normally come from dep-graph)
+      const totalPaths = 102;
+      aggregatedIssues.issues[0].pkgVersionsWithPaths = [
+        {
+          '4.2.0': Array.from({ length: totalPaths }, (_, idx) => [
+            `root@1.0.0`,
+            `dep-${idx}@${idx}.0.0`,
+          ]),
+        },
+      ];
+
       const legacyIssue = await convertIntoIssueWithPath(
         aggregatedIssues,
         '123',
         '123',
       );
 
-      expect(legacyIssue.issues.vulnerabilities.length).toEqual(102);
+      expect(legacyIssue.issues.vulnerabilities.length).toEqual(totalPaths);
       legacyIssue.issues.vulnerabilities.forEach((vuln) => {
         expect(vuln['from'].length).toBeGreaterThan(0);
       });
       expect(legacyIssue).toMatchSnapshot();
-      nock.cleanAll();
     });
   });
 });
