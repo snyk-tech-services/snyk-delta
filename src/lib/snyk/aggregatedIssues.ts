@@ -2,6 +2,7 @@ import * as Error from '../customErrors/apiError';
 import { createFromJSON, DepGraph, DepGraphData } from '@snyk/dep-graph';
 import { AggregatedissuesPostResponseType } from './issuesTypes';
 import { requestsManager } from 'snyk-request-manager';
+import { DepgraphGetResponseType } from './depgraphTypes';
 
 interface IssuesWithVulnsPaths {
   issues: {
@@ -10,7 +11,9 @@ interface IssuesWithVulnsPaths {
 }
 
 export type AggregatedIssuesWithVulnPaths = IssuesWithVulnsPaths &
-  AggregatedissuesPostResponseType;
+  AggregatedissuesPostResponseType & {
+    depGraph?: DepgraphGetResponseType;
+  };
 
 const getVulnPathsForPkgVersionFromGraph = (
   pkgName: string,
@@ -73,36 +76,43 @@ export const getAggregatedIssuesWithVulnPaths = async (
     },
   };
   try {
-    const projectAggregatedIssues = await requestManager.request({
+    const aggregatedIssuesPromise = requestManager.request({
       verb: 'POST',
       url: url,
       body: JSON.stringify(filters),
     });
+
+    const depGraphUrl = `/org/${orgID}/project/${projectID}/dep-graph`;
+    const depGraphPromise = requestManager.request({
+      verb: 'GET',
+      url: depGraphUrl,
+    });
+
+    const [projectAggregatedIssues, projectDepGraph] = await Promise.all([
+      aggregatedIssuesPromise,
+      depGraphPromise,
+    ]);
+
     if (!projectAggregatedIssues.data) {
       throw new Error.NotFoundError(
         `No aggregated issues data found for ${projectID} from org ${orgID}.`,
       );
     }
 
-    const projectAggregatedIssuesData = projectAggregatedIssues.data as AggregatedissuesPostResponseType;
-
-    const depGraphUrl = `/org/${orgID}/project/${projectID}/dep-graph`;
-    const projectDepGraph = await requestManager.request({
-      verb: 'GET',
-      url: depGraphUrl,
-    });
     if (!projectDepGraph.data || !projectDepGraph.data.depGraph) {
       throw new Error.NotFoundError(
         `No depgraph data found for ${projectID} from org ${orgID}.`,
       );
     }
 
-    const depGraph = createFromJSON(
-      projectDepGraph.data.depGraph as DepGraphData,
-    );
+    const projectAggregatedIssuesData = projectAggregatedIssues.data as AggregatedissuesPostResponseType;
+
+    const depGraphData = projectDepGraph.data.depGraph as DepGraphData;
+    const depGraph = createFromJSON(depGraphData);
 
     const returnData: AggregatedIssuesWithVulnPaths = {
       issues: [],
+      depGraph: projectDepGraph.data as DepgraphGetResponseType,
     };
 
     projectAggregatedIssuesData?.issues?.map((issue) => {

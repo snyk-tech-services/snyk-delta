@@ -170,14 +170,13 @@ const getDelta = async (
         currentOrg,
         currentProject,
       );
-      snykTestJsonDependencies = await snyk.getProjectDepGraph(
-        currentOrg,
-        currentProject,
-      );
       const projectIssuesFromAPI = await snyk.getProjectIssues(
         currentOrg,
         currentProject,
       );
+      snykTestJsonDependencies =
+        projectIssuesFromAPI.depGraph ||
+        (await snyk.getProjectDepGraph(currentOrg, currentProject));
       snykTestJsonResults = projectIssuesFromAPI.issues;
     }
 
