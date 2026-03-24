@@ -13,6 +13,8 @@
 Fail the [Snyk CLI](https://github.com/snyk/cli) scans during CI/CD only if there are new issues introduced (similar to Snyk PR checks).
 Gets the delta between 2 Snyk project snapshots before failing the scan. Particularly useful when running [Snyk CLI](https://github.com/snyk/cli) scans in your local environment, git hooks, CI/CD etc.
 
+### Open Source / Container
+
 Compares 2 Snyk project snapshots to provide details on:
 - New vulnerabilities not found in the baseline snapshot
 - New license issues not found in the baseline snapshot
@@ -20,6 +22,18 @@ Compares 2 Snyk project snapshots to provide details on:
     - direct dependencies added and removed
     - indirect dependencies added and removed
     - issue path(s) introducing new vulnerabilities
+
+### Code
+
+Compare Snyk Code SARIF output to see **new** code analysis findings not found in baseline. Use `snyk-delta --code` with either:
+
+- **Piped input:** SARIF JSON on stdin is the current result; baseline from REST API. Requires `--baselineOrg` (optionally `--baselineProject` or `--projectName` or `--targetReference`). Use of `--projectName` with `--targetReference` is recommended for precise reference to the Code Analysis project. In cases of more than 1 project, the first matching one is used.
+  - Example: `snyk code test --sarif | snyk-delta --code --baselineOrg <org-uuid> --baselineProject <project-uuid>`
+  - Example: `snyk code test --sarif | snyk-delta --code --baselineOrg <org-uuid> --projectName "<owner/repo>" --targetReference "<branchName>"`
+- **Two file paths:** First argument = path to old/baseline SARIF, second = path to current SARIF.
+  - Example: `snyk-delta --code old.sarif.json current.sarif.json`
+
+Exit codes: `0` = no new findings, `1` = new findings, `2` = error
 
 ## Prerequisites
 - Snyk Business or Enterprise Account (requires API access)
@@ -33,7 +47,7 @@ Compares 2 Snyk project snapshots to provide details on:
 | Open Source    | ✅        |
 | Container   | ✅        |
 | IaC   | ❌         |
-| Code   | ❌        |
+| Code   | ✅ (Code Consistent Ignores enabled-only) |
 
 ## Installation
 `npm i -g snyk-delta` or grab a binary from [the release page](https://github.com/snyk-tech-services/snyk-delta/releases)

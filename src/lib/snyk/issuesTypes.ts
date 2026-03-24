@@ -286,3 +286,87 @@ export interface PathsGetResponseType {
         last?: string;
     };
 }
+
+/**
+ * Snyk REST API: List issues response (GET /rest/orgs/{org_id}/issues).
+ * JSON:API format; used for code issues when baselineOrg (and optionally baselineProject) are specified.
+ */
+export interface RestIssuesListResponse {
+    data?: RestIssueResource[];
+    links?: {
+        next?: string;
+        first?: string;
+        last?: string;
+    };
+}
+
+export interface RestIssueResource {
+    id: string;
+    type: string;
+    attributes?: {
+        type?: string;
+        title?: string;
+        description?: string;
+        key?: string;
+        /** Snyk asset/finding identifier; matches SARIF fingerprints["snyk/asset/finding/v1"] for code delta. */
+        key_asset?: string;
+        effective_severity_level?: string;
+        coordinates?: RestIssueCoordinates[];
+        [key: string]: unknown;
+    };
+    relationships?: {
+        [key: string]: unknown;
+    };
+}
+
+export interface RestIssueCoordinates {
+    createdAt?: string;
+    is_fixed_manually?: boolean;
+    is_fixable_snyk?: boolean;
+    is_fixable_upstream?: boolean;
+    last_introduced_at?: boolean;
+    representations?: RestIssueCoordinatesRepresentation[];
+    state?: string;
+    updated_at?: string;
+}
+
+export interface RestIssueCoordinatesRepresentation {
+    sourceLocation?: {
+        commit_id?: string;
+        file?: string;
+        region?: {
+            end?: {
+                column?: number;
+                line?: number;
+            };
+            start?: {
+                column?: number;
+                line?: number;
+            };
+        };
+    };
+}
+
+/**
+ * Snyk REST API: Get project response (GET /rest/orgs/{org_id}/projects).
+ * JSON:API format; used for code issues when projectName or targetReference are specified.
+ */
+export interface RestProjectsListResponse {
+    data?: RestProjectResource[];
+    links?: {
+        next?: string;
+    };
+}
+
+export interface RestProjectResource {
+    id: string;
+    type: string;
+    attributes?: {
+        name?: string;
+        target_reference?: string;
+        [key: string]: unknown;
+    };
+    relationships?: {
+        [key: string]: unknown;
+    };
+}

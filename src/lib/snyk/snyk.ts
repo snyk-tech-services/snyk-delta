@@ -9,7 +9,11 @@ import {
 } from './projectTypes';
 import { getAggregatedIssuesWithVulnPaths } from './aggregatedIssues';
 import { DepgraphGetResponseType } from './depgraphTypes';
-import { PathsGetResponseType } from './issuesTypes';
+import {
+  PathsGetResponseType,
+  RestProjectsListResponse,
+  RestIssuesListResponse,
+} from './issuesTypes';
 
 
 
@@ -214,13 +218,12 @@ const getIssuePaths = async (
   orgID: string,
   projectID: string,
   issueID: string,
-  selectors: {snapshotID?:string,perPage?: number,page?: number}
-):Promise<PathsGetResponseType> => {
+  selectors: { snapshotID?: string, perPage?: number, page?: number }
+): Promise<PathsGetResponseType> => {
   let url = '';
   const urlQueryParams = [];
-  url = `/org/${orgID}/project/${
-    projectID
-  }/issue/${issueID}/paths`;
+  url = `/org/${orgID}/project/${projectID
+    }/issue/${issueID}/paths`;
   if (selectors.snapshotID) {
     urlQueryParams.push('snapshotId=' + selectors.snapshotID);
   }
@@ -254,8 +257,8 @@ const getUpgradePath = async (
   issueId: string,
 ): Promise<ProjectIssuePathsLegacy> => {
 
-  let projectIssuePaths = await getIssuePaths(orgID,projectID,issueId,{perPage:100, page:1})
-  
+  let projectIssuePaths = await getIssuePaths(orgID, projectID, issueId, { perPage: 100, page: 1 })
+
   const projectIssuePathsArray = [];
 
   projectIssuePathsArray.push(projectIssuePaths);
@@ -264,7 +267,7 @@ const getUpgradePath = async (
     let nextPageExist = true;
     let nextPage = 2;
     while (nextPageExist) {
-      projectIssuePaths = await getIssuePaths(orgID,projectID,issueId,{perPage:100, page:nextPage})
+      projectIssuePaths = await getIssuePaths(orgID, projectID, issueId, { perPage: 100, page: nextPage })
       nextPage++;
       projectIssuePathsArray.push(projectIssuePaths);
       if (projectIssuePaths.links && !projectIssuePaths.links['next']) {
@@ -308,6 +311,109 @@ const getUpgradePath = async (
   return projectIssuePathsLegacy;
 };
 
+/** REST API version for Snyk REST API */
+const REST_ISSUES_API_VERSION = '2025-11-05';
+
+/**
+ * Retrieve all code issues for an org from Snyk REST API.
+ * GET /rest/orgs/{org_id}/issues with type=code; optionally filter by project via scan_item.id and scan_item.type=project.
+ * Paginates through all results (links.next).
+ */
+async function getOrgCodeIssues(
+  baselineOrg: string,
+  baselineProject?: string,
+): Promise<RestIssuesListResponse> {
+  const requestManager = new requestsManager({
+    userAgentPrefix: 'snyk-delta',
+  });
+  const urlQueryParams: string[] = [
+    `version=${REST_ISSUES_API_VERSION}`,
+    'type=code',
+    'limit=100',
+  ];
+  if (baselineProject) {
+    urlQueryParams.push(`scan_item.id=${baselineProject}`);
+    urlQueryParams.push('scan_item.type=project');
+  }
+  let url = `/orgs/${baselineOrg}/issues?${urlQueryParams.join('&')}`;
+  const allData: RestIssuesListResponse['data'] = [];
+
+  try {
+    let hasNext = true;
+    while (hasNext) {
+      const result = await requestManager.request({
+        verb: 'GET',
+        url,
+        useRESTApi: true,
+      });
+      const body = result.data as RestIssuesListResponse;
+      if (body.data && body.data.length > 0) {
+        allData.push(...body.data);
+      }
+      const nextLink = body.links?.next;
+      hasNext = !!nextLink;
+      if (nextLink) {
+        // remove prefix "/rest" from nextLink
+        url = nextLink.replace(/^\/rest/, '')
+      }
+    }
+    return { data: allData, links: {} };
+  } catch (err) {
+    throw new Error.GenericError(
+      `Error getting code issues for org ${baselineOrg}${baselineProject ? ` project ${baselineProject}` : ''}: ${err}.`,
+    );
+  }
+}
+
+async function getCodeAnalysisProject(
+  baselineOrg: string,
+  projectName?: string,
+  targetReference?: string,
+): Promise<RestProjectsListResponse> {
+  const requestManager = new requestsManager({
+    userAgentPrefix: 'snyk-delta',
+  });
+  const urlQueryParams: string[] = [
+    `version=${REST_ISSUES_API_VERSION}`,
+    'types=sast',
+    'limit=100',
+  ];
+  if (projectName) {
+    urlQueryParams.push(`names_start_with=${encodeURIComponent(projectName)}`);
+  }
+  if (targetReference) {
+    urlQueryParams.push(`target_reference=${encodeURIComponent(targetReference)}`);
+  }
+  let url = `/orgs/${baselineOrg}/projects?${urlQueryParams.join('&')}`;
+  const allData: RestProjectsListResponse['data'] = [];
+
+  try {
+    let hasNext = true;
+    while (hasNext) {
+      const result = await requestManager.request({
+        verb: 'GET',
+        url,
+        useRESTApi: true,
+      });
+      const body = result.data as RestProjectsListResponse;
+      if (body.data && body.data.length > 0) {
+        allData.push(...body.data);
+      }
+      const nextLink = body.links?.next;
+      hasNext = !!nextLink;
+      if (nextLink) {
+        // remove prefix "/rest" from nextLink
+        url = nextLink.replace(/^\/rest/, '')
+      }
+    }
+    return { data: allData, links: {} };
+  } catch (err) {
+    throw new Error.GenericError(
+      `Error getting code projects for org ${baselineOrg}${projectName ? ` project ${projectName}` : ''}${targetReference ? ` target reference ${targetReference}` : ''}: ${err}.`,
+    );
+  }
+}
+
 export {
   getProject,
   getProjectIssues,
@@ -315,4 +421,6 @@ export {
   getOrgUUID,
   getProjectUUID,
   getUpgradePath,
+  getOrgCodeIssues,
+  getCodeAnalysisProject,
 };

@@ -2,38 +2,31 @@
 version: v1.25.1
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
-  SNYK-JS-AXIOS-1579269:
-    - snyk-api-ts-client > axios:
-        reason: None given
-        expires: '2021-10-03T13:14:14.049Z'
-    - snyk-api-ts-client > snyk-request-manager > axios:
-        reason: None given
-        expires: '2021-10-03T13:14:14.049Z'
-  SNYK-JS-AXIOS-6032459:
+  SNYK-JS-AXIOS-12613773:
     - '*':
-        reason: REDOS Not applicable in such cli tool.
-        expires: 2025-02-12T13:35:06.163Z
-        created: 2025-01-13T13:35:06.166Z
-  SNYK-JS-AXIOS-6124857:
+        reason: pending dep update
+        expires: 2026-06-30T00:00:00.000Z
+        created: 2026-03-19T02:05:00.538Z
+  SNYK-JS-AXIOS-15252993:
     - '*':
-        reason: REDOS Not applicable in such cli tool.
-        expires: 2025-02-12T13:39:43.795Z
-        created: 2025-01-13T13:39:43.798Z
-  SNYK-JS-AXIOS-6671926:
-    - '*':
-        reason: XSS Not applicable in such cli tool.
-        expires: 2025-02-12T13:40:05.484Z
-        created: 2025-01-13T13:40:05.491Z
+        reason: pending dep update
+        expires: 2026-06-30T00:00:00.000Z
+        created: 2026-03-19T02:05:58.039Z
   SNYK-JS-AXIOS-9292519:
     - '*':
-        reason: SSRF not applicable in cli tool
-        expires: 2025-05-11T13:59:23.536Z
-        created: 2025-04-11T13:59:23.538Z
+        reason: pending dep update
+        expires: 2026-06-30T00:00:00.000Z
+        created: 2026-03-19T02:06:27.929Z
   SNYK-JS-AXIOS-9403194:
     - '*':
-        reason: SSRF not applicable in cli tool
-        expires: 2025-05-11T13:59:35.869Z
-        created: 2025-04-11T13:59:35.872Z
+        reason: pending dep update
+        expires: 2026-06-30T00:00:00.000Z
+        created: 2026-03-19T02:06:54.225Z
+  SNYK-JS-LODASH-15053838:
+    - '*':
+        reason: pending dep update
+        expires: 2026-06-30T00:00:00.000Z
+        created: 2026-03-19T02:07:20.470Z
 # patches apply the minimum changes required to fix a vulnerability
 patch:
   SNYK-JS-LODASH-450202:

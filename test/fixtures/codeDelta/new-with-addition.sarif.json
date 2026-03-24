@@ -1,0 +1,50 @@
+{
+  "$schema": "https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/schemas/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "version": "1.0.0",
+          "rules": [
+            { "id": "javascript/NoHardcodedPasswords", "shortDescription": { "text": "Hardcoded password" }, "defaultConfiguration": { "level": "warning" } },
+            { "id": "javascript/Sqli", "shortDescription": { "text": "SQL Injection" }, "defaultConfiguration": { "level": "error" } }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "javascript/NoHardcodedPasswords",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": { "text": "Hardcoded password in pass." },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": { "uri": "src/app.ts" },
+                "region": { "startLine": 10, "endLine": 10, "startColumn": 1, "endColumn": 5 }
+              }
+            }
+          ],
+          "fingerprints": { "snyk/asset/finding/v1": "asset-finding-001", "0": "fallback-001" }
+        },
+        {
+          "ruleId": "javascript/Sqli",
+          "ruleIndex": 1,
+          "level": "error",
+          "message": { "text": "SQL Injection in query." },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": { "uri": "src/db.ts" },
+                "region": { "startLine": 5, "endLine": 5, "startColumn": 1, "endColumn": 10 }
+              }
+            }
+          ],
+          "fingerprints": { "snyk/asset/finding/v1": "asset-finding-002", "0": "fallback-002" }
+        }
+      ]
+    }
+  ]
+}
