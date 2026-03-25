@@ -30,7 +30,7 @@ Compare Snyk Code SARIF output to see **new** code analysis findings not found i
 - **Piped input:** SARIF JSON on stdin is the current result; baseline from REST API. Requires `--baselineOrg` (optionally `--baselineProject` or `--projectName` or `--targetReference`). Use of `--projectName` with `--targetReference` is recommended for precise reference to the Code Analysis project. In cases of more than 1 project, the first matching one is used.
   - Example: `snyk code test --sarif | snyk-delta --code --baselineOrg <org-uuid> --baselineProject <project-uuid>`
   - Example: `snyk code test --sarif | snyk-delta --code --baselineOrg <org-uuid> --projectName "<owner/repo>" --targetReference "<branchName>"`
-- **Two file paths:** First argument = path to old/baseline SARIF, second = path to current SARIF.
+- **Two file paths:** First argument = path to old/baseline SARIF file, second = path to current SARIF file.
   - Example: `snyk-delta --code old.sarif.json current.sarif.json`
 
 Exit codes: `0` = no new findings, `1` = new findings, `2` = error
