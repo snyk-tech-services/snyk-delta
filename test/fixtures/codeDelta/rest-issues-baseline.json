@@ -1,0 +1,15 @@
+{
+  "data": [
+    {
+      "id": "issue-baseline-1",
+      "type": "issue",
+      "attributes": {
+        "type": "code",
+        "title": "NoHardcodedPasswords",
+        "key_asset": "asset-finding-001",
+        "effective_severity_level": "medium"
+      }
+    }
+  ],
+  "links": {}
+}

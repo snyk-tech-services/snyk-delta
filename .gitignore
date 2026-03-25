@@ -13,3 +13,6 @@ snyk-delta-macos
 snyk-delta-win.exe
 .vscode/
 .dccache
+
+# Snyk Security Extension - AI Rules (auto-generated)
+.cursor/rules/snyk_rules.mdc
