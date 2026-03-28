@@ -184,11 +184,17 @@ const getProjectIssues = async (
     projectID,
   );
 
-  return await convertIntoIssueWithPath(
+  const issuesWithPaths = await convertIntoIssueWithPath(
     projectAggregatedIssues,
     orgID,
     projectID,
   );
+
+  if (projectAggregatedIssues.depGraph) {
+    issuesWithPaths.depGraph = projectAggregatedIssues.depGraph;
+  }
+
+  return issuesWithPaths;
 };
 
 const getProjectDepGraph = async (

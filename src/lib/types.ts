@@ -91,6 +91,8 @@ export interface SnykDeltaOutput {
     noBaseline: boolean
 }
 
+import { DepgraphGetResponseType } from './snyk/depgraphTypes';
+
 export interface IssuesPostResponseType {
   /**
    * Whether the project has issues (which are not ignored or patched)
@@ -308,4 +310,8 @@ export interface IssuesPostResponseType {
    * The package manager of the project
    */
   packageManager?: string;
+  /**
+   * The dependency graph returned alongside issues for reuse
+   */
+  depGraph?: DepgraphGetResponseType;
 }
