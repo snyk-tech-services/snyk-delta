@@ -1,6 +1,7 @@
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
+  setupFiles: ['<rootDir>/test/jest.setup.js'],
   collectCoverageFrom: ['lib/**/*.ts'],
   coverageReporters: ['text-summary', 'html'],
   verbose: true,
