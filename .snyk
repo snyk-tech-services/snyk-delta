@@ -2,55 +2,5 @@
 version: v1.25.1
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
-  SNYK-JS-AXIOS-12613773:
-    - '*':
-        reason: pending dep update
-        expires: 2026-06-30T00:00:00.000Z
-        created: 2026-03-19T02:05:00.538Z
-  SNYK-JS-AXIOS-15252993:
-    - '*':
-        reason: pending dep update
-        expires: 2026-06-30T00:00:00.000Z
-        created: 2026-03-19T02:05:58.039Z
-  SNYK-JS-AXIOS-9292519:
-    - '*':
-        reason: pending dep update
-        expires: 2026-06-30T00:00:00.000Z
-        created: 2026-03-19T02:06:27.929Z
-  SNYK-JS-AXIOS-9403194:
-    - '*':
-        reason: pending dep update
-        expires: 2026-06-30T00:00:00.000Z
-        created: 2026-03-19T02:06:54.225Z
-  SNYK-JS-LODASH-15053838:
-    - '*':
-        reason: pending dep update
-        expires: 2026-06-30T00:00:00.000Z
-        created: 2026-03-19T02:07:20.470Z
-  SNYK-JS-AXIOS-16298058:
-    - '*':
-        reason: pending dep upgrade
-        expires: 2026-09-12T08:08:14.170Z
-        created: 2026-08-13T08:08:14.175Z
-  SNYK-JS-AXIOS-16299904:
-    - '*':
-        reason: pending dep upgrade
-        expires: 2026-09-12T08:08:30.253Z
-        created: 2026-08-13T08:08:30.268Z
-  SNYK-JS-AXIOS-16417750:
-    - '*':
-        reason: pending dep upgrade
-        expires: 2026-09-12T08:08:46.313Z
-        created: 2026-08-13T08:08:46.320Z
 # patches apply the minimum changes required to fix a vulnerability
 patch:
-  SNYK-JS-LODASH-450202:
-    - lodash:
-        patched: '2019-07-05T10:44:37.780Z'
-  SNYK-JS-LODASH-567746:
-    - '@snyk/dep-graph > lodash':
-        patched: '2020-05-05T13:42:01.733Z'
-    - '@snyk/dep-graph > graphlib > lodash':
-        patched: '2020-05-05T13:42:01.733Z'
-    - lodash:
-        patched: '2020-05-05T13:42:01.733Z'
