@@ -61,7 +61,9 @@ const displayNewVulns = (
       paths.shift();
     }
     console.log(chalk('    Via:', paths.join(' => ')));
-    if (vuln.fixedIn) {
+    // vuln.fixedIn can be an empty array when Snyk has no fix for this issue (isUpgradable/isPatchable
+    // both false); checking truthiness alone prints a misleading "Fixed in: <package>" with no version.
+    if (vuln.fixedIn && vuln.fixedIn.length > 0) {
       console.log(
         chalk.yellow(
           '    Fixed in:',
