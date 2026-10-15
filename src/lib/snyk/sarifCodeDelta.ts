@@ -40,6 +40,13 @@ function getFindingKey(result: SarifResult): string {
 }
 
 /**
+ * A finding with an accepted suppression is an approved ignore and is not a new issue.
+ */
+function isAcceptedIgnore(result: SarifResult): boolean {
+  return (result.suppressions ?? []).some((s) => s.status === 'accepted');
+}
+
+/**
  * Extract primary location (uri + region) from a result.
  */
 function getLocation(result: SarifResult): { uri: string; region?: SarifRegion } {
@@ -150,6 +157,8 @@ export interface SarifCodeDeltaResult {
   newTotal: number;
   /** All findings from old SARIF */
   oldTotal: number;
+  /** Findings in new SARIF with an accepted suppression, never reported as new */
+  ignored: number;
 }
 
 /**
@@ -172,7 +181,9 @@ function computeSarifCodeDelta(
   const oldKeys = new Set(oldFindings.map((f) => f.key));
   const newKeys = new Set(newFindings.map((f) => f.key));
 
-  const newOnly: SarifCodeFinding[] = newFindings.filter((f) => !oldKeys.has(f.key));
+  const newOnly: SarifCodeFinding[] = newFindings.filter(
+    (f) => !oldKeys.has(f.key) && !isAcceptedIgnore(f.result),
+  );
   const fixed: SarifCodeFinding[] = oldFindings.filter((f) => !newKeys.has(f.key));
   const unchanged: SarifCodeFinding[] = newFindings.filter((f) => oldKeys.has(f.key));
 
@@ -182,6 +193,7 @@ function computeSarifCodeDelta(
     unchanged,
     newTotal: newFindings.length,
     oldTotal: oldFindings.length,
+    ignored: newFindings.filter((f) => isAcceptedIgnore(f.result)).length,
   };
 }
 
@@ -192,6 +204,8 @@ export interface SarifCodeDeltaAgainstApiResult {
   newTotal: number;
   /** Count of baseline API issues that had key_asset (used for matching). */
   baselineCount: number;
+  /** Findings in current SARIF with an accepted suppression, never reported as new. */
+  ignored: number;
 }
 
 /**
@@ -217,6 +231,7 @@ function computeSarifCodeDeltaAgainstBaselineKeys(
   );
 
   const newOnly: SarifCodeFinding[] = newFindings.filter((f) => {
+    if (isAcceptedIgnore(f.result)) return false;
     const keyAsset = getFindingKeyAsset(f.result);
     if (keyAsset == null) return true;
     return !baselineKeyAssetSet.has(keyAsset);
@@ -226,6 +241,7 @@ function computeSarifCodeDeltaAgainstBaselineKeys(
     new: newOnly,
     newTotal: newFindings.length,
     baselineCount: baselineKeyAssetSet.size,
+    ignored: newFindings.filter((f) => isAcceptedIgnore(f.result)).length,
   };
 }
 
@@ -252,6 +268,7 @@ export {
   getBaselineKeyAssetSet,
   getFindingKey,
   getFindingKeyAsset,
+  isAcceptedIgnore,
   resultToFinding,
   collectResults,
 };

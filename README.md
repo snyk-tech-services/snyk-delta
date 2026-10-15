@@ -33,6 +33,8 @@ Compare Snyk Code SARIF output to see **new** code analysis findings not found i
 - **Two file paths:** First argument = path to old/baseline SARIF file, second = path to current SARIF file.
   - Example: `snyk-delta --code old.sarif.json current.sarif.json`
 
+Findings carrying an `accepted` suppression (an approved ignore) are never reported as new, in both modes. The number skipped is printed.
+
 Exit codes: `0` = no new findings, `1` = new findings, `2` = error
 
 ## Prerequisites

@@ -106,4 +106,62 @@ describe('sarifCodeDelta', () => {
       expect(delta.new[0].shortDescription).toBe('SQL Injection');
     });
   });
+
+  describe('accepted ignores', () => {
+    const baselineSet = () =>
+      getBaselineKeyAssetSet(
+        JSON.parse(
+          fs.readFileSync(
+            path.join(fixturesPath, 'rest-issues-baseline.json'),
+            'utf-8',
+          ),
+        ),
+      );
+
+    it('should not report a new finding with an accepted suppression', () => {
+      const oldSarif = loadSarifFile(path.join(fixturesPath, 'old.sarif.json'));
+      const newSarif = loadSarifFile(
+        path.join(fixturesPath, 'new-with-accepted-ignore.sarif.json'),
+      );
+      const delta = computeSarifCodeDelta(oldSarif, newSarif);
+
+      expect(delta.new).toHaveLength(0);
+      expect(delta.ignored).toBe(1);
+      expect(delta.newTotal).toBe(2);
+    });
+
+    it('should still report a new finding whose suppression is not accepted', () => {
+      const oldSarif = loadSarifFile(path.join(fixturesPath, 'old.sarif.json'));
+      const newSarif = loadSarifFile(
+        path.join(fixturesPath, 'new-with-pending-ignore.sarif.json'),
+      );
+      const delta = computeSarifCodeDelta(oldSarif, newSarif);
+
+      expect(delta.new).toHaveLength(1);
+      expect(delta.ignored).toBe(0);
+    });
+
+    it('should skip accepted ignores when the baseline comes from the REST API', () => {
+      const delta = computeSarifCodeDeltaAgainstBaselineKeys(
+        loadSarifFile(
+          path.join(fixturesPath, 'new-with-accepted-ignore.sarif.json'),
+        ),
+        baselineSet(),
+      );
+
+      expect(delta.new).toHaveLength(0);
+      expect(delta.ignored).toBe(1);
+    });
+
+    it('should still report a pending ignore when the baseline comes from the REST API', () => {
+      const delta = computeSarifCodeDeltaAgainstBaselineKeys(
+        loadSarifFile(
+          path.join(fixturesPath, 'new-with-pending-ignore.sarif.json'),
+        ),
+        baselineSet(),
+      );
+
+      expect(delta.new).toHaveLength(1);
+    });
+  });
 });
