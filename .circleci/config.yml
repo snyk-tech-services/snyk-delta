@@ -4,10 +4,10 @@ orbs:
 jobs:
     build-test-monitor:
         docker:
-            - image: cimg/node:20.20
+            - image: cimg/node:22.23
         steps:
             - checkout
-            - run: npm install semantic-release @semantic-release/exec pkg --save-dev --legacy-peer-deps
+            - run: npm install semantic-release@24.2.9 @semantic-release/exec@7.1.0 @yao-pkg/pkg@6.23.0 --save-dev --legacy-peer-deps
             - run: npm install
             - run: npm test
             - snyk/scan:
@@ -15,10 +15,10 @@ jobs:
                 severity-threshold: critical
                 monitor-on-build: true
                 token-variable: SNYK_TOKEN
-            - run: npx semantic-release@22.0.12
+            - run: npx semantic-release@24.2.9
     build-test:
         docker:
-            - image: cimg/node:20.20
+            - image: cimg/node:22.23
         steps:
             - checkout
             - run: npm install
@@ -30,7 +30,7 @@ jobs:
             - run: npx tsc
     build-test-from-fork:
         docker:
-            - image: cimg/node:20.20
+            - image: cimg/node:22.23
         steps:
             - checkout
             - run: npm install
@@ -39,18 +39,6 @@ jobs:
 
 workflows:
     version: 2.1
-    nightly:
-        triggers:
-          - schedule:
-              cron: "0 0 * * *"
-              filters:
-                branches:
-                  only:
-                    - master
-        jobs:
-            - build-test-monitor:
-                context: SNYK
-
     build-test-monitor:
         jobs:
             - build-test-monitor:

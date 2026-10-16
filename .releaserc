@@ -7,14 +7,14 @@
       "cmd": "echo '' > dist/STANDALONE"
     },
     {
-      "//": "build the alpine, macos, linux and windows binaries",
+      "//": "build the linux (x64, arm64), macos (x64, arm64) and windows (x64) binaries with node22",
       "path": "@semantic-release/exec",
-      "cmd": "npx pkg . -t node12-linux-x64,node12-macos-x64,node12-win-x64"
+      "cmd": "npx @yao-pkg/pkg . -t node22-linux-x64,node22-linux-arm64,node22-macos-x64,node22-macos-arm64,node22-win-x64 --no-bytecode --public-packages \"*\" --public --out-path ./bin-out"
     },
     {
       "//": "shasum all binaries",
       "path": "@semantic-release/exec",
-      "cmd": "shasum -a 256 snyk-delta-linux > snyk-delta-linux.sha256 && shasum -a 256 snyk-delta-macos > snyk-delta-macos.sha256 && shasum -a 256 snyk-delta-win.exe > snyk-delta-win.exe.sha256"
+      "cmd": "cd bin-out && for f in snyk-delta-linux-x64 snyk-delta-linux-arm64 snyk-delta-macos-x64 snyk-delta-macos-arm64 snyk-delta-win-x64.exe; do shasum -a 256 $f > $f.sha256; done"
     },
     {
       "//": "removes the file we use to identify a build as a standalone binary",
@@ -28,37 +28,59 @@
       "path": "@semantic-release/github",
       "assets": [
         {
-          "path": "./snyk-delta-linux",
-          "name": "snyk-delta-linux",
-          "label": "snyk-delta-linux"
+          "path": "./bin-out/snyk-delta-linux-x64",
+          "name": "snyk-delta-linux-x64",
+          "label": "snyk-delta-linux-x64"
         },
         {
-          "path": "./snyk-delta-linux.sha256",
-          "name": "snyk-delta-linux.sha256",
-          "label": "snyk-delta-linux.sha256"
+          "path": "./bin-out/snyk-delta-linux-x64.sha256",
+          "name": "snyk-delta-linux-x64.sha256",
+          "label": "snyk-delta-linux-x64.sha256"
         },
         {
-          "path": "./snyk-delta-macos",
-          "name": "snyk-delta-macos",
-          "label": "snyk-delta-macos"
+          "path": "./bin-out/snyk-delta-linux-arm64",
+          "name": "snyk-delta-linux-arm64",
+          "label": "snyk-delta-linux-arm64"
         },
         {
-          "path": "./snyk-delta-macos.sha256",
-          "name": "snyk-delta-macos.sha256",
-          "label": "snyk-delta-macos.sha256"
+          "path": "./bin-out/snyk-delta-linux-arm64.sha256",
+          "name": "snyk-delta-linux-arm64.sha256",
+          "label": "snyk-delta-linux-arm64.sha256"
         },
         {
-          "path": "./snyk-delta-win.exe",
-          "name": "snyk-delta-win.exe",
-          "label": "snyk-delta-win.exe"
+          "path": "./bin-out/snyk-delta-macos-x64",
+          "name": "snyk-delta-macos-x64",
+          "label": "snyk-delta-macos-x64"
         },
         {
-          "path": "./snyk-delta-win.exe.sha256",
-          "name": "snyk-delta-win.exe.sha256",
-          "label": "snyk-delta-win.exe.sha256"
+          "path": "./bin-out/snyk-delta-macos-x64.sha256",
+          "name": "snyk-delta-macos-x64.sha256",
+          "label": "snyk-delta-macos-x64.sha256"
+        },
+        {
+          "path": "./bin-out/snyk-delta-macos-arm64",
+          "name": "snyk-delta-macos-arm64",
+          "label": "snyk-delta-macos-arm64"
+        },
+        {
+          "path": "./bin-out/snyk-delta-macos-arm64.sha256",
+          "name": "snyk-delta-macos-arm64.sha256",
+          "label": "snyk-delta-macos-arm64.sha256"
+        },
+        {
+          "path": "./bin-out/snyk-delta-win-x64.exe",
+          "name": "snyk-delta-win-x64.exe",
+          "label": "snyk-delta-win-x64.exe"
+        },
+        {
+          "path": "./bin-out/snyk-delta-win-x64.exe.sha256",
+          "name": "snyk-delta-win-x64.exe.sha256",
+          "label": "snyk-delta-win-x64.exe.sha256"
         }
       ]
     }
   ],
-  "branches": ["master"]
+  "branches": [
+    "master"
+  ]
 }

@@ -8,9 +8,7 @@ dist
 package-lock.json
 yarn.lock
 .eslintcache
-snyk-delta-linux
-snyk-delta-macos
-snyk-delta-win.exe
+bin-out/
 .vscode/
 .dccache
 
