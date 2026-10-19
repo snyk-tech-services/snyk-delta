@@ -35,6 +35,13 @@ export interface SarifRule {
   shortDescription?: SarifMultiformatMessageString;
 }
 
+export interface SarifSuppression {
+  kind?: string;
+  status?: string;
+  justification?: string;
+  guid?: string;
+}
+
 export interface SarifResult {
   ruleId: string;
   ruleIndex?: number;
@@ -46,6 +53,7 @@ export interface SarifResult {
   };
   locations: SarifLocation[];
   fingerprints?: Record<string, string>;
+  suppressions?: SarifSuppression[];
   codeFlows?: unknown[];
   properties?: Record<string, unknown>;
 }

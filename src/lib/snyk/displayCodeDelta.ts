@@ -51,12 +51,16 @@ function displayCodeDelta(
   delta: SarifCodeDeltaResult,
   options: { showUnchanged?: boolean } = {},
 ): void {
-  const { new: newFindings, fixed, unchanged, newTotal, oldTotal } = delta;
+  const { new: newFindings, fixed, unchanged, newTotal, oldTotal, ignored } =
+    delta;
 
   console.log(chalk.bold('Snyk Code Delta'));
   console.log('================');
   console.log(`Baseline (old): ${oldTotal} finding(s)`);
   console.log(`Current (new):  ${newTotal} finding(s)`);
+  if (ignored > 0) {
+    console.log(`Accepted ignores skipped: ${ignored}`);
+  }
   console.log('');
 
   displayFindings(
@@ -93,12 +97,15 @@ function displayCodeDelta(
  * Only findings whose snyk/asset/finding/v1 is NOT in baseline key_asset set are shown as new.
  */
 function displayCodeDeltaFromApi(delta: SarifCodeDeltaAgainstApiResult): void {
-  const { new: newFindings, newTotal, baselineCount } = delta;
+  const { new: newFindings, newTotal, baselineCount, ignored } = delta;
 
   console.log(chalk.bold('Snyk Code Delta (baseline from Snapshot)'));
   console.log('===========================================');
   console.log(`Baseline (Snapshot): ${baselineCount} issue(s)`);
   console.log(`Current (SARIF):     ${newTotal} finding(s)`);
+  if (ignored > 0) {
+    console.log(`Accepted ignores skipped: ${ignored}`);
+  }
   console.log('');
 
   displayFindings(
