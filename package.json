@@ -20,7 +20,7 @@
     "build-watch": "tsc -w",
     "prepare": "npm run build",
     "snyk-test": "snyk test",
-    "pkg-binaries": "npx pkg . -t node12-linux-x64,node12-macos-x64,node12-win-x64 --out-path ./dist/binaries"
+    "pkg-binaries": "npx @yao-pkg/pkg . -t node22-linux-x64,node22-linux-arm64,node22-macos-x64,node22-macos-arm64,node22-win-x64 --no-bytecode --public-packages \"*\" --public --out-path ./dist/binaries"
   },
   "types": "./dist/index.d.ts",
   "repository": {
@@ -30,7 +30,7 @@
   "author": "Snyk Tech Services",
   "license": "Apache-2.0",
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=22.0.0"
   },
   "files": [
     "bin",
@@ -58,10 +58,11 @@
     "@babel/preset-typescript": "^7.24.7",
     "@types/jest": "26.0.24",
     "@types/lodash": "4.14.182",
-    "@types/node": "^12.12.31",
+    "@types/node": "^22.20.5",
     "@types/strip-ansi": "5.2.1",
     "@typescript-eslint/eslint-plugin": "^2.18.0",
     "@typescript-eslint/parser": "^2.18.0",
+    "@yao-pkg/pkg": "^6.23.0",
     "axios": "^0.27.2",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
@@ -75,6 +76,11 @@
     "ts-node": "8.6.2",
     "tsc-watch": "^4.1.0",
     "typescript": "^4.9.5"
+  },
+  "overrides": {
+    "snyk-request-manager": {
+      "axios": "1.20.0"
+    }
   },
   "pkg": {
     "scripts": [

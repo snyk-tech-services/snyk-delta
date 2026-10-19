@@ -399,7 +399,7 @@ const getDelta = async (
       process.exit(process.exitCode);
     } else {
       return {
-        result: process.exitCode,
+        result: process.exitCode as number | undefined,
         newVulns,
         newLicenseIssues,
         passIfNoBaseline,
