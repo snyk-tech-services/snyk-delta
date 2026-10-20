@@ -15,6 +15,15 @@ jobs:
                 severity-threshold: critical
                 monitor-on-build: true
                 token-variable: SNYK_TOKEN
+            - run:
+                name: Install ldid (lets pkg ad-hoc sign the macOS binaries)
+                command: |
+                    LDID_VERSION=v2.1.5-procursus7
+                    LDID_SHA256=4b8862b2fefa2cd7fa8f88cb0310779619aeaa8c72d6aff22f019b470f2fa99a
+                    curl -fsSL -o /tmp/ldid "https://github.com/ProcursusTeam/ldid/releases/download/${LDID_VERSION}/ldid_linux_x86_64"
+                    echo "${LDID_SHA256}  /tmp/ldid" | sha256sum -c -
+                    sudo install -m 0755 /tmp/ldid /usr/local/bin/ldid
+                    command -v ldid
             - run: npx semantic-release@24.2.9
     build-test:
         docker:
