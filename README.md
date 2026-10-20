@@ -13,7 +13,7 @@
 Fail the [Snyk CLI](https://github.com/snyk/cli) scans during CI/CD only if there are new issues introduced (similar to Snyk PR checks).
 Gets the delta between 2 Snyk project snapshots before failing the scan. Particularly useful when running [Snyk CLI](https://github.com/snyk/cli) scans in your local environment, git hooks, CI/CD etc.
 
-### Open Source / Container
+## Open Source / Container
 
 Compares 2 Snyk project snapshots to provide details on:
 - New vulnerabilities not found in the baseline snapshot
@@ -23,7 +23,7 @@ Compares 2 Snyk project snapshots to provide details on:
     - indirect dependencies added and removed
     - issue path(s) introducing new vulnerabilities
 
-### Code
+## Code
 
 Compare Snyk Code SARIF output to see **new** code analysis findings not found in baseline. Use `snyk-delta --code` with either:
 
@@ -41,6 +41,13 @@ Exit codes: `0` = no new findings, `1` = new findings, `2` = error
 - Snyk Business or Enterprise Account (requires API access)
 - Project must be monitored in Snyk to provide a baseline to compare against
 - set the API token in the `SNYK_TOKEN` enviroment variable. Create a [service account](https://docs.snyk.io/features/user-and-group-management/managing-groups-and-organizations/service-accounts) in Snyk and use the provided token.
+- Required Permissions:
+1. View Organization
+2. Test packages
+3. View Projects
+4. Test Projects
+5. View Project History
+6. View Ignores
 
 ## Supported Snyk products
 
