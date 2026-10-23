@@ -2,8 +2,16 @@ import { isVulnerablePathNew } from '../../../src/lib/utils/issuesUtils';
 
 describe('isVulnerablePathNew', () => {
   it('ignores a version change on a node whose version has build metadata', () => {
-    const monitored = ['root@1.0.0', 'lib@1.2.3-rc.4+20261023T094758Z', 'vuln@5.2.0'];
-    const current = ['root@1.0.0', 'lib@1.2.4-rc.1+20261024T101010Z', 'vuln@5.2.0'];
+    const monitored = [
+      'root@1.0.0',
+      'lib@1.2.3-rc.4+20261023T094758Z',
+      'vuln@5.2.0',
+    ];
+    const current = [
+      'root@1.0.0',
+      'lib@1.2.4-rc.1+20261024T101010Z',
+      'vuln@5.2.0',
+    ];
     expect(isVulnerablePathNew(monitored, current)).toBe(false);
   });
 
