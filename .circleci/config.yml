@@ -24,7 +24,11 @@ jobs:
                     echo "${LDID_SHA256}  /tmp/ldid" | sha256sum -c -
                     sudo install -m 0755 /tmp/ldid /usr/local/bin/ldid
                     command -v ldid
-            - run: npx semantic-release@24.2.9
+            - run:
+                name: Publish to npm with OIDC
+                command: |
+                    export NPM_ID_TOKEN=$(circleci run oidc get --claims '{"aud": "npm:registry.npmjs.org"}')
+                    npx semantic-release@24.2.9
     build-test:
         docker:
             - image: cimg/node:22.23
@@ -34,6 +38,7 @@ jobs:
             - run: npm test
             - snyk/scan:
                 fail-on-issues: true
+                severity-threshold: critical
                 monitor-on-build: false
                 token-variable: SNYK_TOKEN
             - run: npx tsc
