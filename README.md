@@ -150,3 +150,16 @@ Snyk-delta doesn't currently support the `--all-projects` option, but you can tr
 
 ## Technical notes
 Check out the docs folder.
+
+## Release Binary naming
+Multi-arch standalone executable binaries attached to each [release](https://github.com/snyk-tech-services/snyk-delta/releases) follow the naming format `snyk-delta-<os>-<arch>`:
+
+| OS | Arch | Binary |
+| ---- | ---- | ------ |
+| Linux | x64 | `snyk-delta-linux-x64` |
+| Linux | arm64 | `snyk-delta-linux-arm64` |
+| macOS | x64 | `snyk-delta-macos-x64` |
+| macOS | arm64 | `snyk-delta-macos-arm64` |
+| Windows | x64 | `snyk-delta-win-x64.exe` |
+
+Each binary is accompanied by a SHA-256 checksum file (e.g. `snyk-delta-linux-x64.sha256`). If you were using a previously named binary, update your download scripts to the names above.
