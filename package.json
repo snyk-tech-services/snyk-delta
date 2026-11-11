@@ -47,7 +47,7 @@
     "debug": "^4.1.1",
     "is-uuid": "^1.0.2",
     "lodash": "^4.17.15",
-    "snyk-request-manager": "^1.9.4",
+    "snyk-request-manager": "^1.9.5",
     "source-map-support": "^0.5.16",
     "terminal-link": "^2.1.1",
     "tslib": "^1.10.0",
@@ -79,7 +79,7 @@
   },
   "overrides": {
     "snyk-request-manager": {
-      "axios": "1.20.0"
+      "follow-redirects": "1.16.3"
     }
   },
   "pkg": {
